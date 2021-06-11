@@ -3211,15 +3211,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			} else {
 				this.heal(pokemon.baseMaxhp / 16);
 			}
-		},
-		onTerrain(pokemon) {
-			if (!this.field.isTerrain('grassyterrain')) return;
-			if (['raindance', 'primordialsea', 'darkness'].includes(pokemon.effectiveWeather())) return;
-			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
-				this.heal(pokemon.baseMaxhp / 8);
+			if (pokemon.isGrounded() && !pokemon.isSemiInvulnerable()) {
+				if (!this.field.isWeather(['sunnyday', 'desolateland'])) return;
+				this.heal(pokemon.baseMaxhp / 16, pokemon, pokemon);
 			} else {
-				this.heal(pokemon.baseMaxhp / 16);
-			}
+				this.debug(`Pokemon semi-invuln or not grounded; Grassy Terrain skipped`);
+			},
 		},
 		name: "Phototroph",
 		gen: 6,
