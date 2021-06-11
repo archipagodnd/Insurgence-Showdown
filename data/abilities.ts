@@ -3216,7 +3216,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				this.heal(pokemon.baseMaxhp / 16, pokemon, pokemon);
 			} else {
 				this.debug(`Pokemon semi-invuln or not grounded; Grassy Terrain skipped`);
-			},
+			}
 		},
 		name: "Phototroph",
 		gen: 6,
