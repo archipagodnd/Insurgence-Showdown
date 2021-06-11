@@ -28,7 +28,6 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 8] National Dex Delta Draft League",
 		mod: 'gen8',
-		maxForcedLevel: 100,
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
 		banlist: [
 			'Assist', 'Barrage', 'Barrier', 'Bestow', 'Bide', 'Bone Club', 'Bubble', 'Camouflage', 'Captivate', 'Chip Away',
@@ -81,13 +80,11 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 7] Delta Draft League",
 		mod: 'gen7',
-		maxForcedLevel: 100,
 		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause', '+Past'],
 	},
 	{
 		name: "[Gen 6] Delta Draft League",
 		mod: 'gen6',
-		maxForcedLevel: 100,
 		searchShow: false,
 		ruleset: ['Obtainable', 'Team Preview', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', '+Past'],
 	},
@@ -98,14 +95,12 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 6] Insurgence OU",
 		mod: 'gen6',
-		maxForcedLevel: 120,
 		ruleset: ['Standard', 'Swagger Clause', 'Overflow Stat Mod'],
 		banlist: ['Uber', 'Arena Trap', 'Shadow Tag', 'Soul Dew', 'Baton Pass'],
 	},
 	{
 		name: "[Gen 6] Insurgence AG",
 		mod: 'gen6',
-		maxForcedLevel: 120,
 		searchShow: false,
 		ruleset: ['Obtainable', 'Team Preview', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Overflow Stat Mod'],
 	},
