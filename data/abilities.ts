@@ -1394,7 +1394,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onTryMovePriority: -2,
 		onTryMove(pokemon, target, move) {
 			if (move.id === 'stealthrock') {
-				this.useMove('stealthcoal', pokemon, target);
+				this.actions.useMove('stealthcoal', pokemon, target);
 				return null;
 			}
 		},
@@ -3598,7 +3598,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				const newMove = this.dex.getActiveMove(move.id);
 				newMove.hasBounced = true;
 				newMove.pranksterBoosted = false;
-				this.useMove(newMove, target, source);
+				this.actions.useMove(newMove, target, source);
 				return null;
 			}
 		},
@@ -3610,7 +3610,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			const newMove = this.dex.getActiveMove(move.id);
 			newMove.hasBounced = true;
 			newMove.pranksterBoosted = false;
-			this.useMove(newMove, this.effectState.target, source);
+			this.actions.useMove(newMove, this.effectState.target, source);
 			return null;
 		},
 		onAfterSetStatus(status, target, source, effect) {
@@ -3848,7 +3848,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				if (pokemon.species.id === 'mukdeltanormal') regurgMove.type = 'Normal';
 				if (pokemon.species.id === 'mukdeltapsychic') regurgMove.type = 'Psychic';
 				if (move.name === "Regurgitation") return;
-				this.useMove(regurgMove, pokemon, target);
+				this.actions.useMove(regurgMove, pokemon, target);
 				return null;
 			} else {
 				const regurgMove = this.dex.getActiveMove('fairywind');
@@ -3862,7 +3862,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				if (pokemon.species.id === 'mukdeltanormal') regurgMove.type = 'Normal';
 				if (pokemon.species.id === 'mukdeltapsychic') regurgMove.type = 'Psychic';
 				if (move.name === "Regurgitation") return;
-				this.useMove(regurgMove, pokemon, target);
+				this.actions.useMove(regurgMove, pokemon, target);
 				return null;
 			}
 		},

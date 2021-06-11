@@ -559,7 +559,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 					if (itemTable[item] >= 2) {
 						return [
 							`You are limited to two of each item by Double Item Clause.`,
-							`(You have more than two ${this.dex.getItem(item).name})`,
+							`(You have more than two ${this.dex.items.get(item).name})`,
 						];
 					}
 					itemTable[item]++;

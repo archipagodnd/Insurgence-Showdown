@@ -275,9 +275,9 @@ interface MoveHitData {
 
 type MutableMove = BasicEffect & MoveData;
 export interface ActiveMove extends MutableMove {
-	readonly name: string;
 	readonly effectType: 'Move';
 	readonly id: ID;
+  name: string;
 	num: number;
 	weather?: ID;
 	status?: ID;
@@ -300,6 +300,8 @@ export interface ActiveMove extends MutableMove {
 	negateSecondary?: boolean;
 	normalizeBoosted?: boolean;
 	pixilateBoosted?: boolean;
+  intoxicateBoosted?: boolean;
+  foundryBoosed?: boolean;
 	pranksterBoosted?: boolean;
 	refrigerateBoosted?: boolean;
 	selfDropped?: boolean;
@@ -309,6 +311,7 @@ export interface ActiveMove extends MutableMove {
 	statusRoll?: string;
 	totalDamage?: number | false;
 	willChangeForme?: boolean;
+  willChangeFormeDelta?: boolean;
 	infiltrates?: boolean;
 
 	/**
