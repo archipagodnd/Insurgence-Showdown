@@ -1831,6 +1831,90 @@ export const commands: Chat.ChatCommands = {
 		`Use /cleartext, /clearaltstext, and /clearlines to remove messages without displaying a button to reveal them.`,
 	],
 
+	ab: 'blacklist',
+	bl: 'blacklist',
+	forceblacklist: 'blacklist',
+	forcebl: 'blacklist',
+	blacklist(target, room, user, connection, cmd) {
+		room = this.requireRoom();
+		if (!target) return this.parse('/help blacklist');
+		this.checkChat();
+		if (toID(target) === 'show') return this.errorReply(`You're looking for /showbl`);
+
+		const {targetUser, targetUsername, rest: reason} = this.splitUser(target);
+		if (!targetUser) {
+			this.errorReply(`User ${targetUsername} not found.`);
+			return this.errorReply(`If you want to blacklist an offline account by name (not IP), consider /blacklistname`);
+		}
+		this.checkCan('editroom', targetUser, room);
+		if (!room.persist) {
+			return this.errorReply(`This room is not going to last long enough for a blacklist to matter - just ban the user`);
+		}
+		const punishment = Punishments.isRoomBanned(targetUser, room.roomid);
+		if (punishment && punishment.type === 'BLACKLIST') {
+			return this.errorReply(`This user is already blacklisted from this room.`);
+		}
+		const force = cmd === 'forceblacklist' || cmd === 'forcebl';
+		if (targetUser.trusted) {
+			if (!force) {
+				return this.sendReply(
+					`${targetUser.name} is a trusted user. If you are sure you would like to blacklist them use /forceblacklist.`
+				);
+			}
+		} else if (force) {
+			return this.errorReply(`Use /blacklist; ${targetUser.name} is not a trusted user.`);
+		}
+		if (!reason && REQUIRE_REASONS) {
+			return this.errorReply(`Blacklists require a reason.`);
+		}
+		if (reason.length > MAX_REASON_LENGTH) {
+			return this.errorReply(`The reason is too long. It cannot exceed ${MAX_REASON_LENGTH} characters.`);
+		}
+		const name = targetUser.getLastName();
+		const userid = targetUser.getLastId();
+
+		if (targetUser.trusted && room.settings.isPrivate !== true) {
+			Monitor.log(`[CrisisMonitor] Trusted user ${targetUser.name}${targetUser.trusted !== targetUser.id ? ` (${targetUser.trusted})` : ''} was blacklisted from ${room.roomid} by ${user.name}, and should probably be demoted.`);
+		}
+
+		if (targetUser.id in room.users || user.can('lock')) {
+			targetUser.popup(
+				`|modal||html|<p>${Utils.escapeHTML(user.name)} has blacklisted you from the room ${room.roomid}${(room.subRooms ? ` and its subrooms` : '')}. Reason: ${Utils.escapeHTML(reason)}</p>` +
+				`<p>To appeal the ban, PM the staff member that blacklisted you${room.persist ? ` or a room owner. </p><p><button name="send" value="/roomauth ${room.roomid}">List Room Staff</button></p>` : `.</p>`}`
+			);
+		}
+
+		this.privateModAction(`${name} was blacklisted from ${room.title} by ${user.name}.${reason ? ` (${reason})` : ''}`);
+
+		const affected = Punishments.roomBlacklist(room, targetUser, null, null, reason);
+
+		if (!room.settings.isPrivate && room.persist) {
+			const acAccount = (targetUser.autoconfirmed !== userid && targetUser.autoconfirmed);
+			let displayMessage = '';
+			if (affected.length > 1) {
+				displayMessage = `${name}'s ${(acAccount ? ` ac account: ${acAccount},` : '')} blacklisted alts: ${affected.slice(1).map(curUser => curUser.getLastName()).join(", ")}`;
+				this.privateModAction(displayMessage);
+			} else if (acAccount) {
+				displayMessage = `${name}'s ac account: ${acAccount}`;
+				this.privateModAction(displayMessage);
+			}
+		}
+
+		if (!room.settings.isPrivate && room.persist) {
+			this.globalModlog("BLACKLIST", targetUser, reason);
+		} else {
+			// Room modlog only
+			this.modlog("BLACKLIST", targetUser, reason);
+		}
+		return true;
+	},
+	blacklisthelp: [
+		`/blacklist [username], [reason] - Blacklists the user from the room you are in for a year. Requires: # &`,
+		`/unblacklist [username] - Unblacklists the user from the room you are in. Requires: # &`,
+		`/showblacklist OR /showbl - show a list of blacklisted users in the room. Requires: % @ # &`,
+		`/expiringblacklists OR /expiringbls - show a list of blacklisted users from the room whose blacklists are expiring in 3 months or less. Requires: % @ # &`,
+	],
+
 	forcebattleban: 'battleban',
 	async battleban(target, room, user, connection, cmd) {
 		room = this.requireRoom();
@@ -1983,6 +2067,98 @@ export const commands: Chat.ChatCommands = {
 		}
 	},
 	ungroupchatbanhelp: [`/ungroupchatban [user] - Allows a groupchatbanned user to use groupchats again. Requires: % @ &`],
+
+	nameblacklist: 'blacklistname',
+	blacklistname(target, room, user) {
+		room = this.requireRoom();
+		if (!target) return this.parse('/help blacklistname');
+		this.checkChat();
+		this.checkCan('editroom', null, room);
+		if (!room.persist) {
+			return this.errorReply("This room is not going to last long enough for a blacklist to matter - just ban the user");
+		}
+
+		const [targetStr, reason] = target.split('|').map(val => val.trim());
+		if (!targetStr || (!reason && REQUIRE_REASONS)) {
+			return this.errorReply("Usage: /blacklistname name1, name2, ... | reason");
+		}
+
+		const targets = targetStr.split(',').map(s => toID(s));
+
+		const duplicates = targets.filter(userid => (
+			// can be asserted, room should always exist
+			Punishments.roomUserids.nestedGetByType(room!.roomid, userid, 'BLACKLIST')
+		));
+		if (duplicates.length) {
+			return this.errorReply(`[${duplicates.join(', ')}] ${Chat.plural(duplicates, "are", "is")} already blacklisted.`);
+		}
+
+		for (const userid of targets) {
+			if (!userid) return this.errorReply(`User '${userid}' is not a valid userid.`);
+			if (!Users.Auth.hasPermission(user, 'ban', room.auth.get(userid), room)) {
+				return this.errorReply(`/blacklistname - Access denied: ${userid} is of equal or higher authority than you.`);
+			}
+
+			Punishments.roomBlacklist(room, userid, null, null, reason);
+
+			const trusted = Users.isTrusted(userid);
+			if (trusted && room.settings.isPrivate !== true) {
+				Monitor.log(`[CrisisMonitor] Trusted user ${userid}${(trusted !== userid ? ` (${trusted})` : ``)} was nameblacklisted from ${room.roomid} by ${user.name}, and should probably be demoted.`);
+			}
+			if (!room.settings.isPrivate && room.persist) {
+				this.globalModlog("NAMEBLACKLIST", userid, reason);
+			}
+		}
+
+		this.privateModAction(
+			`${targets.join(', ')}${Chat.plural(targets, " were", " was")} nameblacklisted from ${room.title} by ${user.name}.`
+		);
+		return true;
+	},
+	blacklistnamehelp: [
+		`/blacklistname OR /nameblacklist [name1, name2, etc.] | reason - Blacklists all name(s) from the room you are in for a year. Requires: # &`,
+	],
+
+	unab: 'unblacklist',
+	unblacklist(target, room, user) {
+		room = this.requireRoom();
+		if (!target) return this.parse('/help unblacklist');
+		this.checkCan('editroom', null, room);
+
+		const name = Punishments.roomUnblacklist(room, target);
+
+		if (name) {
+			this.privateModAction(`${name} was unblacklisted by ${user.name}.`);
+			if (!room.settings.isPrivate && room.persist) {
+				this.globalModlog("UNBLACKLIST", name);
+			}
+		} else {
+			this.errorReply(`User '${target}' is not blacklisted.`);
+		}
+	},
+	unblacklisthelp: [`/unblacklist [username] - Unblacklists the user from the room you are in. Requires: # &`],
+
+	unblacklistall(target, room, user) {
+		room = this.requireRoom();
+		this.checkCan('editroom', null, room);
+
+		if (!target) {
+			user.lastCommand = '/unblacklistall';
+			this.errorReply("THIS WILL UNBLACKLIST ALL BLACKLISTED USERS IN THIS ROOM.");
+			this.errorReply("To confirm, use: /unblacklistall confirm");
+			return;
+		}
+		if (user.lastCommand !== '/unblacklistall' || target !== 'confirm') {
+			return this.parse('/help unblacklistall');
+		}
+		user.lastCommand = '';
+		const unblacklisted = Punishments.roomUnblacklistAll(room);
+		if (!unblacklisted) return this.errorReply("No users are currently blacklisted in this room to unblacklist.");
+		this.addModAction(`All blacklists in this room have been lifted by ${user.name}.`);
+		this.modlog('UNBLACKLISTALL');
+		this.roomlog(`Unblacklisted users: ${unblacklisted.join(', ')}`);
+	},
+	unblacklistallhelp: [`/unblacklistall - Unblacklists all blacklisted users in the current room. Requires: # &`],
 
 	expiringbls: 'showblacklist',
 	expiringblacklists: 'showblacklist',
