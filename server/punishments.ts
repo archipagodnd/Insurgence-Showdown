@@ -27,7 +27,6 @@ const GROUPCHATBAN_DURATION = 7 * 24 * 60 * 60 * 1000; // 1 week
 const MOBILE_PUNISHMENT_DURATIION = 6 * 60 * 60 * 1000; // 6 hours
 
 const ROOMBAN_DURATION = 48 * 60 * 60 * 1000; // 48 hours
-//const BLACKLIST_DURATION = 365 * 24 * 60 * 60 * 1000; // 1 year
 
 const USERID_REGEX = /^[a-z0-9]+$/;
 const PUNISH_TRUSTED = false;
