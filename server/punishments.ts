@@ -1285,33 +1285,6 @@ export const Punishments = new class {
 		return affected;
 	}
 
-	roomBlacklist(room: Room, user: User | ID, expireTime: number | null, id: ID | null, ...reason: string[]) {
-		if (!expireTime) expireTime = Date.now() + BLACKLIST_DURATION;
-		const punishment = {type: 'BLACKLIST', id, expireTime, reason: reason.join(' ')} as Punishment;
-
-		const affected = Punishments.roomPunish(room, user, punishment);
-
-		for (const curUser of affected) {
-			// ensure there aren't roombans so nothing gets mixed up
-			Punishments.roomUnban(room, (curUser as any).id || curUser);
-			if (room.game && room.game.removeBannedUser) {
-				room.game.removeBannedUser(curUser);
-			}
-			curUser.leaveRoom(room.roomid);
-		}
-
-		if (room.subRooms) {
-			for (const subRoom of room.subRooms.values()) {
-				for (const curUser of affected) {
-					subRoom.game?.removeBannedUser?.(curUser);
-					curUser.leaveRoom(subRoom.roomid);
-				}
-			}
-		}
-
-		return affected;
-	}
-
 	roomUnban(room: Room, userid: string) {
 		const user = Users.get(userid);
 		if (user) {
