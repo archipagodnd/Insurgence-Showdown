@@ -23,59 +23,51 @@ export const Formats: FormatList = [
 	///////////////////////////////////////////////////////////////////
 
 	{
-		section: "HBF Draft Formats",
+		section: "Main formats",
 	},
 	{
-		name: "[Gen 8] National Dex Delta Draft League",
-		mod: 'gen8',
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
+		name: "[Gen 6] Insurgence OU",
+		mod: 'gen6',
+		ruleset: ['Standard', 'Swagger Clause'],
+		banlist: ['Uber', 'Arena Trap', 'Shadow Tag', 'Soul Dew', 'Baton Pass'],
+	},
+	{
+		name: "[Gen 6] Insurgence AG",
+		mod: 'gen6',
+		searchShow: false,
+		ruleset: ['Standard'],
+	},
+	{
+		name: "[Gen 7] Insurgence OU",
+		mod: 'gen7',
+		ruleset: ['Standard'],
+		banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass'],
+	},
+	{
+		name: "[Gen 7] Insurgence AG",
+		mod: 'gen6',
+		searchShow: false,
+		ruleset: ['Standard'],
+	},
+	{
+		name: "[Gen 8] NatDex Insurgence OU",
+		mod: 'gen6',
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
 		banlist: [
-			'Assist', 'Barrage', 'Barrier', 'Bestow', 'Bide', 'Bone Club', 'Bubble', 'Camouflage', 'Captivate', 'Chip Away',
-			'Clamp', 'Comet Punch', 'Constrict', 'Dizzy Punch', 'Double Slap', 'Dragon Rage', 'Egg Bomb', 'Embargo', 'Feint Attack',
-			'Flame Burst', 'Flash', 'Foresight', 'Frustration', 'Grass Whistle', 'Heal Block', 'Heal Order', 'Heart Stamp', 'Hidden Power',
-			'Ice Ball', 'Ion Deluge', 'Jump Kick', 'Karate Chop', 'Kinesis', 'Lucky Chant', 'Magnet Bomb', 'Magnitude', 'Me First',
-			'Meditate', 'Miracle Eye', 'Mirror Move', 'Mirror Shot', 'Mud Bomb', 'Mud Sport', 'Natural Gift', 'Needle Arm', 'Nightmare',
-			'Odor Sleuth', 'Ominous Wind', 'Psywave', 'Punishment', 'Pursuit', 'Rage', 'Razor Wind', 'Refresh', 'Rock Climb', 'Rolling Kick',
-			'Rototiller', 'Secret Power', 'Sharpen', 'Signal Beam', 'Silver Wind', 'Sky Drop', 'Sky Uppercut', 'Smelling Salts', 'Snatch',
-			'Sonic Boom', 'Spider Web', 'Spike Cannon', 'Spotlight', 'Steamroller', 'Synchronoise', 'Telekinesis', 'Trump Card', 'Twineedle',
-			'Wake-Up Slap', 'Water Sport', 'Wring Out', 'Return', 'Tail Glow', 'Heart Swap', 'Psycho Boost',
-			'Normalium Z', 'Buginium Z', 'Darkinium Z', 'Dragonium Z', 'Electrium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z',
-			'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Waterium Z',
-			'Aloraichium Z', 'Decidium Z', 'Eevium Z', 'Incinium Z', 'Kommonium Z', 'Lunalium Z', 'Lycanium Z', 'Marshadium Z', 'Mewnium Z',
-			'Mimikium Z', 'Pikanium Z', 'Pikashunium Z', 'Primarium Z', 'Snorlium Z', 'Solganium Z', 'Tapunium Z', 'Ultranecrozium Z',
-			'Arceus', 'Calyrex-Ice', 'Calyrex-Shadow', 'Metagross-Delta-R-Crystal', 'Darkrai', 'Volcarona-Delta', 'Deoxys-Base', 'Deoxys-Attack',
-			'Dialga', 'Eternatus', 'Genesect', 'Giratina', 'Giratina-Origin', 'Battle Bond', 'Groudon', 'Ho-Oh', 'Kyogre', 'Kyurem-Black',
-			'Kyurem-White', 'Lugia', 'Lunala', 'Magearna', 'Marshadow', 'Alakazam-Mega', 'Blaziken-Mega', 'Metagross-Delta-R-Mega',
-			'Metagross-Delta-S-Mega', 'Scizor-Delta-Mega', 'Feraligatr-Mega', 'Gengar-Mega', 'Haxorus-Mega', 'Hydreigon-Mega-Five', 'Jirachi-Mega',
-			'Latias-Mega', 'Latios-Mega', 'Lucario-Mega', 'Metagross-Mega', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Rayquaza-Mega', 'Salamence-Mega',
-			'Mewtwo-Shadow-Mega', 'Mewtwo', 'Naganadel', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane', 'Necrozma-Ultra', 'Palkia', 'Pheromosa',
-			'Rayquaza', 'Reshiram', 'Mewtwo-Shadow', 'Shaymin-Sky', 'Solgaleo', 'UFI', 'Unown', 'Xerneas', 'Yveltal', 'Zacian', 'Zamazenta',
-			'Zekrom', 'Power Construct', 'Moody', 'Swagger',
-			'Greninja + Protean', 'Blaziken + Speed Boost', 'Cinderace + Libero', 'Blastoise-Mega + Shell Smash', 'Kangaskhan-Mega + Seismic Toss',
-			'Snow Warning ++ Snow Cloak', 'Sleet ++ Snow Cloak', 'Sand Stream ++ Sand Veil', 'Hail ++ Snow Cloak', 'Sandstorm ++ Sand Veil',
-			'Sand Spit ++ Sand Veil', 'Noctem ++ Illuminate', 'New Moon ++ Illuminate',
+			'Alakazam-Mega', 'Arceus', 'Blastoise-Mega', 'Blaziken', 'Calyrex-Ice', 'Calyrex-Shadow', 'Cinderace', 'Darkrai', 'Darmanitan-Galar',
+			'Deoxys-Attack', 'Deoxys-Base', 'Deoxys-Speed', 'Dialga', 'Dracovish', 'Dragapult', 'Eternatus', 'Genesect', 'Gengar-Mega', 'Giratina',
+			'Giratina-Origin', 'Groudon', 'Ho-Oh', 'Kangaskhan-Mega', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Landorus-Base', 'Lucario-Mega',
+			'Lugia', 'Lunala', 'Magearna', 'Marshadow', 'Metagross-Mega', 'Mewtwo', 'Naganadel', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane',
+			'Necrozma-Ultra', 'Palkia', 'Pheromosa', 'Rayquaza', 'Reshiram', 'Salamence-Mega', 'Shaymin-Sky', 'Solgaleo', 'Spectrier', 'Tornadus-Therian',
+			'Urshifu-Base', 'Xerneas', 'Yveltal', 'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Zygarde-Base', 'Zygarde-Complete',
+			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag', 'Baton Pass',
 		],
 	},
 	{
-		name: "[Gen 8] LC National Dex Delta Draft League",
-		mod: 'gen8',
-		ruleset: ['Little Cup', 'Standard NatDex', 'Dynamax Clause', 'Double Item Clause'],
-		banlist: [
-			'Misdreavus', 'Gligar', 'Scyther', 'Corsola-Galar', 'Swirlix',
-			'Assist', 'Barrage', 'Barrier', 'Bestow', 'Bide', 'Bone Club', 'Bubble', 'Camouflage', 'Captivate', 'Chip Away',
-			'Clamp', 'Comet Punch', 'Constrict', 'Dizzy Punch', 'Double Slap', 'Dragon Rage', 'Egg Bomb', 'Embargo', 'Feint Attack',
-			'Flame Burst', 'Flash', 'Foresight', 'Frustration', 'Grass Whistle', 'Heal Block', 'Heal Order', 'Heart Stamp', 'Hidden Power',
-			'Ice Ball', 'Ion Deluge', 'Jump Kick', 'Karate Chop', 'Kinesis', 'Lucky Chant', 'Magnet Bomb', 'Magnitude', 'Me First',
-			'Meditate', 'Miracle Eye', 'Mirror Move', 'Mirror Shot', 'Mud Bomb', 'Mud Sport', 'Natural Gift', 'Needle Arm', 'Nightmare',
-			'Odor Sleuth', 'Ominous Wind', 'Psywave', 'Punishment', 'Pursuit', 'Rage', 'Razor Wind', 'Refresh', 'Rock Climb', 'Rolling Kick',
-			'Rototiller', 'Secret Power', 'Sharpen', 'Signal Beam', 'Silver Wind', 'Sky Drop', 'Sky Uppercut', 'Smelling Salts', 'Snatch',
-			'Sonic Boom', 'Spider Web', 'Spike Cannon', 'Spotlight', 'Steamroller', 'Synchronoise', 'Telekinesis', 'Trump Card', 'Twineedle',
-			'Wake-Up Slap', 'Water Sport', 'Wring Out', 'Return', 'Tail Glow', 'Heart Swap',
-			'Normalium Z', 'Buginium Z', 'Darkinium Z', 'Dragonium Z', 'Electrium Z', 'Fairium Z', 'Fightinium Z', 'Firium Z', 'Flyinium Z',
-			'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Poisonium Z', 'Psychium Z', 'Rockium Z', 'Steelium Z', 'Waterium Z',
-			'Aloraichium Z', 'Decidium Z', 'Eevium Z', 'Incinium Z', 'Kommonium Z', 'Lunalium Z', 'Lycanium Z', 'Marshadium Z', 'Mewnium Z',
-			'Mimikium Z', 'Pikanium Z', 'Pikashunium Z', 'Primarium Z', 'Snorlium Z', 'Solganium Z', 'Tapunium Z', 'Ultranecrozium Z',
-		],
+		name: "[Gen 8] NatDex Insurgence AG",
+		mod: 'gen6',
+		searchShow: false,
+		ruleset: ['Standard NatDex'],
 	},
 	{
 		name: "[Gen 7] Delta Draft League",
@@ -87,22 +79,6 @@ export const Formats: FormatList = [
 		mod: 'gen6',
 		searchShow: false,
 		ruleset: ['Obtainable', 'Team Preview', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', '+Past'],
-	},
-
-	{
-		section: "Insurgence Formats",
-	},
-	{
-		name: "[Gen 6] Insurgence OU",
-		mod: 'gen6',
-		ruleset: ['Standard', 'Swagger Clause', 'Overflow Stat Mod'],
-		banlist: ['Uber', 'Arena Trap', 'Shadow Tag', 'Soul Dew', 'Baton Pass'],
-	},
-	{
-		name: "[Gen 6] Insurgence AG",
-		mod: 'gen6',
-		searchShow: false,
-		ruleset: ['Obtainable', 'Team Preview', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Overflow Stat Mod'],
 	},
 
 	// Sw/Sh Singles
@@ -529,26 +505,6 @@ export const Formats: FormatList = [
 		section: "National Dex",
 	},
 	{
-		name: "[Gen 8] National Dex",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3666135/">National Dex Metagame Discussion</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3667921/">National Dex Sample Teams</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3666572/">National Dex Viability Rankings</a>`,
-		],
-
-		mod: 'gen8',
-		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
-		banlist: [
-			'Alakazam-Mega', 'Arceus', 'Blastoise-Mega', 'Blaziken', 'Calyrex-Ice', 'Calyrex-Shadow', 'Cinderace', 'Darkrai', 'Darmanitan-Galar',
-			'Deoxys-Attack', 'Deoxys-Base', 'Deoxys-Speed', 'Dialga', 'Dracovish', 'Dragapult', 'Eternatus', 'Genesect', 'Gengar-Mega', 'Giratina',
-			'Giratina-Origin', 'Groudon', 'Ho-Oh', 'Kangaskhan-Mega', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Landorus-Base', 'Lucario-Mega',
-			'Lugia', 'Lunala', 'Magearna', 'Marshadow', 'Metagross-Mega', 'Mewtwo', 'Naganadel', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane',
-			'Necrozma-Ultra', 'Palkia', 'Pheromosa', 'Rayquaza', 'Reshiram', 'Salamence-Mega', 'Shaymin-Sky', 'Solgaleo', 'Spectrier', 'Tornadus-Therian',
-			'Urshifu-Base', 'Xerneas', 'Yveltal', 'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Zygarde-Base', 'Zygarde-Complete',
-			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag', 'Baton Pass',
-		],
-	},
-	{
 		name: "[Gen 8] National Dex UU",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3660920/">National Dex UU Metagame Discussion</a>`,
@@ -596,15 +552,6 @@ export const Formats: FormatList = [
 			'Spectrier', 'Xerneas', 'Yveltal', 'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Zygarde-Base',
 			'Battle Bond', 'Moody', 'Power Construct', 'Shadow Tag', 'Damp Rock', 'Smooth Rock', 'Terrain Extender', 'Baton Pass',
 		],
-	},
-	{
-		name: "[Gen 8] National Dex AG",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3672423/">National Dex AG</a>`,
-		],
-
-		mod: 'gen8',
-		ruleset: ['Standard NatDex'],
 	},
 
 	// Pet Mods
