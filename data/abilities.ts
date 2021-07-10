@@ -1389,7 +1389,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower(basePower, pokemon, target, move) {
-			if (move.foundryBoosted) return this.chainModify([5324, 4096]);
+			if (move.foundryBoosted) return this.chainModify([4915, 4096]);
 		},
 		onTryMovePriority: -2,
 		onTryMove(pokemon, target, move) {
@@ -2008,7 +2008,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower(basePower, pokemon, target, move) {
-			if (move.intoxicateBoosted) return this.chainModify([5324, 4096]);
+			if (move.intoxicateBoosted) return this.chainModify([4915, 4096]);
 		},
 		name: "Intoxicate",
 		gen: 6,

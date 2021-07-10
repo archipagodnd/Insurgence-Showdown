@@ -14,6 +14,13 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	foundry: {
+		inherit: true,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.intoxicateBoosted) return this.chainModify([5325, 4096]);
+		},
+		rating: 4.5,
+	},
 	galewings: {
 		inherit: true,
 		onModifyPriority(priority, pokemon, target, move) {
@@ -87,38 +94,6 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 		onDamagingHit(damage, target, source, move) {
 			if (move.flags['contact']) {
 				this.damage(source.baseMaxhp / 8, source, target, null, true);
-			}
-		},
-	},
-	sleet: {
-		inherit: true,
-		onStart(source) {
-			this.field.setWeather('hail');
-		},
-		onResidual(pokemon) {
-			if (!pokemon.hp) return;
-			if (!this.field.isWeather('hail')) return;
-			for (const target of pokemon.side.foe.active) {
-				if (target.hasType('Ice')) continue;
-				if (!target || !target.hp) continue;
-				if (
-					target.hasAbility('sleet') || target.hasAbility('snowwarning') ||
-					target.hasAbility('snowcloak') || target.hasAbility('slushrush') ||
-					target.hasAbility('icebody') || target.hasAbility('overcoat') ||
-					target.hasItem('safetygoggles')
-				) continue;
-				this.damage(11 * target.maxhp / 80, target, pokemon);
-			}
-			for (const target of pokemon.side.active) {
-				if (target.hasType('Ice')) continue;
-				if (!target || !target.hp) continue;
-				if (
-					target.hasAbility('sleet') || target.hasAbility('snowwarning') ||
-					target.hasAbility('snowcloak') || target.hasAbility('slushrush') ||
-					target.hasAbility('icebody') || target.hasAbility('overcoat') ||
-					target.hasItem('safetygoggles')
-				) continue;
-				this.damage(11 * target.maxhp / 80, target, pokemon);
 			}
 		},
 	},
