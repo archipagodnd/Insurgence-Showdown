@@ -23,7 +23,7 @@ export const Formats: FormatList = [
 	///////////////////////////////////////////////////////////////////
 
 	{
-		section: "Main formats",
+		section: "Standard Formats",
 	},
 	{
 		name: "[Gen 6] Insurgence OU",
