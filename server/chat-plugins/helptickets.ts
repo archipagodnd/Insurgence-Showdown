@@ -783,6 +783,20 @@ export async function getBattleLog(battle: string): Promise<BattleInfo | null> {
 	return null;
 }
 
+function refreshPageFor(page: string, roomid: RoomID, ignoreUsers?: ID[]) {
+	const room = Rooms.get(roomid);
+	if (room) {
+		for (const curUser of Object.values(room.users)) {
+			if (ignoreUsers?.includes(curUser.id)) continue;
+			for (const conn of curUser.connections) {
+				if (conn.openPages?.has(page)) {
+					void Chat.parse(`/j view-${page}`, room, curUser, conn);
+				}
+			}
+		}
+	}
+}
+
 // Prevent a desynchronization issue when hotpatching
 for (const room of Rooms.rooms.values()) {
 	if (!room.settings.isHelp || !room.game) continue;
@@ -1489,15 +1503,18 @@ export const pages: Chat.PageTable = {
 				buf += `<td>`;
 				const roomid = 'help-' + ticket.userid;
 				let logUrl = '';
-				if (Config.modloglink) {
-					logUrl = Config.modloglink(new Date(ticket.created), roomid);
+				const created = new Date(ticket.created);
+				if (ticket.text) {
+					logUrl = `/view-help-logs-${ticket.userid}--${created.toISOString().slice(0, -17)}`;
+				} else if (Config.modloglink) {
+					logUrl = Config.modloglink(created, roomid);
 				}
 				const room = Rooms.get(roomid);
 				if (room) {
 					const ticketGame = room.getGame(HelpTicket)!;
 					buf += `<a href="/${roomid}"><button class="button" ${ticketGame.getPreview()}>${this.tr(!ticket.claimed && ticket.open ? 'Claim' : 'View')}</button></a> `;
 				} else if (ticket.text) {
-					buf += `<a class="button" href="/view-help-text-${ticket.userid}">View</a>`;
+					buf += `<a class="button" href="/view-help-text-${ticket.userid}">${ticket.claimed ? `Claim` : `View`}</a>`;
 				}
 				if (logUrl) {
 					buf += `<a href="${logUrl}"><button class="button">${this.tr`Log`}</button></a>`;
@@ -1548,6 +1565,7 @@ export const pages: Chat.PageTable = {
 				ticket.claimed = user.id;
 				writeTickets();
 				notifyStaff();
+				refreshPageFor(`help-text-${ticket.userid}`, 'staff', [user.id]);
 			} else if (ticket.claimed) {
 				buf += `<strong>Claimed:</strong> ${ticket.claimed}<br /><br />`;
 			}
@@ -2125,19 +2143,10 @@ export const commands: Chat.ChatCommands = {
 			});
 			HelpTicket.logTextResult(ticket as TicketState & {text: [string, string], resolved: ResolvedTicketInfo});
 			notifyStaff();
-			const staffRoom = Rooms.get('staff');
-			if (staffRoom) {
-				// force a refresh for everyone in it, otherwise we potentially get two punishments at once
-				// from different people clicking at the same time and reading it separately.
-				// Yes. This was a real issue.
-				for (const curUser of Object.values(staffRoom.users)) {
-					for (const conn of curUser.connections) {
-						if (conn.openPages?.has(`help-text-${ticketId}`)) {
-							void Chat.parse(`/j view-help-text-${ticketId}`, staffRoom, user, conn);
-						}
-					}
-				}
-			}
+			// force a refresh for everyone in it, otherwise we potentially get two punishments at once
+			// from different people clicking at the same time and reading it separately.
+			// Yes. This was a real issue.
+			refreshPageFor(`help-text-${ticketId}`, 'staff');
 		},
 
 		list(target, room, user) {

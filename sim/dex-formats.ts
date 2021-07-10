@@ -4,8 +4,8 @@ import {EventMethods} from './dex-conditions';
 import {Tags} from '../data/tags';
 
 const DEFAULT_MOD = 'gen8';
-const MAIN_FORMATS = `${__dirname}/../.config-dist/formats`;
-const CUSTOM_FORMATS = `${__dirname}/../.config-dist/custom-formats`;
+const MAIN_FORMATS = `${__dirname}/../config/formats`;
+const CUSTOM_FORMATS = `${__dirname}/../config/custom-formats`;
 
 export interface FormatData extends Partial<Format>, EventMethods {
 	name: string;
@@ -225,7 +225,7 @@ export class RuleTable extends Map<string, string> {
 		}
 		if (this.valueRules.get('evlimit') === 'Auto') {
 			this.evLimit = dex.gen > 2 ? 510 : null;
-			if (format.mod === 'letsgo') {
+			if (format.mod === 'gen7letsgo') {
 				this.evLimit = this.has('allowavs') ? null : 0;
 			}
 			// Gen 6 hackmons also has a limit, which is currently implemented
