@@ -1389,7 +1389,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower(basePower, pokemon, target, move) {
-			if (move.foundryBoosted) return this.chainModify([0x1333, 0x1000]);
+			if (move.foundryBoosted) return this.chainModify([5324, 4096]);
 		},
 		onTryMovePriority: -2,
 		onTryMove(pokemon, target, move) {
@@ -2008,7 +2008,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onBasePowerPriority: 8,
 		onBasePower(basePower, pokemon, target, move) {
-			if (move.intoxicateBoosted) return this.chainModify([4915, 4096]);
+			if (move.intoxicateBoosted) return this.chainModify([5324, 4096]);
 		},
 		name: "Intoxicate",
 		gen: 6,
@@ -3356,7 +3356,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		isPermanent: true,
 		name: "Power Construct",
 		rating: 5,
-		num: 211,
+		num: 185,
 	},
 	powerofalchemy: {
 		onAllyFaint(target) {
@@ -4357,7 +4357,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 					target.hasAbility('icebody') || target.hasAbility('overcoat') ||
 					target.hasItem('safetygoggles')
 				) continue;
-				this.damage(target.maxhp / 16, target, pokemon);
+				this.damage(11 * target.maxhp / 80, target, pokemon);
 			}
 		},
 		name: "Sleet",
@@ -4403,7 +4403,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		name: "Slush Rush",
 		rating: 3,
-		num: 202,
+		num: 185,
 	},
 	sniper: {
 		onModifyDamage(damage, source, target, move) {

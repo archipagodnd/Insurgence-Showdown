@@ -1439,7 +1439,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	sleet: {
 		name: "Sleet",
-		shortDesc: "Summons Hail, while Sleet is active hail damage is doubled to 1/8.",
+		shortDesc: "Summons Hail, while Sleet is active hail damage is increased to 1/5.",
 	},
 	slowstart: {
 		name: "Slow Start",
