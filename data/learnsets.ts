@@ -59046,6 +59046,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			rest: ["8M", "7M", "6M", "5M", "4M"],
 			retaliate: ["8M", "6M", "5M"],
 			return: ["7M", "6M", "5M", "4M"],
+			revenge: ["6E"],
 			rockblast: ["6L1"],
 			rocktomb: ["8M", "7M", "6M", "5M", "4M"],
 			round: ["8M", "7M", "6M", "5M"],
