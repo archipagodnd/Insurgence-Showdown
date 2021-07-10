@@ -20319,5 +20319,5 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {contact: 1, protect: 1},
 		target: "normal",
 		type: "Ghost",
-	}
+	},
 };
