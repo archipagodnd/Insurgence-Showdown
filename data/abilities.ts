@@ -3174,8 +3174,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		condition: {
 			onStart(pokemon) {
-				this.effectState.numConsecutive = 0;
 				this.effectState.lastMove = '';
+				this.effectState.numConsecutive = 0;
 			},
 			onTryMovePriority: -2,
 			onTryMove(pokemon, target, move) {
@@ -3185,15 +3185,18 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				}
 				if (this.effectState.lastMove === move.id && pokemon.moveLastTurnResult) {
 					this.effectState.numConsecutive++;
+				} else if (pokemon.volatiles['twoturnmove'] && this.effectState.lastMove !== move.id) {
+					this.effectState.numConsecutive = 1;
 				} else {
 					this.effectState.numConsecutive = 0;
 				}
 				this.effectState.lastMove = move.id;
 			},
 			onModifyDamage(damage, source, target, move) {
-				const dmgMod = [0x1000, 0x1333, 0x1666, 0x1999, 0x1CCC, 0x2000];
+				const dmgMod = [4096, 4915, 5734, 6553, 7372, 8192];
 				const numConsecutive = this.effectState.numConsecutive > 5 ? 5 : this.effectState.numConsecutive;
-				return this.chainModify([dmgMod[numConsecutive], 0x1000]);
+				this.debug(`Current Pendulum boost: ${dmgMod[numConsecutive]}/4096`);
+				return this.chainModify([dmgMod[numConsecutive], 4096]);
 			},
 		},
 		name: "Pendulum",
