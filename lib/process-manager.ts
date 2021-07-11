@@ -492,6 +492,7 @@ export abstract class ProcessManager<T extends ProcessWrapper = ProcessWrapper> 
 		if (!this.isParentProcess) throw new Error('Must use in parent process');
 		if (ProcessManager.disabled && !force) return null;
 		const process = this.createProcess();
+		process.process.on('disconnect', () => this.releaseCrashed(process));
 		this.processes.push(process);
 		return process;
 	}
