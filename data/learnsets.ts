@@ -22537,6 +22537,8 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 	},
 	dittodelta: {
 		learnset: {
+			morph: ["6L1"],
+			retrograde: ["6L1"],
 			transform: ["6L1"],
 			metronome: ["6T", "6L10"],
 			copycat: ["6L20"],
