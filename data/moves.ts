@@ -11975,12 +11975,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
+		name: "Morph",
 		pp: 10,
 		priority: 0,
 		flags: {mystery: 1},
 		onHit(target, pokemon) {
 			const rand = Math.ceil(Math.random() * 10);
-			const pkmn = target.species.id;
+			const pkmn = str(target.species.id);
 			let opponent = target;
 
 			if (pkmn + 'delta') {
