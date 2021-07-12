@@ -19,7 +19,7 @@ describe('Chlorofury', function () {
 		battle.makeChoices('move lunardance', 'move protect');
 
 		assert.statStage(battle.p1.active[0], 'spe', 1);
-		assert.statStage(battle.p1.active[0], 'spa', 3);
+		assert.statStage(battle.p1.active[0], 'spa', 2);
 
 		battle.makeChoices('move protect', 'move protect');
 		battle.makeChoices('move protect', 'move protect');
