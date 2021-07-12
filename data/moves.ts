@@ -11970,6 +11970,65 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {effect: 'clearnegativeboost'},
 		contestType: "Beautiful",
 	},
+	morph: {
+		num: 650,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		pp: 10,
+		priority: 0,
+		flags: {mystery: 1},
+		onHit(target, pokemon) {
+			const rand = Math.ceil(Math.random() * 10);
+			let pkmn = target.activePokemon
+			let opponent = target;
+
+			if (pkmn + 'delta') {
+				opponent = pkmn + 'delta';
+			}
+
+			if (pkmn === 'meloetta') {
+				opponent = 'meloettadeltamime';
+			}
+
+			if (['dwebble', 'crustle', 'petilil', 'lilligant', 'beldum', 'metang', 'metagross'].includes(target)) {
+				if (rand > 5 && ['dwebble', 'crustle'].includes(target)) {
+					opponent = pkmn + 'deltac';
+				} else {
+					opponent = pkmn + 'deltab';
+				}
+				if (rand > 5 && ['petilil', 'lilligant'].includes(target)) {
+					opponent = pkmn + 'deltaw';
+				} else {
+					opponent = pkmn + 'deltaf';
+				}
+				if (rand > 5 && ['beldum', 'metang', 'metagross'].includes(target)) {
+					opponent = pkmn + 'deltas';
+				} else {
+					opponent = pkmn + 'deltar';
+				}
+			}
+			if (pkmn === 'metagrossmega') {
+				if (rand > 5) {
+					opponent = 'metagrossdeltasmega';
+				} else {
+					opponent = 'metagrossdeltarmega'
+				}
+			} else if (pkmn !== 'yanmega' && pkmn.substr(-4) === 'mega') {
+				opponent = pkmn.substr(0, (pkmn.length - 4)) + 'deltamega';
+			}
+
+			if (target.)
+			if (!pokemon.transformInto(opponent)) {
+				return false;
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMove: {effect: 'heal'},
+		contestType: "Clever",
+	},
 	mudbomb: {
 		num: 426,
 		accuracy: 85,
@@ -14522,6 +14581,31 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Normal",
 		contestType: "Cool",
+	},
+	retrograde: {
+		num: 700,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Retrograde",
+		pp: "30",
+		priority: 0,
+		flags: {mystery: 1},
+		onHit(target, pokemon) {
+			let pkmn = target.activePokemon;
+			if (pkmn === 'yanmega' || pkmn.substr(-4) !== 'mega') return;
+			nonMega = pkmn.substr(0, pkmn.length - 4);
+
+			let nonMega = target;
+			if (!target.transformInto(nonMega)) {
+				return false;
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Normal",
+		zMove: {effect: 'heal'},
+		contestType: "Clever",
 	},
 	return: {
 		num: 216,
