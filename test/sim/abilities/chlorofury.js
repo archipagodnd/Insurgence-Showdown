@@ -12,9 +12,9 @@ describe('Chlorofury', function () {
 
 	it(`should give 1 spatt boost for each faint, should remove after 2 turns`, function () {
 		battle = common.createBattle([[
-      {species: "Cresselia", moves: ['lunardance']},
-      {species: 'Ludicolo', moves: ['lunardance']},
-      {species: 'Lotad', ability: ['chlorofury'], moves: ['protect']},
+			{species: "Cresselia", moves: ['lunardance']},
+			{species: 'Ludicolo', moves: ['lunardance']},
+			{species: 'Lotad', ability: ['chlorofury'], moves: ['protect']},
 		], [
 			{species: "Mew", moves: ['protect']},
 		]]);
@@ -34,9 +34,9 @@ describe('Chlorofury', function () {
 
 	it(`should not boost if no pokemon have fainted on your side`, function () {
 		battle = common.createBattle([[
-      {species: 'Lotad', ability: ['chlorofury'], moves: ['protect']},
-      {species: "Cresselia", moves: ['lunardance']},
-      {species: 'Ludicolo', moves: ['lunardance']},
+			{species: 'Lotad', ability: ['chlorofury'], moves: ['protect']},
+			{species: "Cresselia", moves: ['lunardance']},
+			{species: 'Ludicolo', moves: ['lunardance']},
 		], [
 			{species: "Mew", moves: ['protect']},
 		]]);
