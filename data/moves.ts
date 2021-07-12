@@ -11982,7 +11982,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onHit(target, pokemon) {
 			const rand = Math.ceil(Math.random() * 10);
 			const pkmn = target.species.id.toString();
-			let opponent = target;
+			let opponent = target.species.id;
 
 			if (pkmn + 'delta') {
 				opponent = pkmn + 'delta';
@@ -11992,18 +11992,18 @@ export const Moves: {[moveid: string]: MoveData} = {
 				opponent = 'meloettadeltamime';
 			}
 
-			if (['dwebble', 'crustle', 'petilil', 'lilligant', 'beldum', 'metang', 'metagross'].includes(target)) {
-				if (rand > 5 && ['dwebble', 'crustle'].includes(target)) {
+			if (['dwebble', 'crustle', 'petilil', 'lilligant', 'beldum', 'metang', 'metagross'].includes(target.species.id)) {
+				if (rand > 5 && ['dwebble', 'crustle'].includes(target.species.id)) {
 					opponent = pkmn + 'deltac';
 				} else {
 					opponent = pkmn + 'deltab';
 				}
-				if (rand > 5 && ['petilil', 'lilligant'].includes(target)) {
+				if (rand > 5 && ['petilil', 'lilligant'].includes(target.species.id)) {
 					opponent = pkmn + 'deltaw';
 				} else {
 					opponent = pkmn + 'deltaf';
 				}
-				if (rand > 5 && ['beldum', 'metang', 'metagross'].includes(target)) {
+				if (rand > 5 && ['beldum', 'metang', 'metagross'].includes(target.species.id)) {
 					opponent = pkmn + 'deltas';
 				} else {
 					opponent = pkmn + 'deltar';
