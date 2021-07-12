@@ -11980,7 +11980,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {mystery: 1},
 		onHit(target, pokemon) {
 			const rand = Math.ceil(Math.random() * 10);
-			let pkmn = target.species.id;
+			const pkmn = target.species.id;
 			let opponent = target;
 
 			if (pkmn + 'delta') {
@@ -12012,12 +12012,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 				if (rand > 5) {
 					opponent = 'metagrossdeltasmega';
 				} else {
-					opponent = 'metagrossdeltarmega'
+					opponent = 'metagrossdeltarmega';
 				}
 			} else if (pkmn !== 'yanmega' && pkmn.substr(-4) === 'mega') {
 				opponent = pkmn.substr(0, (pkmn.length - 4)) + 'deltamega';
 			}
-			
+
 			if (!pokemon.transformInto(opponent)) {
 				return false;
 			}
@@ -14591,7 +14591,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {mystery: 1},
 		onHit(target, pokemon) {
-			let pkmn = target.species.id;
+			const pkmn = target.species.id;
 			if (pkmn === 'yanmega' || pkmn.substr(-4) !== 'mega') return;
 			nonMega = pkmn.substr(0, pkmn.length - 4);
 
