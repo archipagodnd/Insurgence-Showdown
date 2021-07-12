@@ -14,7 +14,7 @@ describe('Chlorofury', function () {
 		battle = common.createBattle([[
       {species: "Cresselia", moves: ['lunardance']},
       {species: 'Ludicolo', moves: ['lunardance']},
-      {species: 'Lotad', ability: ['chlorofury'], moves: ['protect']}
+      {species: 'Lotad', ability: ['chlorofury'], moves: ['protect']},
 		], [
 			{species: "Mew", moves: ['protect']},
 		]]);
@@ -34,7 +34,7 @@ describe('Chlorofury', function () {
 
 	it(`should not boost if no pokemon have fainted on your side`, function () {
 		battle = common.createBattle([[
-      {species: 'Lotad', ability: ['chlorofury'], moves: ['protect']}
+      {species: 'Lotad', ability: ['chlorofury'], moves: ['protect']},
       {species: "Cresselia", moves: ['lunardance']},
       {species: 'Ludicolo', moves: ['lunardance']},
 		], [
