@@ -11981,7 +11981,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {mystery: 1},
 		onHit(target, pokemon) {
 			const rand = Math.ceil(Math.random() * 10);
-			const pkmn = str(target.species.id);
+			const pkmn = target.species.id.toString();
 			let opponent = target;
 
 			if (pkmn + 'delta') {

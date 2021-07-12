@@ -3145,6 +3145,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 257,
 	},
 	periodicorbit: {
+		onAfterMoveSecondary(target, source, move) {
+			if (move === 'futuresight') {
+				this.actions.useMove('futuresightperiodic', source, target);
+			} else if (move === 'doomdesire') {
+				this.actions.useMove('doomdesireperiodic', source, target);
+			} else if (move === 'wish') {
+				this.actions.useMove('wishperiodic', source, target);
+			}
+		},
 		name: "Periodic Orbit",
 		gen: 6,
 		rating: 4,
