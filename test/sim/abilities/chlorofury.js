@@ -12,28 +12,28 @@ describe('Chlorofury', function () {
 
 	it(`should give 1 spatt boost for each faint, should remove after 2 turns`, function () {
 		battle = common.createBattle();
-    battle.setPlayer('p1', {team: [{species: "Cresselia", moves: ['lunardance']}, {species: 'Ludicolo', moves: ['lunardance']}, {species: 'Lotad', ability: ['chlorofury'], moves: ['protect']}]});
+		battle.setPlayer('p1', {team: [{species: "Cresselia", moves: ['lunardance']}, {species: 'Ludicolo', moves: ['lunardance']}, {species: 'Lotad', ability: ['chlorofury'], moves: ['protect']}]});
 		battle.setPlayer('p2', {team: [{species: "Mew", moves: ['protect']}]});
 
 		battle.makeChoices('move lunardance', 'move protect');
-    battle.makeChoices('move lunardance', 'move protect');
+		battle.makeChoices('move lunardance', 'move protect');
 
 		assert.statStage(battle.p1.active[0], 'spe', 1);
 		assert.statStage(battle.p1.active[0], 'spa', 3);
 
 		battle.makeChoices('move protect', 'move protect');
-    battle.makeChoices('move protect', 'move protect');
+		battle.makeChoices('move protect', 'move protect');
 
 		assert.statStage(battle.p1.active[0], 'spe', 0);
 		assert.statStage(battle.p1.active[0], 'spa', 0);
 	});
 
-  it(`should not boost if no pokemon have fainted on your side`, function () {
-    battle = common.createBattle();
-    battle.setPlayer('p1', {team: [{species: 'Lotad', ability: ['chlorofury'], moves: ['protect']}, {species: "Cresselia", moves: ['lunardance']}, {species: 'Ludicolo', moves: ['lunardance']}]});
-    battle.setPlayer('p2', {team: [{species: "Mew", moves: ['protect']}]});
+	it(`should not boost if no pokemon have fainted on your side`, function () {
+		battle = common.createBattle();
+		battle.setPlayer('p1', {team: [{species: 'Lotad', ability: ['chlorofury'], moves: ['protect']}, {species: "Cresselia", moves: ['lunardance']}, {species: 'Ludicolo', moves: ['lunardance']}]});
+		battle.setPlayer('p2', {team: [{species: "Mew", moves: ['protect']}]});
 
-    assert.statStage(battle.p1.active[0], 'spe', 0);
-    assert.statStage(battle.p1.active[0], 'spa', 0);
-  });
+		assert.statStage(battle.p1.active[0], 'spe', 0);
+		assert.statStage(battle.p1.active[0], 'spa', 0);
+	});
 });
