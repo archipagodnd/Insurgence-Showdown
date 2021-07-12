@@ -11980,7 +11980,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {mystery: 1},
 		onHit(target, pokemon) {
 			const rand = Math.ceil(Math.random() * 10);
-			let pkmn = target.activePokemon
+			let pkmn = target.species.id;
 			let opponent = target;
 
 			if (pkmn + 'delta') {
@@ -14592,7 +14592,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {mystery: 1},
 		onHit(target, pokemon) {
-			let pkmn = target.activePokemon;
+			let pkmn = target.species.id;
 			if (pkmn === 'yanmega' || pkmn.substr(-4) !== 'mega') return;
 			nonMega = pkmn.substr(0, pkmn.length - 4);
 
