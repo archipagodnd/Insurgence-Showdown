@@ -12017,8 +12017,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			} else if (pkmn !== 'yanmega' && pkmn.substr(-4) === 'mega') {
 				opponent = pkmn.substr(0, (pkmn.length - 4)) + 'deltamega';
 			}
-
-			if (target.)
+			
 			if (!pokemon.transformInto(opponent)) {
 				return false;
 			}
