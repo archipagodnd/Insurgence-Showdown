@@ -3592,6 +3592,41 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Steel",
 		contestType: "Beautiful",
 	},
+	doomdesireperiodic: {
+		num: 353,
+		accuracy: 100,
+		basePower: 140,
+		category: "Special",
+		name: "Doom Desire Periodic",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		isFutureMove: true,
+		onTry(source, target) {
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+				move: 'doomdesireperiodic',
+				source: source,
+				moveData: {
+					id: 'doomdesireperiodic',
+					name: "Doom Desire Periodic",
+					accuracy: 100,
+					basePower: 140,
+					category: "Special",
+					priority: 0,
+					flags: {},
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'Steel',
+				},
+			});
+			this.add('-start', source, 'Doom Desire Periodic');
+			return this.NOT_FAIL;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Steel",
+		contestType: "Beautiful",
+	},
 	doubleedge: {
 		num: 38,
 		accuracy: 100,
@@ -6068,6 +6103,44 @@ export const Moves: {[moveid: string]: MoveData} = {
 				},
 			});
 			this.add('-start', source, 'move: Future Sight');
+			return this.NOT_FAIL;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		contestType: "Clever",
+	},
+	futuresightperiodic: {
+		num: 248,
+		accuracy: 100,
+		basePower: 120,
+		category: "Special",
+		name: "Future Sight Periodic",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		ignoreImmunity: true,
+		isFutureMove: true,
+		onTry(source, target) {
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+				duration: 6,
+				move: 'futuresightperiodic',
+				source: source,
+				moveData: {
+					id: 'futuresightperiodic',
+					name: "Future Sight Periodic",
+					accuracy: 100,
+					basePower: 120,
+					category: "Special",
+					priority: 0,
+					flags: {},
+					ignoreImmunity: false,
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'Psychic',
+				},
+			});
+			this.add('-start', source, 'move: Future Sight Periodic');
 			return this.NOT_FAIL;
 		},
 		secondary: null,
@@ -20002,6 +20075,37 @@ export const Moves: {[moveid: string]: MoveData} = {
 					const damage = this.heal(this.effectState.hp, target, target);
 					if (damage) {
 						this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectState.source.name);
+					}
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Normal",
+		zMove: {boost: {spd: 1}},
+		contestType: "Cute",
+	},
+	wishperiodic: {
+		num: 273,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Wish Periodic",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		slotCondition: 'Wish',
+		condition: {
+			duration: 4,
+			onStart(pokemon, source) {
+				this.effectState.hp = source.maxhp / 2;
+			},
+			onResidualOrder: 4,
+			onEnd(target) {
+				if (target && !target.fainted) {
+					const damage = this.heal(this.effectState.hp, target, target);
+					if (damage) {
+						this.add('-heal', target, target.getHealth, '[from] move: Wish Periodic', '[wisher] ' + this.effectState.source.name);
 					}
 				}
 			},
