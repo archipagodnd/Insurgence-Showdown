@@ -12022,7 +12022,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					return false;
 				}
 			} else {
-				opponent = opponentID.name
+				opponent = opponentID.name;
 
 				if (!pokemon.transformInto(opponent)) {
 					return false;
