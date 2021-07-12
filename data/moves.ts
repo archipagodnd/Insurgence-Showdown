@@ -14586,15 +14586,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Retrograde",
-		pp: "30",
+		pp: 30,
 		priority: 0,
 		flags: {mystery: 1},
 		onHit(target, pokemon) {
 			const pkmn = target.species.id;
 			if (pkmn === 'yanmega' || pkmn.substr(-4) !== 'mega') return;
-			nonMega = pkmn.substr(0, pkmn.length - 4);
+			let nonMega = pkmn.substr(0, pkmn.length - 4);
 
-			let nonMega = target;
 			if (!target.transformInto(nonMega)) {
 				return false;
 			}
