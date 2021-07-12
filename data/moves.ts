@@ -11982,17 +11982,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onHit(target, pokemon) {
 			const rand = Math.ceil(Math.random() * 10);
 			const pkmn = target.species.id.toString();
-			let opponent = target.species.id;
 
 			if (pkmn + 'delta') {
 				opponent = pkmn + 'delta';
-			}
-
-			if (pkmn === 'meloetta') {
+			} else if (pkmn === 'meloetta') {
 				opponent = 'meloettadeltamime';
-			}
-
-			if (['dwebble', 'crustle', 'petilil', 'lilligant', 'beldum', 'metang', 'metagross'].includes(target.species.id)) {
+			} else if (['dwebble', 'crustle', 'petilil', 'lilligant', 'beldum', 'metang', 'metagross'].includes(target.species.id)) {
 				if (rand > 5 && ['dwebble', 'crustle'].includes(target.species.id)) {
 					opponent = pkmn + 'deltac';
 				} else {
@@ -12008,8 +12003,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				} else {
 					opponent = pkmn + 'deltar';
 				}
-			}
-			if (pkmn === 'metagrossmega') {
+			} else if (pkmn === 'metagrossmega') {
 				if (rand > 5) {
 					opponent = 'metagrossdeltasmega';
 				} else {
@@ -12017,6 +12011,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 			} else if (pkmn !== 'yanmega' && pkmn.substr(-4) === 'mega') {
 				opponent = pkmn.substr(0, (pkmn.length - 4)) + 'deltamega';
+			} else {
+				opponent = target.species.id;
 			}
 
 			if (!pokemon.transformInto(opponent)) {
