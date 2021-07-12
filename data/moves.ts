@@ -14592,7 +14592,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onHit(target, pokemon) {
 			const pkmn = target.species.id;
 			if (pkmn === 'yanmega' || pkmn.substr(-4) !== 'mega') return;
-			let nonMega = pkmn.substr(0, pkmn.length - 4);
+			const nonMega = pkmn.substr(0, pkmn.length - 4);
 
 			if (!target.transformInto(nonMega)) {
 				return false;
