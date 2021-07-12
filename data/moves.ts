@@ -14599,9 +14599,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {mystery: 1},
 		onHit(target, pokemon) {
 			const pkmn = target.species.id;
-			if (pkmn === 'yanmega' || pkmn.substr(-4) !== 'mega') return;
-			const nonMegaID = pkmn.substr(0, pkmn.length - 4);
-			const nonMega = nonMegaID.name;
+			if (pkmn === 'yanmega' || (pkmn.substr(-4) !== 'mega') return;
+			const nonMega = target.baseSpecies;
 
 			if (!target.transformInto(nonMega)) {
 				return false;
