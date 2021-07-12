@@ -14604,11 +14604,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 				(pkmn.substr(-4) !== 'mega' &&
 				pkmn.substr(-4) !== 'megax' &&
 				pkmn.substr(-5) !== 'megay')) return;
-			const nonMega = target.baseSpecies;
+			const nonMega = target.baseSpecies.id;
 
-			if (!target.transformInto(nonMega)) {
-				return false;
-			}
+			target.formeChange(nonMega);
 		},
 		secondary: null,
 		target: "normal",
