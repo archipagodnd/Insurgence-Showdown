@@ -27,4 +27,13 @@ describe('Chlorofury', function () {
 		assert.statStage(battle.p1.active[0], 'spe', 0);
 		assert.statStage(battle.p1.active[0], 'spa', 0);
 	});
+
+  it(`should not boost if no pokemon have fainted on your side`, function () {
+    battle = common.createBattle();
+    battle.setPlayer('p1', {team: [{species: 'Lotad', ability: ['chlorofury'], moves: ['protect']}, {species: "Cresselia", moves: ['lunardance']}, {species: 'Ludicolo', moves: ['lunardance']}]});
+    battle.setPlayer('p2', {team: [{species: "Mew", moves: ['protect']}]});
+
+    assert.statStage(battle.p1.active[0], 'spe', 0);
+    assert.statStage(battle.p1.active[0], 'spa', 0);
+  });
 });
