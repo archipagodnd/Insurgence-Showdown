@@ -11987,7 +11987,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 				opponent = pkmn + 'delta';
 			} else if (pkmn === 'meloetta') {
 				opponent = 'meloettadeltamime';
-			} else if (['dwebble', 'crustle', 'petilil', 'lilligant', 'beldum', 'metang', 'metagross'].includes(target.species.id)) {
+			} else if (['dwebble', 'crustle', 'petilil', 'lilligant',
+				'beldum', 'metang', 'metagross'].includes(target.species.id)) {
 				if (rand > 5 && ['dwebble', 'crustle'].includes(target.species.id)) {
 					opponent = pkmn + 'deltac';
 				} else {
