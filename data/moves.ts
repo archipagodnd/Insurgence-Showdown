@@ -11982,43 +11982,51 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onHit(target, pokemon) {
 			const rand = Math.ceil(Math.random() * 10);
 			const pkmn = target.species.id.toString();
-			let opponent = '';
+			let opponentID = '';
 
 			if (pkmn + 'delta') {
-				opponent = pkmn + 'delta';
+				opponentID = pkmn + 'delta';
 			} else if (pkmn === 'meloetta') {
-				opponent = 'meloettadeltamime';
+				opponentID = 'meloettadeltamime';
 			} else if (['dwebble', 'crustle', 'petilil', 'lilligant',
 				'beldum', 'metang', 'metagross'].includes(target.species.id)) {
 				if (rand > 5 && ['dwebble', 'crustle'].includes(target.species.id)) {
-					opponent = pkmn + 'deltac';
+					opponentID = pkmn + 'deltac';
 				} else {
-					opponent = pkmn + 'deltab';
+					opponentID = pkmn + 'deltab';
 				}
 				if (rand > 5 && ['petilil', 'lilligant'].includes(target.species.id)) {
-					opponent = pkmn + 'deltaw';
+					opponentID = pkmn + 'deltaw';
 				} else {
-					opponent = pkmn + 'deltaf';
+					opponentID = pkmn + 'deltaf';
 				}
 				if (rand > 5 && ['beldum', 'metang', 'metagross'].includes(target.species.id)) {
-					opponent = pkmn + 'deltas';
+					opponentID = pkmn + 'deltas';
 				} else {
-					opponent = pkmn + 'deltar';
+					opponentID = pkmn + 'deltar';
 				}
 			} else if (pkmn === 'metagrossmega') {
 				if (rand > 5) {
-					opponent = 'metagrossdeltasmega';
+					opponentID = 'metagrossdeltasmega';
 				} else {
-					opponent = 'metagrossdeltarmega';
+					opponentID = 'metagrossdeltarmega';
 				}
 			} else if (pkmn !== 'yanmega' && pkmn.substr(-4) === 'mega') {
-				opponent = pkmn.substr(0, (pkmn.length - 4)) + 'deltamega';
+				opponentID = pkmn.substr(0, (pkmn.length - 4)) + 'deltamega';
 			} else {
-				opponent = target.species.id;
+				opponentID = target.species.id;
 			}
 
-			if (!pokemon.transformInto(opponent)) {
-				return false;
+			if (opponentID === '') {
+				if (!pokemon.transformInto(target)) {
+					return false;
+				}
+			} else {
+				opponent = this.getByID(opponentID);
+
+				if (!pokemon.transformInto(opponent)) {
+					return false;
+				}
 			}
 		},
 		secondary: null,
@@ -14592,7 +14600,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onHit(target, pokemon) {
 			const pkmn = target.species.id;
 			if (pkmn === 'yanmega' || pkmn.substr(-4) !== 'mega') return;
-			const nonMega = pkmn.substr(0, pkmn.length - 4);
+			const nonMegaID = pkmn.substr(0, pkmn.length - 4);
+			const nonMega = this.getByID(nonMegaID);
 
 			if (!target.transformInto(nonMega)) {
 				return false;
