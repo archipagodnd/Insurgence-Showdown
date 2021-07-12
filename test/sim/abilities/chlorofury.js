@@ -11,13 +11,9 @@ describe('Chlorofury', function () {
 	});
 
 	it(`should give 1 spatt boost for each faint, should remove after 2 turns`, function () {
-		battle = common.createBattle([[
-			{species: "Cresselia", moves: ['lunardance']},
-			{species: 'Ludicolo', moves: ['lunardance']},
-			{species: 'Lotad', ability: ['chlorofury'], moves: ['protect']},
-		], [
-			{species: "Mew", moves: ['protect']},
-		]]);
+		battle = common.createBattle();
+		battle.setPlayer('p1', {team: [{species: "Cresselia", moves: ['lunardance']}, {species: 'Ludicolo', moves: ['lunardance']}, {species: 'Lotad', ability: ['chlorofury'], moves: ['protect']}]}),
+		battle.setPlayer('p2', {team: [{species: "Mew", moves: ['protect']}]}),
 
 		battle.makeChoices('move lunardance', 'move protect');
 		battle.makeChoices('move lunardance', 'move protect');
