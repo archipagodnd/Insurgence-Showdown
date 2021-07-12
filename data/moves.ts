@@ -19129,7 +19129,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 				if (source?.hasItem('trickrock')) {
 					this.add('-activate', source, 'item: Trick Rock', effect);
-					return 7;
+					return 8;
 				}
 				return 5;
 			},
