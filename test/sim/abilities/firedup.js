@@ -13,7 +13,7 @@ describe('Fired Up', function () {
 	it('should boost Attack, Special Attack and Speed before using a Fire-type attack', function () {
 		battle = common.createBattle();
 		battle.setPlayer('p1', {team: [{species: "Emolga-Delta", ability: 'firedup', moves: ['flamethrower', 'darkpulse']}]});
-		battle.setPlayer('p2', {team: [{species: "Leafeon", item: ['focussash'], moves: ['healbell']}]});
+		battle.setPlayer('p2', {team: [{species: "Leafeon", evs: {hp: 60}, ability: 'shellarmor', item: ['focussash'], moves: ['healbell']}]});
 
 		battle.makeChoices('move flamethrower', 'move healbell');
 
