@@ -12022,7 +12022,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					return false;
 				}
 			} else {
-				opponent = get(opponentID);
+				opponent = opponentID.name
 
 				if (!pokemon.transformInto(opponent)) {
 					return false;
@@ -14601,7 +14601,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			const pkmn = target.species.id;
 			if (pkmn === 'yanmega' || pkmn.substr(-4) !== 'mega') return;
 			const nonMegaID = pkmn.substr(0, pkmn.length - 4);
-			const nonMega = get(nonMegaID);
+			const nonMega = nonMegaID.name;
 
 			if (!target.transformInto(nonMega)) {
 				return false;
