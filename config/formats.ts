@@ -39,7 +39,7 @@ export const Formats: FormatList = [
 			'Arceus', 'Arceus-Primal', 'Calyrex-Shadow', 'Eternatus', 'Gengar-Mega', 'Giratina-Primal', 'Groudon-Primal', 'Haxorus-Mega',
 			'Jirachi-Mega', 'Kyogre', 'Kyogre-Primal', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Mewtwo-Shadow-Mega', 'Necrozma-Dusk-Mane',
 			'Necrozma-Ultra', 'Rayquaza-Mega', 'Regigigas-Primal', 'Unown', 'Yveltal', 'Zacian', 'Zacian-Crowned',
-			'Moody', 'Permafrost', 'Livewire', 'Achilles Heel', 'Swagger', 'Assist', 'Barrage', 'Barrier', 'Bestow', 'Bide', 'Bone Club',
+			'Moody', 'Swagger', 'Assist', 'Barrage', 'Barrier', 'Bestow', 'Bide', 'Bone Club',
 			'Bubble', 'Camouflage', 'Captivate', 'Chip Away', 'Clamp', 'Comet Punch', 'Constrict', 'Dizzy Punch', 'Double Slap', 'Dragon Rage',
 			'Egg Bomb', 'Embargo', 'Feint Attack', 'Flame Burst', 'Flash', 'Foresight', 'Frustration', 'Grass Whistle', 'Heal Block',
 			'Heal Order', 'Heart Stamp', 'Heart Swap', 'Hidden Power', 'Ice Ball', 'Ion Deluge', 'Jump Kick', 'Karate Chop', 'Lucky Chant',
