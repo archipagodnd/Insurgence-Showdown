@@ -3598,10 +3598,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 140,
 		category: "Special",
 		name: "Doom Desire Periodic",
+		realMove: "Doom Desire",
 		pp: 5,
 		priority: 0,
 		flags: {},
-		isFutureMove: true,
 		onTry(source, target) {
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
 				move: 'doomdesireperiodic',
@@ -6116,11 +6116,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 120,
 		category: "Special",
 		name: "Future Sight Periodic",
+		realMove: "Future Sight",
 		pp: 10,
 		priority: 0,
 		flags: {},
 		ignoreImmunity: true,
-		isFutureMove: true,
 		onTry(source, target) {
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
 				duration: 6,
@@ -17347,6 +17347,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Stealth Coal",
+		realMove: "Stealth Rock",
 		pp: 20,
 		priority: 0,
 		flags: {reflectable: 1},
@@ -20184,6 +20185,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Wish Periodic",
+		realMove: "Wish",
 		pp: 10,
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
