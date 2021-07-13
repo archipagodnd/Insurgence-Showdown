@@ -4848,7 +4848,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "(DUU)",
 	},
 	vullaby: {
-		tier: "LC",
+		tier: "NFE",
 	},
 	mandibuzz: {
 		randomBattleMoves: ["bravebird", "defog", "foulplay", "roost", "toxic"],
