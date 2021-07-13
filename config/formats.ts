@@ -53,7 +53,6 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 8] Level 120 NatDex OU",
 		mod: 'gen8',
-		maxlevel: 120,
 		defaultlevel: 120,
 		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
 		banlist: [
@@ -69,14 +68,12 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 8] Level 120 NatDex AG",
 		mod: 'gen8',
-		maxlevel: 120,
 		defaultlevel: 120,
 		ruleset: ['Standard NatDex'],
 	},
 	{
 		name: "[Gen 7] Level 120 OU",
 		mod: 'gen7',
-		maxlevel: 120,
 		defaultlevel: 120,
 		ruleset: ['Standard'],
 		banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass'],
@@ -84,14 +81,12 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 7] Level 120 AG",
 		mod: 'gen7',
-		maxlevel: 120,
 		defaultlevel: 120,
 		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause'],
 	},
 	{
 		name: "[Gen 6] Level 120 OU",
 		mod: 'gen6',
-		maxlevel: 120,
 		defaultlevel: 120,
 		ruleset: ['Standard', 'Swagger Clause'],
 		banlist: ['Uber', 'Arena Trap', 'Shadow Tag', 'Soul Dew', 'Baton Pass'],
@@ -99,7 +94,6 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 6] Level 120 AG",
 		mod: 'gen6',
-		maxlevel: 120,
 		defaultlevel: 120,
 		ruleset: ['Obtainable', 'Team Preview', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod'],
 	},
