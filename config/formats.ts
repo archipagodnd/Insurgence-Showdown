@@ -26,6 +26,37 @@ export const Formats: FormatList = [
 		section: "Sw/Sh Singles",
 	},
 	{
+		name: "[Gen 8] Draft",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3666135/">National Dex Metagame Discussion</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3667921/">National Dex Sample Teams</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3666572/">National Dex Viability Rankings</a>`,
+		],
+
+		mod: 'gen8',
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
+		banlist: [
+			'Arceus', 'Arceus-Primal', 'Calyrex-Shadow', 'Eternatus', 'Gengar-Mega', 'Giratina-Primal', 'Groudon-Primal', 'Haxorus-Mega',
+			'Jirachi-Mega', 'Kyogre', 'Kyogre-Primal', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Mewtwo-Shadow-Mega', 'Necrozma-Dusk-Mane',
+			'Necrozma-Ultra', 'Rayquaza-Mega', 'Regigigas-Primal', 'Unown', 'Yveltal', 'Zacian', 'Zacian-Crowned',
+			'Moody', 'Permafrost', 'Livewire', 'Achilles Heel', 'Swagger', 'Assist', 'Barrage', 'Barrier', 'Bestow', 'Bide', 'Bone Club',
+			'Bubble', 'Camouflage', 'Captivate', 'Chip Away', 'Clamp', 'Comet Punch', 'Constrict', 'Dizzy Punch', 'Double Slap', 'Dragon Rage',
+			'Egg Bomb', 'Embargo', 'Feint Attack', 'Flame Burst', 'Flash', 'Foresight', 'Frustration', 'Grass Whistle', 'Heal Block',
+			'Heal Order', 'Heart Stamp', 'Heart Swap', 'Hidden Power', 'Ice Ball', 'Ion Deluge', 'Jump Kick', 'Karate Chop', 'Lucky Chant',
+			'Magnet Bomb', 'Magnitude', 'Me First', 'Meditate', 'Miracle Eye', 'Mirror Move', 'Mirror Shot', 'Mud Bomb', 'Mud Sport',
+			'Natural Gift', 'Needle Arm', 'Nightmare', 'Odor Sleuth', 'Ominous Wind', 'Psycho Boost', 'Psywave', 'Punishment', 'Pursuit',
+			'Rage', 'Razor Wind', 'Refresh', 'Return', 'Rock Climb', 'Rolling Kick', 'Rototiller', 'Secret Power', 'Sharpen', 'Signal Beam',
+			'Silver Wind', 'Sky Drop', 'Sky Uppercut', 'Smelling Salts', 'Snatch', 'Sonic Boom', 'Spider Web', 'Spike Cannon', 'Spotlight',
+			'Steamroller', 'Synchronoise', 'Tail Glow', 'Telekinesis', 'Trump Card', 'Twineedle', 'Wake-Up Slap', 'Water Sport', 'Wring Out',
+			'Aloraichium Z', 'Buginium Z', 'Darkinium Z', 'Decidium Z', 'Dragonium Z', 'Eevium Z', 'Electrium Z', 'Fairium Z', 'Fightinium Z',
+			'Firium Z', 'Flyinium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Incinium Z', 'Kommonium Z', 'Lunalium Z',
+			'Lycanium Z', 'Marshadium Z', 'Mewnium Z', 'Mimikium Z', 'Normalium Z', 'Pikanium Z', 'Pikashunium Z', 'Poisonium Z', 'Primarium Z',
+			'Psychium Z', 'Rockium Z', 'Snorlium Z', 'Solganium Z', 'Steelium Z', 'Tapunium Z', 'Ultranecrozium Z', 'Waterium Z',
+			'Xerneas + Geomancy', 'Zekrom + Zekrom Armor', 'Mewtwo + Mewtwo Armor', 'Snow Warning ++ Snow Cloak', 'Sand Stream ++ Sand Veil',
+			'Noctem ++ Illuminate', 'Hail ++ Snow Cloak', 'Sandstorm ++ Sand Veil', 'New Moon ++ Illuminate',
+		],
+	},
+	{
 		name: "[Gen 8] Random Battle",
 		desc: `Randomized teams of level-balanced Pok&eacute;mon with sets that are generated to be competitively viable.`,
 		threads: [
