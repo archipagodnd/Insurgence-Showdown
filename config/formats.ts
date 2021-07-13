@@ -52,7 +52,7 @@ export const Formats: FormatList = [
 			'Firium Z', 'Flyinium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Incinium Z', 'Kommonium Z', 'Lunalium Z',
 			'Lycanium Z', 'Marshadium Z', 'Mewnium Z', 'Mimikium Z', 'Normalium Z', 'Pikanium Z', 'Pikashunium Z', 'Poisonium Z', 'Primarium Z',
 			'Psychium Z', 'Rockium Z', 'Snorlium Z', 'Solganium Z', 'Steelium Z', 'Tapunium Z', 'Ultranecrozium Z', 'Waterium Z',
-			'Xerneas + Geomancy', 'Zekrom + Zekrom Armor', 'Mewtwo + Mewtwo Armor', 'Snow Warning ++ Snow Cloak', 'Sand Stream ++ Sand Veil',
+			'Xerneas + Geomancy', 'Zekrom + item:Zekrom Armor', 'Mewtwo + Mewtwo Armor', 'Snow Warning ++ Snow Cloak', 'Sand Stream ++ Sand Veil',
 			'Noctem ++ Illuminate', 'Hail ++ Snow Cloak', 'Sandstorm ++ Sand Veil', 'New Moon ++ Illuminate',
 		],
 	},
