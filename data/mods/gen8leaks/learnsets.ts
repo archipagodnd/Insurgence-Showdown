@@ -1,5 +1,4 @@
 export const Learnsets: {[speciesid: string]: LearnsetData} = {
-	inherit: 'gen8',
 	weedle: {
 		inherit: true,
 		learnset: {
