@@ -348,10 +348,6 @@ export class Format extends BasicEffect implements Readonly<BasicEffect> {
 	readonly banlist: string[];
 	/** List of effects that aren't completely banned. */
 	readonly restricted: string[];
-	/** The default level. */
-	readonly defaultlevel: number;
-	/** The maximum level. */
-	readonly maxlevel: number;
 	/** List of inherited banned effects to override. */
 	readonly unbanlist: string[];
 	/** List of ruleset and banlist changes in a custom format. */
