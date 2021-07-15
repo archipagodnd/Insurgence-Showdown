@@ -126,33 +126,28 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 8] Level 120 NatDex AG",
 		mod: 'gen8',
-		defaultlevel: 120,
 		ruleset: ['Standard NatDex', 'Max Level = 120', 'Default Level = 120'],
 	},
 	{
 		name: "[Gen 7] Level 120 OU",
 		mod: 'gen7',
-		defaultlevel: 120,
 		ruleset: ['Standard'],
 		banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Max Level = 120', 'Default Level = 120'],
 	},
 	{
 		name: "[Gen 7] Level 120 AG",
 		mod: 'gen7',
-		defaultlevel: 120,
 		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause', 'Max Level = 120', 'Default Level = 120'],
 	},
 	{
 		name: "[Gen 6] Level 120 OU",
 		mod: 'gen6',
-		defaultlevel: 120,
 		ruleset: ['Standard', 'Swagger Clause'],
 		banlist: ['Uber', 'Arena Trap', 'Shadow Tag', 'Soul Dew', 'Baton Pass', 'Max Level = 120', 'Default Level = 120'],
 	},
 	{
 		name: "[Gen 6] Level 120 AG",
 		mod: 'gen6',
-		defaultlevel: 120,
 		ruleset: ['Obtainable', 'Team Preview', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Max Level = 120', 'Default Level = 120'],
 	},
 
