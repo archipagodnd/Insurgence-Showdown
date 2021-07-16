@@ -1652,16 +1652,16 @@ export const pages: Chat.PageTable = {
 				return buf;
 			}
 			const stringifyDate = (num: number) => {
-				const date = Chat.toTimestamp(new Date(num), {human: true}).split(' ');
-				return {day: date[0], time: date[1]};
+				const dateStrings = Chat.toTimestamp(new Date(num), {human: true}).split(' ');
+				return {day: dateStrings[0], time: dateStrings[1]};
 			};
 
 			Utils.sortBy(logs, log => -log.date);
 
 			for (const ticket of logs) {
 				buf += `<details class="readmore"><summary>`;
-				const date = stringifyDate(ticket.created);
-				buf += `<strong>${ticket.type} - ${date.day} (${date.time})</strong></summary>`;
+				const curDate = stringifyDate(ticket.created);
+				buf += `<strong>${ticket.type} - ${curDate.day} (${curDate.time})</strong></summary>`;
 				const ticketInfo = textTickets[HelpTicket.getTypeId(ticket.type)];
 				this.title = `[Text Ticket] ${ticket.userid}`;
 				buf += `<h2>Issue: ${ticket.type}</h2>`;
@@ -1671,7 +1671,12 @@ export const pages: Chat.PageTable = {
 				if (ticket.claimed) {
 					buf += `<br /><strong>Claimed:</strong> ${ticket.claimed}<br />`;
 				}
-				buf += await ticketInfo.getReviewDisplay(ticket as TicketState & {text: [string, string]}, user, connection, ticket.state);
+				buf += await ticketInfo.getReviewDisplay(
+					ticket as TicketState & {text: [string, string]},
+					user,
+					connection,
+					ticket.state
+				);
 				buf += `<br />`;
 				buf += `<div class="infobox">`;
 				const [text, context] = ticket.text;
