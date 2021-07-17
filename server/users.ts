@@ -301,11 +301,14 @@ type ChatQueueEntry = [string, RoomID, Connection];
 
 export interface UserSettings {
 	blockChallenges: boolean | AuthLevel;
-	blockPMs: boolean | AuthLevel;
+	blockPMs: boolean | AuthLevel | 'friends';
 	ignoreTickets: boolean;
 	hideBattlesFromTrainerCard: boolean;
 	blockInvites: AuthLevel | boolean;
 	doNotDisturb: boolean;
+	blockFriendRequests: boolean;
+	allowFriendNotifications: boolean;
+	hideLogins: boolean;
 }
 
 // User
@@ -358,6 +361,7 @@ export class User extends Chat.MessageContext {
 	lastDisconnected: number;
 	lastConnected: number;
 	foodfight?: {generatedTeam: string[], dish: string, ingredients: string[], timestamp: number};
+	friends?: Set<string>;
 
 	chatQueue: ChatQueueEntry[] | null;
 	chatQueueTimeout: NodeJS.Timeout | null;
@@ -435,6 +439,9 @@ export class User extends Chat.MessageContext {
 			hideBattlesFromTrainerCard: false,
 			blockInvites: false,
 			doNotDisturb: false,
+			blockFriendRequests: false,
+			allowFriendNotifications: true,
+			hideLogins: false,
 		};
 		this.battleSettings = {
 			team: '',
