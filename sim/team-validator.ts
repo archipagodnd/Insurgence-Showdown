@@ -1370,7 +1370,11 @@ export class TeamValidator {
 		}
 
 		if (nonexistentCheck) {
-			if (tierSpecies.isNonstandard === 'Past' || tierSpecies.isNonstandard === 'PastMove' || tierSpecies.isNonstandard === 'Future') {
+			if (
+				tierSpecies.isNonstandard === 'Past' ||
+        tierSpecies.isNonstandard === 'PastMove' ||
+        tierSpecies.isNonstandard === 'Future'
+			) {
 				return `${tierSpecies.name} does not exist in Gen ${dex.gen}.`;
 			}
 			if (tierSpecies.isNonstandard === 'LGPE') {
@@ -1588,7 +1592,7 @@ export class TeamValidator {
 		const dex = this.dex;
 		let name = set.species;
 		const species = dex.species.get(set.species);
-		const maxSourceGen = this.ruleTable.has('allowtradeback') ? dex.gen + 1 : dex.gen;
+		const maxSourceGen = this.ruleTable.has('allowtradeback') ? Utils.clampIntRange(dex.gen + 1, 1, 8) : dex.gen;
 		if (!eventSpecies) eventSpecies = species;
 		if (set.name && set.species !== set.name && species.baseSpecies !== set.name) name = `${set.name} (${set.species})`;
 
@@ -1734,7 +1738,7 @@ export class TeamValidator {
 		let minSourceGen = this.minSourceGen;
 		if (this.dex.gen >= 3 && minSourceGen < 3) minSourceGen = 3;
 		if (species) minSourceGen = Math.max(minSourceGen, species.gen);
-		const maxSourceGen = this.ruleTable.has('allowtradeback') ? this.dex.gen + 1 : this.dex.gen;
+		const maxSourceGen = this.ruleTable.has('allowtradeback') ? Utils.clampIntRange(this.dex.gen + 1, 1, 8) : this.dex.gen;
 		return new PokemonSources(maxSourceGen, minSourceGen);
 	}
 
