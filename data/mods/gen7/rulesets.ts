@@ -42,4 +42,10 @@ export const Rulesets: {[k: string]: ModdedFormatData} = {
 			this.makeRequest('teampreview');
 		},
 	},
+	level120: {
+		effectType: 'ValidatorRule',
+		name: 'Level 120',
+		desc: "Allows Pokémon up to Level 120.",
+		ruleset: ['Max Level = 120', 'Default Level = 120'],
+	},
 };
