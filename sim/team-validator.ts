@@ -1347,7 +1347,7 @@ export class TeamValidator {
 		// +Mythical to unban Shaymin in Gen 1, for instance.
 		let nonexistentCheck = Tags.nonexistent.genericFilter!(tierSpecies) && ruleTable.check('nonexistent');
 
-		const EXISTENCE_TAG = ['past', 'future', 'lgpe', 'unobtainable', 'cap', 'custom', 'nonexistent'];
+		const EXISTENCE_TAG = ['past', 'pastmove', 'future', 'lgpe', 'unobtainable', 'cap', 'custom', 'nonexistent'];
 
 		for (const ruleid of ruleTable.tagRules) {
 			if (ruleid.startsWith('*')) continue;
@@ -1370,7 +1370,11 @@ export class TeamValidator {
 		}
 
 		if (nonexistentCheck) {
-			if (tierSpecies.isNonstandard === 'Past' || tierSpecies.isNonstandard === 'Future') {
+			if (
+				tierSpecies.isNonstandard === 'Past' ||
+        tierSpecies.isNonstandard === 'PastMove' ||
+        tierSpecies.isNonstandard === 'Future'
+			) {
 				return `${tierSpecies.name} does not exist in Gen ${dex.gen}.`;
 			}
 			if (tierSpecies.isNonstandard === 'LGPE') {
@@ -1443,7 +1447,7 @@ export class TeamValidator {
 		if (item.isNonstandard && item.isNonstandard !== 'Unobtainable') {
 			banReason = ruleTable.check('nonexistent', setHas);
 			if (banReason) {
-				if (['Past', 'Future'].includes(item.isNonstandard)) {
+				if (['Past', 'PastMove', 'Future'].includes(item.isNonstandard)) {
 					return `${set.name}'s item ${item.name} does not exist in Gen ${dex.gen}.`;
 				}
 				return `${set.name}'s item ${item.name} does not exist in this game.`;
@@ -1489,7 +1493,7 @@ export class TeamValidator {
 		if (move.isNonstandard && move.isNonstandard !== 'Unobtainable') {
 			banReason = ruleTable.check('nonexistent', setHas);
 			if (banReason) {
-				if (['Past', 'Future'].includes(move.isNonstandard)) {
+				if (['Past', 'PastMove', 'Future'].includes(move.isNonstandard)) {
 					return `${set.name}'s move ${move.name} does not exist in Gen ${dex.gen}.`;
 				}
 				return `${set.name}'s move ${move.name} does not exist in this game.`;
@@ -1527,7 +1531,7 @@ export class TeamValidator {
 
 			banReason = ruleTable.check('nonexistent', setHas);
 			if (banReason) {
-				if (['Past', 'Future'].includes(ability.isNonstandard)) {
+				if (['Past', 'PastMove', 'Future'].includes(ability.isNonstandard)) {
 					return `${set.name}'s ability ${ability.name} does not exist in Gen ${dex.gen}.`;
 				}
 				return `${set.name}'s ability ${ability.name} does not exist in this game.`;
@@ -1565,7 +1569,7 @@ export class TeamValidator {
 
 			banReason = ruleTable.check('nonexistent', setHas);
 			if (banReason) {
-				if (['Past', 'Future'].includes(nature.isNonstandard)) {
+				if (['Past', 'PastMove', 'Future'].includes(nature.isNonstandard)) {
 					return `${set.name}'s nature ${nature.name} does not exist in Gen ${dex.gen}.`;
 				}
 				return `${set.name}'s nature ${nature.name} does not exist in this game.`;
