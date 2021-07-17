@@ -139,17 +139,17 @@ export const Formats: FormatList = [
 	//		mod: 'gen7',
 	//		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause', 'Level 120'],
 	//	},
-	{
-		name: "[Gen 6] Level 120 OU",
-		mod: 'gen6',
-		ruleset: ['Standard', 'Swagger Clause'],
-		banlist: ['Uber', 'Arena Trap', 'Shadow Tag', 'Soul Dew', 'Baton Pass', 'Level 120'],
-	},
-	{
-		name: "[Gen 6] Level 120 AG",
-		mod: 'gen6',
-		ruleset: ['Obtainable', 'Team Preview', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Level 120'],
-	},
+	//	{
+	//		name: "[Gen 6] Level 120 OU",
+	//		mod: 'gen6',
+	//		ruleset: ['Standard', 'Swagger Clause'],
+	//		banlist: ['Uber', 'Arena Trap', 'Shadow Tag', 'Soul Dew', 'Baton Pass', 'Level 120'],
+	//	},
+	//	{
+	//		name: "[Gen 6] Level 120 AG",
+	//		mod: 'gen6',
+	//		ruleset: ['Obtainable', 'Team Preview', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Level 120'],
+	//	},
 
 	// Sw/Sh Singles
 	///////////////////////////////////////////////////////////////////
