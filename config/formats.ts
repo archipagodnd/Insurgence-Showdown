@@ -56,12 +56,12 @@ export const Formats: FormatList = [
 		mod: 'gen8',
 		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Dynamax Clause'],
 	},
-//	{
-//		name: "[Gen 8] National Dex Legacy",
-//
-//		mod: 'gen8',
-//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Dynamax Clause'],
-//	},
+	//	{
+	//		name: "[Gen 8] National Dex Legacy",
+	//
+	//		mod: 'gen8',
+	//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Dynamax Clause'],
+	//	},
 	{
 		name: "[Gen 8] LC National Dex Draft",
 
@@ -69,25 +69,25 @@ export const Formats: FormatList = [
 		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
 		banlist: ['Dragon Rage', 'Sonic Boom'],
 	},
-//	{
-//		name: "[Gen 8] LC National Dex Legacy",
-//
-//		mod: 'gen8',
-//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
-//		banlist: ['Dragon Rage', 'Sonic Boom'],
-//	},
+	//	{
+	//		name: "[Gen 8] LC National Dex Legacy",
+	//
+	//		mod: 'gen8',
+	//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
+	//		banlist: ['Dragon Rage', 'Sonic Boom'],
+	//	},
 	{
 		name: "[Gen 8] National Dex Leaks Draft",
 
 		mod: 'gen8leaks',
 		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Dynamax Clause'],
 	},
-//	{
-//		name: "[Gen 8] National Dex Leaks Legacy",
-//
-//		mod: 'gen8leaks',
-//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Dynamax Clause'],
-//	},
+	//	{
+	//		name: "[Gen 8] National Dex Leaks Legacy",
+	//
+	//		mod: 'gen8leaks',
+	//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Dynamax Clause'],
+	//	},
 	{
 		name: "[Gen 8] LC National Dex Leaks Draft",
 
@@ -95,13 +95,13 @@ export const Formats: FormatList = [
 		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
 		banlist: ['Dragon Rage', 'Sonic Boom'],
 	},
-//	{
-//		name: "[Gen 8] LC National Dex Leaks Legacy",
-//
-//		mod: 'gen8leaks',
-//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
-//		banlist: ['Dragon Rage', 'Sonic Boom'],
-//	},
+	//	{
+	//		name: "[Gen 8] LC National Dex Leaks Legacy",
+	//
+	//		mod: 'gen8leaks',
+	//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
+	//		banlist: ['Dragon Rage', 'Sonic Boom'],
+	//	},
 
 	// Level 120 Tiers
 	///////////////////////////////////////////////////////////////////
