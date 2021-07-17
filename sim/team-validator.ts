@@ -1370,11 +1370,7 @@ export class TeamValidator {
 		}
 
 		if (nonexistentCheck) {
-			if (
-				tierSpecies.isNonstandard === 'Past' ||
-        tierSpecies.isNonstandard === 'PastMove' ||
-        tierSpecies.isNonstandard === 'Future'
-			) {
+			if (tierSpecies.isNonstandard === 'Past' || tierSpecies.isNonstandard === 'Future') {
 				return `${tierSpecies.name} does not exist in Gen ${dex.gen}.`;
 			}
 			if (tierSpecies.isNonstandard === 'LGPE') {
