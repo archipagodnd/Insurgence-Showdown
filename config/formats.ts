@@ -128,17 +128,17 @@ export const Formats: FormatList = [
 		mod: 'gen8',
 		ruleset: ['Standard NatDex', 'Level 120'],
 	},
-	{
-		name: "[Gen 7] Level 120 OU",
-		mod: 'gen7',
-		ruleset: ['Standard'],
-		banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Level 120'],
-	},
-	{
-		name: "[Gen 7] Level 120 AG",
-		mod: 'gen7',
-		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause', 'Level 120'],
-	},
+	//	{
+	//		name: "[Gen 7] Level 120 OU",
+	//		mod: 'gen7',
+	//		ruleset: ['Standard'],
+	//		banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Level 120'],
+	//	},
+	//	{
+	//		name: "[Gen 7] Level 120 AG",
+	//		mod: 'gen7',
+	//		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause', 'Level 120'],
+	//	},
 	{
 		name: "[Gen 6] Level 120 OU",
 		mod: 'gen6',
