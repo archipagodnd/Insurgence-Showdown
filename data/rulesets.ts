@@ -110,11 +110,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 			if (!set.item) return;
 			const item = this.dex.items.get(set.item);
 			if (!item.isNonstandard) return;
-			if ([
-				'Past',
-				'PastMove',
-				'Unobtainable',
-			].includes(item.isNonstandard) && !item.zMove && !item.itemUser && !item.forcedForme) {
+			if (['Past', 'Unobtainable'].includes(item.isNonstandard) && !item.zMove && !item.itemUser && !item.forcedForme) {
 				if (this.ruleTable.has(`+item:${item.id}`)) return;
 				return [`${set.name}'s item ${item.name} does not exist in Gen ${this.dex.gen}.`];
 			}
