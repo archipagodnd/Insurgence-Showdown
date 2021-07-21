@@ -63,6 +63,8 @@ export interface AnnotatedChatCommands {
 export interface Handlers {
 	onRoomClose?: (id: string, user: User, connection: Connection, page: boolean) => any;
 	onRenameRoom?: (oldId: RoomID, newID: RoomID, room: BasicRoom) => void;
+	onBattleStart?: (user: User, room: GameRoom) => void;
+	onBattleLeave?: (user: User, room: GameRoom) => void;
 }
 
 export interface ChatPlugin {
@@ -1982,6 +1984,8 @@ export const Chat = new class {
 			message = `/eval ${message.slice(3)}`;
 		} else if (message.startsWith(`>>> `)) {
 			message = `/evalbattle ${message.slice(4)}`;
+		} else if (message.startsWith('>>sql ')) {
+			message = `/evalsql ${message.slice(6)}`;
 		} else if (message.startsWith(`/me`) && /[^A-Za-z0-9 ]/.test(message.charAt(3))) {
 			message = `/mee ${message.slice(3)}`;
 		} else if (message.startsWith(`/ME`) && /[^A-Za-z0-9 ]/.test(message.charAt(3))) {

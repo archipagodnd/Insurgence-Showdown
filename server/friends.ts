@@ -71,7 +71,7 @@ export class FriendsDatabase {
 		this.file = file === ':memory:' ? file : path.resolve(file);
 	}
 	async updateUserCache(user: User) {
-		if (!user.friends) user.friends = new Set();
+		user.friends = new Set(); // we clear to account for users who may have been deleted
 		const friends = await this.getFriends(user.id);
 		for (const friend of friends) {
 			user.friends.add(friend.userid);
@@ -89,7 +89,7 @@ export class FriendsDatabase {
 			try {
 				val = database.prepare(`SELECT val FROM database_settings WHERE name = 'version'`).get().val;
 			} catch (e) {}
-			const actualVersion = FS(`databases/migrations/`).readdirSync().length;
+			const actualVersion = FS(`databases/migrations/friends`).readdirIfExistsSync().length;
 			if (val === undefined) {
 				// hasn't been set up before, write new version.
 				database.exec(FS('databases/schemas/friends.sql').readSync());
