@@ -75,13 +75,8 @@
     "@types/node-static": "^0.7.5",
     "@types/nodemailer": "^6.4.0",
     "@types/sockjs": "^0.3.32",
-<<<<<<< HEAD
-    "@typescript-eslint/eslint-plugin": "^4.28.4",
-    "@typescript-eslint/parser": "^4.28.4",
-=======
     "@typescript-eslint/eslint-plugin": "^4.6.0",
     "@typescript-eslint/parser": "^4.6.0",
->>>>>>> upstream/master
     "eslint": "^7.31.0",
     "eslint-plugin-import": "^2.22.1",
     "husky": "^4.3.0",
