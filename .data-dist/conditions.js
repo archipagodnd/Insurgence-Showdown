@@ -445,12 +445,44 @@
 
 	// weather is implemented here since it's so important to the game
 
+	darkness: {
+		name: 'Darkness',
+		effectType: 'Weather',
+		duration: 5,
+		durationCallback(source, effect) {
+			if (_optionalChain([source, 'optionalAccess', _6 => _6.hasItem, 'call', _7 => _7('darkrock')])) {
+				return 8;
+			}
+			return 5;
+		},
+		onWeatherModifyDamage(damage, attacker, defender, move) {
+			if (move.type === 'Dark' || move.type === 'Ghost') {
+				this.debug('darkness damage boost');
+				return this.chainModify(1.35);
+			}
+			if (move.type === 'Fairy') {
+				this.debug('darkness fairy weaken');
+				return this.chainModify(0.75);
+			}
+		},
+		onStart(battle, source, effect) {
+			this.add('-weather', 'Darkness');
+		},
+		onResidualOrder: 1,
+		onResidual() {
+			this.add('-weather', 'Darkness', '[upkeep]');
+			this.eachEvent('Weather');
+		},
+		onEnd() {
+			this.add('-weather', 'none');
+		},
+	},
 	raindance: {
 		name: 'RainDance',
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback(source, effect) {
-			if (_optionalChain([source, 'optionalAccess', _6 => _6.hasItem, 'call', _7 => _7('damprock')])) {
+			if (_optionalChain([source, 'optionalAccess', _8 => _8.hasItem, 'call', _9 => _9('damprock')])) {
 				return 8;
 			}
 			return 5;
@@ -467,7 +499,7 @@
 			}
 		},
 		onFieldStart(field, source, effect) {
-			if (_optionalChain([effect, 'optionalAccess', _8 => _8.effectType]) === 'Ability') {
+			if (_optionalChain([effect, 'optionalAccess', _10 => _10.effectType]) === 'Ability') {
 				if (this.gen <= 5) this.effectState.duration = 0;
 				this.add('-weather', 'RainDance', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -520,7 +552,7 @@
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback(source, effect) {
-			if (_optionalChain([source, 'optionalAccess', _9 => _9.hasItem, 'call', _10 => _10('heatrock')])) {
+			if (_optionalChain([source, 'optionalAccess', _11 => _11.hasItem, 'call', _12 => _12('heatrock')])) {
 				return 8;
 			}
 			return 5;
@@ -537,7 +569,7 @@
 			}
 		},
 		onFieldStart(battle, source, effect) {
-			if (_optionalChain([effect, 'optionalAccess', _11 => _11.effectType]) === 'Ability') {
+			if (_optionalChain([effect, 'optionalAccess', _13 => _13.effectType]) === 'Ability') {
 				if (this.gen <= 5) this.effectState.duration = 0;
 				this.add('-weather', 'SunnyDay', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -598,7 +630,7 @@
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback(source, effect) {
-			if (_optionalChain([source, 'optionalAccess', _12 => _12.hasItem, 'call', _13 => _13('smoothrock')])) {
+			if (_optionalChain([source, 'optionalAccess', _14 => _14.hasItem, 'call', _15 => _15('smoothrock')])) {
 				return 8;
 			}
 			return 5;
@@ -612,7 +644,7 @@
 			}
 		},
 		onFieldStart(field, source, effect) {
-			if (_optionalChain([effect, 'optionalAccess', _14 => _14.effectType]) === 'Ability') {
+			if (_optionalChain([effect, 'optionalAccess', _16 => _16.effectType]) === 'Ability') {
 				if (this.gen <= 5) this.effectState.duration = 0;
 				this.add('-weather', 'Sandstorm', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -636,13 +668,13 @@
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback(source, effect) {
-			if (_optionalChain([source, 'optionalAccess', _15 => _15.hasItem, 'call', _16 => _16('icyrock')])) {
+			if (_optionalChain([source, 'optionalAccess', _17 => _17.hasItem, 'call', _18 => _18('icyrock')])) {
 				return 8;
 			}
 			return 5;
 		},
 		onFieldStart(field, source, effect) {
-			if (_optionalChain([effect, 'optionalAccess', _17 => _17.effectType]) === 'Ability') {
+			if (_optionalChain([effect, 'optionalAccess', _19 => _19.effectType]) === 'Ability') {
 				if (this.gen <= 5) this.effectState.duration = 0;
 				this.add('-weather', 'Hail', '[from] ability: ' + effect, '[of] ' + source);
 			} else {

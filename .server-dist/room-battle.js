@@ -738,6 +738,7 @@ const TIMER_COOLDOWN = 20 * SECONDS;
 			user.popup(`Failed to leave battle - you're not a player.`);
 			return false;
 		}
+		Chat.runHandlers('BattleLeave', user, this.room);
 
 		this.updatePlayer(player, null);
 		this.room.auth.set(user.id, '+');

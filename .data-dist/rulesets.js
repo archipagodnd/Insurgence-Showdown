@@ -13,8 +13,18 @@ var _lib = require('../.lib-dist');
 		name: 'Standard',
 		desc: "The standard ruleset for all offical Smogon singles tiers (Ubers, OU, etc.)",
 		ruleset: [
-			'Obtainable', 'Team Preview', 'Sleep Clause Mod', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
+			'Obtainable', 'Team Preview', 'Sleep Clause Mod', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
 		],
+		banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
+	},
+	draft: {
+		effectType: 'ValidatorRule',
+		name: 'Draft',
+		desc: "The custom Draft League ruleset",
+		ruleset: [
+			'Sleep Clause Mod', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
+		],
+		timer: {starting: 60 * 60, grace: 0, addPerTurn: 10, maxPerTurn: 100, timeoutAutoChoose: true},
 	},
 	standardnext: {
 		effectType: 'ValidatorRule',
@@ -77,6 +87,7 @@ var _lib = require('../.lib-dist');
 		ruleset: [
 			'Obtainable', '+Unobtainable', '+Past', 'Team Preview', 'Nickname Clause', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
 		],
+		banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
 		onValidateSet(set) {
 			// These Pokemon are still unobtainable
 			const unobtainables = [
@@ -461,6 +472,12 @@ var _lib = require('../.lib-dist');
 			}
 		},
 	},
+	level120: {
+		effectType: 'ValidatorRule',
+		name: 'Level 120',
+		desc: "Allows Pokémon up to Level 120.",
+		ruleset: ['Max Level = 120', 'Default Level = 120'],
+	},
 	blitz: {
 		effectType: 'Rule',
 		name: 'Blitz',
@@ -538,6 +555,32 @@ var _lib = require('../.lib-dist');
 					];
 				}
 				itemTable.add(item);
+			}
+		},
+	},
+	doubleitemclause: {
+		effectType: 'ValidatorRule',
+		name: 'Double Item Clause',
+		desc: "Prevents teams from having more than two Pok&eacute;mon with the same item",
+		onBegin() {
+			this.add('rule', 'Double Item Clause: Limit two of each item');
+		},
+		onValidateTeam(team) {
+			const itemTable = {};
+			for (const set of team) {
+				const item = this.toID(set.item);
+				if (!item) continue;
+				if (item in itemTable) {
+					if (itemTable[item] >= 2) {
+						return [
+							`You are limited to two of each item by Double Item Clause.`,
+							`(You have more than two ${this.dex.items.get(item).name})`,
+						];
+					}
+					itemTable[item]++;
+				} else {
+					itemTable[item] = 1;
+				}
 			}
 		},
 	},

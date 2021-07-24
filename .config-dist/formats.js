@@ -19,6 +19,138 @@ The column value will be ignored for repeat sections.
 
  const Formats = [
 
+	// Custom Formats
+	///////////////////////////////////////////////////////////////////
+
+	{
+		section: "Draft",
+	},
+	{
+		name: "[Gen 8] HBF Ubers Tournament",
+		mod: 'gen8',
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Dynamax Clause', 'Sleep Clause Mod'],
+		banlist: [
+			'Arceus', 'Arceus-Primal', 'Calyrex-Shadow', 'Eternatus', 'Gengar-Mega', 'Giratina-Primal', 'Groudon-Primal', 'Haxorus-Mega',
+			'Jirachi-Mega', 'Kyogre', 'Kyogre-Primal', 'Mewtwo-Mega-X', 'Mewtwo-Mega-Y', 'Mewtwo-Shadow-Mega', 'Necrozma-Dusk-Mane',
+			'Necrozma-Ultra', 'Rayquaza-Mega', 'Regigigas-Primal', 'Unown', 'Yveltal', 'Zacian', 'Zacian-Crowned',
+			'Moody', 'Swagger', 'Assist', 'Barrage', 'Barrier', 'Bestow', 'Bide', 'Bone Club',
+			'Bubble', 'Camouflage', 'Captivate', 'Chip Away', 'Clamp', 'Comet Punch', 'Constrict', 'Dizzy Punch', 'Double Slap', 'Dragon Rage',
+			'Egg Bomb', 'Embargo', 'Feint Attack', 'Flame Burst', 'Flash', 'Foresight', 'Frustration', 'Grass Whistle', 'Heal Block',
+			'Heal Order', 'Heart Stamp', 'Heart Swap', 'Hidden Power', 'Ice Ball', 'Ion Deluge', 'Jump Kick', 'Karate Chop', 'Lucky Chant',
+			'Magnet Bomb', 'Magnitude', 'Me First', 'Meditate', 'Miracle Eye', 'Mirror Move', 'Mirror Shot', 'Mud Bomb', 'Mud Sport',
+			'Natural Gift', 'Needle Arm', 'Nightmare', 'Odor Sleuth', 'Ominous Wind', 'Psycho Boost', 'Psywave', 'Punishment', 'Pursuit',
+			'Rage', 'Razor Wind', 'Refresh', 'Return', 'Rock Climb', 'Rolling Kick', 'Rototiller', 'Secret Power', 'Sharpen', 'Signal Beam',
+			'Silver Wind', 'Sky Drop', 'Sky Uppercut', 'Smelling Salts', 'Snatch', 'Sonic Boom', 'Spider Web', 'Spike Cannon', 'Spotlight',
+			'Steamroller', 'Synchronoise', 'Tail Glow', 'Telekinesis', 'Trump Card', 'Twineedle', 'Wake-Up Slap', 'Water Sport', 'Wring Out',
+			'Aloraichium Z', 'Buginium Z', 'Darkinium Z', 'Decidium Z', 'Dragonium Z', 'Eevium Z', 'Electrium Z', 'Fairium Z', 'Fightinium Z',
+			'Firium Z', 'Flyinium Z', 'Ghostium Z', 'Grassium Z', 'Groundium Z', 'Icium Z', 'Incinium Z', 'Kommonium Z', 'Lunalium Z',
+			'Lycanium Z', 'Marshadium Z', 'Mewnium Z', 'Mimikium Z', 'Normalium Z', 'Pikanium Z', 'Pikashunium Z', 'Poisonium Z', 'Primarium Z',
+			'Psychium Z', 'Rockium Z', 'Snorlium Z', 'Solganium Z', 'Steelium Z', 'Tapunium Z', 'Ultranecrozium Z', 'Waterium Z',
+			'Xerneas + Geomancy', 'Zekrom + item:Zekrom Armor', 'Mewtwo + item:Mewtwo Armor', 'Snow Warning ++ Snow Cloak', 'Sand Stream ++ Sand Veil',
+			'Noctem ++ Illuminate', 'Hail ++ Snow Cloak', 'Sandstorm ++ Sand Veil', 'New Moon ++ Illuminate',
+		],
+	},
+	{
+		name: "[Gen 8] National Dex Draft",
+
+		mod: 'gen8',
+		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Dynamax Clause'],
+	},
+	//	{
+	//		name: "[Gen 8] National Dex Legacy",
+	//
+	//		mod: 'gen8',
+	//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Dynamax Clause'],
+	//	},
+	{
+		name: "[Gen 8] LC National Dex Draft",
+
+		mod: 'gen8',
+		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
+		banlist: ['Dragon Rage', 'Sonic Boom'],
+	},
+	//	{
+	//		name: "[Gen 8] LC National Dex Legacy",
+	//
+	//		mod: 'gen8',
+	//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
+	//		banlist: ['Dragon Rage', 'Sonic Boom'],
+	//	},
+	{
+		name: "[Gen 8] National Dex Leaks Draft",
+
+		mod: 'gen8leaks',
+		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Dynamax Clause'],
+	},
+	//	{
+	//		name: "[Gen 8] National Dex Leaks Legacy",
+	//
+	//		mod: 'gen8leaks',
+	//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Dynamax Clause'],
+	//	},
+	{
+		name: "[Gen 8] LC National Dex Leaks Draft",
+
+		mod: 'gen8leaks',
+		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
+		banlist: ['Dragon Rage', 'Sonic Boom'],
+	},
+	//	{
+	//		name: "[Gen 8] LC National Dex Leaks Legacy",
+	//
+	//		mod: 'gen8leaks',
+	//		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
+	//		banlist: ['Dragon Rage', 'Sonic Boom'],
+	//	},
+
+	// Level 120 Tiers
+	///////////////////////////////////////////////////////////////////
+
+	{
+		section: "Level 120",
+	},
+	{
+		name: "[Gen 8] Level 120 NatDex OU",
+		mod: 'gen8',
+		ruleset: ['Standard NatDex', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Dynamax Clause', 'Sleep Clause Mod', 'Level 120'],
+		banlist: [
+			'Alakazam-Mega', 'Arceus', 'Blastoise-Mega', 'Blaziken-Mega', 'Calyrex-Ice', 'Calyrex-Shadow', 'Cinderace', 'Darkrai', 'Darmanitan-Galar',
+			'Deoxys-Attack', 'Deoxys-Base', 'Deoxys-Speed', 'Dialga', 'Dracovish', 'Dragapult', 'Eternatus', 'Genesect', 'Gengar-Mega', 'Giratina',
+			'Giratina-Origin', 'Groudon', 'Ho-Oh', 'Kangaskhan-Mega', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Landorus-Base', 'Lucario-Mega',
+			'Lugia', 'Lunala', 'Magearna', 'Marshadow', 'Metagross-Mega', 'Mewtwo', 'Naganadel', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane',
+			'Necrozma-Ultra', 'Palkia', 'Pheromosa', 'Rayquaza', 'Reshiram', 'Salamence-Mega', 'Shaymin-Sky', 'Solgaleo', 'Spectrier', 'Tornadus-Therian',
+			'Urshifu-Base', 'Xerneas', 'Yveltal', 'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Zygarde-Base', 'Zygarde-Complete',
+			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag', 'Baton Pass',
+		],
+	},
+	{
+		name: "[Gen 8] Level 120 NatDex AG",
+		mod: 'gen8',
+		ruleset: ['Standard NatDex', 'Level 120'],
+	},
+	//	{
+	//		name: "[Gen 7] Level 120 OU",
+	//		mod: 'gen7',
+	//		ruleset: ['Standard'],
+	//		banlist: ['Uber', 'Arena Trap', 'Power Construct', 'Shadow Tag', 'Baton Pass', 'Level 120'],
+	//	},
+	//	{
+	//		name: "[Gen 7] Level 120 AG",
+	//		mod: 'gen7',
+	//		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause', 'Level 120'],
+	//	},
+	//	{
+	//		name: "[Gen 6] Level 120 OU",
+	//		mod: 'gen6',
+	//		ruleset: ['Standard', 'Swagger Clause'],
+	//		banlist: ['Uber', 'Arena Trap', 'Shadow Tag', 'Soul Dew', 'Baton Pass', 'Level 120'],
+	//	},
+	//	{
+	//		name: "[Gen 6] Level 120 AG",
+	//		mod: 'gen6',
+	//		ruleset: ['Obtainable', 'Team Preview', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Level 120'],
+	//	},
+
 	// Sw/Sh Singles
 	///////////////////////////////////////////////////////////////////
 
@@ -114,7 +246,7 @@ The column value will be ignored for repeat sections.
 	{
 		name: "[Gen 8] RU",
 		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3679181/">RU Metagame Discussion</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3687060/">RU Metagame Discussion</a>`,
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3661013/">RU Sample Teams</a>`,
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3676023/">RU Viability Rankings</a>`,
 		],
@@ -126,7 +258,7 @@ The column value will be ignored for repeat sections.
 	{
 		name: "[Gen 8] NU",
 		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3681857/">NU Metagame Discussion</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3687023/">NU Metagame Discussion</a>`,
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3673598/">NU Sample Teams</a>`,
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3676265/">NU Viability Rankings</a>`,
 		],
@@ -138,7 +270,7 @@ The column value will be ignored for repeat sections.
 	{
 		name: "[Gen 8] PU",
 		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3681306/">PU Metagame Discussion</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3686048/">PU Metagame Discussion</a>`,
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3676106/">PU Viability Rankings</a>`,
 		],
 
@@ -216,14 +348,14 @@ The column value will be ignored for repeat sections.
 		name: "[Gen 8] ZU",
 		desc: `The unofficial usage-based tier below PU.`,
 		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3677885/">ZU Metagame Discussion</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3687415/">ZU Metagame Discussion</a>`,
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3680071/">ZU Sample Teams</a>`,
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3678037/">ZU Viability Rankings</a>`,
 		],
 
 		mod: 'gen8',
 		ruleset: ['[Gen 8] PU'],
-		banlist: ['PU', 'Drampa', 'Exeggutor-Alola', 'Gallade', 'Haunter', 'Magmortar', 'Magneton', 'Omastar', 'Turtonator', 'Vikavolt', 'Silvally-Dragon', 'Sneasel', 'Damp Rock', 'Grassy Seed'],
+		banlist: ['PU', 'Centiskorch', 'Drampa', 'Exeggutor-Alola', 'Gallade', 'Haunter', 'Magmortar', 'Magneton', 'Omastar', 'Turtonator', 'Vikavolt', 'Silvally-Dragon', 'Sneasel', 'Damp Rock', 'Grassy Seed'],
 	},
 	{
 		name: "[Gen 8] LC UU",
@@ -475,7 +607,7 @@ The column value will be ignored for repeat sections.
 			'Lugia', 'Lunala', 'Magearna', 'Marshadow', 'Metagross-Mega', 'Mewtwo', 'Naganadel', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane',
 			'Necrozma-Ultra', 'Palkia', 'Pheromosa', 'Rayquaza', 'Reshiram', 'Salamence-Mega', 'Shaymin-Sky', 'Solgaleo', 'Spectrier', 'Tornadus-Therian',
 			'Urshifu-Base', 'Xerneas', 'Yveltal', 'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Zygarde-Base', 'Zygarde-Complete',
-			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag', 'Baton Pass',
+			'Arena Trap', 'Moody', 'Power Construct', 'Shadow Tag', 'King\'s Rock', 'Razor Fang', 'Quick Claw', 'Baton Pass',
 		],
 	},
 	{
@@ -525,7 +657,8 @@ The column value will be ignored for repeat sections.
 			'Kyurem-Black', 'Kyurem-White', 'Lucario-Mega', 'Lugia', 'Lunala', 'Magearna', 'Marshadow', 'Mawile-Mega', 'Medicham-Mega', 'Metagross-Mega', 'Mewtwo',
 			'Naganadel', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane', 'Palkia', 'Pheromosa', 'Rayquaza', 'Reshiram', 'Salamence-Mega', 'Shaymin-Sky', 'Solgaleo',
 			'Spectrier', 'Urshifu-Base', 'Xerneas', 'Yveltal', 'Zacian', 'Zacian-Crowned', 'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Zygarde-Base',
-			'Battle Bond', 'Moody', 'Power Construct', 'Shadow Tag', 'Damp Rock', 'Smooth Rock', 'Terrain Extender', 'Baton Pass',
+			'Battle Bond', 'Moody', 'Power Construct', 'Shadow Tag',
+			'Bright Powder', 'Damp Rock', 'Focus Band', 'King\'s Rock', 'Lax Incense', 'Quick Claw', 'Smooth Rock', 'Terrain Extender', 'Baton Pass',
 		],
 	},
 	{
@@ -1753,6 +1886,7 @@ The column value will be ignored for repeat sections.
 
 		mod: 'gen5',
 		team: 'random',
+		searchShow: false,
 		ruleset: ['Obtainable', 'Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod'],
 	},
 	{
@@ -1760,6 +1894,7 @@ The column value will be ignored for repeat sections.
 
 		mod: 'gen4',
 		team: 'random',
+		searchShow: false,
 		ruleset: ['Obtainable', 'Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod'],
 	},
 	{
@@ -1767,6 +1902,7 @@ The column value will be ignored for repeat sections.
 
 		mod: 'gen3',
 		team: 'random',
+		searchShow: false,
 		ruleset: ['Standard'],
 	},
 	{
@@ -1774,6 +1910,7 @@ The column value will be ignored for repeat sections.
 
 		mod: 'gen2',
 		team: 'random',
+		searchShow: false,
 		ruleset: ['Standard'],
 	},
 	{
@@ -1781,6 +1918,7 @@ The column value will be ignored for repeat sections.
 
 		mod: 'gen1',
 		team: 'random',
+		searchShow: false,
 		ruleset: ['Standard'],
 	},
 	{
@@ -1826,7 +1964,7 @@ The column value will be ignored for repeat sections.
 		],
 
 		mod: 'gen2',
-		// searchShow: false,
+		searchShow: false,
 		ruleset: ['Standard'],
 	},
 	{
@@ -1837,7 +1975,7 @@ The column value will be ignored for repeat sections.
 		],
 
 		mod: 'gen5',
-		// searchShow: false,
+		searchShow: false,
 		ruleset: ['[Gen 5] UU', '!Sleep Clause Mod', 'Sleep Moves Clause'],
 		banlist: ['UU', 'RUBL', 'Shadow Tag', 'Shell Smash + Baton Pass'],
 	},
@@ -1848,7 +1986,7 @@ The column value will be ignored for repeat sections.
 		],
 
 		mod: 'gen1stadium',
-		// searchShow: false,
+		searchShow: false,
 		ruleset: ['Standard', 'Team Preview'],
 		banlist: ['Uber',
 			'Nidoking + Fury Attack + Thrash', 'Exeggutor + Poison Powder + Stomp', 'Exeggutor + Sleep Powder + Stomp',
@@ -1895,6 +2033,7 @@ The column value will be ignored for repeat sections.
 		],
 
 		mod: 'gen5',
+		searchShow: false,
 		ruleset: ['Standard', 'Evasion Abilities Clause', 'Baton Pass Clause', 'Sleep Moves Clause', 'Swagger Clause'],
 		banlist: ['Uber', 'Arena Trap', 'Drizzle ++ Swift Swim', 'Drought ++ Chlorophyll', 'Sand Rush', 'Shadow Tag', 'King\'s Rock', 'Razor Fang', 'Soul Dew'],
 	},
@@ -1907,6 +2046,7 @@ The column value will be ignored for repeat sections.
 		],
 
 		mod: 'gen4',
+		searchShow: false,
 		ruleset: ['Standard'],
 		banlist: ['AG', 'Uber', 'Arena Trap', 'Sand Veil', 'Swinub + Snow Cloak', 'Piloswine + Snow Cloak', 'Mamoswine + Snow Cloak', 'Soul Dew', 'Baton Pass'],
 	},
@@ -1918,6 +2058,7 @@ The column value will be ignored for repeat sections.
 		],
 
 		mod: 'gen3',
+		searchShow: false,
 		ruleset: ['Standard', '3 Baton Pass Clause'],
 		banlist: ['Uber', 'Mr. Mime', 'Smeargle + Baton Pass', 'Sand Veil'],
 	},
@@ -1929,6 +2070,7 @@ The column value will be ignored for repeat sections.
 		],
 
 		mod: 'gen2',
+		searchShow: false,
 		ruleset: ['Standard'],
 		banlist: ['Uber'],
 	},
@@ -1940,6 +2082,7 @@ The column value will be ignored for repeat sections.
 		],
 
 		mod: 'gen1',
+		searchShow: false,
 		ruleset: ['Standard'],
 		banlist: ['Uber'],
 	},

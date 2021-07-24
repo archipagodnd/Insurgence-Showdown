@@ -1484,6 +1484,9 @@ var _modlog = require('./modlog');
 			const ladderIpLogString = players.map(p => `${p.id}: ${p.latestIp}\n`).join('');
 			void this.ladderIpLog.write(ladderIpLogString);
 		}
+		for (const player of players) {
+			Chat.runHandlers('BattleStart', player, room);
+		}
 	}
 
 	deregisterChatRoom(id) {

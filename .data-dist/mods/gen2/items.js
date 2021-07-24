@@ -5,7 +5,7 @@
 	},
 	blackbelt: {
 		inherit: true,
-		onBasePower() {},
+		onModifyAtk() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _ => _.type]) === 'Fighting') {
 				return damage * 1.1;
@@ -14,7 +14,7 @@
 	},
 	blackglasses: {
 		inherit: true,
-		onBasePower() {},
+		onModifySpA() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _2 => _2.type]) === 'Dark') {
 				return damage * 1.1;
@@ -31,7 +31,7 @@
 	},
 	charcoal: {
 		inherit: true,
-		onBasePower() {},
+		onModifySpA() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _3 => _3.type]) === 'Fire') {
 				return damage * 1.1;
@@ -40,7 +40,7 @@
 	},
 	dragonfang: {
 		inherit: true,
-		onBasePower() {},
+		onModifySpA() {},
 	},
 	dragonscale: {
 		inherit: true,
@@ -61,7 +61,7 @@
 	},
 	hardstone: {
 		inherit: true,
-		onBasePower() {},
+		onModifyAtk() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _5 => _5.type]) === 'Rock') {
 				return damage * 1.1;
@@ -107,7 +107,7 @@
 	},
 	magnet: {
 		inherit: true,
-		onBasePower() {},
+		onModifySpA() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _6 => _6.type]) === 'Electric') {
 				return damage * 1.1;
@@ -116,7 +116,7 @@
 	},
 	metalcoat: {
 		inherit: true,
-		onBasePower() {},
+		onModifyAtk() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _7 => _7.type]) === 'Steel') {
 				return damage * 1.1;
@@ -131,7 +131,7 @@
 	},
 	miracleseed: {
 		inherit: true,
-		onBasePower() {},
+		onModifySpA() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _8 => _8.type]) === 'Grass') {
 				return damage * 1.1;
@@ -140,7 +140,7 @@
 	},
 	mysticwater: {
 		inherit: true,
-		onBasePower() {},
+		onModifySpA() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _9 => _9.type]) === 'Water') {
 				return damage * 1.1;
@@ -149,7 +149,7 @@
 	},
 	nevermeltice: {
 		inherit: true,
-		onBasePower() {},
+		onModifySpA() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _10 => _10.type]) === 'Ice') {
 				return damage * 1.1;
@@ -158,7 +158,7 @@
 	},
 	poisonbarb: {
 		inherit: true,
-		onBasePower() {},
+		onModifyAtk() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _11 => _11.type]) === 'Poison') {
 				return damage * 1.1;
@@ -167,7 +167,7 @@
 	},
 	sharpbeak: {
 		inherit: true,
-		onBasePower() {},
+		onModifyAtk() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _12 => _12.type]) === 'Flying') {
 				return damage * 1.1;
@@ -176,7 +176,7 @@
 	},
 	silverpowder: {
 		inherit: true,
-		onBasePower() {},
+		onModifyAtk() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _13 => _13.type]) === 'Bug') {
 				return damage * 1.1;
@@ -185,7 +185,7 @@
 	},
 	softsand: {
 		inherit: true,
-		onBasePower() {},
+		onModifyAtk() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _14 => _14.type]) === 'Ground') {
 				return damage * 1.1;
@@ -194,7 +194,7 @@
 	},
 	spelltag: {
 		inherit: true,
-		onBasePower() {},
+		onModifyAtk() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _15 => _15.type]) === 'Ghost') {
 				return damage * 1.1;
@@ -217,7 +217,7 @@
 	},
 	twistedspoon: {
 		inherit: true,
-		onBasePower() {},
+		onModifySpA() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _16 => _16.type]) === 'Psychic') {
 				return damage * 1.1;

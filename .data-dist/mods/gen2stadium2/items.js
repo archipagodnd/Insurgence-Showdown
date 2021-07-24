@@ -2,7 +2,6 @@
  const Items = {
 	dragonfang: {
 		inherit: true,
-		onBasePower() {},
 		onModifyDamage(damage, source, target, move) {
 			if (_optionalChain([move, 'optionalAccess', _ => _.type]) === 'Dragon') {
 				return damage * 1.1;
@@ -11,7 +10,7 @@
 	},
 	dragonscale: {
 		inherit: true,
-		onBasePower() {},
+		onModifyDamage() {},
 	},
 }; exports.Items = Items;
 

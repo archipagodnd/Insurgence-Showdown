@@ -311,6 +311,7 @@ const connections = new Map();
 
 
 
+
 // User
  class User extends Chat.MessageContext {
 	/** In addition to needing it to implement MessageContext, this is also nice for compatibility with Connection. */
@@ -441,6 +442,7 @@ const connections = new Map();
 			doNotDisturb: false,
 			blockFriendRequests: false,
 			allowFriendNotifications: true,
+			displayBattlesToFriends: false,
 			hideLogins: false,
 		};
 		this.battleSettings = {

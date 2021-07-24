@@ -393,6 +393,7 @@ for (const avatar of avatarTableGnomowladny) avatarTable.add(avatar);
 			autoconfirmed: !!targetUser.autoconfirmed,
 			status: targetUser.getStatus(),
 			rooms: roomList,
+			friended: _optionalChain([user, 'access', _7 => _7.friends, 'optionalAccess', _8 => _8.has, 'call', _9 => _9(targetUser.id)]),
 		};
 	},
 	roomlist(target, user, trustable) {
@@ -469,7 +470,7 @@ for (const avatar of avatarTableGnomowladny) avatarTable.add(avatar);
 
 		for (const id in room.users) {
 			const curUser = Users.get(room.users[id]);
-			if (!_optionalChain([curUser, 'optionalAccess', _7 => _7.named])) continue;
+			if (!_optionalChain([curUser, 'optionalAccess', _10 => _10.named])) continue;
 			userList.push(_lib.Utils.escapeHTML(curUser.getIdentity(room.roomid)));
 		}
 
@@ -488,7 +489,7 @@ for (const avatar of avatarTableGnomowladny) avatarTable.add(avatar);
 		target = this.checkChat(`/${this.cmd} ${target || ''}`);
 
 		if (this.message.startsWith(`/ME`)) {
-			const uppercaseIdentity = user.getIdentity(_optionalChain([room, 'optionalAccess', _8 => _8.roomid])).toUpperCase();
+			const uppercaseIdentity = user.getIdentity(_optionalChain([room, 'optionalAccess', _11 => _11.roomid])).toUpperCase();
 			if (this.pmTarget) {
 				const msg = `|pm|${uppercaseIdentity}|${this.pmTarget.getIdentity()}|${target}`;
 				user.send(msg);
@@ -1256,7 +1257,7 @@ for (const avatar of avatarTableGnomowladny) avatarTable.add(avatar);
 
 	uploadreplay: 'savereplay',
 	async savereplay(target, room, user, connection) {
-		if (!_optionalChain([room, 'optionalAccess', _9 => _9.battle])) {
+		if (!_optionalChain([room, 'optionalAccess', _12 => _12.battle])) {
 			return this.errorReply(this.tr`You can only save replays for battles.`);
 		}
 
@@ -1265,9 +1266,9 @@ for (const avatar of avatarTableGnomowladny) avatarTable.add(avatar);
 	},
 
 	hidereplay(target, room, user, connection) {
-		if (!_optionalChain([room, 'optionalAccess', _10 => _10.battle])) return this.errorReply(`Must be used in a battle.`);
+		if (!_optionalChain([room, 'optionalAccess', _13 => _13.battle])) return this.errorReply(`Must be used in a battle.`);
 		this.checkCan('joinbattle', null, room);
-		if (_optionalChain([room, 'access', _11 => _11.tour, 'optionalAccess', _12 => _12.forcePublic])) {
+		if (_optionalChain([room, 'access', _14 => _14.tour, 'optionalAccess', _15 => _15.forcePublic])) {
 			return this.errorReply(this.tr`This battle can't have hidden replays, because the tournament is set to be forced public.`);
 		}
 		if (room.hideReplay) return this.errorReply(this.tr`The replay for this battle is already set to hidden.`);
@@ -1462,7 +1463,7 @@ for (const avatar of avatarTableGnomowladny) avatarTable.add(avatar);
 	timer(target, room, user) {
 		target = toID(target);
 		room = this.requireRoom();
-		if (!_optionalChain([room, 'access', _13 => _13.game, 'optionalAccess', _14 => _14.timer])) {
+		if (!_optionalChain([room, 'access', _16 => _16.game, 'optionalAccess', _17 => _17.timer])) {
 			return this.errorReply(this.tr`You can only set the timer from inside a battle room.`);
 		}
 		const timer = room.game.timer ;
@@ -1572,7 +1573,7 @@ for (const avatar of avatarTableGnomowladny) avatarTable.add(avatar);
 	chall: 'challenge',
 	challenge(target, room, user, connection) {
 		const {targetUser, targetUsername, rest: formatName} = this.splitUser(target);
-		if (!_optionalChain([targetUser, 'optionalAccess', _15 => _15.connected])) {
+		if (!_optionalChain([targetUser, 'optionalAccess', _18 => _18.connected])) {
 			return this.popupReply(this.tr`The user '${targetUsername}' was not found.`);
 		}
 		if (user.locked && !targetUser.locked) {
@@ -1603,8 +1604,9 @@ for (const avatar of avatarTableGnomowladny) avatarTable.add(avatar);
 		if (Users.Auth.isAuthLevel(target)) {
 			user.settings.blockChallenges = target;
 			this.sendReply(this.tr`You are now blocking challenges, except from staff and ${target}.`);
-		} else if (target === 'autoconfirmed' || target === 'trusted' || target === 'unlocked') {
+		} else if (target === 'autoconfirmed' || target === 'trusted' || target === 'unlocked' || target === 'friends') {
 			user.settings.blockChallenges = target;
+			if (target === 'friends') target = 'friended';
 			target = this.tr(target);
 			this.sendReply(this.tr`You are now blocking challenges, except from staff and ${target} users.`);
 		} else {
@@ -1849,8 +1851,8 @@ for (const avatar of avatarTableGnomowladny) avatarTable.add(avatar);
 			this.errorReply(this.tr`Could not find help for '/${target}' - displaying help for '/${closestHelp}' instead`);
 		}
 
-		const curHandler = _optionalChain([Chat, 'access', _16 => _16.parseCommand, 'call', _17 => _17(`/${closestHelp}`), 'optionalAccess', _18 => _18.handler]);
-		if (_optionalChain([curHandler, 'optionalAccess', _19 => _19.isPrivate]) && !user.can('lock')) {
+		const curHandler = _optionalChain([Chat, 'access', _19 => _19.parseCommand, 'call', _20 => _20(`/${closestHelp}`), 'optionalAccess', _21 => _21.handler]);
+		if (_optionalChain([curHandler, 'optionalAccess', _22 => _22.isPrivate]) && !user.can('lock')) {
 			return this.errorReply(this.tr`The command '/${target}' does not exist.`);
 		}
 
@@ -1871,7 +1873,7 @@ process.nextTick(() => {
 	// We might want to migrate most of this to a JSON schema of command attributes.
 	Chat.multiLinePattern.register(
 		'>>>? ', '/(?:room|staff)intro ', '/(?:staff)?topic ', '/(?:add|widen)datacenters ', '/bash ', '!code ', '/code ', '/modnote ', '/mn ',
-		'/eval', '!eval', '/evalbattle',
+		'/eval', '!eval', '/evalbattle', '/evalsql', '>>sql',
 		'/importinputlog '
 	);
 });

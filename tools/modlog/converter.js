@@ -10,6 +10,7 @@ if (!global.Config) {
 	try {
 		require.resolve('better-sqlite3');
 	} catch (e) {
+		console.warn(`Warning: the modlog conversion script is running without a SQLite library.`);
 		hasSQLite = false;
 	}
 	global.Config = {
@@ -20,16 +21,19 @@ if (!global.Config) {
 }
 
 
+
 var _lib = require('../../.lib-dist');
-var _modlog = require('../../.server-dist/modlog');
 var _iptools = require('../../.server-dist/ip-tools');
 
 const Database = Config.usesqlite ? require('better-sqlite3') : null;
+const {Modlog} = require('../../.server-dist/modlog');
 
 
 
 /** The number of modlog entries to write to the database on each transaction */
-const ENTRIES_TO_BUFFER = 25000;
+const ENTRIES_TO_BUFFER = 100000;
+const ALTS_REGEX = /\(.*?'s (lock|mut|bann|blacklist)ed alts: (.*)\)/;
+const AUTOCONFIRMED_REGEX = /\(.*?'s ac account: (.*)\)/;
 
 const IP_ONLY_ACTIONS = new Set([
 	'SHAREDIP', 'UNSHAREDIP', 'UNLOCKIP', 'UNLOCKRANGE', 'RANGEBAN', 'RANGELOCK',
@@ -54,20 +58,30 @@ function toID(text) {
 	// first we save and remove the timestamp and the roomname
 	const prefix = _optionalChain([line, 'access', _ => _.match, 'call', _2 => _2(/\[.+?\] \(.+?\) /i), 'optionalAccess', _3 => _3[0]]);
 	if (!prefix) return;
-	if (/\]'s\s.*\salts: \[/.test(line)) return;
+	if (ALTS_REGEX.test(line) || AUTOCONFIRMED_REGEX.test(line)) return;
 	line = line.replace(prefix, '');
+	// handle duplicate room bug
+	if (line.startsWith('(')) line = line.replace(/\([a-z0-9-]*\) /, '');
 
 	if (line.startsWith('(') && line.endsWith(')')) {
 		line = line.slice(1, -1);
 	}
 	const getAlts = () => {
-		let alts;
-		const regex = new RegExp(`\\(\\[.*\\]'s (lock|mut|bann|blacklist)ed alts: (\\[.*\\])\\)`);
-		_optionalChain([nextLine, 'optionalAccess', _4 => _4.replace, 'call', _5 => _5(regex, (a, b, rawAlts) => {
-			alts = rawAlts;
+		let alts = '';
+		_optionalChain([nextLine, 'optionalAccess', _4 => _4.replace, 'call', _5 => _5(ALTS_REGEX, (_a, _b, rawAlts) => {
+			if (rawAlts) alts = `alts: [${rawAlts.split(',').map(toID).join('], [')}] `;
 			return '';
 		})]);
-		return alts ? `alts: ${alts} ` : ``;
+		return alts;
+	};
+
+	const getAutoconfirmed = () => {
+		let autoconfirmed = '';
+		_optionalChain([nextLine, 'optionalAccess', _6 => _6.replace, 'call', _7 => _7(AUTOCONFIRMED_REGEX, (_a, rawAutoconfirmed) => {
+			if (rawAutoconfirmed) autoconfirmed = `ac: [${toID(rawAutoconfirmed)}] `;
+			return '';
+		})]);
+		return autoconfirmed;
 	};
 
 	// Special cases
@@ -214,7 +228,7 @@ function toID(text) {
 				log = log.slice(0, log.indexOf('('));
 			}
 			const actionTaker = toID(log);
-			return `${isName ? 'NAME' : ''}BLACKLIST: [${banned}] ${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
+			return `${isName ? 'NAME' : ''}BLACKLIST: [${banned}] ${getAutoconfirmed()}${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
 		},
 		' was nameblacklisted from ': (log) => modernizerTransformations[' was blacklisted from '](log),
 		' was banned from room ': (log) => {
@@ -227,7 +241,7 @@ function toID(text) {
 				log = log.slice(0, log.indexOf('('));
 			}
 			const actionTaker = toID(log);
-			return `ROOMBAN: [${banned}] ${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
+			return `ROOMBAN: [${banned}] ${getAutoconfirmed()}${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
 		},
 		' was muted by ': (log) => {
 			let muted = '';
@@ -245,7 +259,7 @@ function toID(text) {
 				isHour = true;
 				actionTaker = actionTaker.replace(/^(.*)(for1hour)$/, (match, staff) => staff) ;
 			}
-			return `${isHour ? 'HOUR' : ''}MUTE: [${muted}] ${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
+			return `${isHour ? 'HOUR' : ''}MUTE: [${muted}] ${getAutoconfirmed()}${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
 		},
 		' was locked from talking ': (log) => {
 			const isWeek = log.includes(' was locked from talking for a week ');
@@ -258,7 +272,7 @@ function toID(text) {
 				log = log.slice(0, log.indexOf('('));
 			}
 			const actionTaker = toID(log);
-			return `${isWeek ? 'WEEK' : ''}LOCK: [${locked}] ${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
+			return `${isWeek ? 'WEEK' : ''}LOCK: [${locked}] ${getAutoconfirmed()}${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
 		},
 		' was banned ': (log) => {
 			if (log.includes(' was banned from room ')) return modernizerTransformations[' was banned from room '](log);
@@ -271,7 +285,7 @@ function toID(text) {
 				log = log.slice(0, log.indexOf('('));
 			}
 			const actionTaker = toID(log);
-			return `BAN: [${banned}] ${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
+			return `BAN: [${banned}] ${getAutoconfirmed()}${getAlts()}${ip ? `[${ip}] ` : ``}by ${actionTaker}${reason ? `: ${reason}` : ``}`;
 		},
 
 		'was promoted to ': (log) => {
@@ -336,6 +350,44 @@ function toID(text) {
 			log = log.replace('. The user has also', '; has also').replace('.', '');
 			return `SCAV CHEATER: [${user}]: caught attempting a hunt with ${log}`;
 		},
+
+		'made this room hidden': (log) => {
+			const user = toID(log.slice(0, log.indexOf(' made this room hidden')));
+			return `HIDDENROOM: by ${user}`;
+		},
+
+		'The tournament auto start timer was set to ': (log) => {
+			log = log.slice('The tournament auto start timer was set to'.length);
+			const [length, setter] = log.split(' by ').map(toID);
+			return `TOUR AUTOSTART: by ${setter}: ${length}`;
+		},
+		'The tournament auto disqualify timer was set to ': (log) => {
+			log = log.slice('The tournament auto disqualify timer was set to'.length);
+			const [length, setter] = log.split(' by ').map(toID);
+			return `TOUR AUTODQ: by ${setter}: ${length}`;
+		},
+		" set the tournament's banlist to ": (log) => {
+			const [setter, banlist] = log.split(` set the tournament's banlist to `);
+			return `TOUR BANLIST: by ${toID(setter)}: ${banlist.slice(0, -1)}`; // remove trailing . from banlist
+		},
+		" set the tournament's custom rules to": (log) => {
+			const [setter, rules] = log.split(` set the tournament's custom rules to `);
+			return `TOUR RULES: by ${toID(setter)}: ${rules.slice(0, -1)}`;
+		},
+		'[agameofhangman] was started by ': (log) => `HANGMAN: by ${toID(log.slice('[agameofhangman] was started by '.length))}`,
+		'[agameofunowas] created by ': (log) => `UNO CREATE: by ${toID(log.slice('[agameofunowas] created by '.length))}`,
+		'[thetournament] was set to autostart': (log) => {
+			const [, user] = log.split(' by ');
+			return `TOUR AUTOSTART: by ${toID(user)}: when playercap is reached`;
+		},
+		'[thetournament] was set to allow scouting': (log) => {
+			const [, user] = log.split(' by ');
+			return `TOUR SCOUT: by ${toID(user)}: allow`;
+		},
+		'[thetournament] was set to disallow scouting': (log) => {
+			const [, user] = log.split(' by ');
+			return `TOUR SCOUT: by ${toID(user)}: disallow`;
+		},
 	};
 
 	for (const oldAction in modernizerTransformations) {
@@ -371,7 +423,7 @@ function toID(text) {
 		isGlobal,
 		loggedBy: null,
 		note: '',
-		time: Math.floor(new Date(timestamp).getTime()) || Date.now(),
+		time: Math.floor(new Date(timestamp).getTime()) || 0,
 	};
 
 	if (bonus.length) log.visualRoomID = `${log.roomID} ${bonus.join(' ')}`;
@@ -436,7 +488,7 @@ function toID(text) {
 	}
 
 	let regex = /\bby .*:/;
-	let actionTakerIndex = _optionalChain([regex, 'access', _6 => _6.exec, 'call', _7 => _7(line), 'optionalAccess', _8 => _8.index]);
+	let actionTakerIndex = _optionalChain([regex, 'access', _8 => _8.exec, 'call', _9 => _9(line), 'optionalAccess', _10 => _10.index]);
 	if (actionTakerIndex === undefined) {
 		actionTakerIndex = line.indexOf('by ');
 		regex = /\bby .*/;
@@ -482,7 +534,7 @@ function toID(text) {
 	}
 
 	async toTxt() {
-		const database = _optionalChain([this, 'access', _9 => _9.isTesting, 'optionalAccess', _10 => _10.db]) || new Database(this.databaseFile, {fileMustExist: true});
+		const database = _optionalChain([this, 'access', _11 => _11.isTesting, 'optionalAccess', _12 => _12.db]) || new Database(this.databaseFile, {fileMustExist: true});
 		const roomids = database.prepare('SELECT DISTINCT roomid FROM modlog').all();
 		const globalEntries = [];
 		for (const {roomid} of roomids) {
@@ -512,13 +564,13 @@ function toID(text) {
 			for (const result of results) {
 				const entry = {
 					action: result.action,
-					roomID: _optionalChain([result, 'access', _11 => _11.roomid, 'optionalAccess', _12 => _12.replace, 'call', _13 => _13(/^global-/, '')]),
+					roomID: _optionalChain([result, 'access', _13 => _13.roomid, 'optionalAccess', _14 => _14.replace, 'call', _15 => _15(/^global-/, '')]),
 					visualRoomID: result.visual_roomid,
 					userid: result.userid,
 					autoconfirmedID: result.autoconfirmed_userid,
-					alts: _optionalChain([result, 'access', _14 => _14.alts, 'optionalAccess', _15 => _15.split, 'call', _16 => _16(',')]),
+					alts: _optionalChain([result, 'access', _16 => _16.alts, 'optionalAccess', _17 => _17.split, 'call', _18 => _18(',')]),
 					ip: result.ip,
-					isGlobal: _optionalChain([result, 'access', _17 => _17.roomid, 'optionalAccess', _18 => _18.startsWith, 'call', _19 => _19('global-')]) || result.roomid === 'global',
+					isGlobal: _optionalChain([result, 'access', _19 => _19.roomid, 'optionalAccess', _20 => _20.startsWith, 'call', _21 => _21('global-')]) || result.roomid === 'global',
 					loggedBy: result.action_taker_userid,
 					note: result.note,
 					time: result.timestamp,
@@ -562,30 +614,32 @@ function toID(text) {
 			};
 		}
 
-		this.modlog = new (0, _modlog.Modlog)(this.textLogDir, this.isTesting ? ':memory:' : this.databaseFile);
+		this.modlog = new Modlog(this.textLogDir, this.isTesting ? ':memory:' : this.databaseFile);
 	}
 
 	async toSQLite() {
 		const files = this.isTesting ? [...this.isTesting.files.keys()] : await _lib.FS.call(void 0, this.textLogDir).readdir();
-		// Read global modlog last to avoid inserting duplicate data to database
+		// Read global modlog first to avoid inserting duplicate data to database
 		if (files.includes('modlog_global.txt')) {
 			files.splice(files.indexOf('modlog_global.txt'), 1);
-			files.push('modlog_global.txt');
+			files.unshift('modlog_global.txt');
 		}
 
-		const globalEntries = [];
+		// we don't want to insert global modlog entries twice, so we keep track of global ones
+		// and don't reinsert them
+		/** roomid:list of modlog entry strings */
+		const globalEntries = {};
 
 		for (const file of files) {
 			if (file === 'README.md') continue;
 			const roomid = file.slice(7, -4);
 			const lines = this.isTesting ?
-				_optionalChain([this, 'access', _20 => _20.isTesting, 'access', _21 => _21.files, 'access', _22 => _22.get, 'call', _23 => _23(file), 'optionalAccess', _24 => _24.split, 'call', _25 => _25('\n')]) || [] :
+				_optionalChain([this, 'access', _22 => _22.isTesting, 'access', _23 => _23.files, 'access', _24 => _24.get, 'call', _25 => _25(file), 'optionalAccess', _26 => _26.split, 'call', _27 => _27('\n')]) || [] :
 				_lib.FS.call(void 0, `${this.textLogDir}/${file}`).createReadStream().byLine();
 
 			let entriesLogged = 0;
 			let lastLine = undefined;
 			let entries = [];
-
 
 			const insertEntries = (alwaysShowProgress) => {
 				this.modlog.writeSQL(entries);
@@ -606,10 +660,16 @@ function toID(text) {
 				const entry = parseModlog(line, lastLine, roomid === 'global');
 				lastLine = line;
 				if (!entry) continue;
-				if (roomid !== 'global') entries.push(entry);
-				if (entry.isGlobal) {
-					globalEntries.push(entry);
+				if (roomid !== 'global' && _optionalChain([globalEntries, 'access', _28 => _28[entry.roomID], 'optionalAccess', _29 => _29.includes, 'call', _30 => _30(line)])) {
+					// this is a global modlog entry that has already been inserted
+					continue;
 				}
+				if (entry.isGlobal) {
+					if (!globalEntries[entry.roomID]) globalEntries[entry.roomID] = [];
+					globalEntries[entry.roomID].push(line);
+					if (entry.roomID !== 'global' && !entry.roomID.startsWith('global-')) entry.roomID = `global-${entry.roomID}`;
+				}
+				entries.push(entry);
 				if (entries.length === ENTRIES_TO_BUFFER) insertEntries();
 			}
 			insertEntries(true);

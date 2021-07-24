@@ -165,7 +165,8 @@ class Ladder extends LadderStore {
 		}
 		if (targetUser.settings.blockChallenges && !user.can('bypassblocks', targetUser) && (
 			targetUser.settings.blockChallenges === true ||
-			!Users.globalAuth.atLeast(user, targetUser.settings.blockChallenges)
+			targetUser.settings.blockChallenges === 'friends' && _optionalChain([targetUser, 'access', _ => _.friends, 'optionalAccess', _2 => _2.has, 'call', _3 => _3(user.id)]) ||
+			!Users.globalAuth.atLeast(user, targetUser.settings.blockChallenges )
 		)) {
 			connection.popup(`The user '${targetUser.name}' is not accepting challenges right now.`);
 			Chat.maybeNotifyBlocked('challenge', targetUser, user);
@@ -250,10 +251,10 @@ class Ladder extends LadderStore {
 	getSearcher(search) {
 		const formatid = toID(this.formatid);
 		const user = Users.get(search.userid);
-		if (!_optionalChain([user, 'optionalAccess', _ => _.connected]) || user.id !== search.userid) {
+		if (!_optionalChain([user, 'optionalAccess', _4 => _4.connected]) || user.id !== search.userid) {
 			const formatTable = exports.Ladders.searches.get(formatid);
 			if (formatTable) formatTable.searches.delete(search.userid);
-			if (_optionalChain([user, 'optionalAccess', _2 => _2.connected])) {
+			if (_optionalChain([user, 'optionalAccess', _5 => _5.connected])) {
 				user.popup(`You changed your name and are no longer looking for a battle in ${formatid}`);
 				Ladder.updateSearch(user);
 			}
@@ -463,7 +464,7 @@ class Ladder extends LadderStore {
 		}
 		if (missingUser) {
 			for (const ready of readies) {
-				_optionalChain([Users, 'access', _3 => _3.get, 'call', _4 => _4(ready.userid), 'optionalAccess', _5 => _5.popup, 'call', _6 => _6(`Sorry, your opponent ${missingUser} went offline before your battle could start.`)]);
+				_optionalChain([Users, 'access', _6 => _6.get, 'call', _7 => _7(ready.userid), 'optionalAccess', _8 => _8.popup, 'call', _9 => _9(`Sorry, your opponent ${missingUser} went offline before your battle could start.`)]);
 			}
 			return undefined;
 		}

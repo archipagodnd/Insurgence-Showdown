@@ -28,6 +28,17 @@ const PM_TIMEOUT = 30 * 60 * 1000;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /** Like Chat.ErrorMessage, but made for the subprocess so we can throw errors to the user not using errorMessage
  * because errorMessage crashes when imported (plus we have to spawn dex, etc, all unnecessary - this is easier)
  */
@@ -71,7 +82,7 @@ function canPM(sender, receiver) {
 		this.file = file === ':memory:' ? file : path.resolve(file);
 	}
 	async updateUserCache(user) {
-		if (!user.friends) user.friends = new Set();
+		user.friends = new Set(); // we clear to account for users who may have been deleted
 		const friends = await this.getFriends(user.id);
 		for (const friend of friends) {
 			user.friends.add(friend.userid);
@@ -89,7 +100,7 @@ function canPM(sender, receiver) {
 			try {
 				val = database.prepare(`SELECT val FROM database_settings WHERE name = 'version'`).get().val;
 			} catch (e) {}
-			const actualVersion = _lib.FS.call(void 0, `databases/migrations/`).readdirSync().length;
+			const actualVersion = _lib.FS.call(void 0, `databases/migrations/friends`).readdirIfExistsSync().length;
 			if (val === undefined) {
 				// hasn't been set up before, write new version.
 				database.exec(_lib.FS.call(void 0, 'databases/schemas/friends.sql').readSync());
@@ -169,7 +180,7 @@ function canPM(sender, receiver) {
 		if (_optionalChain([receiver, 'optionalAccess', _6 => _6.settings, 'access', _7 => _7.blockFriendRequests])) {
 			throw new Chat.ErrorMessage(`${receiver.name} is blocking friend requests.`);
 		}
-		let buf = _lib.Utils.html`/uhtml sent,<button class="button" name="send" value="/friends accept ${user.id}">Accept</button> | `;
+		let buf = _lib.Utils.html`/uhtml sent-${user.id},<button class="button" name="send" value="/friends accept ${user.id}">Accept</button> | `;
 		buf += _lib.Utils.html`<button class="button" name="send" value="/friends reject ${user.id}">Deny</button><br /> `;
 		buf += `<small>(You can also stop this user from sending you friend requests with <code>/ignore</code>)</small>`;
 		const disclaimer = (
@@ -194,7 +205,7 @@ function canPM(sender, receiver) {
 			user.name
 		);
 		sendPM(
-			`/uhtml undo,<button class="button" name="send" value="/friends undorequest ${_lib.Utils.escapeHTML(receiverID)}">` +
+			`/uhtml undo-${receiverID},<button class="button" name="send" value="/friends undorequest ${_lib.Utils.escapeHTML(receiverID)}">` +
 			`<i class="fa fa-undo"></i> Undo</button>`, user.name
 		);
 		sendPM(disclaimer, user.id);

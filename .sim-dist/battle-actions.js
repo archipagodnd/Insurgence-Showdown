@@ -26,6 +26,7 @@ const CHOOSABLE_TARGETS = new Set(['normal', 'any', 'adjacentAlly', 'adjacentAll
 		Steel: 'Max Steelspike',
 		Normal: 'Max Strike',
 		Dragon: 'Max Wyrmwind',
+		Crystal: 'Max Strike',
 	}}
 
 	 __init2() {this.Z_MOVES = {
@@ -47,6 +48,7 @@ const CHOOSABLE_TARGETS = new Set(['normal', 'any', 'adjacentAlly', 'adjacentAll
 		Flying: "Supersonic Skystrike",
 		Ground: "Tectonic Rage",
 		Fairy: "Twinkle Tackle",
+		Crystal: "Breakneck Blitz",
 	}}
 
 	constructor(battle) {;BattleActions.prototype.__init.call(this);BattleActions.prototype.__init2.call(this);

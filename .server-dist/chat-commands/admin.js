@@ -1269,6 +1269,71 @@ async function updateserver(context, codePath) {
 		}
 	},
 
+	async evalsql(target, room) {
+		this.canUseConsole();
+		this.runBroadcast(true);
+		if (!Config.usesqlite) return this.errorReply(`SQLite is disabled.`);
+		const logRoom = Rooms.get('upperstaff') || Rooms.get('staff');
+		if (!target) return this.errorReply(`Specify a database to access and a query.`);
+		const [db, query] = _lib.Utils.splitFirst(target, ',').map(item => item.trim());
+		if (!_lib.FS.call(void 0, './databases').readdirSync().includes(`${db}.db`)) {
+			return this.errorReply(`The database file ${db}.db was not found.`);
+		}
+		if (room && this.message.startsWith('>>sql')) {
+			this.broadcasting = true;
+			this.broadcastToRoom = true;
+		}
+		this.sendReply(
+			`|html|<table border="0" cellspacing="0" cellpadding="0"><tr><td valign="top">SQLite&gt; [${db}.db] &nbsp;</td>` +
+			`<td>${Chat.getReadmoreCodeBlock(query)}</td></tr><table>`
+		);
+		_optionalChain([logRoom, 'optionalAccess', _17 => _17.roomlog, 'call', _18 => _18(`SQLite> ${target}`)]);
+		const database = _lib.SQL.call(void 0, `./databases/${db}.db`);
+		function formatResult(result) {
+			if (!Array.isArray(result)) {
+				return (
+					`<table border="0" cellspacing="0" cellpadding="0"><tr><td valign="top">` +
+					`SQLite&lt;&nbsp;</td><td>${Chat.getReadmoreCodeBlock(result)}</td></tr><table>`
+				);
+			}
+			let buffer = '<div class="ladder pad" style="overflow-x: auto;"><table><tr><th>';
+			// header
+			if (!result.length) {
+				buffer += `No data in table.</th></tr>`;
+				return buffer;
+			}
+			buffer += Object.keys(result[0]).join('</th><th>');
+			buffer += `</th></tr><tr>`;
+			buffer += result.map(item => (
+				`<td>${Object.values(item).map(val => _lib.Utils.escapeHTML(val )).join('</td><td>')}</td>`
+			)).join('</tr><tr>');
+			buffer += `</tr></table></div>`;
+			return buffer;
+		}
+
+		let result;
+		let statement;
+		try {
+			statement = await database.prepare(query);
+			// presume it's attempting to get data first
+			result = await database.all(statement);
+		} catch (err) {
+			// it's not getting data, but it might still be a valid statement - try to run instead
+			if (_optionalChain([err, 'access', _19 => _19.message, 'optionalAccess', _20 => _20.includes, 'call', _21 => _21(`Use run() instead`)])) {
+				try {
+					result = _lib.Utils.visualize(await database.run(statement, []));
+				} catch (e) {
+					result = ('' + e.stack).replace(/\n *at CommandContext\.evalsql [\s\S]*/m, '');
+				}
+			} else {
+				result = ('' + err.stack).replace(/\n *at CommandContext\.evalsql [\s\S]*/m, '');
+			}
+		}
+		database.destroy();
+		_optionalChain([logRoom, 'optionalAccess', _22 => _22.roomlog, 'call', _23 => _23(`SQLite< ${result}`)]);
+		this.sendReply(`|html|${formatResult(result)}`);
+	},
+
 	evalbattle(target, room, user, connection) {
 		room = this.requireRoom();
 		this.canUseConsole();

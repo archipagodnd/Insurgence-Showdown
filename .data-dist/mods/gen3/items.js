@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); const Items = {
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; } const Items = {
 	aguavberry: {
 		inherit: true,
 		onUpdate() {},
@@ -37,33 +37,41 @@
 	},
 	blackbelt: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move && move.type === 'Fighting') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _ => _.type]) === 'Fighting') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
 	blackglasses: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move && move.type === 'Dark') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _2 => _2.type]) === 'Dark') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
 	charcoal: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move && move.type === 'Fire') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _3 => _3.type]) === 'Fire') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
 	dragonfang: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move && move.type === 'Dragon') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _4 => _4.type]) === 'Dragon') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
@@ -99,9 +107,11 @@
 	},
 	hardstone: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move && move.type === 'Rock') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _5 => _5.type]) === 'Rock') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
@@ -167,9 +177,11 @@
 	},
 	magnet: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Electric') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _6 => _6.type]) === 'Electric') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
@@ -186,33 +198,41 @@
 	},
 	metalcoat: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Steel') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _7 => _7.type]) === 'Steel') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
 	miracleseed: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Grass') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _8 => _8.type]) === 'Grass') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
 	mysticwater: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Water') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _9 => _9.type]) === 'Water') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
 	nevermeltice: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Ice') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _10 => _10.type]) === 'Ice') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
@@ -240,9 +260,11 @@
 	},
 	poisonbarb: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Poison') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _11 => _11.type]) === 'Poison') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
@@ -264,33 +286,41 @@
 	},
 	seaincense: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move && move.type === 'Water') {
-				return basePower * 1.05;
+		onBasePower() {},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _12 => _12.type]) === 'Water') {
+				return this.chainModify(1.05);
 			}
 		},
 	},
 	sharpbeak: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move && move.type === 'Flying') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _13 => _13.type]) === 'Flying') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
 	silkscarf: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Normal') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _14 => _14.type]) === 'Normal') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
 	silverpowder: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Bug') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _15 => _15.type]) === 'Bug') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
@@ -310,17 +340,21 @@
 	},
 	softsand: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Ground') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _16 => _16.type]) === 'Ground') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
 	spelltag: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Ghost') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _17 => _17.type]) === 'Ghost') {
+				return this.chainModify(1.1);
 			}
 		},
 	},
@@ -337,9 +371,11 @@
 	},
 	twistedspoon: {
 		inherit: true,
-		onBasePower(basePower, user, target, move) {
-			if (move.type === 'Psychic') {
-				return basePower * 1.1;
+		onBasePower() {},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, user, target, move) {
+			if (_optionalChain([move, 'optionalAccess', _18 => _18.type]) === 'Psychic') {
+				return this.chainModify(1.1);
 			}
 		},
 	},

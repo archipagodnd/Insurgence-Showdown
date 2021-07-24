@@ -14,12 +14,26 @@
 			}
 		},
 	},
+	foundry: {
+		inherit: true,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.intoxicateBoosted) return this.chainModify([5325, 4096]);
+		},
+		rating: 4.5,
+	},
 	galewings: {
 		inherit: true,
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move && move.type === 'Flying') return priority + 1;
 		},
 		rating: 4,
+	},
+	intoxicate: {
+		inherit: true,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.intoxicateBoosted) return this.chainModify([5325, 4096]);
+		},
+		rating: 4.5,
 	},
 	ironbarbs: {
 		inherit: true,

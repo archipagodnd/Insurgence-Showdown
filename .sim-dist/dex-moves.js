@@ -320,6 +320,9 @@ var _dexdata = require('./dex-data');
 
 
 
+
+
+
  class DataMove extends _dexdata.BasicEffect  {
 	
 	/** Move type. */

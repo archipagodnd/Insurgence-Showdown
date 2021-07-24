@@ -6,5 +6,6 @@ var _fs = require('./fs'); _createNamedExportFrom(_fs, 'FS', 'FS');
 var _utils = require('./utils'); exports.Utils = _utils;
 var _crashlogger = require('./crashlogger'); _createNamedExportFrom(_crashlogger, 'crashlogger', 'crashlogger');
 var _processmanager = require('./process-manager'); exports.ProcessManager = _processmanager;
+var _sql = require('./sql'); _createNamedExportFrom(_sql, 'SQL', 'SQL');
 
  //# sourceMappingURL=sourceMaps/index.js.map

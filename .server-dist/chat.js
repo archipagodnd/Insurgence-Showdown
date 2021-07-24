@@ -115,6 +115,8 @@ var _friends = require('./friends');
 
 
 
+
+
 const LINK_WHITELIST = [
 	'*.pokemonshowdown.com', 'psim.us', 'smogtours.psim.us',
 	'*.smogon.com', '*.pastebin.com', '*.hastebin.com',
@@ -1102,16 +1104,7 @@ class PatternTester {
 					const groupName = Config.groups[Config.pmmodchat] && Config.groups[Config.pmmodchat].name || Config.pmmodchat;
 					throw new exports.Chat.ErrorMessage(this.tr`On this server, you must be of rank ${groupName} or higher to PM users.`);
 				}
-				const targetFriends = targetUser.friends || new Set();
-				const targetBlock = targetUser.settings.blockPMs;
-				// we check if they can lock the other before this so we're fine here
-				const authAtLeast = targetBlock === true ?
-					user.can('lock') :
-					Users.globalAuth.atLeast(user, targetBlock );
-
-				if (targetBlock && !user.can('lock', targetUser) && !(
-					targetBlock === 'friends' ? _optionalChain([targetFriends, 'optionalAccess', _48 => _48.has, 'call', _49 => _49(user.id)]) : authAtLeast
-				)) {
+				if (!this.checkCanPM(targetUser)) {
 					exports.Chat.maybeNotifyBlocked('pm', targetUser, user);
 					if (!targetUser.can('lock')) {
 						throw new exports.Chat.ErrorMessage(this.tr`This user is blocking private messages right now.`);
@@ -1120,10 +1113,7 @@ class PatternTester {
 						throw new exports.Chat.ErrorMessage(this.tr`This ${Config.groups[targetUser.tempGroup].name} is too busy to answer private messages right now. Please contact a different staff member.`);
 					}
 				}
-				const userFriends = user.friends || new Set();
-				if (user.settings.blockPMs && (user.settings.blockPMs === true ||
-					(user.settings.blockPMs === 'friends' && !_optionalChain([userFriends, 'optionalAccess', _50 => _50.has, 'call', _51 => _51(targetUser.id)])) ||
-					!Users.globalAuth.atLeast(targetUser, user.settings.blockPMs )) && !targetUser.can('lock')) {
+				if (!this.checkCanPM(user, targetUser)) {
 					throw new exports.Chat.ErrorMessage(this.tr`You are blocking private messages right now.`);
 				}
 			}
@@ -1156,14 +1146,14 @@ class PatternTester {
 			const allLinksWhitelisted = !links || links.every(link => {
 				link = link.toLowerCase();
 				const domainMatches = /^(?:http:\/\/|https:\/\/)?(?:[^/]*\.)?([^/.]*\.[^/.]*)\.?($|\/|:)/.exec(link);
-				const domain = _optionalChain([domainMatches, 'optionalAccess', _52 => _52[1]]);
+				const domain = _optionalChain([domainMatches, 'optionalAccess', _48 => _48[1]]);
 				const hostMatches = /^(?:http:\/\/|https:\/\/)?([^/]*[^/.])\.?($|\/|:)/.exec(link);
-				let host = _optionalChain([hostMatches, 'optionalAccess', _53 => _53[1]]);
-				if (_optionalChain([host, 'optionalAccess', _54 => _54.startsWith, 'call', _55 => _55('www.')])) host = host.slice(4);
+				let host = _optionalChain([hostMatches, 'optionalAccess', _49 => _49[1]]);
+				if (_optionalChain([host, 'optionalAccess', _50 => _50.startsWith, 'call', _51 => _51('www.')])) host = host.slice(4);
 				if (!domain || !host) return null;
 				return LINK_WHITELIST.includes(host) || LINK_WHITELIST.includes(`*.${domain}`);
 			});
-			if (!allLinksWhitelisted && !(_optionalChain([targetUser, 'optionalAccess', _56 => _56.can, 'call', _57 => _57('lock')]) || _optionalChain([room, 'optionalAccess', _58 => _58.settings, 'access', _59 => _59.isHelp]))) {
+			if (!allLinksWhitelisted && !(_optionalChain([targetUser, 'optionalAccess', _52 => _52.can, 'call', _53 => _53('lock')]) || _optionalChain([room, 'optionalAccess', _54 => _54.settings, 'access', _55 => _55.isHelp]))) {
 				throw new exports.Chat.ErrorMessage("Your account must be autoconfirmed to send links to other users, except for global staff.");
 			}
 		}
@@ -1194,7 +1184,7 @@ class PatternTester {
 			user.lastMessageTime = Date.now();
 		}
 
-		if (_optionalChain([room, 'optionalAccess', _60 => _60.settings, 'access', _61 => _61.highTraffic]) &&
+		if (_optionalChain([room, 'optionalAccess', _56 => _56.settings, 'access', _57 => _57.highTraffic]) &&
 			toID(message).replace(/[^a-z]+/, '').length < 2 &&
 			!user.can('show', null, room)) {
 			throw new exports.Chat.ErrorMessage(
@@ -1207,6 +1197,15 @@ class PatternTester {
 		}
 
 		return message;
+	}
+	checkCanPM(targetUser, user) {
+		if (!user) user = this.user;
+		const setting = targetUser.settings.blockPMs;
+		if (user.can('lock') || !setting) return true;
+		if (setting === true && !user.can('lock')) return false; // this is to appease TS
+		const friends = targetUser.friends || new Set();
+		if (setting === 'friends') return friends.has(user.id);
+		return Users.globalAuth.atLeast(user, setting );
 	}
 	checkPMHTML(targetUser) {
 		if (!(this.room && (targetUser.id in this.room.users)) && !this.user.can('addhtml')) {
@@ -1346,8 +1345,8 @@ class PatternTester {
 				}
 				if (tagName === 'button') {
 					if ((!this.room || this.room.settings.isPersonal || this.room.settings.isPrivate === true) && !this.user.can('lock')) {
-						const buttonName = _optionalChain([/ name ?= ?"([^"]*)"/i, 'access', _62 => _62.exec, 'call', _63 => _63(tagContent), 'optionalAccess', _64 => _64[1]]);
-						const buttonValue = _optionalChain([/ value ?= ?"([^"]*)"/i, 'access', _65 => _65.exec, 'call', _66 => _66(tagContent), 'optionalAccess', _67 => _67[1]]);
+						const buttonName = _optionalChain([/ name ?= ?"([^"]*)"/i, 'access', _58 => _58.exec, 'call', _59 => _59(tagContent), 'optionalAccess', _60 => _60[1]]);
+						const buttonValue = _optionalChain([/ value ?= ?"([^"]*)"/i, 'access', _61 => _61.exec, 'call', _62 => _62(tagContent), 'optionalAccess', _63 => _63[1]]);
 						const msgCommandRegex = /^\/(?:msg|pm|w|whisper|botmsg) /;
 						const botmsgCommandRegex = /^\/msgroom (?:[a-z0-9-]+), ?\/botmsg /;
 						if (buttonName === 'send' && buttonValue && msgCommandRegex.test(buttonValue)) {
@@ -1434,7 +1433,7 @@ class PatternTester {
 		);
 	}
 	refreshPage(pageid) {
-		if (_optionalChain([this, 'access', _68 => _68.connection, 'access', _69 => _69.openPages, 'optionalAccess', _70 => _70.has, 'call', _71 => _71(pageid)])) {
+		if (_optionalChain([this, 'access', _64 => _64.connection, 'access', _65 => _65.openPages, 'optionalAccess', _66 => _66.has, 'call', _67 => _67(pageid)])) {
 			this.parse(`/join view-${pageid}`);
 		}
 	}
@@ -1744,11 +1743,11 @@ class PatternTester {
 	parse(message, room, user, connection) {
 		exports.Chat.loadPlugins();
 
-		const initialRoomlogLength = _optionalChain([room, 'optionalAccess', _72 => _72.log, 'access', _73 => _73.getLineCount, 'call', _74 => _74()]);
+		const initialRoomlogLength = _optionalChain([room, 'optionalAccess', _68 => _68.log, 'access', _69 => _69.getLineCount, 'call', _70 => _70()]);
 		const context = new CommandContext({message, room, user, connection});
 		const start = Date.now();
 		const result = context.parse();
-		if (typeof _optionalChain([result, 'optionalAccess', _75 => _75.then]) === 'function') {
+		if (typeof _optionalChain([result, 'optionalAccess', _71 => _71.then]) === 'function') {
 			void result.then(() => {
 				this.logSlowMessage(start, context);
 			});
@@ -1771,7 +1770,7 @@ class PatternTester {
 
 		const logMessage = (
 			`[slow command] ${timeUsed}ms - ${context.user.name} (${context.connection.ip}): ` +
-			`<${context.room ? context.room.roomid : context.pmTarget ? `PM:${_optionalChain([context, 'access', _76 => _76.pmTarget, 'optionalAccess', _77 => _77.name])}` : 'CMD'}> ` +
+			`<${context.room ? context.room.roomid : context.pmTarget ? `PM:${_optionalChain([context, 'access', _72 => _72.pmTarget, 'optionalAccess', _73 => _73.name])}` : 'CMD'}> ` +
 			`${context.message.replace(/\n/ig, ' ')}`
 		);
 
@@ -1795,7 +1794,7 @@ class PatternTester {
 		} else {
 			return;
 		}
-		this.loadPluginData(plugin, _optionalChain([file, 'access', _78 => _78.split, 'call', _79 => _79('/'), 'access', _80 => _80.pop, 'call', _81 => _81(), 'optionalAccess', _82 => _82.slice, 'call', _83 => _83(0, -3)]) || file);
+		this.loadPluginData(plugin, _optionalChain([file, 'access', _74 => _74.split, 'call', _75 => _75('/'), 'access', _76 => _76.pop, 'call', _77 => _77(), 'optionalAccess', _78 => _78.slice, 'call', _79 => _79(0, -3)]) || file);
 	}
 	annotateCommands(commandTable, namespace = '') {
 		for (const cmd in commandTable) {
@@ -1813,7 +1812,7 @@ class PatternTester {
 			if (typeof entry !== 'function') continue;
 
 			const handlerCode = entry.toString();
-			entry.requiresRoom = _optionalChain([/requireRoom\((?:'|"|`)(.*?)(?:'|"|`)/, 'access', _84 => _84.exec, 'call', _85 => _85(handlerCode), 'optionalAccess', _86 => _86[1]])  || /this\.requireRoom\(/.test(handlerCode);
+			entry.requiresRoom = _optionalChain([/requireRoom\((?:'|"|`)(.*?)(?:'|"|`)/, 'access', _80 => _80.exec, 'call', _81 => _81(handlerCode), 'optionalAccess', _82 => _82[1]])  || /this\.requireRoom\(/.test(handlerCode);
 			entry.hasRoomPermissions = /\bthis\.(checkCan|can)\([^,)\n]*, [^,)\n]*,/.test(handlerCode);
 			entry.broadcastable = cmd.endsWith('help') || /\bthis\.(?:(check|can|run|should)Broadcast)\(/.test(handlerCode);
 			entry.isPrivate = /\bthis\.(?:privately(Check)?Can|commandDoesNotExist)\(/.test(handlerCode);
@@ -1982,6 +1981,8 @@ class PatternTester {
 			message = `/eval ${message.slice(3)}`;
 		} else if (message.startsWith(`>>> `)) {
 			message = `/evalbattle ${message.slice(4)}`;
+		} else if (message.startsWith('>>sql ')) {
+			message = `/evalsql ${message.slice(6)}`;
 		} else if (message.startsWith(`/me`) && /[^A-Za-z0-9 ]/.test(message.charAt(3))) {
 			message = `/mee ${message.slice(3)}`;
 		} else if (message.startsWith(`/ME`) && /[^A-Za-z0-9 ]/.test(message.charAt(3))) {
@@ -2185,8 +2186,8 @@ class PatternTester {
 		const roundingBoundaries = [6, 15, 12, 30, 30];
 		const unitNames = ["second", "minute", "hour", "day", "month", "year"];
 		const positiveIndex = parts.findIndex(elem => elem > 0);
-		let precision = (_optionalChain([options, 'optionalAccess', _87 => _87.precision]) ? options.precision : 3);
-		if (_optionalChain([options, 'optionalAccess', _88 => _88.hhmmss])) {
+		let precision = (_optionalChain([options, 'optionalAccess', _83 => _83.precision]) ? options.precision : 3);
+		if (_optionalChain([options, 'optionalAccess', _84 => _84.hhmmss])) {
 			const str = parts.slice(positiveIndex).map(value => value < 10 ? "0" + value : "" + value).join(":");
 			return str.length === 2 ? "00:" + str : str;
 		}
@@ -2454,7 +2455,7 @@ class PatternTester {
 	const user = this.getUserOrSelf(target, exactName);
 	this.targetUser = user;
 	this.inputUsername = target;
-	this.targetUsername = _optionalChain([user, 'optionalAccess', _89 => _89.name]) || target;
+	this.targetUsername = _optionalChain([user, 'optionalAccess', _85 => _85.name]) || target;
 	return user;
 };
 (CommandContext.prototype ).splitTarget = function ( target, exactName) {
