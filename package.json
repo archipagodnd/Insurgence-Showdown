@@ -4,12 +4,11 @@
   "version": "0.11.7",
   "main": ".sim-dist/index.js",
   "dependencies": {
-    "@swc/core": "^1.2.66",
+    "@swc/core": "^1.2.61",
     "@types/better-sqlite3": "^5.4.0",
     "probe-image-size": "^5.0.0",
     "sockjs": "^0.3.21",
-    "swc": "^1.0.11",
-    "ts-node": "^10.1.0"
+    "ts-node": "^10.0.0"
   },
   "optionalDependencies": {
     "better-sqlite3": "^7.1.0",
@@ -83,6 +82,6 @@
     "husky": "^4.3.0",
     "mocha": "^8.2.0",
     "smogon": "^1.4.5",
-    "typescript": "^4.3.5"
+    "typescript": "^4.1.0"
   }
 }
