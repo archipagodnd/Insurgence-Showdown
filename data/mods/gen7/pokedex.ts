@@ -156,10 +156,6 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Misty Surge"},
 	},
-	voodoom: {
-		inherit: true,
-		baseStats: {hp: 90, atk: 85, def: 80, spa: 105, spd: 80, spe: 110},
-	},
 	justyke: {
 		inherit: true,
 		abilities: {0: "Levitate", 1: "Bulletproof", H: "Justified"},

@@ -365,12 +365,6 @@ export function waitUntil(time: number): Promise<void> {
 	});
 }
 
-/** Like parseInt, but returns NaN if the int isn't already in normalized form */
-export function parseExactInt(str: string): number {
-	if (!/^-?(0|[1-9][0-9]*)$/.test(str)) return NaN;
-	return parseInt(str);
-}
-
 export class Multiset<T> extends Map<T, number> {
 	add(key: T) {
 		this.set(key, (this.get(key) ?? 0) + 1);
@@ -386,7 +380,7 @@ export class Multiset<T> extends Map<T, number> {
 
 // backwards compatibility
 export const Utils = {
-	parseExactInt, waitUntil, html, escapeHTML,
+	waitUntil, html, escapeHTML,
 	compare, sortBy, levenshtein,
 	shuffle, deepClone, clearRequireCache,
 	randomElement, forceWrap, splitFirst,

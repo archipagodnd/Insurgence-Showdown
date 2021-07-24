@@ -1540,8 +1540,6 @@ export const commands: Chat.ChatCommands = {
 			return;
 		}
 		if (this.meansNo(target)) {
-			delete room.settings.defaultFormat;
-			room.saveSettings();
 			this.modlog(`DEFAULTFORMAT`, null, 'off');
 			this.privateModAction(`${user.name} removed this room's default format.`);
 			return;

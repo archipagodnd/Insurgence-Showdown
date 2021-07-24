@@ -1,7 +1,5 @@
 'use strict';
 
-require('ts-node').register({project: './tsconfig.json', files: true, transpileOnly: true, transpiler: 'ts-node/transpilers/swc-experimental'});
-
 const path = require('path');
 const fs = require('fs');
 
@@ -30,14 +28,12 @@ config.crashguard = false;
 config.watchconfig = false;
 // Don't try to write to file system
 config.nofswriting = true;
-// allow renaming without a token
-config.noguestsecurity = true;
 // Test a normal ladder
 config.fakeladder = false;
 // Don't log monitor messages to the console (necessary so that chat monitor tests don't clog up stdout)
 config.loglevel = 3;
 
-require('./../lib/process-manager').ProcessManager.disabled = true;
+require('./../.lib-dist/process-manager').disabled = true;
 
 // stop chatrooms from loading through modifying the require cache
 try {
@@ -46,11 +42,11 @@ try {
 } catch (e) {}
 
 // Don't create a REPL
-require('../lib/repl').Repl.start = noop;
+require('../.lib-dist/repl').Repl.start = noop;
 
 // Start the server.
-// NOTE: This used "server" before when we needed "server"
-require('../server');
+// NOTE: This used "server" before when we needed ".server-dist"
+require('../.server-dist');
 
 LoginServer.disabled = true;
 Ladders.disabled = true;

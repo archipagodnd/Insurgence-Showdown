@@ -40,10 +40,4 @@ describe('[Gen 7] Random Battle', () => {
 	});
 
 	it('should prevent double Hidden Power', () => testHiddenPower('thundurustherian', options));
-
-	it('should give Meganium STAB', () => {
-		testSet('meganium', options, set => {
-			assert(set.moves.includes('gigadrain'), `Meganium: got ${set.moves}`);
-		});
-	});
 });

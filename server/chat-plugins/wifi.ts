@@ -126,17 +126,17 @@ class Giveaway {
 
 	static getSprite(text: string): [Set<string>, string] {
 		text = toPokemonId(text);
-		const mons = new Map<string, Species>();
+		const mons = new Map();
 		let output = '';
-		const monIDs = new Set<string>();
-		for (const species of Dex.species.all()) {
-			let id: string = species.id;
-			if (species.baseSpecies === species.name && species.name.includes(' ')) {
-				id = toPokemonId(species.name);
+		const monIDs: Set<string> = new Set();
+		for (const i in Dex.data.Pokedex) {
+			let id = i;
+			if (!Dex.data.Pokedex[i].baseSpecies && (Dex.data.Pokedex[i].name.includes(' '))) {
+				id = toPokemonId(Dex.data.Pokedex[i].name);
 			}
 			const regexp = new RegExp(`\\b${id}\\b`);
 			if (regexp.test(text)) {
-				const mon = Dex.species.get(species.id);
+				const mon = Dex.species.get(i);
 				mons.set(mon.baseSpecies, mon);
 			}
 		}
@@ -149,18 +149,18 @@ class Giveaway {
 		}
 		text = toID(text);
 		if (mons.size) {
-			for (const [name, species] of mons) {
-				let spriteid = species.spriteid;
-				if (species.cosmeticFormes) {
-					for (const forme of species.cosmeticFormes.map(toID)) {
+			for (const [key, value] of mons) {
+				let spriteid = value.spriteid;
+				if (value.cosmeticFormes) {
+					for (const forme of value.cosmeticFormes.map(toID)) {
 						if (text.includes(forme)) {
-							spriteid += '-' + forme.slice(name.length);
+							spriteid += '-' + forme.slice(key.length);
 							break; // We don't want to end up with deerling-summer-spring
 						}
 					}
 				}
-				if (species.otherFormes) {
-					for (const forme of species.otherFormes.map(toID)) {
+				if (value.otherFormes) {
+					for (const forme of value.otherFormes.map(toID)) {
 						// Allow "alolan <name>" to match as well.
 						if (forme.endsWith('alola')) {
 							if (/alolan?/.test(text)) {
@@ -176,7 +176,7 @@ class Giveaway {
 							}
 						}
 						if (text.includes(forme)) {
-							spriteid += '-' + forme.substr(name.length);
+							spriteid += '-' + forme.substr(key.length);
 							break; // We don't want to end up with landorus-therian-therian
 						}
 					}

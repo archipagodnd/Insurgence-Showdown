@@ -24,7 +24,6 @@ To reload chat commands:
 */
 
 import type {RoomPermission, GlobalPermission} from './user-groups';
-import {FriendsDatabase, PM} from './friends';
 import type {Punishment} from './punishments';
 import type {PartialModlogEntry} from './modlog';
 
@@ -63,8 +62,6 @@ export interface AnnotatedChatCommands {
 export interface Handlers {
 	onRoomClose?: (id: string, user: User, connection: Connection, page: boolean) => any;
 	onRenameRoom?: (oldId: RoomID, newID: RoomID, room: BasicRoom) => void;
-	onBattleStart?: (user: User, room: GameRoom) => void;
-	onBattleLeave?: (user: User, room: GameRoom) => void;
 }
 
 export interface ChatPlugin {
@@ -140,9 +137,7 @@ import ProbeModule = require('probe-image-size');
 const probe: (url: string) => Promise<{width: number, height: number}> = ProbeModule;
 
 const EMOJI_REGEX = /[\p{Emoji_Modifier_Base}\p{Emoji_Presentation}\uFE0F]/u;
-// to account for Sucrase
-const TRANSLATION_PATH = __dirname.endsWith('.server-dist') ? `../.translations-dist` : `../translations`;
-const TRANSLATION_DIRECTORY = `${__dirname}/${TRANSLATION_PATH}`;
+const TRANSLATION_DIRECTORY = `${__dirname}/../.translations-dist`;
 
 class PatternTester {
 	// This class sounds like a RegExp
@@ -1104,7 +1099,9 @@ export class CommandContext extends MessageContext {
 					const groupName = Config.groups[Config.pmmodchat] && Config.groups[Config.pmmodchat].name || Config.pmmodchat;
 					throw new Chat.ErrorMessage(this.tr`On this server, you must be of rank ${groupName} or higher to PM users.`);
 				}
-				if (!this.checkCanPM(targetUser)) {
+				if (targetUser.settings.blockPMs &&
+					(targetUser.settings.blockPMs === true || !Users.globalAuth.atLeast(user, targetUser.settings.blockPMs)) &&
+					!user.can('lock') && targetUser.id !== user.id) {
 					Chat.maybeNotifyBlocked('pm', targetUser, user);
 					if (!targetUser.can('lock')) {
 						throw new Chat.ErrorMessage(this.tr`This user is blocking private messages right now.`);
@@ -1113,7 +1110,9 @@ export class CommandContext extends MessageContext {
 						throw new Chat.ErrorMessage(this.tr`This ${Config.groups[targetUser.tempGroup].name} is too busy to answer private messages right now. Please contact a different staff member.`);
 					}
 				}
-				if (!this.checkCanPM(user, targetUser)) {
+				if (user.settings.blockPMs && (user.settings.blockPMs === true ||
+					!Users.globalAuth.atLeast(targetUser, user.settings.blockPMs)) && !targetUser.can('lock') &&
+					targetUser.id !== user.id) {
 					throw new Chat.ErrorMessage(this.tr`You are blocking private messages right now.`);
 				}
 			}
@@ -1198,24 +1197,12 @@ export class CommandContext extends MessageContext {
 
 		return message;
 	}
-	checkCanPM(targetUser: User, user?: User) {
-		if (!user) user = this.user;
-		const setting = targetUser.settings.blockPMs;
-		if (user.can('lock') || !setting) return true;
-		if (setting === true && !user.can('lock')) return false; // this is to appease TS
-		const friends = targetUser.friends || new Set();
-		if (setting === 'friends') return friends.has(user.id);
-		return Users.globalAuth.atLeast(user, setting as AuthLevel);
-	}
 	checkPMHTML(targetUser: User) {
 		if (!(this.room && (targetUser.id in this.room.users)) && !this.user.can('addhtml')) {
 			throw new Chat.ErrorMessage("You do not have permission to use PM HTML to users who are not in this room.");
 		}
-		const friends = targetUser.friends || new Set();
 		if (targetUser.settings.blockPMs &&
-			(targetUser.settings.blockPMs === true ||
-			(targetUser.settings.blockPMs === 'friends' && !friends.has(this.user.id)) ||
-			!Users.globalAuth.atLeast(this.user, targetUser.settings.blockPMs as AuthLevel)) &&
+			(targetUser.settings.blockPMs === true || !Users.globalAuth.atLeast(this.user, targetUser.settings.blockPMs)) &&
 			!this.user.can('lock')
 		) {
 			Chat.maybeNotifyBlocked('pm', targetUser, this.user);
@@ -1375,17 +1362,6 @@ export class CommandContext extends MessageContext {
 		return htmlContent;
 	}
 
-	/**
-	 * This is to be used for commands that replicate other commands
-	 * (for example, `/pm username, command` or `/msgroom roomid, command`)
-	 * to ensure they do not crash with too many levels of recursion.
-	 */
-	checkRecursion() {
-		if (this.recursionDepth > 5) {
-			throw new Chat.ErrorMessage(`/${this.cmd} - Too much command recursion has occurred.`);
-		}
-	}
-
 	requireRoom(id?: RoomID) {
 		if (!this.room) {
 			throw new Chat.ErrorMessage(`/${this.cmd} - must be used in a chat room, not a ${this.pmTarget ? "PM" : "console"}`);
@@ -1452,8 +1428,6 @@ export const Chat = new class {
 	 * which tends to cause unexpected behavior.
 	 */
 	readonly MAX_TIMEOUT_DURATION = 2147483647;
-	readonly Friends = new FriendsDatabase();
-	readonly PM = PM;
 
 	readonly multiLinePattern = new PatternTester();
 
@@ -1631,7 +1605,7 @@ export const Chat = new class {
 			const languageID = Dex.toID(dirname);
 			const files = await dir.readdir();
 			for (const filename of files) {
-				if (!filename.endsWith('.ts')) continue;
+				if (!filename.endsWith('.js')) continue;
 
 				const content: Translations = require(`${TRANSLATION_DIRECTORY}/${dirname}/${filename}`).translations;
 
@@ -1789,8 +1763,11 @@ export const Chat = new class {
 
 	loadPlugin(file: string) {
 		let plugin;
-		if (file.endsWith('.ts') || file.endsWith('.js')) {
+		if (file.endsWith('.ts')) {
 			plugin = require(`./${file.slice(0, -3)}`);
+		} else if (file.endsWith('.js')) {
+			// Switch to server/ because we'll be in .server-dist/ after this file is compiled
+			plugin = require(`../server/${file}`);
 		} else {
 			return;
 		}
@@ -1981,8 +1958,6 @@ export const Chat = new class {
 			message = `/eval ${message.slice(3)}`;
 		} else if (message.startsWith(`>>> `)) {
 			message = `/evalbattle ${message.slice(4)}`;
-		} else if (message.startsWith('>>sql ')) {
-			message = `/evalsql ${message.slice(6)}`;
 		} else if (message.startsWith(`/me`) && /[^A-Za-z0-9 ]/.test(message.charAt(3))) {
 			message = `/mee ${message.slice(3)}`;
 		} else if (message.startsWith(`/ME`) && /[^A-Za-z0-9 ]/.test(message.charAt(3))) {

@@ -32,27 +32,15 @@ export const Items: {[k: string]: ModdedItemData} = {
 	},
 	choiceband: {
 		inherit: true,
-		onStart() {},
-		onModifyMove() {},
-		onAfterMove(pokemon) {
-			pokemon.addVolatile('choicelock');
-		},
+		onStart() { },
 	},
 	choicescarf: {
 		inherit: true,
-		onStart() {},
-		onModifyMove() {},
-		onAfterMove(pokemon) {
-			pokemon.addVolatile('choicelock');
-		},
+		onStart() { },
 	},
 	choicespecs: {
 		inherit: true,
-		onStart() {},
-		onModifyMove() {},
-		onAfterMove(pokemon) {
-			pokemon.addVolatile('choicelock');
-		},
+		onStart() { },
 	},
 	chopleberry: {
 		inherit: true,

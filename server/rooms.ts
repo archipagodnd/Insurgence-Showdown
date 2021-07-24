@@ -40,7 +40,7 @@ import {MinorActivity, MinorActivityData} from './room-minor-activity';
 import {Roomlogs} from './roomlogs';
 import * as crypto from 'crypto';
 import {RoomAuth} from './user-groups';
-import {PartialModlogEntry, Modlog, MODLOG_PATH, MODLOG_DB_PATH} from './modlog';
+import {MODLOG_PATH, MODLOG_DB_PATH, mainModlog, PartialModlogEntry} from './modlog';
 
 /*********************************************************
  * the Room object.
@@ -883,14 +883,6 @@ export abstract class BasicRoom {
 		this.title = newTitle;
 		Rooms.rooms.delete(oldID);
 		Rooms.rooms.set(newID, this as Room);
-		if (this.battle && oldID) {
-			for (const player of this.battle.players) {
-				if (player.invite) {
-					const chall = Ladders.challenges.searchByRoom(player.invite, oldID);
-					if (chall) chall.roomid = this.roomid;
-				}
-			}
-		}
 
 		if (oldID === 'lobby') {
 			Rooms.lobby = null;
@@ -1175,7 +1167,7 @@ export class GlobalRoomState {
 				auth: {},
 				creationTime: Date.now(),
 				isPrivate: 'hidden',
-				modjoin: Users.SECTIONLEADER_SYMBOL,
+				modjoin: '%',
 				autojoin: true,
 			}];
 		}
@@ -1341,9 +1333,8 @@ export class GlobalRoomState {
 			if (!Config.groups[rank] || !rank) continue;
 
 			const tarGroup = Config.groups[rank];
-			let groupType = tarGroup.id === 'bot' || (!tarGroup.mute && !tarGroup.root) ?
+			const groupType = tarGroup.id === 'bot' || (!tarGroup.mute && !tarGroup.root) ?
 				'normal' : (tarGroup.root || tarGroup.declare) ? 'leadership' : 'staff';
-			if (tarGroup.id === 'sectionleader') groupType = 'staff';
 
 			rankList.push({
 				symbol: rank,
@@ -1483,9 +1474,6 @@ export class GlobalRoomState {
 		if (Config.logladderip && options.rated) {
 			const ladderIpLogString = players.map(p => `${p.id}: ${p.latestIp}\n`).join('');
 			void this.ladderIpLog.write(ladderIpLogString);
-		}
-		for (const player of players) {
-			Chat.runHandlers('BattleStart', player, room);
 		}
 	}
 
@@ -1878,7 +1866,9 @@ function getRoom(roomid?: string | BasicRoom) {
 }
 
 export const Rooms = {
-	Modlog: new Modlog(MODLOG_PATH, MODLOG_DB_PATH, {sqliteOptions: Config.modlogsqliteoptions}),
+	MODLOG_PATH,
+	MODLOG_DB_PATH,
+	Modlog: mainModlog,
 	/**
 	 * The main roomid:Room table. Please do not hold a reference to a
 	 * room long-term; just store the roomid and grab it from here (with

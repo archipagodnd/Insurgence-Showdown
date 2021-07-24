@@ -300,9 +300,7 @@ interface ModdedBattleActions {
 	getMixedSpecies?: (this: BattleActions, originalName: string, megaName: string) => Species;
 }
 
-interface ModdedBattleSide {
-	getRequestData?: (this: Side, forAlly?: boolean) => {name: string, id: ID, pokemon: AnyObject[]};
-}
+type ModdedBattleSide = never;
 
 interface ModdedBattlePokemon {
 	inherit?: true;

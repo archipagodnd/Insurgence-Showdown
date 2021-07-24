@@ -614,15 +614,21 @@ export const commands: Chat.ChatCommands = {
 
 		const args = target.split(',');
 		if (!args[0]) return this.parse(`/help randombattles`);
-
-		const {dex} = this.splitFormat(target, true);
-		const isLetsGo = (dex.currentMod === 'gen7letsgo');
-
+		let dex = Dex;
+		let isLetsGo = false;
+		if (args[1] && toID(args[1]) in Dex.dexes) {
+			dex = Dex.dexes[toID(args[1])];
+			if (toID(args[1]) === 'letsgo') isLetsGo = true;
+		} else if (room?.battle) {
+			const format = Dex.formats.get(room.battle.format);
+			dex = Dex.mod(format.mod);
+			if (format.mod === 'letsgo') isLetsGo = true;
+		}
 		const species = dex.species.get(args[0]);
 		if (!species.exists) {
 			return this.errorReply(`Error: Pok\u00e9mon '${args[0].trim()}' does not exist.`);
 		}
-		let formatName = dex.formats.get(`gen${dex.gen}${isLetsGo ? 'letsgo' : ''}randombattle`).name;
+		let formatName = dex.formats.get(`gen${dex.gen}randombattle`).name;
 
 		const movesets = [];
 		if (dex.gen === 1) {
@@ -669,10 +675,21 @@ export const commands: Chat.ChatCommands = {
 		if (!this.runBroadcast()) return;
 		const args = target.split(',');
 		if (!args[0]) return this.parse(`/help randomdoublesbattle`);
-
-		const {dex} = this.splitFormat(target, true);
-		if (dex.gen < 4) return this.parse(`/help randomdoublesbattle`);
-
+		let dex = Dex;
+		if (args[1] && toID(args[1]) in Dex.dexes) {
+			dex = Dex.dexes[toID(args[1])];
+		} else if (room?.battle) {
+			const format = Dex.formats.get(room.battle.format);
+			dex = Dex.mod(format.mod);
+		}
+		if (parseInt(toID(args[1])[3]) < 4) {
+			if (room?.battle) {
+				const format = Dex.formats.get(room.battle.format);
+				dex = Dex.mod(format.mod);
+			} else {
+				return this.parse(`/help randomdoublesbattle`);
+			}
+		}
 		let species = dex.species.get(args[0]);
 		const formatName = dex.gen > 6 ? dex.formats.get(`gen${dex.gen}randomdoublesbattle`).name : dex.gen === 6 ?
 			'[Gen 6] Random Doubles Battle' : dex.gen === 5 ?

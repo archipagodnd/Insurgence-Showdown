@@ -4,6 +4,8 @@ import {EventMethods} from './dex-conditions';
 import {Tags} from '../data/tags';
 
 const DEFAULT_MOD = 'gen8';
+const MAIN_FORMATS = `${__dirname}/../.config-dist/formats`;
+const CUSTOM_FORMATS = `${__dirname}/../.config-dist/custom-formats`;
 
 export interface FormatData extends Partial<Format>, EventMethods {
 	name: string;
@@ -223,7 +225,7 @@ export class RuleTable extends Map<string, string> {
 		}
 		if (this.valueRules.get('evlimit') === 'Auto') {
 			this.evLimit = dex.gen > 2 ? 510 : null;
-			if (format.mod === 'gen7letsgo') {
+			if (format.mod === 'letsgo') {
 				this.evLimit = this.has('allowavs') ? null : 0;
 			}
 			// Gen 6 hackmons also has a limit, which is currently implemented
@@ -504,7 +506,7 @@ export class DexFormats {
 		// Load formats
 		let customFormats;
 		try {
-			customFormats = require(`${__dirname}/../config/custom-formats`).Formats;
+			customFormats = require(CUSTOM_FORMATS).Formats;
 			if (!Array.isArray(customFormats)) {
 				throw new TypeError(`Exported property 'Formats' from "./config/custom-formats.ts" must be an array`);
 			}
@@ -513,7 +515,7 @@ export class DexFormats {
 				throw e;
 			}
 		}
-		let Formats: AnyObject[] = require(`${__dirname}/../config/formats`).Formats;
+		let Formats: AnyObject[] = require(MAIN_FORMATS).Formats;
 		if (!Array.isArray(Formats)) {
 			throw new TypeError(`Exported property 'Formats' from "./config/formats.ts" must be an array`);
 		}
