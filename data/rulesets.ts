@@ -13,8 +13,18 @@ export const Rulesets: {[k: string]: FormatData} = {
 		name: 'Standard',
 		desc: "The standard ruleset for all offical Smogon singles tiers (Ubers, OU, etc.)",
 		ruleset: [
-			'Obtainable', 'Team Preview', 'Sleep Clause Mod', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
+			'Obtainable', 'Team Preview', 'Sleep Clause Mod', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
 		],
+		banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
+	},
+	draft: {
+		effectType: 'ValidatorRule',
+		name: 'Draft',
+		desc: "The custom Draft League ruleset",
+		ruleset: [
+			'Sleep Clause Mod', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
+		],
+		timer: {starting: 60 * 60, grace: 0, addPerTurn: 10, maxPerTurn: 100, timeoutAutoChoose: true},
 	},
 	standardnext: {
 		effectType: 'ValidatorRule',
@@ -77,6 +87,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		ruleset: [
 			'Obtainable', '+Unobtainable', '+Past', 'Team Preview', 'Nickname Clause', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
 		],
+		banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
 		onValidateSet(set) {
 			// These Pokemon are still unobtainable
 			const unobtainables = [
@@ -461,6 +472,12 @@ export const Rulesets: {[k: string]: FormatData} = {
 			}
 		},
 	},
+	level120: {
+		effectType: 'ValidatorRule',
+		name: 'Level 120',
+		desc: "Allows Pokémon up to Level 120.",
+		ruleset: ['Max Level = 120', 'Default Level = 120'],
+	},
 	blitz: {
 		effectType: 'Rule',
 		name: 'Blitz',
@@ -489,7 +506,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 			this.add('rule', 'Species Clause: Limit one of each Pokémon');
 		},
 		onValidateTeam(team, format) {
-			const speciesTable: Set<number> = new Set();
+			const speciesTable = new Set<number>();
 			for (const set of team) {
 				const species = this.dex.species.get(set.species);
 				if (speciesTable.has(species.num)) {
@@ -504,7 +521,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		name: 'Nickname Clause',
 		desc: "Prevents teams from having more than one Pok&eacute;mon with the same nickname",
 		onValidateTeam(team, format) {
-			const nameTable: Set<string> = new Set();
+			const nameTable = new Set<string>();
 			for (const set of team) {
 				const name = set.name;
 				if (name) {
@@ -527,7 +544,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 			this.add('rule', 'Item Clause: Limit one of each item');
 		},
 		onValidateTeam(team) {
-			const itemTable: Set<string> = new Set();
+			const itemTable = new Set<string>();
 			for (const set of team) {
 				const item = this.toID(set.item);
 				if (!item) continue;
@@ -538,6 +555,32 @@ export const Rulesets: {[k: string]: FormatData} = {
 					];
 				}
 				itemTable.add(item);
+			}
+		},
+	},
+	doubleitemclause: {
+		effectType: 'ValidatorRule',
+		name: 'Double Item Clause',
+		desc: "Prevents teams from having more than two Pok&eacute;mon with the same item",
+		onBegin() {
+			this.add('rule', 'Double Item Clause: Limit two of each item');
+		},
+		onValidateTeam(team) {
+			const itemTable: {[k: string]: number} = {};
+			for (const set of team) {
+				const item = this.toID(set.item);
+				if (!item) continue;
+				if (item in itemTable) {
+					if (itemTable[item] >= 2) {
+						return [
+							`You are limited to two of each item by Double Item Clause.`,
+							`(You have more than two ${this.dex.items.get(item).name})`,
+						];
+					}
+					itemTable[item]++;
+				} else {
+					itemTable[item] = 1;
+				}
 			}
 		},
 	},
@@ -1161,7 +1204,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 	allowavs: {
 		effectType: 'ValidatorRule',
 		name: 'Allow AVs',
-		desc: "Tells formats with the 'letsgo' mod to take Awakening Values into consideration when calculating stats",
+		desc: "Tells formats with the 'gen7letsgo' mod to take Awakening Values into consideration when calculating stats",
 		// implemented in TeamValidator#validateStats
 	},
 	nfeclause: {
@@ -1196,7 +1239,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 			this.add('rule', 'Forme Clause: Limit one of each forme of a Pokémon');
 		},
 		onValidateTeam(team) {
-			const formeTable: Set<string> = new Set();
+			const formeTable = new Set<string>();
 			for (const set of team) {
 				let species = this.dex.species.get(set.species);
 				if (species.name !== species.baseSpecies) {
@@ -1555,6 +1598,29 @@ export const Rulesets: {[k: string]: FormatData} = {
 			// so all HP-related properties get re-initialized in setSpecies
 			pokemon.maxhp = 0;
 			pokemon.setSpecies(newSpecies, null);
+		},
+	},
+	bonustyperule: {
+		name: "Bonus Type Rule",
+		effectType: "Rule",
+		desc: `Pok&eacute;mon can be nicknamed the name of a type to have that type added onto their current ones.`,
+		onBegin() {
+			this.add('rule', 'Bonus Type Rule: Pok\u00e9mon can be nicknamed the name of a type to have that type added onto their current ones.');
+		},
+		onModifySpeciesPriority: 1,
+		onModifySpecies(species, target, source, effect) {
+			if (!target) return; // Chat command
+			if (effect && ['imposter', 'transform'].includes(effect.id)) return;
+			const typesSet = new Set(species.types);
+			const bonusType = this.dex.types.get(target.set.name);
+			if (bonusType.exists) typesSet.add(bonusType.name);
+			return {...species, types: [...typesSet]};
+		},
+		onSwitchIn(pokemon) {
+			this.add('-start', pokemon, 'typechange', (pokemon.illusion || pokemon).getTypes(true).join('/'), '[silent]');
+		},
+		onAfterMega(pokemon) {
+			this.add('-start', pokemon, 'typechange', (pokemon.illusion || pokemon).getTypes(true).join('/'), '[silent]');
 		},
 	},
 };
