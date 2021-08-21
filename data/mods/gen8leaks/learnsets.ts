@@ -1,4 +1,4 @@
-export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
+export const Learnsets: {[k: string]: ModdedLearnsetData} = {
 	weedle: {
 		inherit: true,
 		learnset: {
