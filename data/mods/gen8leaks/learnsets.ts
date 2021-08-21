@@ -1,9 +1,7 @@
 export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
-	inherit: 'gen8',
 	weedle: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			electroweb: ["8M"],
 			skittersmack: ["8T"],
 		},
@@ -11,7 +9,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	kakuna: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			electroweb: ["8M"],
 			irondefense: ["8M"],
 			skittersmack: ["8T"],
@@ -20,7 +17,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	beedrill: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			pinmissile: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -66,7 +62,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pidgey: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -94,7 +89,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pidgeotto: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -123,7 +117,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pidgeot: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -154,7 +147,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	rattata: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			dig: ["8M"],
 			screech: ["8M"],
@@ -197,7 +189,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	rattataalola: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			dig: ["8M"],
 			screech: ["8M"],
@@ -241,7 +232,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	raticate: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			thunderwave: ["8M"],
@@ -292,7 +282,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	raticatealola: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			thunderwave: ["8M"],
@@ -348,7 +337,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	spearow: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -381,7 +369,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	fearow: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			payday: ["8M"],
 			fly: ["8M"],
 			hyperbeam: ["8M"],
@@ -419,7 +406,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	ekans: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -459,7 +445,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	arbok: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			dig: ["8M"],
@@ -508,7 +493,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	paras: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			dig: ["8M"],
 			screech: ["8M"],
@@ -546,7 +530,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	parasect: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -588,7 +571,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	venonat: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -618,7 +600,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	venomoth: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -655,7 +636,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	mankey: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			payday: ["8M"],
@@ -720,7 +700,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	primeape: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			payday: ["8M"],
@@ -790,7 +769,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	bellsprout: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			magicalleaf: ["8M"],
 			solarbeam: ["8M"],
 			reflect: ["8M"],
@@ -824,7 +802,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	weepinbell: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			magicalleaf: ["8M"],
 			solarbeam: ["8M"],
 			solarblade: ["8M"],
@@ -859,7 +836,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	victreebel: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			magicalleaf: ["8M"],
@@ -900,7 +876,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	geodude: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -943,7 +918,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	geodudealola: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -992,7 +966,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	graveler: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -1037,7 +1010,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	graveleralola: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -1089,7 +1061,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	golem: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -1141,7 +1112,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	golemalola: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -1201,7 +1171,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	doduo: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -1228,7 +1197,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	dodrio: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -1262,7 +1230,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	seel: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			payday: ["8M"],
 			safeguard: ["8M"],
 			rest: ["8M"],
@@ -1299,7 +1266,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	dewgong: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			payday: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -1342,7 +1308,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	grimer: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -1390,7 +1355,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	grimeralola: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -1441,7 +1405,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	muk: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -1496,7 +1459,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	mukalola: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -1554,7 +1516,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	drowzee: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -1612,7 +1573,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	hypno: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -1674,7 +1634,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	voltorb: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			screech: ["8M"],
 			lightscreen: ["8M"],
@@ -1707,7 +1666,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	electrode: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			thunderwave: ["8M"],
@@ -1742,7 +1700,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	chikorita: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			magicalleaf: ["8M"],
 			solarbeam: ["8M"],
 			solarblade: ["8M"],
@@ -1777,7 +1734,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	bayleef: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			magicalleaf: ["8M"],
 			solarbeam: ["8M"],
 			solarblade: ["8M"],
@@ -1812,7 +1768,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	meganium: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			magicalleaf: ["8M"],
@@ -1853,7 +1808,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	cyndaquil: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			rest: ["8M"],
 			snore: ["8M"],
@@ -1879,7 +1833,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	quilava: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			rest: ["8M"],
 			snore: ["8M"],
@@ -1907,7 +1860,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	typhlosion: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -1956,7 +1908,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	totodile: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			icepunch: ["8M"],
@@ -2007,7 +1958,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	croconaw: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			icepunch: ["8M"],
@@ -2058,7 +2008,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	feraligatr: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			icepunch: ["8M"],
@@ -2124,7 +2073,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	sentret: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -2176,7 +2124,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	furret: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -2233,7 +2180,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	ledyba: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			icepunch: ["8M"],
@@ -2276,7 +2222,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	ledian: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			icepunch: ["8M"],
@@ -2322,7 +2267,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	spinarak: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			pinmissile: ["8M"],
 			solarbeam: ["8M"],
 			dig: ["8M"],
@@ -2363,7 +2307,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	ariados: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			pinmissile: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -2412,7 +2355,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	mareep: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			screech: ["8M"],
 			lightscreen: ["8M"],
@@ -2445,7 +2387,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	flaaffy: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -2486,7 +2427,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	ampharos: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -2534,7 +2474,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	hoppip: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			payday: ["8M"],
 			solarbeam: ["8M"],
 			reflect: ["8M"],
@@ -2568,7 +2507,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	skiploom: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			payday: ["8M"],
 			solarbeam: ["8M"],
 			reflect: ["8M"],
@@ -2603,7 +2541,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	jumpluff: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			payday: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -2641,7 +2578,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	aipom: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -2702,7 +2638,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	sunkern: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			lightscreen: ["8M"],
 			safeguard: ["8M"],
@@ -2733,7 +2668,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	sunflora: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -2770,7 +2704,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	yanma: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -2802,7 +2735,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	murkrow: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			thunderwave: ["8M"],
 			screech: ["8M"],
@@ -2841,7 +2773,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	misdreavus: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -2888,7 +2819,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	girafarig: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			lightscreen: ["8M"],
 			reflect: ["8M"],
@@ -2948,7 +2878,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pineco: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			pinmissile: ["8M"],
 			solarbeam: ["8M"],
 			dig: ["8M"],
@@ -2988,7 +2917,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	forretress: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			pinmissile: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -3036,7 +2964,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	gligar: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			pinmissile: ["8M"],
 			dig: ["8M"],
 			screech: ["8M"],
@@ -3088,7 +3015,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	snubbull: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -3150,7 +3076,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	granbull: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -3222,7 +3147,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	teddiursa: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -3272,7 +3196,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	ursaring: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -3332,7 +3255,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	slugma: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firespin: ["8M"],
 			lightscreen: ["8M"],
 			reflect: ["8M"],
@@ -3368,7 +3290,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	magcargo: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -3415,7 +3336,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	houndour: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			firespin: ["8M"],
 			rest: ["8M"],
@@ -3459,7 +3379,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	houndoom: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -3508,7 +3427,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	phanpy: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			rest: ["8M"],
 			rockslide: ["8M"],
 			snore: ["8M"],
@@ -3545,7 +3463,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	donphan: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			rest: ["8M"],
@@ -3598,7 +3515,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	stantler: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
 			thunderwave: ["8M"],
@@ -3644,7 +3560,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	poochyena: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -3685,7 +3600,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	mightyena: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			dig: ["8M"],
@@ -3730,7 +3644,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	wurmple: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			electroweb: ["8M"],
 			skittersmack: ["8T"],
 		},
@@ -3738,7 +3651,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	silcoon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			electroweb: ["8M"],
 			irondefense: ["8M"],
 			skittersmack: ["8T"],
@@ -3747,7 +3659,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	beautifly: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -3781,7 +3692,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	cascoon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			electroweb: ["8M"],
 			irondefense: ["8M"],
 			skittersmack: ["8T"],
@@ -3790,7 +3700,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	dustox: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -3825,7 +3734,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	taillow: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -3857,7 +3765,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	swellow: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -3891,7 +3798,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	surskit: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -3921,7 +3827,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	masquerain: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -3960,7 +3865,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	shroomish: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			safeguard: ["8M"],
 			rest: ["8M"],
@@ -3993,7 +3897,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	breloom: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			thunderpunch: ["8M"],
@@ -4048,7 +3951,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	slakoth: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -4093,7 +3995,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	vigoroth: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -4147,7 +4048,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	slaking: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -4207,7 +4107,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	makuhita: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -4257,7 +4156,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	hariyama: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -4318,7 +4216,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	nosepass: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -4362,7 +4259,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	skitty: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			payday: ["8M"],
 			solarbeam: ["8M"],
 			thunderwave: ["8M"],
@@ -4410,7 +4306,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	delcatty: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			payday: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -4461,7 +4356,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	meditite: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -4517,7 +4411,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	medicham: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -4578,7 +4471,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	plusle: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			thunderpunch: ["8M"],
@@ -4619,7 +4511,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	minun: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			thunderpunch: ["8M"],
@@ -4660,7 +4551,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	volbeat: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			icepunch: ["8M"],
@@ -4707,7 +4597,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	illumise: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			icepunch: ["8M"],
@@ -4754,7 +4643,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	gulpin: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -4790,7 +4678,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	swalot: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -4830,7 +4717,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	numel: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			rest: ["8M"],
 			rockslide: ["8M"],
@@ -4869,7 +4755,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	camerupt: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -4918,7 +4803,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	spoink: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			lightscreen: ["8M"],
 			reflect: ["8M"],
@@ -4960,7 +4844,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	grumpig: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -5017,7 +4900,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	spinda: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -5070,7 +4952,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	cacnea: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			thunderpunch: ["8M"],
 			pinmissile: ["8M"],
@@ -5112,7 +4993,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	cacturne: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			thunderpunch: ["8M"],
@@ -5163,7 +5043,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	zangoose: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -5219,7 +5098,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	seviper: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -5264,7 +5142,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	castform: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			thunderwave: ["8M"],
 			rest: ["8M"],
@@ -5308,7 +5185,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	kecleon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -5365,7 +5241,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	shuppet: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -5409,7 +5284,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	banette: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			thunderwave: ["8M"],
@@ -5460,7 +5334,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	tropius: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -5501,7 +5374,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	chimecho: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			lightscreen: ["8M"],
 			reflect: ["8M"],
@@ -5543,7 +5415,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	clamperl: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			rest: ["8M"],
 			snore: ["8M"],
 			protect: ["8M"],
@@ -5572,7 +5443,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	huntail: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			screech: ["8M"],
@@ -5613,7 +5483,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	gorebyss: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			safeguard: ["8M"],
@@ -5655,7 +5524,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	luvdisc: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			safeguard: ["8M"],
 			rest: ["8M"],
 			snore: ["8M"],
@@ -5690,7 +5558,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	deoxys: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -5762,7 +5629,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	turtwig: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			lightscreen: ["8M"],
 			reflect: ["8M"],
@@ -5802,7 +5668,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	grotle: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			lightscreen: ["8M"],
 			reflect: ["8M"],
@@ -5842,7 +5707,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	torterra: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -5893,7 +5757,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	chimchar: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			firespin: ["8M"],
@@ -5940,7 +5803,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	monferno: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			firespin: ["8M"],
@@ -5995,7 +5857,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	infernape: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			hyperbeam: ["8M"],
@@ -6058,7 +5919,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	piplup: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			rest: ["8M"],
 			snore: ["8M"],
@@ -6093,7 +5953,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	prinplup: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			rest: ["8M"],
 			snore: ["8M"],
@@ -6129,7 +5988,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	empoleon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			dig: ["8M"],
@@ -6177,7 +6035,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	starly: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -6205,7 +6062,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	staravia: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -6234,7 +6090,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	staraptor: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -6266,7 +6121,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	bidoof: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			dig: ["8M"],
 			rest: ["8M"],
@@ -6302,7 +6156,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	bibarel: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			thunderwave: ["8M"],
@@ -6350,14 +6203,12 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	kricketot: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			uproar: ["8M"],
 		},
 	},
 	kricketune: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			screech: ["8M"],
@@ -6388,7 +6239,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	cranidos: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			dig: ["8M"],
@@ -6438,7 +6288,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	rampardos: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			hyperbeam: ["8M"],
@@ -6498,7 +6347,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	shieldon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -6543,7 +6391,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	bastiodon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			dig: ["8M"],
@@ -6593,14 +6440,12 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	burmy: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			electroweb: ["8M"],
 		},
 	},
 	wormadam: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -6638,7 +6483,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	wormadamsandy: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -6677,7 +6521,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	wormadamtrash: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -6715,7 +6558,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	mothim: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -6749,7 +6591,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pachirisu: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderpunch: ["8M"],
 			thunderwave: ["8M"],
 			dig: ["8M"],
@@ -6785,7 +6626,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	buizel: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			icepunch: ["8M"],
 			dig: ["8M"],
 			rest: ["8M"],
@@ -6824,7 +6664,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	floatzel: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			icepunch: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -6872,7 +6711,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	ambipom: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			megapunch: ["8M"],
 			megakick: ["8M"],
 			firepunch: ["8M"],
@@ -6935,7 +6773,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	mismagius: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			magicalleaf: ["8M"],
@@ -6988,7 +6825,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	honchkrow: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -7035,7 +6871,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	glameow: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -7070,7 +6905,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	purugly: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			dig: ["8M"],
@@ -7110,7 +6944,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	chingling: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			lightscreen: ["8M"],
 			reflect: ["8M"],
@@ -7151,7 +6984,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	chatot: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			rest: ["8M"],
 			thief: ["8M"],
@@ -7181,7 +7013,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	carnivine: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			magicalleaf: ["8M"],
@@ -7214,7 +7045,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	finneon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			safeguard: ["8M"],
 			rest: ["8M"],
 			snore: ["8M"],
@@ -7249,7 +7079,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	lumineon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			safeguard: ["8M"],
@@ -7287,7 +7116,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	yanmega: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -7321,7 +7149,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	gliscor: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			pinmissile: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -7381,7 +7208,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	probopass: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -7433,7 +7259,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	phione: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			safeguard: ["8M"],
 			rest: ["8M"],
 			snore: ["8M"],
@@ -7469,7 +7294,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	manaphy: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			lightscreen: ["8M"],
@@ -7514,7 +7338,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	darkrai: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			thunderwave: ["8M"],
@@ -7567,7 +7390,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	shaymin: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			magicalleaf: ["8M"],
@@ -7600,7 +7422,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	arceus: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -7684,7 +7505,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	snivy: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			magicalleaf: ["8M"],
 			solarbeam: ["8M"],
 			lightscreen: ["8M"],
@@ -7718,7 +7538,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	servine: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			magicalleaf: ["8M"],
 			solarbeam: ["8M"],
 			lightscreen: ["8M"],
@@ -7752,7 +7571,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	serperior: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			magicalleaf: ["8M"],
@@ -7792,7 +7610,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	tepig: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			rest: ["8M"],
 			snore: ["8M"],
@@ -7830,7 +7647,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pignite: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			solarbeam: ["8M"],
@@ -7881,7 +7697,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	emboar: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			hyperbeam: ["8M"],
@@ -7939,7 +7754,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	oshawott: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -7983,7 +7797,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	dewott: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -8027,7 +7840,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	samurott: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			dig: ["8M"],
@@ -8077,7 +7889,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	patrat: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -8116,7 +7927,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	watchog: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -8167,7 +7977,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pansage: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			magicalleaf: ["8M"],
 			solarbeam: ["8M"],
 			dig: ["8M"],
@@ -8210,7 +8019,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	simisage: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			magicalleaf: ["8M"],
@@ -8260,7 +8068,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pansear: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			solarbeam: ["8M"],
 			firespin: ["8M"],
@@ -8306,7 +8113,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	simisear: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -8360,7 +8166,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	panpour: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			icepunch: ["8M"],
 			dig: ["8M"],
 			rest: ["8M"],
@@ -8407,7 +8212,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	simipour: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			icepunch: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -8461,7 +8265,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	blitzle: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			screech: ["8M"],
 			lightscreen: ["8M"],
@@ -8488,7 +8291,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	zebstrika: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			thunderwave: ["8M"],
@@ -8519,7 +8321,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	sewaddle: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			screech: ["8M"],
 			lightscreen: ["8M"],
@@ -8554,7 +8355,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	swadloon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			screech: ["8M"],
 			lightscreen: ["8M"],
@@ -8589,7 +8389,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	leavanny: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -8638,7 +8437,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	ducklett: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			rest: ["8M"],
 			snore: ["8M"],
@@ -8669,7 +8467,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	swanna: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -8703,7 +8500,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	deerling: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			thunderwave: ["8M"],
 			lightscreen: ["8M"],
@@ -8738,7 +8534,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	sawsbuck: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -8778,7 +8573,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	alomomola: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			lightscreen: ["8M"],
 			safeguard: ["8M"],
 			rest: ["8M"],
@@ -8814,7 +8608,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	tynamo: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			gigadrain: ["8M"],
 			risingvoltage: ["8T"],
@@ -8823,7 +8616,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	eelektrik: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderwave: ["8M"],
 			lightscreen: ["8M"],
 			rest: ["8M"],
@@ -8854,7 +8646,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	eelektross: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			hyperbeam: ["8M"],
@@ -8900,7 +8691,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	meloetta: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -8961,7 +8751,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	chespin: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderpunch: ["8M"],
 			pinmissile: ["8M"],
 			solarbeam: ["8M"],
@@ -9017,7 +8806,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	quilladin: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderpunch: ["8M"],
 			pinmissile: ["8M"],
 			solarbeam: ["8M"],
@@ -9073,7 +8861,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	chesnaught: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			thunderpunch: ["8M"],
 			pinmissile: ["8M"],
 			hyperbeam: ["8M"],
@@ -9136,7 +8923,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	fennekin: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			solarbeam: ["8M"],
 			firespin: ["8M"],
@@ -9172,7 +8958,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	braixen: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			solarbeam: ["8M"],
@@ -9215,7 +9000,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	delphox: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			thunderpunch: ["8M"],
 			hyperbeam: ["8M"],
@@ -9269,7 +9053,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	froakie: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			dig: ["8M"],
 			rest: ["8M"],
 			rockslide: ["8M"],
@@ -9305,7 +9088,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	frogadier: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			icepunch: ["8M"],
 			dig: ["8M"],
 			rest: ["8M"],
@@ -9345,7 +9127,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	greninja: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			icepunch: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -9390,7 +9171,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	greninjaash: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			icepunch: ["8M"],
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
@@ -9434,14 +9214,12 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	scatterbug: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			skittersmack: ["8T"],
 		},
 	},
 	spewpa: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			electroweb: ["8M"],
 			irondefense: ["8M"],
 			skittersmack: ["8T"],
@@ -9450,7 +9228,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	vivillon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -9486,7 +9263,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	litleo: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			firespin: ["8M"],
 			dig: ["8M"],
@@ -9527,7 +9303,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pyroar: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -9571,7 +9346,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	flabebe: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			magicalleaf: ["8M"],
 			solarbeam: ["8M"],
 			safeguard: ["8M"],
@@ -9603,7 +9377,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	floette: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			magicalleaf: ["8M"],
 			solarbeam: ["8M"],
 			safeguard: ["8M"],
@@ -9635,7 +9408,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	florges: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			magicalleaf: ["8M"],
@@ -9670,7 +9442,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	skiddo: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			solarbeam: ["8M"],
 			dig: ["8M"],
 			rest: ["8M"],
@@ -9707,7 +9478,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	gogoat: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -9749,7 +9519,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	furfrou: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			gigaimpact: ["8M"],
 			thunderwave: ["8M"],
 			dig: ["8M"],
@@ -9783,7 +9552,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	hoopa: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -9839,7 +9607,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	pikipek: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -9869,7 +9636,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	trumbeak: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -9900,7 +9666,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	toucannon: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			screech: ["8M"],
 			rest: ["8M"],
@@ -9934,7 +9699,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	yungoos: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			rest: ["8M"],
 			thief: ["8M"],
 			snore: ["8M"],
@@ -9965,7 +9729,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	gumshoos: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			firepunch: ["8M"],
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
@@ -10004,7 +9767,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	crabrawler: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
 			rest: ["8M"],
@@ -10046,7 +9808,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	crabominable: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			icepunch: ["8M"],
 			thunderpunch: ["8M"],
 			gigaimpact: ["8M"],
@@ -10094,7 +9855,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	oricorio: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			fly: ["8M"],
 			safeguard: ["8M"],
 			rest: ["8M"],
@@ -10126,7 +9886,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	minior: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			gigaimpact: ["8M"],
 			solarbeam: ["8M"],
@@ -10166,7 +9925,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	komala: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			hyperbeam: ["8M"],
 			rockslide: ["8M"],
 			snore: ["8M"],
@@ -10202,7 +9960,6 @@ export const Learnsets: {[speciesid: string]: ModdedLearnsetData} = {
 	bruxish: {
 		inherit: true,
 		learnset: {
-			inherit: true,
 			gigaimpact: ["8M"],
 			screech: ["8M"],
 			lightscreen: ["8M"],
