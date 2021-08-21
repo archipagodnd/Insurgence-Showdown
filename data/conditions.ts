@@ -445,38 +445,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 	// weather is implemented here since it's so important to the game
 
-	darkness: {
-		name: 'Darkness',
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback(source, effect) {
-			if (source?.hasItem('darkrock')) {
-				return 8;
-			}
-			return 5;
-		},
-		onWeatherModifyDamage(damage, attacker, defender, move) {
-			if (move.type === 'Dark' || move.type === 'Ghost') {
-				this.debug('darkness damage boost');
-				return this.chainModify(1.35);
-			}
-			if (move.type === 'Fairy') {
-				this.debug('darkness fairy weaken');
-				return this.chainModify(0.75);
-			}
-		},
-		onStart(battle, source, effect) {
-			this.add('-weather', 'Darkness');
-		},
-		onResidualOrder: 1,
-		onResidual() {
-			this.add('-weather', 'Darkness', '[upkeep]');
-			this.eachEvent('Weather');
-		},
-		onEnd() {
-			this.add('-weather', 'none');
-		},
-	},
 	raindance: {
 		name: 'RainDance',
 		effectType: 'Weather',
