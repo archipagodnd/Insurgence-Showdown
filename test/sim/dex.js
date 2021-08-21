@@ -61,8 +61,10 @@ describe('Dex#getItem', function () {
 		assert(!Dex.forGen(5).items.get('Rock Gem').isNonstandard);
 		assert(!Dex.forGen(5).items.get('Normal Gem').isNonstandard);
 
-		assert.equal(Dex.forGen(6).items.get('Rock Gem').isNonstandard, 'Unobtainable');
-		assert(!Dex.forGen(6).items.get('Normal Gem').isNonstandard);
+		assert(!Dex.forGen(6).items.get('Rock Gem').isNonstandard);
+
+		assert.equal(Dex.forGen(7).items.get('Rock Gem').isNonstandard, 'Unobtainable');
+		assert(!Dex.forGen(7).items.get('Normal Gem').isNonstandard);
 
 		assert.equal(Dex.forGen(8).items.get('Rock Gem').isNonstandard, 'Past');
 	});
