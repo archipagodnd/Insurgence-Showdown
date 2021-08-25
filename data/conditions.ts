@@ -465,15 +465,20 @@ export const Conditions: {[k: string]: ConditionData} = {
 				return this.chainModify(0.75);
 			}
 		},
-		onStart(battle, source, effect) {
-			this.add('-weather', 'Darkness');
+		onFieldStart(field, source, effect) {
+			if (effect?.effectType === 'Ability') {
+				if (this.gen <= 5) this.effectState.duration = 0;
+				this.add('-weather', 'Darkness', '[from] ability: ' + effect, '[of] ' + source);
+			} else {
+				this.add('-weather', 'Darkness');
+			}
 		},
-		onResidualOrder: 1,
-		onResidual() {
+		onFieldResidualOrder: 1,
+		onFieldResidual() {
 			this.add('-weather', 'Darkness', '[upkeep]');
-			this.eachEvent('Weather');
+			if (this.field.isWeather('darkness')) this.eachEvent('Weather');
 		},
-		onEnd() {
+		onFieldEnd() {
 			this.add('-weather', 'none');
 		},
 	},
