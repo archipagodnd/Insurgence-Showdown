@@ -1397,6 +1397,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				this.actions.useMove('stealthcoal', pokemon, target);
 				return null;
 			}
+			return;
 		},
 		name: "Foundry",
 		gen: 6,
