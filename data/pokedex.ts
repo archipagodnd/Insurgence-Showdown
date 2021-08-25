@@ -4201,7 +4201,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Mewtwo-Shadow-Mega",
 		baseSpecies: "Mewtwo-Shadow",
 		forme: "Mega",
-		types: ["Psychic", "Dark"],
+		types: ["Psychic", "Fighting"],
 		gender: "N",
 		baseStats: {hp: 106, atk: 190, def: 100, spa: 154, spd: 100, spe: 130},
 		abilities: {0: "Shadow Synergy"},
