@@ -20159,6 +20159,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		slotCondition: 'Wish',
 		condition: {
 			duration: 2,
+			durationCallback(pokemon) {
+				if (pokemon.hasAbility('periodicorbit')) {
+					return 4;
+				}	else {
+					return 2;
+				}
+			},
 			onStart(pokemon, source) {
 				this.effectState.hp = source.maxhp / 2;
 			},
@@ -20184,13 +20191,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Wish Periodic",
-		realMove: "Wish",
 		pp: 10,
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
-		slotCondition: 'Wish',
+		slotCondition: 'WishPeriodic',
 		condition: {
-			duration: 4,
+			duration: 2,
 			onStart(pokemon, source) {
 				this.effectState.hp = source.maxhp / 2;
 			},
