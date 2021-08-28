@@ -17347,7 +17347,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 0,
 		category: "Status",
 		name: "Stealth Coal",
-		realMove: "Stealth Rock",
 		pp: 20,
 		priority: 0,
 		flags: {reflectable: 1},
