@@ -3566,6 +3566,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {},
 		isFutureMove: true,
+		durationCallback(pokemon) {
+			if (pokemon.hasAbility('periodicorbit')) {
+				return 5;
+			}	else {
+				return 3;
+			}
+		},
 		onTry(source, target) {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
@@ -3598,7 +3605,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		basePower: 140,
 		category: "Special",
 		name: "Doom Desire Periodic",
-		realMove: "Doom Desire",
 		pp: 5,
 		priority: 0,
 		flags: {},
