@@ -3147,11 +3147,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	periodicorbit: {
 		onAfterMoveSecondary(target, source, move) {
-			if (move.id === 'futuresight') {
-				this.actions.useMove('futuresightperiodic', source, target);
-			} else if (move.id === 'doomdesire') {
-				this.actions.useMove('doomdesireperiodic', source, target);
-			} else if (move.id === 'wish') {
+			if (move.id === 'wish') {
 				this.actions.useMove('wishperiodic', source, target);
 			}
 		},

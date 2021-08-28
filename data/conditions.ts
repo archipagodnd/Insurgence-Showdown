@@ -360,13 +360,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 		name: 'futuremove',
 		duration: 3,
 		onResidualOrder: 3,
-		durationCallback(pokemon) {
-			if (pokemon.hasAbility('periodicorbit')) {
-				return 5;
-			}	else {
-				return 3;
-			}
-		},
 		onEnd(target) {
 			const data = this.effectState;
 			// time's up; time to hit! :D
