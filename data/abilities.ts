@@ -4346,17 +4346,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onResidual(pokemon) {
 			if (!pokemon.hp) return;
 			if (!this.field.isWeather('hail')) return;
-			for (const target of pokemon.side.foe.active) {
-				if (target.hasType('Ice')) continue;
-				if (!target || !target.hp) continue;
-				if (
-					target.hasAbility('sleet') || target.hasAbility('snowwarning') ||
-					target.hasAbility('snowcloak') || target.hasAbility('slushrush') ||
-					target.hasAbility('icebody') || target.hasAbility('overcoat') ||
-					target.hasItem('safetygoggles')
-				) continue;
-				this.damage(target.maxhp / 16, target, pokemon);
-			}
 			for (const target of pokemon.side.active) {
 				if (target.hasType('Ice')) continue;
 				if (!target || !target.hp) continue;
