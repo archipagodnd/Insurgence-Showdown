@@ -3481,6 +3481,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	proteanmaxima: {
 		onBeforeMove(attacker, defender, move) {
 			const type = move.type;
+			if (move.id === 'hiddenpower') type = 'Normal';
 			if (type === 'Water' && attacker.getTypes().join() !== type) {
 				attacker.formeChange('Eevee-Mega-V');
 				attacker.baseMaxhp = Math.floor(Math.floor(
