@@ -4326,11 +4326,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	sleet: {
 		onStart(source) {
 			this.field.setWeather('hail');
+			this.add('-ability', source, 'Sleet');
 		},
 		onResidual(pokemon) {
 			if (!pokemon.hp) return;
 			if (!this.field.isWeather('hail')) return;
-			for (const target of pokemon.side.active) {
+			for (const target of this.getAllActive()) {
 				if (target.hasType('Ice')) continue;
 				if (!target || !target.hp) continue;
 				if (
@@ -4339,8 +4340,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 					target.hasAbility('icebody') || target.hasAbility('overcoat') ||
 					target.hasItem('safetygoggles')
 				) continue;
-				this.damage(11 * target.maxhp / 80, target, pokemon);
+				this.damage(11 * target.maxhp / 80, target);
 			}
+		},
+		onEnd(source) {
+			this.add('-end', source, 'ability: Sleet');
 		},
 		name: "Sleet",
 		gen: 6,
