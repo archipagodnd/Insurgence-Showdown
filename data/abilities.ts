@@ -142,26 +142,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 148,
 	},
 	ancientpresence: {
-		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
-			if (
-				attacker.types[0] === move.type ||
-				attacker.types[1] === move.type ||
-				attacker.types[2] === move.type
-			) return;
-			return this.chainModify(1.5);
-		},
-		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
-			if (
-				attacker.types[0] === move.type ||
-				attacker.types[1] === move.type ||
-				attacker.types[2] === move.type
-			) return;
-			return this.chainModify(1.5);
-		},
 		onModifyMovePriority: -5,
 		onModifyMove(move, source, target) {
+			move.forceSTAB = true;
 			if (target?.hasAbility('wonderguard')) return;
 			if (!move.ignoreImmunity) move.ignoreImmunity = {};
 			if (move.ignoreImmunity !== true) {
