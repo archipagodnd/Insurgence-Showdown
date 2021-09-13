@@ -3563,7 +3563,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
 				attacker.maxhp = newMaxHP;
 			} else if (type === 'Normal' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega');
+				attacker.formeChange('Eevee-Mega-Base');
 				attacker.baseMaxhp = Math.floor(Math.floor(
 					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
 				) * attacker.level / 100 + 10);
