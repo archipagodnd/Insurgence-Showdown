@@ -1103,9 +1103,9 @@ export const Items: {[itemid: string]: ItemData} = {
 	crystalpiecearceus: {
 		name: "Crystal Piece Arceus",
 		spritenum: 702,
-		itemUser: ["Arceus-Pre-Primal"],
+		itemUser: ["Arceus"],
 		onSwitchIn(pokemon) {
-			if (pokemon.isActive && pokemon.baseSpecies.name === 'Arceus-Pre-Primal') {
+			if (pokemon.isActive && pokemon.baseSpecies.name === 'Arceus') {
 				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
 			}
 		},
@@ -1113,7 +1113,7 @@ export const Items: {[itemid: string]: ItemData} = {
 			pokemon.formeChange('Arceus-Primal', this.effect, true);
 		},
 		onTakeItem(item, source) {
-			if (source.baseSpecies.baseSpecies === 'Arceus-Pre-Primal') return false;
+			if (source.baseSpecies.baseSpecies === 'Arceus') return false;
 			return true;
 		},
 		num: 929,

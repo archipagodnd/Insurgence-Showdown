@@ -1865,8 +1865,7 @@ export class Pokemon {
 	setType(newType: string | string[], enforce = false) {
 		// First type of Arceus, Silvally cannot be normally changed
 		if (!enforce) {
-			if ((this.battle.gen >= 5 && (this.species.num === 493 || this.species.num === 773)) ||
-				(this.battle.gen === 4 && this.hasAbility('multitype'))) {
+			if (this.hasAbility('multitype') || this.hasAbility('rkssystem')) {
 				return false;
 			}
 		}
