@@ -38273,6 +38273,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			signalbeam: ["6T"],
 			skyattack: ["6T"],
 			snore: ["6T"],
+			superpower: ["6T"],
 			swift: ["6T"],
 			tailwind: ["6T"],
 			trick: ["6T"],

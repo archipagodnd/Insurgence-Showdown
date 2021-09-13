@@ -16977,7 +16977,6 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Black",
 		eggGroups: ["Undiscovered"],
 		changesFrom: "Zygarde",
-		gen: 7,
 	},
 	zygardecomplete: {
 		num: 718,
@@ -16994,7 +16993,6 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		eggGroups: ["Undiscovered"],
 		requiredAbility: "Power Construct",
 		battleOnly: ["Zygarde", "Zygarde-10%"],
-		gen: 7,
 	},
 	diancie: {
 		num: 719,
