@@ -3930,8 +3930,6 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	snorlaxdelta: {
 		num: 143,
 		name: "Snorlax-Delta",
-		baseSpecies: "Snorlax",
-		forme: "Delta",
 		types: ["Grass"],
 		genderRatio: {M: 0.875, F: 0.125},
 		baseStats: {hp: 160, atk: 110, def: 65, spa: 65, spd: 110, spe: 30},
@@ -3942,6 +3940,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Munchlax-Delta",
 		evoType: "levelFriendship",
 		eggGroups: ["Amorphous"],
+		cosmeticFormes: ["Snorlax-Delta-Summer", "Snorlax-Delta-Autumn", "Snorlax-Delta-Winter"],
+		formeOrder: ["Snorlax-Delta", "Snorlax-Delta-Summer", "Snorlax-Delta-Autumn", "Snorlax-Delta-Winter"],
 		canHatch: true,
 	},
 	articuno: {
@@ -4222,6 +4222,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		weightkg: 4,
 		color: "Pink",
 		tags: ["Mythical"],
+		cosmeticFormes: ["Mew-Space"],
+		formeOrder: ["Mew", "Mew-Space"],
 		eggGroups: ["Undiscovered"],
 	},
 	chikorita: {
