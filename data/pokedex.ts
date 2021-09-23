@@ -3940,8 +3940,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Munchlax-Delta",
 		evoType: "levelFriendship",
 		eggGroups: ["Amorphous"],
-		cosmeticFormes: ["Snorlax-Delta-Summer", "Snorlax-Delta-Autumn", "Snorlax-Delta-Winter"],
-		formeOrder: ["Snorlax-Delta", "Snorlax-Delta-Summer", "Snorlax-Delta-Autumn", "Snorlax-Delta-Winter"],
+		cosmeticFormes: ["Snorlax-Delta-Summer", "Snorlax-Delta-Autumn", "Snorlax-Delta-Winter", "Snorlax-Delta-Sakura"],
+		formeOrder: ["Snorlax-Delta", "Snorlax-Delta-Summer", "Snorlax-Delta-Autumn", "Snorlax-Delta-Winter", "Snorlax-Delta-Sakura"],
 		canHatch: true,
 	},
 	articuno: {
