@@ -14502,7 +14502,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			}
 			if (move.willChangeFormeDelta) {
 				const meloettaForme = pokemon.species.id === 'meloettadeltamagician' ? '-Mime' : '-Magician';
-				pokemon.formeChange('Meloetta-Delta' + meloettaForme, this.effect, false, '[msg]');
+				pokemon.formeChange('Meloetta-Delta' + meloettaForme, this.effect, true, '[msg]');
 			}
 		},
 		target: "allAdjacentFoes",
