@@ -5470,6 +5470,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3,
 		num: 32,
 	},
+	winterjoy: {
+		onBasePowerPriority: 21,
+		onBasePower(basePower, pokemon, target, move) {
+			const currentDate = new Date();
+			monthnr = currentDate.getMonth();
+			if (monthnr < 2 || montnr > 9) return this.chainModify([5734, 4096]);
+			if (8 > monthnr > 3) return this.chainModify([2867, 4096]);
+		},
+	},
 	wonderguard: {
 		onTryHit(target, source, move) {
 			if (target === source || move.category === 'Status' || move.type === '???' || move.id === 'struggle') return;
