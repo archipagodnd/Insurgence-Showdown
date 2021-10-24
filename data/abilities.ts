@@ -5478,6 +5478,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (monthnr < 2 || montnr > 9) return this.chainModify([5734, 4096]);
 			if (8 > monthnr > 3) return this.chainModify([2867, 4096]);
 		},
+		name: "Winter Joy",
+		gen: 6,
+		rating: 3,
+		num: 32,
 	},
 	wonderguard: {
 		onTryHit(target, source, move) {
