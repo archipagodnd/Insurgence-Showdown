@@ -14577,23 +14577,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				pkmn === 'yanmega' ||
 				(pkmn.substr(-4) !== 'mega' &&
 				pkmn.substr(-5) !== 'megax' &&
-				pkmn.substr(-5) !== 'megay' &&
-				pkmn.substr(-5) !== 'megabase' &&
-				pkmn.substr(-5) !== 'megae' &&
-				pkmn.substr(-5) !== 'megaf' &&
-				pkmn.substr(-5) !== 'megag' &&
-				pkmn.substr(-5) !== 'megaj' &&
-				pkmn.substr(-5) !== 'megal' &&
-				pkmn.substr(-5) !== 'megas' &&
-				pkmn.substr(-5) !== 'megau' &&
-				pkmn.substr(-5) !== 'megav' &&
-				pkmn.substr(-5) !== 'megafive' &&
-				pkmn.substr(-5) !== 'megasix' &&
-				pkmn.substr(-5) !== 'megaseven' &&
-				pkmn.substr(-5) !== 'megaeight' &&
-				pkmn.substr(-5) !== 'meganine' &&
-				pkmn.substr(-5) !== 'megafire' &&
-				pkmn.substr(-5) !== 'megasteel')
+				pkmn.substr(-5) !== 'megay')
 			) return;
 			const nonMega = target.baseSpecies.baseSpecies;
 
