@@ -12555,7 +12555,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 195,
 		category: "Special",
-		isNonstandard: "",
+		isNonstandard: "PastMove",
 		name: "Oceanic Operetta",
 		pp: 1,
 		priority: 0,

@@ -2958,7 +2958,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return null;
 			}
 			if (move.id === 'Sheer Cold') {
-				this.add('-immune', pokemon, '[from] ability: Omnitype');
+				this.add('-immune', target, '[from] ability: Omnitype');
 				return null;
 			}
 		},
@@ -3486,7 +3486,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	proteanmaxima: {
 		onBeforeMove(attacker, defender, move) {
 			const type = move.type;
-			if (move.id === 'hiddenpower') type = 'Normal';
+			if (move.id === 'hiddenpower') move.type = 'Normal';
 			if (type === 'Water' && attacker.getTypes().join() !== type) {
 				attacker.formeChange('Eevee-Mega-V');
 				attacker.baseMaxhp = Math.floor(Math.floor(
