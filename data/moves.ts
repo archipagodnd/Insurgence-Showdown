@@ -14600,8 +14600,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 			target.formeChange(nonMega, this.effect, true);
 
 			const abilities = target.baseSpecies.abilities;
-			const ability = this.sample(abilities);
-			target.ability = ability;
+			const randAbility = this.sample(abilities);
+
+			const oldAbility = pokemon.setAbility(randAbility);
+			if (oldAbility) {
+				this.add('-ability', pokemon, randAbility, '[from] move: Retrograde');
+				return;
+			}
+			return false;
 		},
 		secondary: null,
 		target: "normal",
