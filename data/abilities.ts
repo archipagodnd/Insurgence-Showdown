@@ -5483,8 +5483,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onBasePower(basePower, pokemon, target, move) {
 			const currentDate = new Date();
 			const monthnr = currentDate.getMonth();
-			if (monthnr < 2 || montnr > 9) return this.chainModify([5734, 4096]);
-			if (8 > monthnr > 3) return this.chainModify([2867, 4096]);
+			if (monthnr < 2 || monthnr > 9) return this.chainModify([5734, 4096]);
+			if (monthnr > 3 && monthnr < 8 ) return this.chainModify([2867, 4096]);
 		},
 		name: "Winter Joy",
 		gen: 6,
