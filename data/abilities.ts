@@ -2957,6 +2957,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				this.add('-immune', this.effectState.target, '[from] ability: Omnitype');
 				return null;
 			}
+			if (move.ohko) {
+				this.add('-immune', pokemon, '[from] ability: Omnitype');
+				return null;
+			}
 		},
 		onAllyTryHitSide(target, source, move) {
 			if (target.species.id !== 'giratinaprimal') return;
