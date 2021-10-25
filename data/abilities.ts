@@ -4339,7 +4339,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 					target.hasAbility('sleet') || target.hasAbility('snowwarning') ||
 					target.hasAbility('snowcloak') || target.hasAbility('slushrush') ||
 					target.hasAbility('icebody') || target.hasAbility('overcoat') ||
-					target.hasItem('safetygoggles')
+					target.hasAbility('omnitype') || target.hasItem('safetygoggles')
 				) continue;
 				this.damage(11 * target.maxhp / 80, target);
 			}
