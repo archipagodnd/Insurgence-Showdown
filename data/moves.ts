@@ -14599,7 +14599,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 
 			target.formeChange(nonMega, this.effect, true);
 
-			const abilities = target.baseSpecies.abilities;
+			const baseAbilities = target.baseSpecies.abilities;
 			const randAbility = this.sample(abilities);
 
 			const oldAbility = target.setAbility(randAbility);
