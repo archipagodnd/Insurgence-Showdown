@@ -14598,16 +14598,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			const nonMega = target.baseSpecies.baseSpecies;
 
 			target.formeChange(nonMega, this.effect, true);
-
-			// const baseAbilities = target.baseSpecies.abilities;
-			// const randAbility = this.sample(baseAbilities);
-			//
-			// const oldAbility = target.setAbility(randAbility);
-			// if (oldAbility) {
-			// 	this.add('-ability', target, randAbility, '[from] move: Retrograde');
-			// 	return;
-			// }
-			// return false;
 		},
 		secondary: null,
 		target: "normal",

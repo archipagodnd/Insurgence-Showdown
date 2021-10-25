@@ -1302,9 +1302,6 @@ export class Pokemon {
 			}
 		}
 		if (isPermanent && !['disguise', 'iceface'].includes(source.id)) {
-			if (this.illusion) {
-				this.ability = ''; // Don't allow Illusion to wear off
-			}
 			this.setAbility(species.abilities['0'], null, true);
 			this.baseAbility = this.ability;
 		}
