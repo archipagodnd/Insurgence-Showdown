@@ -3001,6 +3001,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (pokemon.species.id !== 'giratinaprimal') return;
 			pokemon.trapped = pokemon.maybeTrapped = false;
 		},
+		isBreakable: true,
 		name: "Omnitype",
 		gen: 6,
 		rating: 3,
