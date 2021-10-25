@@ -5484,7 +5484,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			const currentDate = new Date();
 			const monthnr = currentDate.getMonth();
 			if (monthnr < 2 || monthnr > 9) return this.chainModify([5734, 4096]);
-			if (monthnr > 3 && monthnr < 8 ) return this.chainModify([2867, 4096]);
+			if (monthnr > 3 && monthnr < 8) return this.chainModify([2867, 4096]);
 		},
 		name: "Winter Joy",
 		gen: 6,
