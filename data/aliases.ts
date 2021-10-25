@@ -464,7 +464,7 @@ export const Aliases: {[alias: string]: string} = {
 	snorlaxdeltaautumn: "Snorlax-Delta",
 	snorlaxdeltawinter: "Snorlax-Delta",
 	snorlaxdeltasakura: "Snorlax-Delta",
-	mewpace: "Mew",
+	mewspace: "Mew",
 
 	pokestargiant2: "Pokestar Giant",
 	pokestarmonica2: "Pokestar Giant",
