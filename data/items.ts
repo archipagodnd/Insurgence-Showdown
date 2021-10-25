@@ -6030,8 +6030,8 @@ export const Items: {[itemid: string]: ItemData} = {
 		num: 1114,
 		gen: 8,
 	},
-	steelixite: {
-		name: "Steelixite",
+	steelixitesteel: {
+		name: "Steelixite Steel",
 		spritenum: 621,
 		megaStone: "Steelix-Mega-Steel",
 		megaEvolves: "Steelix",

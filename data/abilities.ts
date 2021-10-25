@@ -5477,7 +5477,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onBasePowerPriority: 21,
 		onBasePower(basePower, pokemon, target, move) {
 			const currentDate = new Date();
-			monthnr = currentDate.getMonth();
+			const monthnr = currentDate.getMonth();
 			if (monthnr < 2 || montnr > 9) return this.chainModify([5734, 4096]);
 			if (8 > monthnr > 3) return this.chainModify([2867, 4096]);
 		},

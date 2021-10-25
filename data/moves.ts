@@ -14578,7 +14578,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				(pkmn.substr(-4) !== 'mega' &&
 				pkmn.substr(-5) !== 'megax' &&
 				pkmn.substr(-5) !== 'megay' &&
-				pkmn.substr(-5) !== 'megabase' &&
+				pkmn.substr(-8) !== 'megabase' &&
 				pkmn.substr(-5) !== 'megae' &&
 				pkmn.substr(-5) !== 'megaf' &&
 				pkmn.substr(-5) !== 'megag' &&
@@ -14587,17 +14587,17 @@ export const Moves: {[moveid: string]: MoveData} = {
 				pkmn.substr(-5) !== 'megas' &&
 				pkmn.substr(-5) !== 'megau' &&
 				pkmn.substr(-5) !== 'megav' &&
-				pkmn.substr(-5) !== 'megafive' &&
-				pkmn.substr(-5) !== 'megasix' &&
-				pkmn.substr(-5) !== 'megaseven' &&
-				pkmn.substr(-5) !== 'megaeight' &&
-				pkmn.substr(-5) !== 'meganine' &&
-				pkmn.substr(-5) !== 'megafire' &&
-				pkmn.substr(-5) !== 'megasteel')
+				pkmn.substr(-8) !== 'megafive' &&
+				pkmn.substr(-7) !== 'megasix' &&
+				pkmn.substr(-9) !== 'megaseven' &&
+				pkmn.substr(-9) !== 'megaeight' &&
+				pkmn.substr(-8) !== 'meganine' &&
+				pkmn.substr(-8) !== 'megafire' &&
+				pkmn.substr(-9) !== 'megasteel')
 			) return;
 			const nonMega = target.baseSpecies.baseSpecies;
 
-			target.formeChange(nonMega);
+			target.formeChange(nonMega, this.effect, true);
 		},
 		secondary: null,
 		target: "normal",
