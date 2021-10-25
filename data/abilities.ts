@@ -2957,7 +2957,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				this.add('-immune', this.effectState.target, '[from] ability: Omnitype');
 				return null;
 			}
-			if (move.ohko) {
+			if (move.id === 'Sheer Cold') {
 				this.add('-immune', pokemon, '[from] ability: Omnitype');
 				return null;
 			}
