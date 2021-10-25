@@ -14602,9 +14602,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 			const abilities = target.baseSpecies.abilities;
 			const randAbility = this.sample(abilities);
 
-			const oldAbility = pokemon.setAbility(randAbility);
+			const oldAbility = target.setAbility(randAbility);
 			if (oldAbility) {
-				this.add('-ability', pokemon, randAbility, '[from] move: Retrograde');
+				this.add('-ability', target, randAbility, '[from] move: Retrograde');
 				return;
 			}
 			return false;
