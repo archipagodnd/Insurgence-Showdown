@@ -459,6 +459,12 @@ export const Aliases: {[alias: string]: string} = {
 	unownz: "Unown",
 	unownexclamation: "Unown",
 	unownquestion: "Unown",
+	snorlaxdeltaspring: "Snorlax-Delta",
+	snorlaxdeltasummer: "Snorlax-Delta",
+	snorlaxdeltaautumn: "Snorlax-Delta",
+	snorlaxdeltawinter: "Snorlax-Delta",
+	snorlaxdeltasakura: "Snorlax-Delta",
+	mewpace: "Mew",
 
 	pokestargiant2: "Pokestar Giant",
 	pokestarmonica2: "Pokestar Giant",
