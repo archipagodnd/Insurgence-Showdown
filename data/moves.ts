@@ -14599,7 +14599,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 
 			target.formeChange(nonMega, this.effect, true);
 
-			const abilities = (pkmn.abilities).filter(a => this.dex.abilities.get(a).gen <= this.gen);
+			const abilities = target.baseSpecies.abilities
 			const ability = this.sample(abilities);
 			target.ability = ability;
 		},
