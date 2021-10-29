@@ -478,7 +478,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		effectType: 'ValidatorRule',
 		name: 'Level 120',
 		desc: "Allows Pokémon up to Level 120.",
-		ruleset: ['Max Level = 120', 'Default Level = 120'],
+		ruleset: ['Max Level = 120', 'Default Level = 120', 'Overflow Stat Mod'],
 	},
 	blitz: {
 		effectType: 'Rule',
