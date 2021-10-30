@@ -1780,8 +1780,8 @@ export class BattleActions {
 			}
 		}
 		if (pokemon.species.name === 'Zoroark' && pokemon.illusion !== null) {
-			const illusionMon = pokemon.illusion;
-			const altForme = illusionMon.otherFormes && this.dex.illusionMon.get(illusionMon.otherFormes[0]);
+			const illusionMon = pokemon.illusion.id;
+			const altForme = illusionMon.otherFormes && this.dex.species.get(illusionMon.otherFormes[0]);
 			if ((this.battle.gen <= 7 || this.battle.ruleTable.has('standardnatdex')) && altForme?.isMega) {
 				const newIllusionMon = altForme.name;
 				pokemon.illusion = newIllusionMon;
