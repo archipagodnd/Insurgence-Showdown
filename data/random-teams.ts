@@ -2338,6 +2338,7 @@ export class RandomTeams {
 			drought: 'sunnyday',
 			snowwarning: 'hail',
 			sandstream: 'sandstorm',
+			noctem: 'darkness',
 		};
 		const resistanceAbilities: {[k: string]: string[]} = {
 			waterabsorb: ['Water'],

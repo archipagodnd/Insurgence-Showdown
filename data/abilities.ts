@@ -159,7 +159,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				}
 				if (
 					target?.volatiles['magnetrise'] || target?.hasItem('airballoon') ||
-					target?.hasAbility('levitate') || target?.hasAbility('omnitype')
+					target?.hasAbility('levitate')
 				) {
 					move.ignoreImmunity['Ground'] = false;
 				} else {
