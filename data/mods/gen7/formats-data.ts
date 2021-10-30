@@ -607,7 +607,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NU",
 		doublesTier: "(DUU)",
 	},
-	steelixmega: {
+	steelixmegasteel: {
 		randomBattleMoves: ["dragontail", "earthquake", "heavyslam", "roar", "stealthrock", "toxic"],
 		randomDoubleBattleMoves: ["earthquake", "heavyslam", "protect", "rockslide", "stealthrock"],
 		tier: "UU",
@@ -5358,7 +5358,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	eeveepremega: {
 		tier: "PU",
 	},
-	eeveepremegamega: {
+	eeveemegabase: {
 		tier: "RU",
 	},
 	mewtwoshadow: {
@@ -5463,7 +5463,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	bisharpmega: {
 		tier: "OU",
 	},
-	hydreigonmega: {
+	hydreigonmegafive: {
 		tier: "Uber",
 	},
 	tyranitararmor: {
@@ -5481,10 +5481,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	giratinaprimal: {
 		tier: "Uber",
 	},
-	arceuspreprimal: {
-		tier: "Uber",
-	},
-	arceuspreprimalprimal: {
+	arceusprimal: {
 		tier: "Uber",
 	},
 };
