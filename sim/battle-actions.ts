@@ -1779,8 +1779,19 @@ export class BattleActions {
 				return false;
 			}
 		}
-
-		pokemon.formeChange(speciesid, pokemon.getItem(), true);
+		if (pokemon.species.name === 'Zoroark' && pokemon.illusion !== null) {
+			const illusionMon = pokemon.illusion;
+			const altForme = illusionMon.otherFormes && this.dex.illusionMon.get(illusionMon.otherFormes[0]);
+			if ((this.battle.gen <= 7 || this.battle.ruleTable.has('standardnatdex')) && altForme?.isMega) {
+				const newIllusionMon = altForme.name;
+				pokemon.illusion = newIllusionMon;
+			}
+		}
+		if (pokemon.species.name === 'Zoroark') {
+			pokemon.formeChange(speciesid, pokemon.getItem(), true, '[silent]');
+		} else {
+			pokemon.formeChange(speciesid, pokemon.getItem(), true);
+		}
 
 		// Limit one mega evolution
 		const wasMega = pokemon.canMegaEvo;

@@ -6920,8 +6920,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		evoType: "useItem",
 		evoItem: "Leaf Stone",
 		eggGroups: ["Field", "Grass"],
-		otherFormes: ["Shiftry-Delta", "Shiftry-Mega"],
-		formeOrder: ["Shiftry", "Shiftry-Delta", "Shiftry-Mega"],
+		otherFormes: ["Shiftry-Mega", "Shiftry-Delta"],
+		formeOrder: ["Shiftry", "Shiftry-Mega", "Shiftry-Delta"],
 	},
 	shiftrydelta: {
 		num: 275,
@@ -7551,8 +7551,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Lairon",
 		evoLevel: 42,
 		eggGroups: ["Monster"],
-		otherFormes: ["Aggron-Delta", "Aggron-Mega"],
-		formeOrder: ["Aggron", "Aggron-Delta", "Aggron-Mega"],
+		otherFormes: ["Aggron-Mega", "Aggron-Delta"],
+		formeOrder: ["Aggron", "Aggron-Mega", "Aggron-Delta"],
 	},
 	aggrondelta: {
 		num: 306,
@@ -14503,8 +14503,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Fraxure",
 		evoLevel: 48,
 		eggGroups: ["Monster", "Dragon"],
-		otherFormes: ["Haxorus-Delta", "Haxorus-Mega"],
-		formeOrder: ["Haxorus", "Haxorus-Delta", "Haxorus-Mega"],
+		otherFormes: ["Haxorus-Mega", "Haxorus-Delta"],
+		formeOrder: ["Haxorus", "Haxorus-Mega", "Haxorus-Delta"],
 	},
 	haxorusdelta: {
 		num: 612,
@@ -15013,10 +15013,10 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		evoLevel: 64,
 		eggGroups: ["Dragon"],
 		otherFormes: [
-			"Hydreigon-Delta", "Hydreigon-Mega-Five", "Hydreigon-Mega-Six", "Hydreigon-Mega-Seven", "Hydreigon-Mega-Eight", "Hydreigon-Mega-Nine",
+			"Hydreigon-Mega-Five", "Hydreigon-Mega-Six", "Hydreigon-Mega-Seven", "Hydreigon-Mega-Eight", "Hydreigon-Mega-Nine", "Hydreigon-Delta",
 		],
 		formeOrder: [
-			"Hydreigon", "Hydreigon-Delta", "Hydreigon-Mega-Five", "Hydreigon-Mega-Six", "Hydreigon-Mega-Seven", "Hydreigon-Mega-Eight", "Hydreigon-Mega-Nine",
+			"Hydreigon", "Hydreigon-Mega-Five", "Hydreigon-Mega-Six", "Hydreigon-Mega-Seven", "Hydreigon-Mega-Eight", "Hydreigon-Mega-Nine", "Hydreigon-Delta",
 		],
 	},
 	hydreigondelta: {
