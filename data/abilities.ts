@@ -3500,7 +3500,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			const types = ['Normal', 'Water', 'Electric', 'Fire', 'Psychic', 'Dark', 'Grass', 'Ice', 'Fairy'];
 
 			if (move.id === 'hiddenpower') move.type = 'Normal';
-			if (!moves.includes(move.type) return;
+			if (!moves.includes(move.type)) return;
 
 			attacker.formeChange(dict[move.type]);
 			attacker.baseMaxhp = Math.floor(Math.floor(
