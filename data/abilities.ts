@@ -3486,7 +3486,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	proteanmaxima: {
 		onBeforeTurn(pokemon, move) {
 			let type = move.type;
-			let dict = {
+			const dict = {
 				'Normal': 'Eevee-Mega-Base',
 				'Water': 'Eevee-Mega-V',
 				'Electric': 'Eevee-Mega-J',
