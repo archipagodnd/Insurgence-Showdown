@@ -3484,9 +3484,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 168,
 	},
 	proteanmaxima: {
-		onBeforeTurn(attacker, defender, move) {
-			const type = move.type;
-			const dict = {
+		onBeforeTurn(pokemon, move) {
+			let type = move.type;
+			var dict = {
 				'Normal': 'Eevee-Mega-Base',
 				'Water': 'Eevee-Mega-V',
 				'Electric': 'Eevee-Mega-J',
@@ -3502,13 +3502,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (move.id === 'hiddenpower') type = 'Normal';
 			if (!types.includes(type)) return;
 
-			attacker.formeChange(dict[type]);
-			attacker.baseMaxhp = Math.floor(Math.floor(
-				2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-			) * attacker.level / 100 + 10);
-			const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-			attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-			attacker.maxhp = newMaxHP;
+			pokemon.formeChange(dict[type]);
+			pokemon.baseMaxhp = Math.floor(Math.floor(
+				2 * pokemon.species.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100
+			) * pokemon.level / 100 + 10);
+			const newMaxHP = pokemon.volatiles['dynamax'] ? (2 * pokemon.baseMaxhp) : pokemon.baseMaxhp;
+			pokemon.hp = Math.floor(newMaxHP * (pokemon.hp / pokemon.maxhp));
+			pokemon.maxhp = newMaxHP;
 		},
 
 		onTryHit(target, source, move) {
