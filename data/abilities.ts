@@ -3484,83 +3484,33 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 168,
 	},
 	proteanmaxima: {
-		onBeforeMove(attacker, defender, move) {
+		onBeforeTurn(attacker, defender, move) {
 			const type = move.type;
+			const dict = {
+				'Normal': 'Eevee-Mega-Base'
+				'Water': 'Eevee-Mega-V'
+				'Electric': 'Eevee-Mega-J'
+				'Fire': 'Eevee-Mega-F'
+				'Psychic': 'Eevee-Mega-E'
+				'Dark': 'Eevee-Mega-U'
+				'Grass': 'Eevee-Mega-L'
+				'Ice': 'Eevee-Mega-G'
+				'Fairy': 'Eevee-Mega-S'
+			};
+			const types = ['Normal', 'Water', 'Electric', 'Fire', 'Psychic', 'Dark', 'Grass', 'Ice', 'Fairy'];
+
 			if (move.id === 'hiddenpower') move.type = 'Normal';
-			if (type === 'Water' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega-V');
-				attacker.baseMaxhp = Math.floor(Math.floor(
-					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-				) * attacker.level / 100 + 10);
-				const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-				attacker.maxhp = newMaxHP;
-			} else if (type === 'Electric' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega-J');
-				attacker.baseMaxhp = Math.floor(Math.floor(
-					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-				) * attacker.level / 100 + 10);
-				const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-				attacker.maxhp = newMaxHP;
-			} else if (type === 'Fire' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega-F');
-				attacker.baseMaxhp = Math.floor(Math.floor(
-					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-				) * attacker.level / 100 + 10);
-				const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-				attacker.maxhp = newMaxHP;
-			} else if (type === 'Psychic' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega-E');
-				attacker.baseMaxhp = Math.floor(Math.floor(
-					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-				) * attacker.level / 100 + 10);
-				const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-				attacker.maxhp = newMaxHP;
-			} else if (type === 'Dark' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega-U');
-				attacker.baseMaxhp = Math.floor(Math.floor(
-					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-				) * attacker.level / 100 + 10);
-				const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-				attacker.maxhp = newMaxHP;
-			} else if (type === 'Grass' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega-L');
-				attacker.baseMaxhp = Math.floor(Math.floor(
-					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-				) * attacker.level / 100 + 10);
-				const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-				attacker.maxhp = newMaxHP;
-			} else if (type === 'Ice' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega-G');
-				attacker.baseMaxhp = Math.floor(Math.floor(
-					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-				) * attacker.level / 100 + 10);
-				const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-				attacker.maxhp = newMaxHP;
-			} else if (type === 'Fairy' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega-S');
-				attacker.baseMaxhp = Math.floor(Math.floor(
-					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-				) * attacker.level / 100 + 10);
-				const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-				attacker.maxhp = newMaxHP;
-			} else if (type === 'Normal' && attacker.getTypes().join() !== type) {
-				attacker.formeChange('Eevee-Mega-Base');
-				attacker.baseMaxhp = Math.floor(Math.floor(
-					2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
-				) * attacker.level / 100 + 10);
-				const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
-				attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
-				attacker.maxhp = newMaxHP;
-			}
+			if (!moves.includes(move.type) return;
+
+			attacker.formeChange(dict[move.type]);
+			attacker.baseMaxhp = Math.floor(Math.floor(
+				2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
+			) * attacker.level / 100 + 10);
+			const newMaxHP = attacker.volatiles['dynamax'] ? (2 * attacker.baseMaxhp) : attacker.baseMaxhp;
+			attacker.hp = Math.floor(newMaxHP * (attacker.hp / attacker.maxhp));
+			attacker.maxhp = newMaxHP;
 		},
+
 		onTryHit(target, source, move) {
 			if (target.types[0] === 'Water') {
 				if (target !== source && move.type === 'Water') {
