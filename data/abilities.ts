@@ -3487,15 +3487,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onBeforeTurn(attacker, defender, move) {
 			const type = move.type;
 			const dict = {
-				'Normal': 'Eevee-Mega-Base'
-				'Water': 'Eevee-Mega-V'
-				'Electric': 'Eevee-Mega-J'
-				'Fire': 'Eevee-Mega-F'
-				'Psychic': 'Eevee-Mega-E'
-				'Dark': 'Eevee-Mega-U'
-				'Grass': 'Eevee-Mega-L'
-				'Ice': 'Eevee-Mega-G'
-				'Fairy': 'Eevee-Mega-S'
+				'Normal': 'Eevee-Mega-Base',
+				'Water': 'Eevee-Mega-V',
+				'Electric': 'Eevee-Mega-J',
+				'Fire': 'Eevee-Mega-F',
+				'Psychic': 'Eevee-Mega-E',
+				'Dark': 'Eevee-Mega-U',
+				'Grass': 'Eevee-Mega-L',
+				'Ice': 'Eevee-Mega-G',
+				'Fairy': 'Eevee-Mega-S',
 			};
 			const types = ['Normal', 'Water', 'Electric', 'Fire', 'Psychic', 'Dark', 'Grass', 'Ice', 'Fairy'];
 
