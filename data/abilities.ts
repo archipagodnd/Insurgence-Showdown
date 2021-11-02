@@ -3499,10 +3499,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			};
 			const types = ['Normal', 'Water', 'Electric', 'Fire', 'Psychic', 'Dark', 'Grass', 'Ice', 'Fairy'];
 
-			if (move.id === 'hiddenpower') move.type = 'Normal';
-			if (!moves.includes(move.type)) return;
+			if (move.id === 'hiddenpower') type = 'Normal';
+			if (!types.includes(type)) return;
 
-			attacker.formeChange(dict[move.type]);
+			attacker.formeChange(dict[type]);
 			attacker.baseMaxhp = Math.floor(Math.floor(
 				2 * attacker.species.baseStats['hp'] + attacker.set.ivs['hp'] + Math.floor(attacker.set.evs['hp'] / 4) + 100
 			) * attacker.level / 100 + 10);
