@@ -1780,18 +1780,14 @@ export class BattleActions {
 			}
 		}
 		if (pokemon.species.name === 'Zoroark' && pokemon.illusion !== null) {
-			const illusionMon = pokemon.illusion.species;
-			const altForme = illusionMon.otherFormes && this.dex.species.get(illusionMon.otherFormes[0]);
-			if ((this.battle.gen <= 7 || this.battle.ruleTable.has('standardnatdex')) && altForme?.isMega) {
-				illusionMon.formeChange(altForme, pokemon.getItem(), true);
-				pokemon.illusion = illusionMon;
+			const illusionMon = pokemon.illusion;
+			const altForme = pokemon.illusion.canMegaEvo;
+			if (altForme) {
+				pokemon.illusion.formeChange(altForme, pokemon.getItem(), true);
 			}
 		}
-		if (pokemon.species.name === 'Zoroark') {
-			pokemon.formeChange(speciesid, pokemon.getItem(), true, '[silent]');
-		} else {
-			pokemon.formeChange(speciesid, pokemon.getItem(), true);
-		}
+
+		pokemon.formeChange(speciesid, pokemon.getItem(), true);
 
 		// Limit one mega evolution
 		const wasMega = pokemon.canMegaEvo;
