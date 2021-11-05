@@ -3474,7 +3474,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 168,
 	},
 	proteanmaxima: {
-		onBeforeTurn(pokemon, move) {
+		onBeforeMove(pokemon, target, move) {
 			let type = move.type;
 			const dict = {
 				'Normal': 'Eevee-Mega-Base',
@@ -3493,6 +3493,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (!types.includes(type)) return;
 
 			const forme = dict[type as keyof typeof dict];
+			if (pokemon.species.name === forme) return;
 			pokemon.formeChange(forme);
 			pokemon.baseMaxhp = Math.floor(Math.floor(
 				2 * pokemon.species.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100
@@ -3500,6 +3501,39 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			const newMaxHP = pokemon.volatiles['dynamax'] ? (2 * pokemon.baseMaxhp) : pokemon.baseMaxhp;
 			pokemon.hp = Math.floor(newMaxHP * (pokemon.hp / pokemon.maxhp));
 			pokemon.maxhp = newMaxHP;
+		},
+
+		onFoeBeforeMove(pokemon, move) {
+			const opponent = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position]
+			const action = this.queue.willMove(opponent);
+			if (!action) return;
+			const oppMove = this.dex.getActiveMove(action.move.id);
+			let type = oppMove.type;
+			const dict = {
+				'Normal': 'Eevee-Mega-Base',
+				'Water': 'Eevee-Mega-V',
+				'Electric': 'Eevee-Mega-J',
+				'Fire': 'Eevee-Mega-F',
+				'Psychic': 'Eevee-Mega-E',
+				'Dark': 'Eevee-Mega-U',
+				'Grass': 'Eevee-Mega-L',
+				'Ice': 'Eevee-Mega-G',
+				'Fairy': 'Eevee-Mega-S',
+			};
+			const types = ['Normal', 'Water', 'Electric', 'Fire', 'Psychic', 'Dark', 'Grass', 'Ice', 'Fairy'];
+
+			if (oppMove.id === 'hiddenpower') type = 'Normal';
+			if (!types.includes(type)) return;
+
+			const forme = dict[type as keyof typeof dict];
+			if (pokemon.species.name === forme) return;
+			opponent.formeChange(forme);
+			opponent.baseMaxhp = Math.floor(Math.floor(
+				2 * opponent.species.baseStats['hp'] + opponent.set.ivs['hp'] + Math.floor(opponent.set.evs['hp'] / 4) + 100
+			) * opponent.level / 100 + 10);
+			const newMaxHP = opponent.volatiles['dynamax'] ? (2 * opponent.baseMaxhp) : opponent.baseMaxhp;
+			opponent.hp = Math.floor(newMaxHP * (opponent.hp / opponent.maxhp));
+			opponent.maxhp = newMaxHP;
 		},
 
 		onTryHit(target, source, move) {
@@ -4966,7 +5000,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 
 			const target = this.sample(possibleTargets);
 			const ability = target.getAbility();
-			this.add('-ability', pokemon, ability, '[from] ability: Trace', '[of] ' + target);
+			if (pokemon.illusion) {
+				this.add('-ability', pokemon, ability, '[from] ability: Trace', '[of] ' + target, "[silent]");
+			} else {
+				this.add('-ability', pokemon, ability, '[from] ability: Trace', '[of] ' + target);
+			}
 			pokemon.setAbility(ability);
 		},
 		name: "Trace",

@@ -1783,11 +1783,14 @@ export class BattleActions {
 			const illusionMon = pokemon.illusion;
 			const altForme = pokemon.illusion.canMegaEvo;
 			if (altForme) {
-				pokemon.illusion.formeChange(altForme, pokemon.getItem(), true);
+				pokemon.illusion.formeChange(altForme, pokemon.getItem(), true, "[silent]");
 			}
 		}
-
-		pokemon.formeChange(speciesid, pokemon.getItem(), true);
+		if (pokemon.species.name === 'Zoroark') {
+			pokemon.formeChange(speciesid, pokemon.getItem(), true, "[silent]");
+		} else {
+			pokemon.formeChange(speciesid, pokemon.getItem(), true);
+		}
 
 		// Limit one mega evolution
 		const wasMega = pokemon.canMegaEvo;
