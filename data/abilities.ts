@@ -4735,8 +4735,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	supercell: {
 		onStart(pokemon) {
 			if (this.field.isWeather(['darkness', 'raindance', 'primordialsea'])) {
+				if (pokemon.species.name === 'Typhlosion-Delta-Mega-Active') return;
 				pokemon.formeChange('Typhlosion-Delta-Mega-Active', this.effect, false);
 			} else {
+				if (pokemon.species.name === 'Typhlosion-Delta-Mega') return;
 				pokemon.formeChange('Typhlosion-Delta-Mega', this.effect, false);
 			}
 		},
@@ -4748,10 +4750,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onUpdate(pokemon) {
 			if (this.field.isWeather(['darkness', 'raindance', 'primordialsea'])) {
+				if (pokemon.species.name === 'Typhlosion-Delta-Mega-Active') return;
 				pokemon.formeChange('Typhlosion-Delta-Mega-Active', this.effect, false);
 			} else {
+				if (pokemon.species.name === 'Typhlosion-Delta-Mega') return;
 				pokemon.formeChange('Typhlosion-Delta-Mega', this.effect, false);
 			}
+		},
+		onEnd(pokemon){
+			pokemon.formeChange('Typhlosion-Delta-Mega', this.effect, false);
 		},
 		name: "Supercell",
 		gen: 6,
