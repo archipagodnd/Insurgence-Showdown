@@ -4733,10 +4733,24 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 21,
 	},
 	supercell: {
+		onStart(pokemon) {
+			if (this.field.isWeather(['darkness', 'raindance', 'primordialsea'])) {
+				pokemon.formeChange('Typhlosion-Delta-Mega-Active', this.effect, false);
+			} else {
+				pokemon.formeChange('Typhlosion-Delta-Mega', this.effect, false);
+			}
+		},
 		onModifySpAPriority: 5,
 		onModifySpA(spa, pokemon) {
 			if (this.field.isWeather(['darkness', 'raindance', 'primordialsea'])) {
 				return this.chainModify(1.5);
+			}
+		},
+		onUpdate(pokemon) {
+			if (this.field.isWeather(['darkness', 'raindance', 'primordialsea'])) {
+				pokemon.formeChange('Typhlosion-Delta-Mega-Active', this.effect, false);
+			} else {
+				pokemon.formeChange('Typhlosion-Delta-Mega', this.effect, false);
 			}
 		},
 		name: "Supercell",
