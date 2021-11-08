@@ -3809,15 +3809,20 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (move.category === 'Status') return;
 			if (pokemon.species.baseSpecies !== 'Muk-Delta') return;
-			if (pokemon.species.id === 'mukdeltawater') moveType = 'Water';
-			if (pokemon.species.id === 'mukdeltagrass') moveType = 'Grass';
-			if (pokemon.species.id === 'mukdeltafire') moveType = 'Fire';
-			if (pokemon.species.id === 'mukdeltadark') moveType = 'Dark';
-			if (pokemon.species.id === 'mukdeltanormal') moveType = 'Normal';
-			if (pokemon.species.id === 'mukdeltapsychic') moveType = 'Psychic';
-			const regurgEffectiveness = this.dex.getEffectiveness(moveType, target);
-			const regurgDamage = Math.floor((2 ** regurgEffectiveness) * target.baseMaxhp/6);
-			this.damage(target.baseMaxhp / 8, target, pokemon);
+			const regurgMove = this.dex.getActiveMove('sonicboom');
+			regurgMove.name = "Regurgitation";
+			regurgMove.accuracy = true;
+			if (pokemon.species.id === 'mukdeltawater') regurgMove.type = 'Water';
+			if (pokemon.species.id === 'mukdeltagrass') regurgMove.type = 'Grass';
+			if (pokemon.species.id === 'mukdeltafire') regurgMove.type = 'Fire';
+			if (pokemon.species.id === 'mukdeltadark') regurgMove.type = 'Dark';
+			if (pokemon.species.id === 'mukdeltanormal') regurgMove.type = 'Normal';
+			if (pokemon.species.id === 'mukdeltapsychic') regurgMove.type = 'Psychic';
+			const regurgEffectiveness = this.dex.getEffectiveness(regurgMove.type, target);
+			const regurgDamage = Math.floor((2 ** regurgEffectiveness) * target.baseMaxhp / 6);
+			regurgMove.damage = regurgDamage;
+			if (move.name === "Regurgitation") return;
+			this.actions.useMove(regurgMove, pokemon, target);
 			return null;
 		},
 		name: "Regurgitation",
