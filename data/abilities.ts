@@ -3806,8 +3806,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 144,
 	},
 	regurgitation: {
-		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (move.category === 'Status') return;
+		onAfterMove(pokemon, target, move) {
+			if (pokemon === target) return;
 			if (pokemon.species.baseSpecies !== 'Muk-Delta') return;
 			const regurgMove = this.dex.getActiveMove('sonicboom');
 			regurgMove.name = "Regurgitation";
@@ -3821,7 +3821,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			const regurgEffectiveness = this.dex.getEffectiveness(regurgMove.type, target);
 			const regurgDamage = Math.floor((2 ** regurgEffectiveness) * target.baseMaxhp / 6);
 			regurgMove.damage = regurgDamage;
-			if (move.name === "Regurgitation") return;
+			if (move.name === "Regurgitation" || !target.hp || target.isSemiInvulnerable()) return;
 			this.actions.useMove(regurgMove, pokemon, target);
 			return null;
 		},
