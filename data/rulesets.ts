@@ -106,14 +106,19 @@ export const Rulesets: {[k: string]: FormatData} = {
 			'Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
 		],
 	},
+	banunbalancedmoves: {
+		effectType: 'ValidatorRule',
+		name: 'Ban Unbalanced Moves',
+		desc: "Bans moves that are not balanced for competitive play.",
+		banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
+	},
 	standardnatdex: {
 		effectType: 'ValidatorRule',
 		name: 'Standard NatDex',
 		desc: "The standard ruleset for all National Dex tiers",
 		ruleset: [
-			'Obtainable', '+Unobtainable', '+Past', 'Team Preview', 'Nickname Clause', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
+			'Obtainable', '+Unobtainable', '+Past', '+PastMove', 'Team Preview', 'Nickname Clause', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
 		],
-		banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
 		onValidateSet(set) {
 			// These Pokemon are still unobtainable
 			const unobtainables = [
