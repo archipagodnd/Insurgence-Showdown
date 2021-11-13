@@ -3359,6 +3359,8 @@ export const MovesText: {[k: string]: MoveText} = {
 		name: "Livewire",
 		desc: "Sets up a hazard on the opposing side of the field, having a chance to paralyze each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to five times before failing. The chance to paralyze increases with 20% per layer and is doubled in Rain. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, is hit by Defog, or a grounded Electric-type or Ground-type Pokemon switches in. Safeguard prevents the opposing party from being poisoned on switch-in, but a substitute does not.",
 		shortDesc: "Chance to paralyze grounded foes on switch-in. Max 5 layers, 20% chancer per layer.",
+		start: "  Livewire was scattered on the ground all around [TEAM]!",
+		end: "  The livewire disappeared from the ground around [TEAM]!",
 	},
 	lockon: {
 		name: "Lock-On",
@@ -4266,6 +4268,8 @@ export const MovesText: {[k: string]: MoveText} = {
 		name: "Permafrost",
 		desc: "Sets up a hazard on the opposing side of the field, having a chance to freeze each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to five times before failing. The chance to paralyze increases with 10% per layer and is doubled in Hail. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, is hit by Defog, or a grounded Ice-type or Fire-type Pokemon switches in. Safeguard prevents the opposing party from being poisoned on switch-in, but a substitute does not.",
 		shortDesc: "Chance to freeze grounded foes on switch-in. Max 5 layers, 10% chancer per layer.",
+		start: "  Permafrost was scattered on the ground all around [TEAM]!",
+		end: "  The permafrost disappeared from the ground around [TEAM]!",
 	},
 	petalblizzard: {
 		name: "Petal Blizzard",

@@ -6095,7 +6095,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onStart(target) {
 				this.add('-endability', target);
 				this.singleEvent('End', target.getAbility(), target.abilityState, target, target, 'gastroacid');
-				
+
 				if (target.illusion) {
 					this.debug('illusion cleared');
 					target.illusion = null;
@@ -9995,15 +9995,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		sideCondition: 'livewire',
 		condition: {
 			// this is a side condition
-			onStart(side) {
+			onSideStart(side) {
 				this.add('-sidestart', side, 'move: Livewire');
 				this.effectState.layers = 1;
 			},
-			onRestart(side) {
+			onSideRestart(side) {
 				if (this.effectState.layers >= 5) return false;
 				this.add('-sidestart', side, 'move: Livewire');
 				this.effectState.layers++;
 			},
+			onSwitchInPriority: 1,
 			onSwitchIn(pokemon) {
 				const rand = Math.ceil(Math.random() * 10);
 				if (!pokemon.isGrounded()) return;
@@ -12934,15 +12935,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		sideCondition: 'permafrost',
 		condition: {
 			// this is a side condition
-			onStart(side) {
+			onSideStart(side) {
 				this.add('-sidestart', side, 'move: Permafrost');
 				this.effectState.layers = 1;
 			},
-			onRestart(side) {
+			onSideRestart(side) {
 				if (this.effectState.layers >= 5) return false;
 				this.add('-sidestart', side, 'move: Permafrost');
 				this.effectState.layers++;
 			},
+			onSwitchInPriority: 1,
 			onSwitchIn(pokemon) {
 				const rand = Math.ceil(Math.random() * 10);
 				if (!pokemon.isGrounded()) return;
