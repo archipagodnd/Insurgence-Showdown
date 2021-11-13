@@ -11919,34 +11919,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onHit(target, pokemon) {
 			const rand = Math.ceil(Math.random() * 10);
 			const pkmn = target.species.id.toString();
+			const pkmnLevel = pokemon.level;
+			let opponentID = target.species.id;
+			const learnsetData = {...(this.dex.data.Learnsets[opponentID]?.learnset || {})};
+			let deltaFormes = [];
+			let dict = {};
 			const deltaPokemon = [
-				'bulbasaur', 'ivysaur', 'venusaur', 'charmander', 'charmeleon', 'charizard',
-				'squirtle', 'wartortle', 'blastoise', 'pawniard', 'bisharp', 'ralts', 'kirlia',
-				'gardevoir', 'gallade', 'sunkern', 'sunflora', 'bergmite', 'avalugg', 'scyther',
-				'scizor', 'scraggy', 'scrafty', 'combee', 'vespiquen', 'koffing', 'weezing',
-				'purrloin', 'liepard', 'phantump', 'trevenant', 'snorunt', 'glalie', 'froslass',
-				'shinx', 'luxio', 'luxray', 'noibat', 'noivern', 'budew', 'roselia', 'roserade',
-				'drifloon', 'drifblim', 'grimer', 'muk', 'wooper', 'quagsire', 'munchlax',
-				'snorlax', 'misdreavus', 'mismagius', 'cyndaquil', 'quilava', 'typhlosion',
-				'treecko', 'grovyle', 'sceptile', 'torchic', 'combusken', 'blaziken', 'turtwig',
-				'grotle', 'torterra', 'snivy', 'servine', 'servperior', 'froakie', 'frogadier',
-				'greninja', 'pidgey', 'pidgeotto', 'pidgeot', 'diglett', 'dugtrio', 'growlithe',
-				'arcanine', 'geodude', 'graveler', 'golem', 'tentacool', 'tentacruel', 'doduo',
-				'dodrio', 'tangela', 'tangrowth', 'ditto', 'kabuto', 'kabutops', 'dratini',
-				'dragonair', 'dragonite', 'hoothoot', 'noctowl', 'chinchou', 'lanturn', 'pichu',
-				'pikachu', 'raichu', 'aipom', 'ambipom', 'yanma', 'yanmega', 'girafarig',
-				'dunsparce', 'shuckle', 'remoraid', 'octillery', 'elekid', 'electabuzz',
-				'electivire', 'magby', 'magmar', 'magmortar', 'lotad', 'lombre', 'ludicolo',
-				'seedot', 'nuzleaf', 'shiftry', 'sableye', 'mawile', 'aron', 'lairon', 'aggron',
-				'meditite', 'medicham', 'numel', 'camerupt', 'plusle', 'minun', 'wailmer',
-				'wailord', 'feebas', 'milotic', 'clamperl', 'huntail', 'gorebyss', 'buneary',
-				'lopunny', 'riolu', 'lucario', 'croagunk', 'toxicroak', 'venipede', 'whirlipede',
-				'scolipede', 'solosis', 'duosion', 'reuniclus', 'darumaka', 'darmanitan',
-				'maractus', 'yamask', 'cofagrigus', 'emolga', 'karrablast', 'escavalier',
-				'foongus', 'amoonguss', 'litwick', 'lampent', 'chandelure', 'axew', 'fraxure',
-				'haxorus', 'golett', 'golurk', 'heatmor', 'deino', 'zweilous', 'hydreigon',
-				'larvesta', 'volcarona', 'amaura', 'aurorus', 'goomy', 'sliggoo', 'goodra',
-				'regirock', 'regice', 'registeel', 'hoopa',
+				'venusaur', 'charizard', 'blastoise', 'bisharp', 'gardevoir', 'gallade',
+				'sunflora', 'scizor', 'glalie', 'froslass', 'typhlosion', 'pidgeot',
+				'girafarig', 'sableye', 'mawile', 'medicham', 'camerupt', 'milotic',
+				'lopunny', 'lucario', 'hoopa', 'muk', 'emolga',
 			];
 			const megaDelta = [
 				'venusaurmega', 'blastoisemega', 'bisharpmega', 'gardevoirmega', 'gallademega',
@@ -11954,60 +11936,59 @@ export const Moves: {[moveid: string]: MoveData} = {
 				'girafarigmega', 'sableyemega', 'mawilemega', 'medichammega', 'cameruptmega',
 				'miloticmega', 'lopunnymega', 'lucariomega',
 			];
-			let opponentID = '';
-
+			if (target.species.otherFormes) {
+				for (let forme of target.species.otherFormes) {
+					if (forme.includes('Delta')) {
+						let deltaForme = forme.replace('-', '').toLowerCase();
+						deltaFormes[deltaFormes.length] = deltaForme;
+					}
+				}
+				if (deltaFormes.length === 1) {
+					opponentID = deltaFormes[0];
+				} else if (deltaFormes.length > 1){
+					opponentID = deltaFormes[Math.floor(Math.random()*deltaFormes.length)]
+				}
+			}
 			if (deltaPokemon.includes(pkmn)) {
 				opponentID = pkmn + 'delta';
 			} else if (pkmn === 'meloetta') {
 				opponentID = 'meloettadeltamime';
-			} else if (['dwebble', 'crustle', 'petilil', 'lilligant',
-				'beldum', 'metang', 'metagross'].includes(pkmn)) {
-				if (rand > 5 && ['dwebble', 'crustle'].includes(pkmn)) {
-					opponentID = pkmn + 'deltac';
-				}
-				if (rand < 6 && ['dwebble', 'crustle'].includes(pkmn)) {
-					opponentID = pkmn + 'deltab';
-				}
-				if (rand > 5 && ['petilil', 'lilligant'].includes(pkmn)) {
-					opponentID = pkmn + 'deltaw';
-				}
-				if (rand < 6 && ['petilil', 'lilligant'].includes(pkmn)) {
-					opponentID = pkmn + 'deltaf';
-				}
-				if (rand > 5 && ['beldum', 'metang', 'metagross'].includes(pkmn)) {
-					opponentID = pkmn + 'deltas';
-				}
-				if (rand < 6 && ['beldum', 'metang', 'metagross'].includes(pkmn)) {
-					opponentID = pkmn + 'deltar';
-				}
+			} else if (pkmn === 'metagross') {
+				opponentID = ['metagrossdeltas', 'metagrossdeltar'][Math.floor(Math.random()*2)]
+			} else if (pkmn === 'metagrossmega') {
+				opponentID = ['metagrossdeltasmega', 'metagrossdeltarmega'][Math.floor(Math.random()*2)]
 			} else if (pkmn === 'hoopaunbound') {
 				opponentID = 'hoopadeltaunbound';
-			} else if (pkmn === 'metagrossmega') {
-				if (rand > 5) {
-					opponentID = 'metagrossdeltasmega';
-				}
-				if (rand < 6) {
-					opponentID = 'metagrossdeltarmega';
-				}
 			} else if (megaDelta.includes(pkmn)) {
 				opponentID = pkmn.substr(0, (pkmn.length - 4)) + 'deltamega';
 			} else if (['charizardmegax', 'charizardmegay'].includes(pkmn)) {
 				opponentID = 'charizarddeltamega';
 			} else if (['sunflorafmega', 'sunflorammega'].includes(pkmn)) {
 				opponentID = 'sunfloradeltamega';
-			} else {
-				opponentID = target.species.id;
 			}
-
-			if (opponentID === '') {
-				if (!pokemon.transformInto(target)) {
-					return false;
+			pokemon.formeChange(opponentID);
+			if (target.species.id !== opponentID) {
+				for (let move in learnsetData) {
+					const learnmoment = (learnsetData[move].filter(learn => learn.slice(0,2) === "6L"));
+					if (!learnmoment[0]) continue;
+					if (learnmoment.length > 1) {
+						learnmoment = learnmoment[1];
+					}
+					if (learnmoment[0].slice(2) > pkmnLevel) continue;
+					dict[move] = Number(learnmoment[0].slice(2));
 				}
-			} else {
-				pokemon.formeChange(opponentID);
+				let items = Object.keys(dict).map(function(key) {
+					return [key, dict[key]];
+				});
+				items.sort(function(first, second) {
+					return second[1] - first[1];
+				});
+				pokemon.moveSlots = target.moveSlots;
+				// pokemon.moveSlots[0] = items[0][0];
+				// pokemon.moveSlots[1] = items[1][0];
+				// pokemon.moveSlots[2] = items[2][0];
+				// pokemon.moveSlots[3] = items[3][0];
 			}
-
-			pokemon.moveSlots = target.moveSlots;
 			for (const moveSlot of pokemon.moveSlots) {
 				moveSlot.maxpp = 5;
 				moveSlot.pp = 5;
