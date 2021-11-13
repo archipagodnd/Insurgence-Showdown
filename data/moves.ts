@@ -10004,7 +10004,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.add('-sidestart', side, 'move: Livewire');
 				this.effectState.layers++;
 			},
-			onSwitchInPriority: 1,
+			onSwitchInPriority: 2,
 			onSwitchIn(pokemon) {
 				const rand = Math.ceil(Math.random() * 10);
 				if (!pokemon.isGrounded()) return;
