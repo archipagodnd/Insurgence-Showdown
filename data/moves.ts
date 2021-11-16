@@ -11987,7 +11987,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 				items.sort(function(first, second) {
 					return second[1] - first[1];
 				});
-				console.log(items)
 				let numberOfMoves = 4;
 				if (items.length < 4) {
 					numberOfMoves = items.length
