@@ -11969,10 +11969,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (target.species.id !== opponentID) {
 				const learnsetData = {...(this.dex.data.Learnsets[opponentID]?.learnset || {})};
 				for (let move in learnsetData) {
-					const learnmoment = (learnsetData[move].filter(learn => learn.slice(0,2) === "6L"));
+					let learnmoment = (learnsetData[move].filter(learn => learn.slice(0,2) === "6L"));
 					if (!learnmoment[0]) continue;
 					if (learnmoment.length > 1) {
-						learnmoment = learnmoment[1];
+						if (learnmoment[1].slice(2) > pkmnLevel) {
+							learnmoment = [learnmoment[0]];
+						} else {
+							learnmoment = [learnmoment[1]];
+						}
 					}
 					if (learnmoment[0].slice(2) > pkmnLevel) continue;
 					dict[move] = Number(learnmoment[0].slice(2));
@@ -11983,7 +11987,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 				items.sort(function(first, second) {
 					return second[1] - first[1];
 				});
-				for (let i = 0; i < 4; i++) {
+				console.log(items)
+				let numberOfMoves = 4;
+				if (items.length < 4) {
+					numberOfMoves = items.length
+				}
+				for (let i = 0; i < numberOfMoves; i++) {
 					let slotMove = this.dex.getActiveMove(items[i][0])
 					pokemon.moveSlots[i] = {
 						move: slotMove.name,
@@ -12003,6 +12012,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 				moveSlot.maxpp = 5;
 				moveSlot.pp = 5;
 			}
+			pokemon.baseMaxhp = Math.floor(Math.floor(
+				2 * pokemon.species.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100
+			) * pokemon.level / 100 + 10);
+			const newMaxHP = pokemon.volatiles['dynamax'] ? (2 * pokemon.baseMaxhp) : pokemon.baseMaxhp;
+			pokemon.hp = Math.floor(newMaxHP * (pokemon.hp / pokemon.maxhp));
+			pokemon.maxhp = newMaxHP;
 		},
 		secondary: null,
 		target: "normal",
