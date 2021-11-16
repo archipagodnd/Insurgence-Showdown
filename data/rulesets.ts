@@ -110,7 +110,8 @@ export const Rulesets: {[k: string]: FormatData} = {
 		effectType: 'ValidatorRule',
 		name: 'Ban Unbalanced Moves',
 		desc: "Bans moves that are not balanced for competitive play.",
-		banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
+		banlist: ['Permafrost'],
+		// banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
 	},
 	standardnatdex: {
 		effectType: 'ValidatorRule',
