@@ -11927,7 +11927,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				'venusaur', 'charizard', 'blastoise', 'bisharp', 'gardevoir', 'gallade',
 				'sunflora', 'scizor', 'glalie', 'froslass', 'typhlosion', 'pidgeot',
 				'girafarig', 'sableye', 'mawile', 'medicham', 'camerupt', 'milotic',
-				'lopunny', 'lucario', 'hoopa', 'muk', 'emolga',
+				'lopunny', 'lucario', 'hoopa', 'muk', 'emolga', 'volcarona',
 			];
 			const megaDelta = [
 				'venusaurmega', 'blastoisemega', 'bisharpmega', 'gardevoirmega', 'gallademega',
@@ -12017,6 +12017,21 @@ export const Moves: {[moveid: string]: MoveData} = {
 			const newMaxHP = pokemon.volatiles['dynamax'] ? (2 * pokemon.baseMaxhp) : pokemon.baseMaxhp;
 			pokemon.hp = Math.floor(newMaxHP * (pokemon.hp / pokemon.maxhp));
 			pokemon.maxhp = newMaxHP;
+
+			let i: BoostID;
+			for (i in target.boosts) {
+				source.boosts[i] = target.boosts[i];
+			}
+			const volatilesToCopy = ['focusenergy', 'gmaxchistrike', 'laserfocus'];
+			for (const volatile of volatilesToCopy) {
+				if (target.volatiles[volatile]) {
+					source.addVolatile(volatile);
+					if (volatile === 'gmaxchistrike') source.volatiles[volatile].layers = target.volatiles[volatile].layers;
+				} else {
+					source.removeVolatile(volatile);
+				}
+			}
+			this.add('-copyboost', source, target, '[from] move: Psych Up');
 		},
 		secondary: null,
 		target: "normal",
