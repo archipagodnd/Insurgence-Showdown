@@ -12020,18 +12020,18 @@ export const Moves: {[moveid: string]: MoveData} = {
 
 			let i: BoostID;
 			for (i in target.boosts) {
-				source.boosts[i] = target.boosts[i];
+				pokemon.boosts[i] = target.boosts[i];
 			}
 			const volatilesToCopy = ['focusenergy', 'gmaxchistrike', 'laserfocus'];
 			for (const volatile of volatilesToCopy) {
 				if (target.volatiles[volatile]) {
-					source.addVolatile(volatile);
-					if (volatile === 'gmaxchistrike') source.volatiles[volatile].layers = target.volatiles[volatile].layers;
+					pokemon.addVolatile(volatile);
+					if (volatile === 'gmaxchistrike') pokemon.volatiles[volatile].layers = target.volatiles[volatile].layers;
 				} else {
-					source.removeVolatile(volatile);
+					pokemon.removeVolatile(volatile);
 				}
 			}
-			this.add('-copyboost', source, target, '[from] move: Psych Up');
+			this.add('-copyboost', pokemon, target, '[from] move: Psych Up');
 		},
 		secondary: null,
 		target: "normal",
