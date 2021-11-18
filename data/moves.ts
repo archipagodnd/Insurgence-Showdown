@@ -12031,7 +12031,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					pokemon.removeVolatile(volatile);
 				}
 			}
-			this.add('-copyboost', pokemon, target, '[from] move: Psych Up');
+			this.add('-copyboost', pokemon, target, '[from] move: Morph', '[silent]');
 		},
 		secondary: null,
 		target: "normal",
