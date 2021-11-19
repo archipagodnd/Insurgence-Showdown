@@ -3568,22 +3568,41 @@ export const Moves: {[moveid: string]: MoveData} = {
 		isFutureMove: true,
 		onTry(source, target) {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
-			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
-				move: 'doomdesire',
-				source: source,
-				moveData: {
-					id: 'doomdesire',
-					name: "Doom Desire",
-					accuracy: 100,
-					basePower: 140,
-					category: "Special",
-					priority: 0,
-					flags: {},
-					effectType: 'Move',
-					isFutureMove: true,
-					type: 'Steel',
-				},
-			});
+			if (source.hasAbility('periodicorbit')) {
+				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+					move: 'doomdesire',
+					source: source,
+					moveData: {
+						id: 'doomdesire',
+						name: "Doom Desire",
+						accuracy: 100,
+						basePower: 140,
+						category: "Special",
+						priority: 0,
+						flags: {},
+						effectType: 'Move',
+						isFutureMove: true,
+						type: 'Steel',
+					},
+				});
+			} else {
+				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+					move: 'doomdesire',
+					source: source,
+					moveData: {
+						id: 'doomdesire',
+						name: "Doom Desire",
+						accuracy: 100,
+						basePower: 140,
+						category: "Special",
+						priority: 0,
+						flags: {},
+						effectType: 'Move',
+						isFutureMove: true,
+						type: 'Steel',
+					},
+				});
+			}
 			this.add('-start', source, 'Doom Desire');
 			return this.NOT_FAIL;
 		},
@@ -6049,13 +6068,74 @@ export const Moves: {[moveid: string]: MoveData} = {
 		isFutureMove: true,
 		onTry(source, target) {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
-			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+			if (source.hasAbility('periodicorbit')) {
+				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+					duration: 6,
+					move: 'futuresight',
+					source: source,
+					moveData: {
+						id: 'futuresight',
+						name: "Future Sight",
+						accuracy: 100,
+						basePower: 120,
+						category: "Special",
+						priority: 0,
+						flags: {},
+						ignoreImmunity: false,
+						effectType: 'Move',
+						isFutureMove: true,
+						type: 'Psychic',
+					},
+				});
+			} else {
+				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+					duration: 3,
+					move: 'futuresight',
+					source: source,
+					moveData: {
+						id: 'futuresight',
+						name: "Future Sight",
+						accuracy: 100,
+						basePower: 120,
+						category: "Special",
+						priority: 0,
+						flags: {},
+						ignoreImmunity: false,
+						effectType: 'Move',
+						isFutureMove: true,
+						type: 'Psychic',
+					},
+				});
+			}
+			this.add('-start', source, 'move: Future Sight');
+			return this.NOT_FAIL;
+		},
+		secondary: null,
+		target: "normal",
+		type: "Psychic",
+		contestType: "Clever",
+	},
+	futuresightperiodic: {
+		num: 248,
+		accuracy: 100,
+		basePower: 120,
+		category: "Special",
+		name: "Future Sight Periodic",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		ignoreImmunity: true,
+		isFutureMove: false,
+		onTry(target, source) {
+			console.log('move triggered')
+			if (!source.side.addSlotCondition(source, 'futuremoveperiodic')) return false;
+			Object.assign(source.side.slotConditions[source.position]['futuremoveperiodic'], {
 				duration: 3,
-				move: 'futuresight',
-				source: source,
+				move: 'futuresightperiodic',
+				source: target,
 				moveData: {
-					id: 'futuresight',
-					name: "Future Sight",
+					id: 'futuresightperiodic',
+					name: "Future Sight Periodic",
 					accuracy: 100,
 					basePower: 120,
 					category: "Special",
@@ -6063,11 +6143,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 					flags: {},
 					ignoreImmunity: false,
 					effectType: 'Move',
-					isFutureMove: true,
+					isFutureMove: false,
 					type: 'Psychic',
 				},
 			});
-			this.add('-start', source, 'move: Future Sight');
+			this.add('-start', source, 'move: Future Sight Periodic');
 			return this.NOT_FAIL;
 		},
 		secondary: null,
