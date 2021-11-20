@@ -6115,46 +6115,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Psychic",
 		contestType: "Clever",
 	},
-	futuresightperiodic: {
-		num: 248,
-		accuracy: 100,
-		basePower: 120,
-		category: "Special",
-		name: "Future Sight Periodic",
-		pp: 10,
-		priority: 0,
-		flags: {},
-		ignoreImmunity: true,
-		isFutureMove: false,
-		onTry(target, source) {
-			console.log('move triggered')
-			if (!source.side.addSlotCondition(source, 'futuremoveperiodic')) return false;
-			Object.assign(source.side.slotConditions[source.position]['futuremoveperiodic'], {
-				duration: 3,
-				move: 'futuresightperiodic',
-				source: target,
-				moveData: {
-					id: 'futuresightperiodic',
-					name: "Future Sight Periodic",
-					accuracy: 100,
-					basePower: 120,
-					category: "Special",
-					priority: 0,
-					flags: {},
-					ignoreImmunity: false,
-					effectType: 'Move',
-					isFutureMove: false,
-					type: 'Psychic',
-				},
-			});
-			this.add('-start', source, 'move: Future Sight Periodic');
-			return this.NOT_FAIL;
-		},
-		secondary: null,
-		target: "normal",
-		type: "Psychic",
-		contestType: "Clever",
-	},
 	gastroacid: {
 		num: 380,
 		accuracy: 100,

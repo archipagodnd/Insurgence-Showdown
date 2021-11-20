@@ -360,6 +360,13 @@ export const Conditions: {[k: string]: ConditionData} = {
 		name: 'futuremove',
 		duration: 3,
 		onResidualOrder: 3,
+		onStart(target) {
+			if (!target.side.foe.active[0].hasAbility('periodicorbit')) {
+				this.effectState.trueDuration = -1;
+			} else {
+				this.effectState.trueDuration = 0;
+			}
+		},
 		onEnd(target) {
 			const data = this.effectState;
 			// time's up; time to hit! :D
@@ -390,6 +397,42 @@ export const Conditions: {[k: string]: ConditionData} = {
 			}
 
 			this.checkWin();
+		},
+		onResidual(target) {
+			if (this.effectState.trueDuration < 0) return;
+			this.effectState.trueDuration += 1;
+
+			let opponent = target.active[0]
+
+			if (this.effectState.trueDuration === 3) {
+				const data = this.effectState;
+				// time's up; time to hit! :D
+				const move = this.dex.moves.get(data.move);
+				if (opponent.fainted || opponent === data.source) {
+					this.hint(`${move.name} did not hit because the opponent is ${(opponent.fainted ? 'fainted' : 'the user')}.`);
+					return;
+				}
+				opponent.removeVolatile('Protect');
+				opponent.removeVolatile('Endure');
+
+				if (data.source.hasAbility('infiltrator') && this.gen >= 6) {
+					data.moveData.infiltrates = true;
+				}
+				if (data.source.hasAbility('normalize') && this.gen >= 6) {
+					data.moveData.type = 'Normal';
+				}
+				if (data.source.hasAbility('adaptability') && this.gen >= 6) {
+					data.moveData.stab = 2;
+				}
+				const hitMove = new this.dex.Move(data.moveData) as ActiveMove;
+
+				this.actions.trySpreadMoveHit([opponent], data.source, hitMove, true);
+				if (data.source.isActive && data.source.hasItem('lifeorb') && this.gen >= 5) {
+					this.singleEvent('AfterMoveSecondarySelf', data.source.getItem(), data.source.itemState, data.source, opponent, data.source.getItem());
+				}
+
+				this.checkWin();
+			}
 		},
 	},
 	futuremoveperiodic: {

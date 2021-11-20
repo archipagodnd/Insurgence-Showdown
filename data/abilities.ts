@@ -3129,11 +3129,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				this.actions.useMove('wishperiodic', source, target);
 			}
 		},
-		onAfterMove(target, source, move) {
-			if (move.id === 'futuresight' && target.side.addSlotCondition(target, 'futuremove')) {
-				this.actions.useMove('futuresightperiodic', target, source);
-			}
-		},
 		name: "Periodic Orbit",
 		gen: 6,
 		rating: 4,
