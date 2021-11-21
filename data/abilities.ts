@@ -4728,6 +4728,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			}
 		},
 		onEnd(pokemon){
+			if (pokemon.species.name === 'Typhlosion-Delta-Mega' || !pokemon.hp) return;
 			pokemon.formeChange('Typhlosion-Delta-Mega', this.effect, false);
 		},
 		name: "Supercell",
