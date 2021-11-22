@@ -12045,7 +12045,20 @@ export const Moves: {[moveid: string]: MoveData} = {
 					};
 				}
 			} else {
-				pokemon.moveSlots = target.moveSlots;
+				console.log(target.moveSlots.length)
+				for (let i = 0; i < target.moveSlots.length; i++) {
+					console.log(target.moveSlots[0])
+					pokemon.moveSlots[i] = {
+						move: target.moveSlots[i].move,
+						id: target.moveSlots[i].id,
+						pp: 5,
+						maxpp: 5,
+						target: target.moveSlots[i].target,
+						disabled: false,
+						used: false,
+						virtual: true,
+					};
+				}
 			}
 			for (const moveSlot of pokemon.moveSlots) {
 				moveSlot.maxpp = 5;
