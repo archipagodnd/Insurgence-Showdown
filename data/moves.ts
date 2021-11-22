@@ -3570,6 +3570,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
 			if (source.hasAbility('periodicorbit')) {
 				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+					duration: 6,
 					move: 'doomdesire',
 					source: source,
 					moveData: {
@@ -3587,6 +3588,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				});
 			} else {
 				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+					duration: 3,
 					move: 'doomdesire',
 					source: source,
 					moveData: {
@@ -3603,7 +3605,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					},
 				});
 			}
-			this.add('-start', source, 'Doom Desire');
+			this.add('-start', source, 'move: Doom Desire');
 			return this.NOT_FAIL;
 		},
 		secondary: null,
