@@ -1782,7 +1782,6 @@ export class BattleActions {
 		if (pokemon.species.name === 'Zoroark' && pokemon.illusion !== null) {
 			const illusionMon = pokemon.illusion;
 			let altForme = this.dex.species.get(illusionMon.species.otherFormes);
-			console.log(altForme)
 			if (altForme[0]) {
 				altForme = this.dex.species.get(illusionMon.species.otherFormes[0]);
 				if (altForme && altForme.name.slice(altForme.name.length-5) === "-Mega") {
