@@ -6471,7 +6471,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		forme: "Delta",
 		types: ["Psychic"],
 		genderRatio: {M: 0.875, F: 0.125},
-		baseStats: {hp: 40, atk: 45, def: 35, spa: 65, spd: 55, spe: 70},
+		baseStats: {hp: 45, atk: 60, def: 40, spa: 70, spd: 50, spe: 45},
 		abilities: {0: "Keen Eye", H: "Rivalry"},
 		weightkg: 2.5,
 		heightm: 1,
