@@ -1791,7 +1791,6 @@ export class BattleActions {
 						gender = "";
 					}
 					pokemon.illusion.details = altForme.name.concat(gender);
-					console.log(pokemon.illusion.details)
 				}
 			}
 		}
