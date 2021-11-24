@@ -1790,6 +1790,7 @@ export class BattleActions {
 					if (gender !== ", F" && gender !== ", M") {
 						gender = "";
 					}
+					pokemon.illusion.requiredItem = altForme.requiredItem;
 					pokemon.illusion.details = altForme.name.concat(gender);
 				}
 			}
