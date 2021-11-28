@@ -20179,13 +20179,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1},
-		status: 'brn',
 		onHit(target, source) {
+			if (!target.hasItem('lumberry', 'rawstberry')) {
+				target.trySetStatus('brn');
+			}
 			if (target.hasType('Grass')) {
 				for (const pokemon of target.side.pokemon) {
 					const fire = this.dex.getActiveMove('Brush Fire');
 					if (this.clampIntRange(pokemon.runEffectiveness(fire), -6, 6) === 1) {
-						pokemon.trySetStatus('brn');
+						if (pokemon.status === '') {
+							pokemon.status = 'brn';
+						}
+						console.log(pokemon)
+						// pokemon.trySetStatus('brn');
 					}
 				}
 			}
