@@ -2110,7 +2110,7 @@ export const Items: {[itemid: string]: ItemData} = {
 	},
 	fairygem: {
 		name: "Fairy Gem",
-		spritenum: 752+35,
+		spritenum: 611,
 		isGem: true,
 		onSourceTryPrimaryHit(target, source, move) {
 			if (target === source || move.category === 'Status') return;
