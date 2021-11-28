@@ -12047,9 +12047,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					};
 				}
 			} else {
-				console.log(target.moveSlots.length)
 				for (let i = 0; i < target.moveSlots.length; i++) {
-					console.log(target.moveSlots[0])
 					pokemon.moveSlots[i] = {
 						move: target.moveSlots[i].move,
 						id: target.moveSlots[i].id,
