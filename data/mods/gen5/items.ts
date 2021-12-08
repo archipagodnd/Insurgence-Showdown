@@ -41,6 +41,10 @@ export const Items: {[k: string]: ModdedItemData} = {
 			type: "Fire",
 		},
 	},
+	buggem: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	chartiberry: {
 		inherit: true,
 		naturalGift: {
@@ -104,12 +108,24 @@ export const Items: {[k: string]: ModdedItemData} = {
 			type: "Ghost",
 		},
 	},
+	darkgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	dragongem: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	durinberry: {
 		inherit: true,
 		naturalGift: {
 			basePower: 80,
 			type: "Water",
 		},
+	},
+	electricgem: {
+		inherit: true,
+		isNonstandard: null,
 	},
 	enigmaberry: {
 		inherit: true,
@@ -118,12 +134,24 @@ export const Items: {[k: string]: ModdedItemData} = {
 			type: "Bug",
 		},
 	},
+	fightinggem: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	figyberry: {
 		inherit: true,
 		naturalGift: {
 			basePower: 60,
 			type: "Bug",
 		},
+	},
+	firegem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	flyinggem: {
+		inherit: true,
+		isNonstandard: null,
 	},
 	ganlonberry: {
 		inherit: true,
@@ -132,12 +160,24 @@ export const Items: {[k: string]: ModdedItemData} = {
 			type: "Ice",
 		},
 	},
+	ghostgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
+	grassgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	grepaberry: {
 		inherit: true,
 		naturalGift: {
 			basePower: 70,
 			type: "Flying",
 		},
+	},
+	groundgem: {
+		inherit: true,
+		isNonstandard: null,
 	},
 	habanberry: {
 		inherit: true,
@@ -159,6 +199,10 @@ export const Items: {[k: string]: ModdedItemData} = {
 			basePower: 60,
 			type: "Dark",
 		},
+	},
+	icegem: {
+		inherit: true,
+		isNonstandard: null,
 	},
 	jabocaberry: {
 		inherit: true,
@@ -255,6 +299,10 @@ export const Items: {[k: string]: ModdedItemData} = {
 			type: "Dragon",
 		},
 	},
+	normalgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	occaberry: {
 		inherit: true,
 		naturalGift: {
@@ -318,12 +366,20 @@ export const Items: {[k: string]: ModdedItemData} = {
 			type: "Grass",
 		},
 	},
+	poisongem: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	pomegberry: {
 		inherit: true,
 		naturalGift: {
 			basePower: 70,
 			type: "Ice",
 		},
+	},
+	psychicgem: {
+		inherit: true,
+		isNonstandard: null,
 	},
 	qualotberry: {
 		inherit: true,
@@ -359,6 +415,10 @@ export const Items: {[k: string]: ModdedItemData} = {
 			basePower: 60,
 			type: "Grass",
 		},
+	},
+	rockgem: {
+		inherit: true,
+		isNonstandard: null,
 	},
 	rowapberry: {
 		inherit: true,
@@ -402,6 +462,10 @@ export const Items: {[k: string]: ModdedItemData} = {
 			type: "Psychic",
 		},
 	},
+	steelgem: {
+		inherit: true,
+		isNonstandard: null,
+	},
 	tamatoberry: {
 		inherit: true,
 		naturalGift: {
@@ -422,6 +486,10 @@ export const Items: {[k: string]: ModdedItemData} = {
 			basePower: 60,
 			type: "Electric",
 		},
+	},
+	watergem: {
+		inherit: true,
+		isNonstandard: null,
 	},
 	watmelberry: {
 		inherit: true,

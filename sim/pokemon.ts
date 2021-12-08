@@ -562,7 +562,7 @@ export class Pokemon {
 			stat = this.battle.runEvent('Modify' + statTable[statName], this, null, null, stat);
 		}
 
-		if (statName === 'spe' && stat > 10000) stat = 10000;
+		if (statName === 'spe' && stat > 10000 && !this.battle.format.battle?.trunc) stat = 10000;
 		return stat;
 	}
 
@@ -1130,6 +1130,13 @@ export class Pokemon {
 			return false;
 		}
 
+		if (this.battle.dex.currentMod === 'gen1stadium' && (
+			species.name === 'Ditto' ||
+			(this.species.name === 'Ditto' && pokemon.moves.includes('transform'))
+		)) {
+			return false;
+		}
+
 		if (!this.setSpecies(species, effect, true)) return false;
 
 		this.transformed = true;
@@ -1309,6 +1316,9 @@ export class Pokemon {
 			}
 		}
 		if (isPermanent && !['disguise', 'iceface'].includes(source.id)) {
+			if (this.illusion) {
+				this.ability = ''; // Don't allow Illusion to wear off
+			}
 			this.setAbility(species.abilities['0'], null, true);
 			this.baseAbility = this.ability;
 		}

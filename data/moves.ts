@@ -13257,6 +13257,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1},
 		status: 'psn',
+		secondary: null,
 		target: "allAdjacentFoes",
 		type: "Poison",
 		zMove: {boost: {def: 1}},
@@ -13289,6 +13290,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {powder: 1, protect: 1, reflectable: 1, mirror: 1},
 		status: 'psn',
+		secondary: null,
 		target: "normal",
 		type: "Poison",
 		zMove: {boost: {def: 1}},
@@ -18676,7 +18678,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		isNonstandard: "PastMove",
+		isNonstandard: "Past",
 		name: "Telekinesis",
 		pp: 15,
 		priority: 0,
@@ -18694,7 +18696,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			duration: 3,
 			onStart(target) {
 				if (['Diglett', 'Dugtrio', 'Palossand', 'Sandygast'].includes(target.baseSpecies.baseSpecies) ||
-						target.baseSpecies.name === '') {
+						target.baseSpecies.name === 'Gengar-Mega') {
 					this.add('-immune', target);
 					return null;
 				}
@@ -19223,6 +19225,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			spe: -1,
 		},
 		status: 'psn',
+		secondary: null,
 		target: "normal",
 		type: "Poison",
 		zMove: {boost: {spe: 1}},

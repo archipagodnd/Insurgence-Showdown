@@ -60,10 +60,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: "Unobtainable",
 	},
-	bisharpite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	blastoisinite: {
 		inherit: true,
 		isNonstandard: null,
@@ -84,10 +80,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	cacturnite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	cameruptite: {
 		inherit: true,
 		isNonstandard: null,
@@ -97,10 +89,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		isNonstandard: null,
 	},
 	charizarditey: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	chatotite: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -116,30 +104,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	crawdite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	cryogonite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	crystalfragment: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	crystalpiecearceus: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	crystalpiecegiratina: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	crystalpieceregigigas: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	darkgem: {
 		inherit: true,
 		isNonstandard: "Unobtainable",
@@ -152,103 +116,11 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	deltabisharpite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltablastoisinite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltacameruptite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltacharizardite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltaetigirafarigite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltafroslassite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltagalladite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltagardevoirite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltaglalitite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltalopunnite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltalucarionite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltamawilite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltamedichamite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltametagrossiteruin: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltametagrossitespider: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltamilotite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltapidgeotite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltasablenite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltascizorite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltasunflorite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltatyphlosionite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	deltavenusaurite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	diancite: {
 		inherit: true,
 		isNonstandard: null,
 	},
 	domefossil: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	donphanite: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -276,10 +148,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	eevite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	eeviumz: {
 		inherit: true,
 		isNonstandard: null,
@@ -292,10 +160,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	etigirafarigite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	fairiumz: {
 		inherit: true,
 		isNonstandard: null,
@@ -303,10 +167,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 	fairygem: {
 		inherit: true,
 		isNonstandard: "Unobtainable",
-	},
-	feraligatite: {
-		inherit: true,
-		isNonstandard: null,
 	},
 	fightinggem: {
 		inherit: true,
@@ -341,23 +201,11 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	flygonarmor: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	flygonite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	flyinggem: {
 		inherit: true,
 		isNonstandard: "Unobtainable",
 	},
 	flyiniumz: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	froslassite: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -389,10 +237,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	gothitite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	grassgem: {
 		inherit: true,
 		isNonstandard: "Unobtainable",
@@ -413,10 +257,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	haxorite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	helixfossil: {
 		inherit: true,
 		isNonstandard: null,
@@ -426,10 +266,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		isNonstandard: null,
 	},
 	houndoominite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	hydreigonite: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -470,10 +306,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	jirachite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	kangaskhanite: {
 		inherit: true,
 		isNonstandard: null,
@@ -487,10 +319,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		isNonstandard: null,
 	},
 	latiosite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	leavannyarmor: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -518,10 +346,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: "Unobtainable",
 	},
-	magcargonite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	magoberry: {
 		inherit: true,
 		onEat(pokemon) {
@@ -543,10 +367,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	marowite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	marshadiumz: {
 		inherit: true,
 		isNonstandard: null,
@@ -563,10 +383,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	meganiumite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	metagrossite: {
 		inherit: true,
 		isNonstandard: null,
@@ -575,23 +391,11 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	mewtwoarmor: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	mewtwonitex: {
 		inherit: true,
 		isNonstandard: null,
 	},
 	mewtwonitey: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	milotite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	miltankite: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -647,14 +451,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	politoedite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	poliwrathite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	primariumz: {
 		inherit: true,
 		isNonstandard: null,
@@ -680,10 +476,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		isNonstandard: "Unobtainable",
 	},
 	redorb: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	reuniclite: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -719,15 +511,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	shadowmewtwonite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	sharpedonite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	shiftrite: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -755,10 +539,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: "Unobtainable",
 	},
-	spiritombite: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	splashplate: {
 		inherit: true,
 		isNonstandard: null,
@@ -779,31 +559,11 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	steelixitefire: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	stick: {
 		inherit: true,
 		isNonstandard: null,
 	},
 	stoneplate: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	stunfiskite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	sudowoodite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	sunfloritef: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	sunfloritem: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -819,14 +579,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	typhlosionite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	tyranitararmor: {
-		inherit: true,
-		isNonstandard: null,
-	},
 	tyranitarite: {
 		inherit: true,
 		isNonstandard: null,
@@ -836,10 +588,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		isNonstandard: null,
 	},
 	venusaurite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	volcaronadeltaarmor: {
 		inherit: true,
 		isNonstandard: null,
 	},
@@ -870,18 +618,6 @@ export const Items: {[k: string]: ModdedItemData} = {
 		},
 	},
 	zapplate: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	zebstrikite: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	zekromarmor: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	zoronite: {
 		inherit: true,
 		isNonstandard: null,
 	},

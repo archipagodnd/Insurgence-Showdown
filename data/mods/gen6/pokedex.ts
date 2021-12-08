@@ -322,6 +322,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		color: "White",
 	},
+	zygarde: {
+		inherit: true,
+		abilities: {0: "Aura Break"},
+	},
 	necturna: {
 		inherit: true,
 		baseStats: {hp: 64, atk: 120, def: 100, spa: 85, spd: 120, spe: 81},

@@ -468,12 +468,12 @@ export class DexSpecies {
 				species.doublesTier = 'Illegal';
 				species.isNonstandard = 'Future';
 			}
-			if (this.dex.currentMod === 'letsgo' && !species.isNonstandard) {
+			if (this.dex.currentMod === 'gen7letsgo' && !species.isNonstandard) {
 				const isLetsGo = (
 					(species.num <= 151 || ['Meltan', 'Melmetal'].includes(species.name)) &&
-					(!species.forme || [
-						'Alola', 'Mega', 'Mega-X', 'Mega-Y', 'Mega-Fire', 'Mega-Steel', 'Mega-Five', 'Mega-Six', 'Mega-Seven', 'Mega-Eight',
-						'Mega-Nine', 'Mega-Base', 'Mega-V', 'Mega-J', 'Mega-F', 'Mega-E', 'Mega-U', 'Mega-L', 'Mega-G', 'Mega-S', 'Starter',
+					(!species.forme || ([
+						'Alola', 'Mega', 'Mega-X', 'Mega-Y', 'Mega-V', 'Mega-J',
+						'Mega-F', 'Mega-E', 'Mega-U', 'Mega-L', 'Mega-G', 'Mega-S', 'Starter',
 					].includes(species.forme) && species.name !== 'Pikachu-Alola'))
 				);
 				if (!isLetsGo) species.isNonstandard = 'Past';
