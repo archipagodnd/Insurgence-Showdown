@@ -116,10 +116,12 @@ export const commands: Chat.ChatCommands = {
 		topic = getAlias(room.roomid, topic) || topic;
 
 		if (!this.runBroadcast()) return;
-		this.sendReplyBox(Chat.formatText(roomFaqs[room.roomid][topic], true));
-		if (!this.broadcasting && user.can('ban', null, room, 'rfaq')) {
-			const code = Utils.escapeHTML(roomFaqs[room.roomid][topic]).replace(/\n/g, '<br />');
-			this.sendReplyBox(`<details><summary>Source</summary><code style="white-space: pre-wrap; display: table; tab-size: 3">/addfaq ${topic}, ${code}</code></details>`);
+		const rfaq = roomFaqs[room.roomid][topic];
+		this.sendReplyBox(visualizeFaq(rfaq));
+		if (!this.broadcasting && user.can('ban', null, room, 'addfaq')) {
+			const code = Utils.escapeHTML(rfaq.source).replace(/\n/g, '<br />');
+			const command = rfaq.html ? 'addhtmlfaq' : 'addfaq';
+			this.sendReplyBox(`<details><summary>Source</summary><code style="white-space: pre-wrap; display: table; tab-size: 3">/${command} ${topic}, ${code}</code></details>`);
 		}
 	},
 	roomfaqhelp: [
@@ -158,9 +160,10 @@ export const pages: Chat.PageTable = {
 				buf += `<hr /><strong>Aliases:</strong> ${aliases.join(', ')}`;
 			}
 			if (user.can('ban', null, room, 'addfaq')) {
-				const src = Utils.escapeHTML(topic).replace(/\n/g, `<br />`);
+				const src = Utils.escapeHTML(topic.source).replace(/\n/g, `<br />`);
+				const command = topic.html ? 'addhtmlfaq' : 'addfaq';
 				buf += `<hr /><details><summary>Raw text</summary>`;
-				buf += `<code style="white-space: pre-wrap; display: table; tab-size: 3;">/addfaq ${key}, ${src}</code></details>`;
+				buf += `<code style="white-space: pre-wrap; display: table; tab-size: 3;">/${command} ${key}, ${src}</code></details>`;
 				buf += `<hr /><button class="button" name="send" value="/msgroom ${room.roomid},/removefaq ${key}">Delete FAQ</button>`;
 			}
 			buf += `</div>`;
@@ -182,5 +185,5 @@ export const handlers: Chat.Handlers = {
 };
 
 process.nextTick(() => {
-	Chat.multiLinePattern.register('/addfaq ');
+	Chat.multiLinePattern.register('/add(htmlfaq|faq) ');
 });

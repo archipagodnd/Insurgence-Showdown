@@ -39,7 +39,7 @@ require('./../.lib-dist/process-manager').disabled = true;
 try {
 	const chatrooms = require('../config/chatrooms.json');
 	chatrooms.splice(0, chatrooms.length);
-} catch (e) {}
+} catch {}
 
 // Don't create a REPL
 require('../.lib-dist/repl').Repl.start = noop;

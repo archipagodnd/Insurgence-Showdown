@@ -100,9 +100,19 @@ if (Config.watchconfig) {
 	});
 }
 
-/*********************************************************
- * Set up most of our globals
- *********************************************************/
+	if (Config.watchconfig) {
+		FS(require.resolve('../config/config')).onModify(() => {
+			try {
+				global.Config = ConfigLoader.load(true);
+				// ensure that battle prefixes configured via the chat plugin are not overwritten
+				// by battle prefixes manually specified in config.js
+				Chat.plugins['username-prefixes']?.prefixManager.refreshConfig(true);
+				Monitor.notice('Reloaded ../config/config.js');
+			} catch (e: any) {
+				Monitor.adminlog("Error reloading ../config/config.js: " + e.stack);
+			}
+		});
+	}
 
 import {Dex} from '../sim/dex';
 global.Dex = Dex;
@@ -204,7 +214,7 @@ if (Config.startuphook) {
 if (Config.ofemain) {
 	try {
 		require.resolve('node-oom-heapdump');
-	} catch (e) {
+	} catch (e: any) {
 		if (e.code !== 'MODULE_NOT_FOUND') throw e; // should never happen
 		throw new Error(
 			'node-oom-heapdump is not installed, but it is a required dependency if Config.ofe is set to true! ' +

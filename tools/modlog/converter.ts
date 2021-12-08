@@ -9,7 +9,8 @@ if (!global.Config) {
 	let hasSQLite = true;
 	try {
 		require.resolve('better-sqlite3');
-	} catch (e) {
+	} catch {
+		console.warn(`Warning: the modlog conversion script is running without a SQLite library.`);
 		hasSQLite = false;
 	}
 	global.Config = {
@@ -342,7 +343,7 @@ export function modernizeLog(line: string, nextLine?: string): string | undefine
 		if (line.includes(oldAction)) {
 			try {
 				return prefix + modernizerTransformations[oldAction](line);
-			} catch (err) {
+			} catch (err: any) {
 				if (Config.nofswriting) throw err;
 				process.stderr.write(`${err.message}\n`);
 			}
@@ -562,10 +563,17 @@ export class ModlogConverterTxt {
 			};
 		}
 
-		this.modlog = new Modlog(this.textLogDir, this.isTesting ? ':memory:' : this.databaseFile);
+		this.modlog = new Modlog(
+			this.isTesting ? ':memory:' : this.databaseFile,
+			// wait 15 seconds for DB to no longer be busy - this is important since I'm trying to do
+			// a no-downtime transfer of text -> SQLite
+			{sqliteOptions: {timeout: 15000}},
+		);
+		this.newestAllowedTimestamp = newestAllowedTimestamp;
 	}
 
 	async toSQLite() {
+		await this.modlog.readyPromise;
 		const files = this.isTesting ? [...this.isTesting.files.keys()] : await FS(this.textLogDir).readdir();
 		// Read global modlog last to avoid inserting duplicate data to database
 		if (files.includes('modlog_global.txt')) {
