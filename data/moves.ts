@@ -433,7 +433,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Ancient Roar",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		flags: {protect: 1, mirror: 1, sound: 1, bypasssub: 1},
 		secondary: null,
 		target: "any",
 		type: "Rock",
@@ -3859,7 +3859,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Dragonify",
 		pp: 20,
 		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
+		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1},
 		onHit(target) {
 			if (target.getTypes().join() === 'Dragon' || !target.setType('Dragon')) {
 				// Soak should animate even when it fails.
@@ -3974,7 +3974,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Drakon Voice",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		flags: {protect: 1, mirror: 1, sound: 1, bypasssub: 1},
 		secondary: null,
 		target: "any",
 		type: "Dragon",
@@ -11119,7 +11119,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Medusa Ray",
 		pp: 20,
 		priority: 0,
-		flags: {protect: 1, reflectable: 1, mirror: 1, mystery: 1},
+		flags: {protect: 1, reflectable: 1, mirror: 1, allyanim: 1},
 		onHit(target) {
 			if (target.getTypes().join() === 'Rock' || !target.setType('Rock')) {
 				// Soak should animate even when it fails.
@@ -11945,7 +11945,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Morph",
 		pp: 10,
 		priority: 0,
-		flags: {mystery: 1},
+		flags: {allyanim: 1},
 		onHit(target, pokemon) {
 			const rand = Math.ceil(Math.random() * 10);
 			const pkmn = target.species.id.toString();
@@ -14643,7 +14643,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Retrograde",
 		pp: 30,
 		priority: 0,
-		flags: {mystery: 1},
+		flags: {allyanim: 1},
 		onHit(target, pokemon) {
 			const pkmn = target.species.id;
 			if (
