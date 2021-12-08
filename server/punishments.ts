@@ -1041,7 +1041,7 @@ export const Punishments = new class {
 				}
 			}
 		}
-		if (Punishments.unpunish(name, 'LOCK')) {
+		if (['LOCK', 'YEARLOCK'].some(type => Punishments.unpunish(name, type))) {
 			if (!success.length) success.push(name);
 		}
 		if (!success.length) return undefined;
@@ -1303,7 +1303,7 @@ export const Punishments = new class {
 		const {minIP, maxIP} = parsedRange;
 
 		for (let ipNumber = minIP; ipNumber <= maxIP; ipNumber++) {
-			ips.push(IPTools.numberToIP(ipNumber));
+			ips.push(IPTools.numberToIP(ipNumber)!); // range is already validated by stringToRange
 		}
 
 		void Punishments.appendPunishment({
@@ -1543,28 +1543,20 @@ export const Punishments = new class {
 		return '';
 	}
 
-	hasPunishType(name: string, type: string) {
-		return Punishments.userids.get(name)?.some(p => p.type === type);
+	hasPunishType(name: string, types: string | string[], ip?: string) {
+		if (typeof types === 'string') types = [types];
+		const byName = Punishments.userids.get(name)?.some(p => types.includes(p.type));
+		if (!ip) return byName;
+		return byName || Punishments.ipSearch(ip)?.some(p => types.includes(p.type));
 	}
 
-	getRoomPunishType(room: Room, name: string) {
-		const idPunishments = Punishments.roomUserids.nestedGet(room.roomid, toID(name));
-		let punishment = idPunishments?.[0];
-		if (punishment) return punishment.type;
-		const user = Users.get(name);
-		if (!user) return;
-		const ipPunishments = Punishments.roomIps.nestedGet(room.roomid, user.latestIp);
-		punishment = ipPunishments?.[0];
-		if (punishment) return punishment.type;
-		return '';
-	}
-
-	hasRoomPunishType(room: Room | RoomID, name: string, type: string) {
+	hasRoomPunishType(room: Room | RoomID, name: string, types: string | string[]) {
+		if (typeof types === 'string') types = [types];
 		if (typeof (room as Room).roomid === 'string') room = (room as Room).roomid;
-		return Punishments.roomUserids.nestedGet(room as RoomID, name)?.some(p => p.type === type);
+		return Punishments.roomUserids.nestedGet(room as RoomID, name)?.some(p => types.includes(p.type));
 	}
 
-	sortedTypes = ['LOCK', 'NAMELOCK', 'BAN'];
+	sortedTypes = ['TICKETBAN', 'LOCK', 'NAMELOCK', 'BAN'];
 	sortedRoomTypes = [...(global.Punishments?.sortedRoomTypes || []), 'ROOMBAN', 'BLACKLIST'];
 	byWeight(punishments?: Punishment[], room = false) {
 		if (!punishments) return [];
@@ -1731,14 +1723,10 @@ export const Punishments = new class {
 
 	checkIp(user: User, connection: Connection) {
 		const ip = connection.ip;
-		let punishment: Punishment | undefined;
-		const punishments = Punishments.ipSearch(ip);
-		if (punishments) {
-			punishment = punishments[0];
-		}
+		let punishments = Punishments.ipSearch(ip);
 
-		if (!punishment && Punishments.checkRangeBanned(ip)) {
-			punishment = {type: 'LOCK', id: '#ipban', expireTime: Infinity, reason: ''};
+		if (!punishments && Punishments.checkRangeBanned(ip)) {
+			punishments = [{type: 'LOCK', id: '#ipban', expireTime: Infinity, reason: ''}];
 		}
 
 		if (punishments) {
@@ -1761,8 +1749,8 @@ export const Punishments = new class {
 						info?.onActivate?.call(this, user, punishment, null, punishment.id === user.id);
 					}
 				}
-				Punishments.checkPunishmentTime(user, punishment);
 			}
+			if (!shared) Punishments.checkPunishmentTime(user, Punishments.byWeight(punishments)[0]);
 		}
 
 		return IPTools.lookup(ip).then(({dnsbl, host, hostType}) => {
@@ -2109,7 +2097,10 @@ export const Punishments = new class {
 				const rooms = punishments.map(([room]) => room).join(', ');
 				const reason = `Autolocked for having punishments in ${punishments.length} rooms: ${rooms}`;
 				const message = `${(user as User).name || userid} was locked for having punishments in ${punishments.length} rooms: ${punishmentText}`;
-				const isWeek = await Rooms.Modlog.getGlobalPunishments(userid, AUTOWEEKLOCK_DAYS_TO_SEARCH) >= AUTOWEEKLOCK_THRESHOLD;
+
+				const globalPunishments = await Rooms.Modlog.getGlobalPunishments(userid, AUTOWEEKLOCK_DAYS_TO_SEARCH);
+				// null check in case SQLite is disabled
+				const isWeek = globalPunishments !== null && globalPunishments >= AUTOWEEKLOCK_THRESHOLD;
 
 				void Punishments.autolock(user, 'staff', 'PunishmentMonitor', reason, message, isWeek);
 				if (typeof user !== 'string') {

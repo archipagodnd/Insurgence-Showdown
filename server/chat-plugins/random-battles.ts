@@ -693,16 +693,10 @@ export const commands: Chat.ChatCommands = {
 
 		const args = target.split(',');
 		if (!args[0]) return this.parse(`/help randombattles`);
-		let dex = Dex;
-		let isLetsGo = false;
-		if (args[1] && toID(args[1]) in Dex.dexes) {
-			dex = Dex.dexes[toID(args[1])];
-			if (toID(args[1]) === 'letsgo') isLetsGo = true;
-		} else if (room?.battle) {
-			const format = Dex.formats.get(room.battle.format);
-			dex = Dex.mod(format.mod);
-			if (format.mod === 'letsgo') isLetsGo = true;
-		}
+
+		const {dex} = this.splitFormat(target, true);
+		const isLetsGo = (dex.currentMod === 'gen7letsgo');
+
 		const species = dex.species.get(args[0]);
 		if (!species.exists) {
 			return this.errorReply(`Error: Pok\u00e9mon '${args[0].trim()}' does not exist.`);

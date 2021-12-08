@@ -1,10 +1,15 @@
 'use strict';
 /**
- * Tests to ensure punishments are sorted and handled properly.
+ * Tests for Punishments.
+ *
  * @author mia-pi-git
+ * @author Annika
  */
 const assert = require('../assert');
-const {Punishments} = require('../../.server-dist/punishments');
+const {makeUser, makeConnection} = require('../users-utils');
+const {Punishments} = require('../../server/punishments');
+
+const TEST_PUNISHMENT_DURATION = 1000; // 1 second
 
 describe("Punishments", () => {
 	it("Should properly sort punishments by weight", () => {

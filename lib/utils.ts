@@ -392,7 +392,7 @@ export class Multiset<T> extends Map<T, number> {
 
 // backwards compatibility
 export const Utils = {
-	waitUntil, html, escapeHTML,
+	parseExactInt, waitUntil, html, escapeHTML,
 	compare, sortBy, levenshtein,
 	shuffle, deepClone, clearRequireCache,
 	randomElement, forceWrap, splitFirst,

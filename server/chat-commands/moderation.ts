@@ -303,6 +303,8 @@ export const commands: Chat.ChatCommands = {
 		const buffer = Utils.sortBy(
 			Object.entries(rankLists) as [GroupSymbol, string[]][],
 			([symbol]) => -Users.Auth.getGroup(symbol).rank
+		).filter(
+			([symbol]) => symbol !== Users.SECTIONLEADER_SYMBOL
 		).map(
 			([symbol, names]) => (
 				`${(Config.groups[symbol] ? `**${Config.groups[symbol].name}s** (${symbol})` : symbol)}:\n` +
@@ -1006,7 +1008,8 @@ export const commands: Chat.ChatCommands = {
 		Punishments.savePunishments();
 
 		for (const curUser of Users.findUsers([userid], [])) {
-			if (curUser.locked && !curUser.locked.startsWith('#') && !Punishments.getPunishType(curUser.id)) {
+			const locked = Punishments.hasPunishType(curUser.id, ['LOCK', 'NAMELOCK'], curUser.latestIp);
+			if (curUser.locked && !curUser.locked.startsWith('#') && !locked) {
 				curUser.locked = null;
 				curUser.namelocked = null;
 				curUser.destroyPunishmentTimer();
@@ -1098,8 +1101,6 @@ export const commands: Chat.ChatCommands = {
 			} else {
 				return this.sendReply(`${name} is a trusted user. If you are sure you would like to ban them use /forceglobalban.`);
 			}
-		} else if (force) {
-			return this.errorReply(`Use /globalban; ${name} is not a trusted user.`);
 		}
 
 		const roomauth = Rooms.global.destroyPersonalRooms(userid);
@@ -1209,7 +1210,11 @@ export const commands: Chat.ChatCommands = {
 		}
 		Punishments.banRange(ip, reason);
 
-		this.addGlobalModAction(`${user.name} hour-banned the ${ipDesc}: ${reason}`);
+		if (!this.room || this.room.roomid !== 'staff') {
+			this.sendReply(`You hour-banned the ${ipDesc}.`);
+		}
+		this.room = Rooms.get('staff') || null;
+		this.addModAction(`${user.name} hour-banned the ${ipDesc}: ${reason}`);
 		this.globalModlog(`RANGEBAN`, null, `${ip.endsWith('*') ? ip : `[${ip}]`}: ${reason}`);
 	},
 	baniphelp: [
@@ -1494,7 +1499,12 @@ export const commands: Chat.ChatCommands = {
 			Users.globalAuth.setSection(userid, section);
 			this.addGlobalModAction(`${name} was appointed Section Leader of ${RoomSections.sectionNames[section]} by ${user.name}.`);
 			this.globalModlog(`SECTION LEADER`, userid, section);
-			if (!staffRoom?.auth.has(userid)) this.parse(`/msgroom staff,/forceroompromote ${userid},▸`);
+			if (targetUser && !Users.globalAuth.atLeast(targetUser, Users.SECTIONLEADER_SYMBOL)) {
+				// do not use global /forcepromote
+				this.parse(`/globalsectionleader ${userid}`);
+			} else {
+				this.sendReply(`User ${userid} is offline and unrecognized, and so can't be globally promoted.`);
+			}
 			targetUser?.popup(`You were appointed Section Leader of ${RoomSections.sectionNames[section]} by ${user.name}.`);
 		} else {
 			const group = Users.globalAuth.get(userid);

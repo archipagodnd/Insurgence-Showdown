@@ -24,7 +24,7 @@
  *
  *   It exports the global table `Rooms.rooms`.
  *
- * Dex - from .sim-dist/dex.ts
+ * Dex - from sim/dex.ts
  *
  *   Handles getting data about Pokemon, items, etc.
  *
@@ -48,57 +48,29 @@
 // features, so that it doesn't crash old versions of Node.js, so we
 // can successfully print the "We require Node.js 8+" message.
 
-// Check for version and dependencies
-try {
-	// I've gotten enough reports by people who don't use the launch
-	// script that this is worth repeating here
-	[].flatMap(x => x);
-} catch (e) {
-	throw new Error("We require Node.js version 12 or later; you're using " + process.version);
-}
-
-try {
-	require.resolve('../.sim-dist/index');
-	const sucraseVersion = require('sucrase').getVersion().split('.');
-	if (
-		parseInt(sucraseVersion[0]) < 3 ||
-		(parseInt(sucraseVersion[0]) === 3 && parseInt(sucraseVersion[1]) < 12)
-	) {
-		throw new Error("Sucrase version too old");
-	}
-} catch (e) {
-	throw new Error("Dependencies are unmet; run `node build` before launching Pokemon Showdown again.");
+// Check for version
+const nodeVersion = parseInt(process.versions.node);
+if (isNaN(nodeVersion) || nodeVersion < 14) {
+	throw new Error("We require Node.js version 14 or later; you're using " + process.version);
 }
 
 import {FS, Repl} from '../lib';
 
 /*********************************************************
- * Load configuration
+ * Set up most of our globals
+ * This is in a function because swc runs `import` before any code,
+ * and many of our imports require the `Config` global to be set up.
  *********************************************************/
+function setupGlobals() {
+	const ConfigLoader = require('./config-loader');
+	global.Config = ConfigLoader.Config;
 
-import * as ConfigLoader from './config-loader';
-global.Config = ConfigLoader.Config;
-
-import {Monitor} from './monitor';
-global.Monitor = Monitor;
-global.__version = {head: ''};
-void Monitor.version().then((hash: any) => {
-	global.__version.tree = hash;
-});
-
-if (Config.watchconfig) {
-	FS(require.resolve('../config/config')).onModify(() => {
-		try {
-			global.Config = ConfigLoader.load(true);
-			// ensure that battle prefixes configured via the chat plugin are not overwritten
-			// by battle prefixes manually specified in config.js
-			Chat.plugins['username-prefixes']?.prefixManager.refreshConfig(true);
-			Monitor.notice('Reloaded ../config/config.js');
-		} catch (e) {
-			Monitor.adminlog("Error reloading ../config/config.js: " + e.stack);
-		}
+	const {Monitor} = require('./monitor');
+	global.Monitor = Monitor;
+	global.__version = {head: ''};
+	void Monitor.version().then((hash: any) => {
+		global.__version.tree = hash;
 	});
-}
 
 	if (Config.watchconfig) {
 		FS(require.resolve('../config/config')).onModify(() => {
@@ -114,43 +86,45 @@ if (Config.watchconfig) {
 		});
 	}
 
-import {Dex} from '../sim/dex';
-global.Dex = Dex;
-global.toID = Dex.toID;
+	const {Dex} = require('../sim/dex');
+	global.Dex = Dex;
+	global.toID = Dex.toID;
 
-import {Teams} from '../sim/teams';
-global.Teams = Teams;
+	const {Teams} = require('../sim/teams');
+	global.Teams = Teams;
 
-import {LoginServer} from './loginserver';
-global.LoginServer = LoginServer;
+	const {LoginServer} = require('./loginserver');
+	global.LoginServer = LoginServer;
 
-import {Ladders} from './ladders';
-global.Ladders = Ladders;
+	const {Ladders} = require('./ladders');
+	global.Ladders = Ladders;
 
-import {Chat} from './chat';
-global.Chat = Chat;
+	const {Chat} = require('./chat');
+	global.Chat = Chat;
 
-import {Users} from './users';
-global.Users = Users;
+	const {Users} = require('./users');
+	global.Users = Users;
 
-import {Punishments} from './punishments';
-global.Punishments = Punishments;
+	const {Punishments} = require('./punishments');
+	global.Punishments = Punishments;
 
-import {Rooms} from './rooms';
-global.Rooms = Rooms;
-// We initialize the global room here because roomlogs.ts needs the Rooms global
-Rooms.global = new Rooms.GlobalRoomState();
+	const {Rooms} = require('./rooms');
+	global.Rooms = Rooms;
+	// We initialize the global room here because roomlogs.ts needs the Rooms global
+	Rooms.global = new Rooms.GlobalRoomState();
 
-import * as Verifier from './verifier';
-global.Verifier = Verifier;
-Verifier.PM.spawn();
+	const Verifier = require('./verifier');
+	global.Verifier = Verifier;
+	Verifier.PM.spawn();
 
-import {Tournaments} from './tournaments';
-global.Tournaments = Tournaments;
+	const {Tournaments} = require('./tournaments');
+	global.Tournaments = Tournaments;
 
-import {IPTools} from './ip-tools';
-global.IPTools = IPTools;
-void IPTools.loadHostsAndRanges();
+	const {IPTools} = require('./ip-tools');
+	global.IPTools = IPTools;
+	void IPTools.loadHostsAndRanges();
+}
+setupGlobals();
 
 if (Config.crashguard) {
 	// graceful crash - allow current battles to finish before restarting

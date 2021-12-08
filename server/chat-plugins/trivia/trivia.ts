@@ -1249,7 +1249,7 @@ export class Mastermind extends Rooms.RoomGame {
 	 * @param questions an array of TriviaQuestions to be asked
 	 * @param timeout the period of time to end the round after (in seconds)
 	 */
-	startRound(playerID: ID, category: string, questions: TriviaQuestion[], timeout: number) {
+	startRound(playerID: ID, category: ID, questions: TriviaQuestion[], timeout: number) {
 		if (this.currentRound) {
 			throw new Chat.ErrorMessage(this.room.tr`There is already a round of Mastermind in progress.`);
 		}
@@ -1301,7 +1301,7 @@ export class Mastermind extends Rooms.RoomGame {
 		const questions = await getQuestions('all', 'random');
 		if (!questions.length) throw new Chat.ErrorMessage(this.room.tr`There are no questions in the Trivia database.`);
 
-		this.currentRound = new MastermindFinals(this.room, 'all', questions, this.getTopPlayers(this.numFinalists));
+		this.currentRound = new MastermindFinals(this.room, 'all' as ID, questions, this.getTopPlayers(this.numFinalists));
 
 		this.phase = MASTERMIND_FINALS_PHASE;
 		setTimeout(() => {
@@ -1401,8 +1401,8 @@ export class Mastermind extends Rooms.RoomGame {
 }
 
 export class MastermindRound extends FirstModeTrivia {
-	constructor(room: Room, category: string, questions: TriviaQuestion[], playerID?: ID) {
-		super(room, 'first', category, false, 'infinite', questions, 'Automatically Created', false, true);
+	constructor(room: Room, category: ID, questions: TriviaQuestion[], playerID?: ID) {
+		super(room, 'first', [category], false, 'infinite', questions, 'Automatically Created', false, true);
 
 		this.playerCap = 1;
 		if (playerID) {
@@ -1460,7 +1460,7 @@ export class MastermindRound extends FirstModeTrivia {
 }
 
 export class MastermindFinals extends MastermindRound {
-	constructor(room: Room, category: string, questions: TriviaQuestion[], players: ID[]) {
+	constructor(room: Room, category: ID, questions: TriviaQuestion[], players: ID[]) {
 		super(room, category, questions);
 		this.playerCap = players.length;
 		for (const id of players) {
@@ -1560,7 +1560,7 @@ const triviaCommands: Chat.ChatCommands = {
 				);
 			}
 			return this.errorReply(
-				this.tr`There are not enough questions under the category "${ALL_CATEGORIES[category]}" to finish a trivia game.`
+				this.tr`There are not enough questions under the specified categories to finish a trivia game.`
 			);
 		}
 
@@ -1583,7 +1583,7 @@ const triviaCommands: Chat.ChatCommands = {
 		);
 	},
 	newhelp: [
-		`/trivia new [mode], [category], [length] - Begin a new Trivia game.`,
+		`/trivia new [mode], [categories], [length] - Begin a new Trivia game.`,
 		`/trivia unrankednew [mode], [category], [length] - Begin a new Trivia game that does not award leaderboard points.`,
 		`/trivia sortednew [mode], [category], [length] — Begin a new Trivia game in which the question order is not randomized.`,
 		`Requires: + % @ # &`,
@@ -2348,7 +2348,7 @@ const triviaCommands: Chat.ChatCommands = {
 				`<li>You may also specify a number for length; in this case, the game will end after that number of questions have been asked.</li>` +
 			`</ul></details>` +
 			`<details><summary><strong>Game commands</strong></summary><ul>` +
-				`<li><code>/trivia new [mode], [category], [length]</code> - Begin signups for a new Trivia game. Requires: + % @ # &</li>` +
+				`<li><code>/trivia new [mode], [categories], [length]</code> - Begin signups for a new Trivia game. <code>[categories]</code> can be either one category, or a <code>+</code>-separated list of categories. Requires: + % @ # &</li>` +
 				`<li><code>/trivia unrankednew [mode], [category], [length]</code> - Begin a new Trivia game that does not award leaderboard points. Requires: + % @ # &</li>` +
 				`<li><code>/trivia sortednew [mode], [category], [length]</code> — Begin a new Trivia game in which the question order is not randomized. Requires: + % @ # &</li>` +
 				`<li><code>/trivia join</code> - Join a game of Trivia or Mastermind during signups.</li>` +
