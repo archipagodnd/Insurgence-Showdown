@@ -20185,7 +20185,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 				for (const pokemon of target.side.pokemon) {
 					const fire = this.dex.getActiveMove('Brush Fire');
 					if (this.clampIntRange(pokemon.runEffectiveness(fire), -6, 6) > 0) {
-						console.log(pokemon.position, target.position, pokemon.species.name, target.species.name)
 						if (pokemon.position !== target.position) {
 							if (!pokemon.hasAbility(['Comatose', 'Water Veil', 'Water Bubble'])) {
 								pokemon.trySetStatus('brn');

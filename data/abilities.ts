@@ -1467,6 +1467,17 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4,
 		num: 206,
 	},
+	glitch: {
+		onDamagingHitOrder: 1,
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target, true)) {
+				source.faint();
+			}
+		},
+		name: "Glitch",
+		rating: 4,
+		num: 24,
+	},
 	gluttony: {
 		name: "Gluttony",
 		rating: 1.5,
@@ -1843,7 +1854,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			for (let i = pokemon.side.pokemon.length - 1; i > pokemon.position; i--) {
 				const possibleTarget = pokemon.side.pokemon[i];
 				if (!possibleTarget.fainted) {
-					pokemon.illusion = possibleTarget;
+					pokemon.illusion = possibleTarget
+					// pokemon.illusion = Object.assign(pokemon, possibleTarget);
 					break;
 				}
 			}
@@ -3194,18 +3206,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 5,
 		onResidual(pokemon) {
-			if (this.field.isTerrain('grassyterrain')) return;
 			if (['raindance', 'primordialsea', 'darkness'].includes(pokemon.effectiveWeather())) return;
 			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				this.heal(pokemon.baseMaxhp / 8);
 			} else {
 				this.heal(pokemon.baseMaxhp / 16);
-			}
-			if (pokemon.isGrounded() && !pokemon.isSemiInvulnerable()) {
-				if (!this.field.isWeather(['sunnyday', 'desolateland'])) return;
-				this.heal(pokemon.baseMaxhp / 16, pokemon, pokemon);
-			} else {
-				this.debug(`Pokemon semi-invuln or not grounded; Grassy Terrain skipped`);
 			}
 		},
 		name: "Phototroph",
