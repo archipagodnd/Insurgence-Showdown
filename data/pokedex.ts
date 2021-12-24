@@ -21587,7 +21587,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		gen: 4,
 	},
 	venomicon: {
-		num: -67,
+		num: -66,
 		name: "Venomicon",
 		baseForme: "Prologue",
 		types: ["Poison", "Flying"],
@@ -21603,7 +21603,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		gen: 8,
 	},
 	venomiconepilogue: {
-		num: -67,
+		num: -66,
 		name: "Venomicon-Epilogue",
 		baseSpecies: "Venomicon",
 		forme: "Epilogue",
