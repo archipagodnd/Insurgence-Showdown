@@ -409,8 +409,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 		onResidual(target) {
 			if (this.effectState.trueDuration < 0) return;
 			this.effectState.trueDuration += 1;
-			
-			let opponent = target.active[0]
+
+			const opponent = target.active[0];
 
 			if (this.effectState.trueDuration === 3) {
 				const data = this.effectState;

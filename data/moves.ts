@@ -11953,8 +11953,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 			const pkmn = target.species.id.toString();
 			const pkmnLevel = pokemon.level;
 			let opponentID = target.species.id;
-			let deltaFormes = [];
-			let dict = {};
+			const deltaFormes = [];
+			const dict = {};
 			const deltaPokemon = [
 				'venusaur', 'charizard', 'blastoise', 'bisharp', 'gardevoir', 'gallade',
 				'sunflora', 'scizor', 'glalie', 'froslass', 'typhlosion', 'pidgeot',
@@ -11968,16 +11968,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 				'miloticmega', 'lopunnymega', 'lucariomega',
 			];
 			if (target.species.otherFormes) {
-				for (let forme of target.species.otherFormes) {
+				for (const forme of target.species.otherFormes) {
 					if (forme.includes('Delta')) {
-						let deltaForme = forme.replace('-', '').replace('-', '').toLowerCase();
+						const deltaForme = forme.replace('-', '').replace('-', '').toLowerCase();
 						deltaFormes[deltaFormes.length] = deltaForme;
 					}
 				}
 				if (deltaFormes.length === 1) {
 					opponentID = deltaFormes[0];
-				} else if (deltaFormes.length > 1){
-					opponentID = deltaFormes[Math.floor(Math.random()*deltaFormes.length)]
+				} else if (deltaFormes.length > 1) {
+					opponentID = deltaFormes[Math.floor(Math.random() * deltaFormes.length)];
 				}
 			}
 			if (deltaPokemon.includes(pkmn)) {
@@ -12000,8 +12000,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 			pokemon.formeChange(opponentID);
 			if (target.species.id !== opponentID) {
 				const learnsetData = {...(this.dex.data.Learnsets[opponentID]?.learnset || {})};
-				for (let move in learnsetData) {
-					let learnmoment = (learnsetData[move].filter(learn => learn.slice(0,2) === "6L"));
+				for (const move in learnsetData) {
+					let learnmoment = (learnsetData[move].filter(learn => learn.slice(0, 2) === "6L"));
 					if (!learnmoment[0]) continue;
 					if (learnmoment.length > 1) {
 						if (learnmoment[1].slice(2) > pkmnLevel) {
@@ -12013,18 +12013,18 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (learnmoment[0].slice(2) > pkmnLevel) continue;
 					dict[move] = Number(learnmoment[0].slice(2));
 				}
-				let items = Object.keys(dict).map(function(key) {
+				const items = Object.keys(dict).map(function (key) {
 					return [key, dict[key]];
 				});
-				items.sort(function(first, second) {
+				items.sort(function (first, second) {
 					return second[1] - first[1];
 				});
 				let numberOfMoves = 4;
 				if (items.length < 4) {
-					numberOfMoves = items.length
+					numberOfMoves = items.length;
 				}
 				for (let i = 0; i < numberOfMoves; i++) {
-					let slotMove = this.dex.getActiveMove(items[i][0])
+					const slotMove = this.dex.getActiveMove(items[i][0]);
 					pokemon.moveSlots[i] = {
 						move: slotMove.name,
 						id: slotMove.id,

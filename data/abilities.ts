@@ -1854,7 +1854,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			for (let i = pokemon.side.pokemon.length - 1; i > pokemon.position; i--) {
 				const possibleTarget = pokemon.side.pokemon[i];
 				if (!possibleTarget.fainted) {
-					pokemon.illusion = possibleTarget
+					pokemon.illusion = possibleTarget;
 					// pokemon.illusion = Object.assign(pokemon, possibleTarget);
 					break;
 				}
@@ -4736,7 +4736,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				pokemon.formeChange('Typhlosion-Delta-Mega', this.effect, false);
 			}
 		},
-		onEnd(pokemon){
+		onEnd(pokemon) {
 			if (pokemon.species.name === 'Typhlosion-Delta-Mega' || !pokemon.hp) return;
 			pokemon.formeChange('Typhlosion-Delta-Mega', this.effect, false);
 		},
