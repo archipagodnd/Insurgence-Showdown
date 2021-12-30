@@ -20182,9 +20182,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (this.clampIntRange(pokemon.runEffectiveness(fire), -6, 6) > 0) {
 						if (pokemon.position !== target.position) {
 							const immune = ['comatose', 'waterveil', 'waterbubble'];
-							const status = ['par', 'psn', 'tox', 'slp', 'frz']
+							const status = ['par', 'psn', 'tox', 'slp', 'frz'];
 							if (!immune.includes(pokemon.ability) && !status.includes(pokemon.status)) {
-								console.log(pokemon.baseSpecies.name)
 								pokemon.status = 'brn';
 							}
 						}
