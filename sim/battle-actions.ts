@@ -1771,8 +1771,11 @@ export class BattleActions {
 			let altForme = this.dex.species.get(illusionMon.species.otherFormes);
 			if (altForme[0]) {
 				altForme = this.dex.species.get(illusionMon.species.otherFormes[0]);
-				if (altForme && (altForme.name.slice(altForme.name.length-5) === "-Mega" || altForme.name.slice(altForme.name.length-7) === "-Mega-X")) {
-					let gender = pokemon.illusion.details.slice(pokemon.illusion.details.length-3);
+				if (
+					altForme && (altForme.name.slice(altForme.name.length - 5) === "-Mega" ||
+					altForme.name.slice(altForme.name.length - 7) === "-Mega-X")
+				) {
+					let gender = pokemon.illusion.details.slice(pokemon.illusion.details.length - 3);
 					if (gender !== ", F" && gender !== ", M") {
 						gender = "";
 					}

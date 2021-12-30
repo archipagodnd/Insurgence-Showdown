@@ -1294,14 +1294,14 @@ export class Pokemon {
 						this.battle.add('-primal', this);
 					}
 				} else {
-          if (this.illusion) {
-            const illusionStone = this.illusion.requiredItem;
-            if (typeof illusionStone !== 'undefined') {
-              this.battle.add('-mega', this, apparentSpecies, illusionStone);
-            }
-          } else {
-            this.battle.add('-mega', this, apparentSpecies, species.requiredItem);
-          }
+					if (this.illusion) {
+						const illusionStone = this.illusion.requiredItem;
+						if (typeof illusionStone !== 'undefined') {
+							this.battle.add('-mega', this, apparentSpecies, illusionStone);
+						}
+					} else {
+						this.battle.add('-mega', this, apparentSpecies, species.requiredItem);
+					}
 					this.moveThisTurnResult = true; // Mega Evolution counts as an action for Truant
 				}
 			} else if (source.effectType === 'Status') {

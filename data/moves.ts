@@ -11949,7 +11949,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {allyanim: 1},
 		onHit(target, pokemon) {
-			const rand = Math.ceil(Math.random() * 10);
 			const pkmn = target.species.id.toString();
 			const pkmnLevel = pokemon.level;
 			let opponentID = target.species.id;
@@ -11985,9 +11984,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 			} else if (pkmn === 'meloetta') {
 				opponentID = 'meloettadeltamime';
 			} else if (pkmn === 'metagross') {
-				opponentID = ['metagrossdeltas', 'metagrossdeltar'][Math.floor(Math.random()*2)]
+				opponentID = ['metagrossdeltas', 'metagrossdeltar'][Math.floor(Math.random() * 2)];
 			} else if (pkmn === 'metagrossmega') {
-				opponentID = ['metagrossdeltasmega', 'metagrossdeltarmega'][Math.floor(Math.random()*2)]
+				opponentID = ['metagrossdeltasmega', 'metagrossdeltarmega'][Math.floor(Math.random() * 2)];
 			} else if (pkmn === 'hoopaunbound') {
 				opponentID = 'hoopadeltaunbound';
 			} else if (megaDelta.includes(pkmn)) {
