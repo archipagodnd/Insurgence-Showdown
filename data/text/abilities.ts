@@ -179,7 +179,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	chlorofury: {
 		name: "Chlorofury",
 		desc: "On switch-in, this Pokemon's Speed raises by 1 stage and this Pokemon's Special Attack is raised by one stage for each fainted ally if and only if at least one ally has fainted. Boosts get reset after 2 turns.",
-		shortDesc: "On switch-in this Pokemon's Speed raises by 1 and Sp. Atk raises by one stage for each fainted ally for 2 turns.",
+		shortDesc: "On start boosts Speed by 1 and Sp. Atk one stage for each fainted ally, lasts for 2 turns."
 
 		activate: "  [POKEMON] is filled with rage!",
 	},
@@ -410,7 +410,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	firedup: {
 		name: "Fired Up",
 		desc: "Before this Pokemon uses a Fire-type attack its Attack, Special Attack, and Speed are all increased by 1 stage each. 10% chance to burn upon contact.",
-		shortDesc: "Raises Attack, Sp. Atk and Speed by 1 stage before using a Fire-type attack. Can burn on contact afterwards.",
+		shortDesc: "Raises Attack, Sp. Atk and Speed before using a Fire-type attack. Can burn on contact.",
 	},
 	flamebody: {
 		name: "Flame Body",
@@ -481,10 +481,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	foundry: {
 		name: "Foundry",
 		desc: "This Pokemon's Rock-type moves become Fire-type moves and have their power multiplied by 1.2. Transforms and stacks with Stealth Rock. This effect comes after other effects that change a move's type, but before Electrify's effects.",
-		shortDesc: "Users Rock-type moves become Fire type and have 1.2x power. Transforms and stacks with Stealth Rock.",
+		shortDesc: "Users Rock-type moves become Fire type and have 1.2x power; includes Stealth Rock.",
 		gen6: {
 			desc: "This Pokemon's Rock-type moves become Fire-type moves and have their power multiplied by 1.3. Transforms and stacks with Stealth Rock. This effect comes after other effects that change a move's type, but before Electrify's effects.",
-			shortDesc: "This Pokemon's Rock-type moves become Fire type and have 1.3x power. Transforms and stacks with Stealth Rock.",
+			shortDesc: "This Pokemon's Rock-type moves become Fire type and have 1.3x power; includes Stealth Rock.",
 		},
 	},
 	friendguard: {
@@ -596,7 +596,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	hubris: {
 		name: "Hubris",
 		desc: "This Pokemon's Special Attack is raised by 1 stage if it attacks and knocks out another Pokemon.",
-		shortDesc: "This Pokemon's Special Attack is raised by 1 stage if it attacks and KOes another Pokemon.",
+		shortDesc: "This Pokemon's Sp. Atk. is raised by 1 stage if it attacks and KOes another Pokemon.",
 	},
 	hugepower: {
 		name: "Huge Power",
@@ -1791,7 +1791,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	unleafed: {
 		name: "Unleafed",
 		desc: "On switch-in this Pokemon boosts all stats by 1 stage for 1 + X turns, X is the number of fainted allies. Does nothing if no fainted allies.",
-		shortDesc: "On switch-in this Pokemon boosts all stats by 1 stage. Duration depends on number of fainted allies.",
+		shortDesc: "On start boosts all stats by one stage, duration depends on number of fainted allies."
 	},
 	unnerve: {
 		name: "Unnerve",
