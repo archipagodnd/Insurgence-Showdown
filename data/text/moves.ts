@@ -3361,7 +3361,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	livewire: {
 		name: "Livewire",
 		desc: "Sets up a hazard on the opposing side of the field, having a chance to paralyze each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to five times before failing. The chance to paralyze increases with 20% per layer and is doubled in Rain. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, is hit by Defog, or a grounded Electric-type or Ground-type Pokemon switches in. Safeguard prevents the opposing party from being poisoned on switch-in, but a substitute does not.",
-		shortDesc: "Chance to paralyze grounded foes on switch-in. Max 5 layers, 20% chancer per layer.",
+		shortDesc: "Chance to paralyze grounded foes on switch-in. Max 5 layers, 20% chance per layer; doubled in Rain.",
 		start: "  Livewire was scattered on the ground all around [TEAM]!",
 		end: "  The livewire disappeared from the ground around [TEAM]!",
 	},
@@ -3408,7 +3408,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	lunarcannon: {
 		name: "Lunar Cannon",
 		desc: "This attack charges on the first turn and executes on the second. If the user is holding a Power Herb or the weather is New Moon, the move completes in one turn.",
-		shortDesc: "Charges turn 1. Hits turn 2. No charge in darkness.",
+		shortDesc: "Charges turn 1. Hits turn 2. No charge in Darkness.",
 
 		prepare: "  [POKEMON] gathered darkness!",
 	},
@@ -3991,6 +3991,13 @@ export const MovesText: {[k: string]: MoveText} = {
 			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, all of its HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Rain Dance or Sandstorm, all rounded down.",
 		},
 	},
+	morph: {
+		name: "Morph",
+		desc: "Transforms into the target; uses the Delta variant if possible.",
+		shortDesc: "Transforms into the target; uses the Delta variant if possible.",
+
+		transform: "[POKEMON] transformed into [SPECIES]!",
+	},
 	mudbomb: {
 		name: "Mud Bomb",
 		desc: "Has a 30% chance to lower the target's accuracy by 1 stage.",
@@ -4274,7 +4281,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	permafrost: {
 		name: "Permafrost",
 		desc: "Sets up a hazard on the opposing side of the field, having a chance to freeze each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to five times before failing. The chance to paralyze increases with 10% per layer and is doubled in Hail. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, is hit by Defog, or a grounded Ice-type or Fire-type Pokemon switches in. Safeguard prevents the opposing party from being poisoned on switch-in, but a substitute does not.",
-		shortDesc: "Chance to freeze grounded foes on switch-in. Max 5 layers, 10% chancer per layer.",
+		shortDesc: "Chance to freeze grounded foes on switch-in. Max 5 layers, 10% chance per layer; doubled in Hail.",
 		start: "  Permafrost was scattered on the ground all around [TEAM]!",
 		end: "  The permafrost disappeared from the ground around [TEAM]!",
 	},
@@ -4843,6 +4850,11 @@ export const MovesText: {[k: string]: MoveText} = {
 		name: "Retaliate",
 		desc: "Power doubles if one of the user's party members fainted last turn.",
 		shortDesc: "Power doubles if an ally fainted last turn.",
+	},
+	retrograde: {
+		name: "Retrograde",
+		desc: "Reverts Mega-Evolved Pokemon back to their base form.",
+		shortDesc: "Reverts Mega-Evolution.",
 	},
 	return: {
 		name: "Return",
@@ -6958,5 +6970,9 @@ export const MovesText: {[k: string]: MoveText} = {
 			desc: "Will always result in a critical hit.",
 			shortDesc: "Nearly always goes first. Always crits.",
 		},
+	},
+	zombiestrike: {
+		name: "Zombie Strike",
+		shortDesc: "No additional effect.",
 	},
 };
