@@ -524,7 +524,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	glitch: {
 		name: "Glitch",
-		shortDesc: "Pokemon making contact with this Pokemon faint."
+		shortDesc: "Pokemon making contact with this Pokemon faint.",
 	},
 	gluttony: {
 		name: "Gluttony",
@@ -1791,7 +1791,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	unleafed: {
 		name: "Unleafed",
 		desc: "On switch-in this Pokemon boosts all stats by 1 stage for 1 + X turns, X is the number of fainted allies. Does nothing if no fainted allies.",
-		shortDesc: "On start boosts all stats by one stage, duration depends on number of fainted allies."
+		shortDesc: "On start boosts all stats by one stage, duration depends on number of fainted allies.",
 	},
 	unnerve: {
 		name: "Unnerve",
