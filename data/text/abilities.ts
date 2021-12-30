@@ -179,7 +179,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	chlorofury: {
 		name: "Chlorofury",
 		desc: "On switch-in, this Pokemon's Speed raises by 1 stage and this Pokemon's Special Attack is raised by one stage for each fainted ally if and only if at least one ally has fainted. Boosts get reset after 2 turns.",
-		shortDesc: "On start boosts Speed by 1 and Sp. Atk one stage for each fainted ally, lasts for 2 turns."
+		shortDesc: "On start boosts Speed by 1 and Sp. Atk one stage for each fainted ally, lasts for 2 turns.",
 
 		activate: "  [POKEMON] is filled with rage!",
 	},
