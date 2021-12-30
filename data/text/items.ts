@@ -60,6 +60,10 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Ampharosite",
 		desc: "If held by an Ampharos, this item allows it to Mega Evolve in battle.",
 	},
+	ancientball: {
+		name: "Ancient Ball",
+		desc: "A ball that works especially well on legendary and mystical Pokemon.",
+	},
 	apicotberry: {
 		name: "Apicot Berry",
 		desc: "Raises holder's Sp. Def by 1 stage when at 1/4 max HP or less. Single use.",
@@ -304,6 +308,10 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "cryogonite",
 		desc: "If held by a Cryogonal, this item allows it to Mega Evolve in battle.",
 	},
+	crystalfragment: {
+		name: "Crystal Fragment",
+		desc: "If held by a Metagross-Delta-R, this item allows it to Mega Evolve in battle.",
+	},
 	crystalpiecearceus: {
 		name: "Crystal Piece Arceus",
 		desc: "If held by an Arceus-Pre-Primal this item triggers its Primal Reversion in battle.",
@@ -363,6 +371,10 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Deep Sea Tooth",
 		desc: "If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.",
 		shortDesc: "If held by a Clamperl, its Sp. Atk is doubled.",
+	},
+	deltaball: {
+		name: "Delta Ball",
+		desc: "A ball with higher catch rate for Delta species.",
 	},
 	deltabisharpite: {
 		name: "Delta Bisharpite",
@@ -1355,6 +1367,10 @@ export const ItemsText: {[k: string]: ItemText} = {
 			desc: "Holder's Ice-type attacks have 1.1x power.",
 		},
 	},
+	nocturneincense: {
+		name: "Nocturne Incense",
+		desc: "Holder can flee from wild battles without fail.",
+	},
 	nomelberry: {
 		name: "Nomel Berry",
 		desc: "Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.",
@@ -1369,6 +1385,10 @@ export const ItemsText: {[k: string]: ItemText} = {
 	normaliumz: {
 		name: "Normalium Z",
 		desc: "If holder has a Normal move, this item allows it to use a Normal Z-Move.",
+	},
+	nuzlockeball: {
+		name: "Nuzlocke Ball",
+		desc: "An ultra-performance Ball that provides a higher Pokémon catch rate than a Great Ball.",
 	},
 	occaberry: {
 		name: "Occa Berry",
@@ -1767,6 +1787,10 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Shiftrite",
 		desc: "If held by a Shiftry, this item allows it to Mega Evolve in battle.",
 	},
+	shinyball: {
+		name: "Shiny Ball",
+		desc: "	A Poke Ball that never fails to catch shiny Pokemon.",
+	},
 	shinystone: {
 		name: "Shiny Stone",
 		desc: "Evolves Togetic into Togekiss, Roselia into Roserade, Minccino into Cinccino, and Floette into Florges when used.",
@@ -1816,6 +1840,10 @@ export const ItemsText: {[k: string]: ItemText} = {
 	smoothrock: {
 		name: "Smooth Rock",
 		desc: "Holder's use of Sandstorm lasts 8 turns instead of 5.",
+	},
+	snoreball: {
+		name: "Snore Ball",
+		desc: "Puts Pokemon to sleep if it fails to catch.",
 	},
 	snorliumz: {
 		name: "Snorlium Z",
@@ -2395,7 +2423,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 	},
 	trickrock: {
 		name: "Trick Rock",
-		desc: "Holder's use of Trick Room lasts 7 turns instead of 5.",
+		desc: "Holder's use of Trick Room lasts 8 turns instead of 5.",
 	},
 	twistedspoon: {
 		name: "Twisted Spoon",
