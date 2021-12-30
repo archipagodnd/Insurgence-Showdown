@@ -20181,8 +20181,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 					const fire = this.dex.getActiveMove('Brush Fire');
 					if (this.clampIntRange(pokemon.runEffectiveness(fire), -6, 6) > 0) {
 						if (pokemon.position !== target.position) {
-							if (!pokemon.hasAbility(['Comatose', 'Water Veil', 'Water Bubble'])) {
-								pokemon.trySetStatus('brn');
+							const immune = ['comatose', 'waterveil', 'waterbubble'];
+							const status = ['par', 'psn', 'tox', 'slp', 'frz']
+							if (!immune.includes(pokemon.ability) && !status.includes(pokemon.status)) {
+								console.log(pokemon.baseSpecies.name)
+								pokemon.status = 'brn';
 							}
 						}
 					}

@@ -7053,8 +7053,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "DUber",
 	},
 	missingno: {
-		isNonstandard: "Custom",
-		tier: "Illegal",
+		tier: "AG",
 	},
 	syclar: {
 		isNonstandard: "CAP",
