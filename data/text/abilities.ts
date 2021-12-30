@@ -47,7 +47,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	ancientpresence: {
 		name: "Ancient Presence",
-		desc: "Damage-dealing attacks used by this Pokemon will always get a STAB bonus and hit neutrally.",
+		desc: "Damage-dealing attacks used by this Pokemon will always get a STAB bonus and hit neutrally. It does not ignore abilities, items or other effects.",
 		shortDesc: "Damage-dealing attacks from this Pokemon get STAB and hit neutrally.",
 	},
 	angerpoint: {
@@ -410,7 +410,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	firedup: {
 		name: "Fired Up",
 		desc: "Before this Pokemon uses a Fire-type attack its Attack, Special Attack, and Speed are all increased by 1 stage each. 10% chance to burn upon contact.",
-		shortDesc: "Raises Attack, Sp. Atk and Speed by 1 stage before using a Fire-type attack. Can burn on contact.",
+		shortDesc: "Raises Attack, Sp. Atk and Speed by 1 stage before using a Fire-type attack. Can burn on contact afterwards.",
 	},
 	flamebody: {
 		name: "Flame Body",
@@ -480,8 +480,12 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	foundry: {
 		name: "Foundry",
-		desc: "This Pokemon's Rock-type moves become Fire-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
-		shortDesc: "Users Rock-type moves become Fire type and have 1.2x power. For Rocks see Stealth Coal.",
+		desc: "This Pokemon's Rock-type moves become Fire-type moves and have their power multiplied by 1.2. Transforms and stacks with Stealth Rock. This effect comes after other effects that change a move's type, but before Electrify's effects.",
+		shortDesc: "Users Rock-type moves become Fire type and have 1.2x power. Transforms and stacks with Stealth Rock.",
+		gen6: {
+			desc: "This Pokemon's Rock-type moves become Fire-type moves and have their power multiplied by 1.3. Transforms and stacks with Stealth Rock. This effect comes after other effects that change a move's type, but before Electrify's effects.",
+			shortDesc: "This Pokemon's Rock-type moves become Fire type and have 1.3x power. Transforms and stacks with Stealth Rock.",
+		},
 	},
 	friendguard: {
 		name: "Friend Guard",
@@ -517,6 +521,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Galvanize",
 		desc: "This Pokemon's Normal-type moves become Electric-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		shortDesc: "This Pokemon's Normal-type moves become Electric type and have 1.2x power.",
+	},
+	glitch: {
+		name: "Glitch",
+		shortDesc: "Pokemon making contact with this Pokemon faint."
 	},
 	gluttony: {
 		name: "Gluttony",
@@ -692,6 +700,10 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Intoxicate",
 		desc: "This Pokemon's Normal-type moves become Poison-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		shortDesc: "This Pokemon's Normal-type moves become Poison type and have 1.2x power.",
+		gen6: {
+			desc: "This Pokemon's Normal-type moves become Poison-type moves and have their power multiplied by 1.3. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+			shortDesc: "This Pokemon's Normal-type moves become Poison type and have 1.3x power.",
+		},
 	},
 	intrepidsword: {
 		name: "Intrepid Sword",
@@ -745,7 +757,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	lernean: {
 		name: "Lernean",
-		desc: "This Pokemon gains a head for each 20% of damage it has taken, it hits once for each head with decreasing damage per hit. Doesn't lose heads on recovery.",
+		desc: "This Pokemon gains a head for each 20% of damage it has taken, it hits once for each head with decreasing damage per hit. It doesn't lose heads on recovery.",
 		shortDesc: "This Pokemon gains more heads the lower it's HP gets and hits once for each head.",
 	},
 	levitate: {
@@ -1040,8 +1052,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	periodicorbit: {
 		name: "Periodic Orbit",
-		desc: "Wish happens after one and three turns, Future Sight and Doom Desire happen after two and five turns. (Is broken, doesn't work.)",
-		shortDesc: "Wish, Future Sight and Doom Desire happen twice. (Is broken, doesn't work.)",
+		desc: "Wish happens after one and three turns, Future Sight and Doom Desire happen after two and five turns.",
+		shortDesc: "Wish, Future Sight and Doom Desire happen twice.",
 	},
 	perishbody: {
 		name: "Perish Body",
@@ -1052,8 +1064,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	phototroph: {
 		name: "Phototroph",
-		desc: "Restores 1/16 of this Pokémons maximum HP, rounded down, at the end of each turn. If Sunny Day is active, this Pokemon restores 1/8 of its maximum HP, rounded down, at the end of each turn.",
-		shortDesc: "Restores 1/16 of its max HP each turn. Heals 1/8 if Sunny Day is active.",
+		desc: "Restores 1/16 of this Pokémons maximum HP, rounded down, at the end of each turn. If Sunny Day is active, this Pokemon restores 1/8 of its maximum HP, rounded down, at the end of each turn. Does not heal in Darkness or Rain.",
+		shortDesc: "Restores 1/16 of its max HP each turn. Heals 1/8 in Sun and nothing in Darkness or Rain.",
 	},
 	pickpocket: {
 		name: "Pickpocket",
@@ -1180,8 +1192,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	proteanmaxima: {
 		name: "Protean Maxima",
-		desc: "This Pokemon's type, stats and ability change to match one of the Eeveelutions. This transformation depends on the type of the move used.",
-		shortDesc: "This Pokemon's type, stats and ability change to match one of the Eeveelutions before attacking.",
+		desc: "This Pokemon's type, stats and ability change to match one of the Eeveelutions at the start of the turn. This transformation depends on the type of the move used.",
+		shortDesc: "Based on the type of move used, this Pokemon transforms into one of the Eeveelutions.",
 	},
 	psychicsurge: {
 		name: "Psychic Surge",
@@ -1266,8 +1278,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	regurgitation: {
 		name: "Regurgitation",
-		desc: "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has a base power of 40 and its type depends on Delta Muk's forme. Does not affect multi-hit moves or moves that have multiple targets.",
-		shortDesc: "This Pokemon gets another 40 bp hit based on its forme.",
+		desc: "After successfully using an attack or targetable status move, this Pokemon deals a second hit of damage that does 1/6 of the target's max HP. This damage is multiplied by the damage multiplier of the target and the type of the pokemon in Muk's mouth.",
+		shortDesc: "Based on the effectiveness of the Pokemon in Muk's mouth, this deals a secondary hit.",
 
 		activate: "  [POKEMON] did an additional attack!",
 	},
@@ -1873,6 +1885,11 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Wind Force",
 		desc: "This Pokemon is immune to Flying-type moves and raises its Speed by 1 stage when hit by an Flyiing-type move.",
 		shortDesc: "This Pokemon's Speed is raised 1 stage if hit by an Flying move; Flying immunity.",
+	},
+	winterjoy: {
+		name: "Winter Joy",
+		desc: "This Pokemon deals 40% more damage during the months November, December, January and February. It deals 30% less damage in May, June, July and August. The remaining months have no effect.",
+		shortDesc: "This Pokemon's attacks deal damage dependent on the time of year.",
 	},
 	wonderguard: {
 		name: "Wonder Guard",
