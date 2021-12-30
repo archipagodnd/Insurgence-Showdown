@@ -455,9 +455,9 @@ export class HelpTicket extends Rooms.RoomGame {
 		HelpTicket.uploadReplaysFrom(message, user, user.connections[0]);
 	}
 	// workaround to modlog for no room
-	static async modlog(entry: PartialModlogEntry) {
-		await Rooms.Modlog.write('help-texttickets' as ModlogID, entry);
-	}
+	// static async modlog(entry: PartialModlogEntry) {
+	// 	await Rooms.Modlog.write('help-texttickets' as ModlogID, entry);
+	// }
 	static list(sorter?: (ticket: TicketState) => Utils.Comparable) {
 		if (!sorter) {
 			sorter = ticket => [
