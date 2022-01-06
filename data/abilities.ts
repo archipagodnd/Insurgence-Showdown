@@ -1857,7 +1857,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				const possibleTarget = pokemon.side.pokemon[i];
 				if (!possibleTarget.fainted) {
 					// pokemon.illusion = possibleTarget;
-					pokemon.illusion = new Pokemon(possibleTarget.set, possibleTarget.side)
+					pokemon.illusion = new Pokemon(possibleTarget.set, possibleTarget.side);
 					break;
 				}
 			}
