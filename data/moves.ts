@@ -12012,7 +12012,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (target.species.id !== opponentID) {
 				const learnsetData = {...(this.dex.data.Learnsets[opponentID]?.learnset || {})};
 				for (const move in learnsetData) {
-					let learnmoment = (learnsetData[move].filter(learn => learn.startsWith("6L")));
+					let learnmoment = (learnsetData[move].filter(learn => learn.slice(0, 2) === "6L"));
 					if (!learnmoment[0]) continue;
 					if (learnmoment.length > 1) {
 						if (learnmoment[1].slice(2) > pkmnLevel) {
