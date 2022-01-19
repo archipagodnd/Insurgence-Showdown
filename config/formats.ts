@@ -177,7 +177,7 @@ export const Formats: FormatList = [
 	{
 		name: "[Gen 8] NatDex NU",
 		mod: 'gen8',
-		ruleset: ['[Gen 8] RU'],
+		ruleset: ['[Gen 8] NatDex RU'],
 		banlist: ['RU', 'NUBL', 'Drizzle', 'Drought', 'Slush Rush'],
 	},
 	{
