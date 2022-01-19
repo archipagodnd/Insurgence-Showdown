@@ -10,6 +10,8 @@ interface HackmonsCupEntry {
 export class RandomGen1Teams extends RandomGen2Teams {
 	// Challenge Cup or CC teams are basically fully random teams.
 	randomCCTeam() {
+		this.enforceNoDirectCustomBanlistChanges();
+
 		const team = [];
 
 		const randomN = this.randomNPokemon(this.maxTeamSize, this.forceMonotype);
@@ -97,6 +99,8 @@ export class RandomGen1Teams extends RandomGen2Teams {
 
 	// Random team generation for Gen 1 Random Battles.
 	randomTeam() {
+		this.enforceNoDirectCustomBanlistChanges();
+
 		// Get what we need ready.
 		const seed = this.prng.seed;
 		const ruleTable = this.dex.formats.getRuleTable(this.format);
@@ -128,6 +132,9 @@ export class RandomGen1Teams extends RandomGen2Teams {
 			// as it can cause an endless battle if two Dittos are forced
 			// to face each other.
 			if (species.id === 'ditto' && this.battleHasDitto) continue;
+
+			// Really bad Pokémon shouldn't be leads.
+			if (pokemon.length === 0 && handicapMons.includes(species.id)) continue;
 
 			// Bias the tiers so you get less shitmons and only one of the two Ubers.
 			// If you have a shitmon, don't get another
@@ -363,6 +370,8 @@ export class RandomGen1Teams extends RandomGen2Teams {
 	}
 
 	randomHCTeam(): PokemonSet[] {
+		this.enforceNoDirectCustomBanlistChanges();
+
 		const team = [];
 
 		const movePool = [...this.dex.moves.all()];

@@ -1502,9 +1502,11 @@ export const commands: Chat.ChatCommands = {
 			Users.globalAuth.setSection(userid, section);
 			this.addGlobalModAction(`${name} was appointed Section Leader of ${RoomSections.sectionNames[section]} by ${user.name}.`);
 			this.globalModlog(`SECTION LEADER`, userid, section);
-			if (targetUser && !Users.globalAuth.atLeast(targetUser, Users.SECTIONLEADER_SYMBOL)) {
+			if (targetUser) {
 				// do not use global /forcepromote
-				this.parse(`/globalsectionleader ${userid}`);
+				if (!Users.globalAuth.atLeast(targetUser, Users.SECTIONLEADER_SYMBOL)) {
+					this.parse(`/globalsectionleader ${userid}`);
+				}
 			} else {
 				this.sendReply(`User ${userid} is offline and unrecognized, and so can't be globally promoted.`);
 			}
@@ -1857,6 +1859,16 @@ export const commands: Chat.ChatCommands = {
 		this.checkCan('forcerename', userid);
 		if (targetUser?.namelocked && !week) {
 			return this.errorReply(`User '${targetUser.name}' is already namelocked.`);
+		}
+		if (!force && !week) {
+			const existingPunishments = Punishments.search(userid);
+			for (const [,, punishment] of existingPunishments) {
+				if (punishment.type === 'LOCK' && (punishment.expireTime - Date.now()) > (2 * DAY)) {
+					this.errorReply(`User '${userid}' is already normally locked for more than 2 days.`);
+					this.errorReply(`Use /weeknamelock to namelock them instead, so you don't decrease the existing punishment.`);
+					return this.errorReply(`If you really need to override this, use /forcenamelock.`);
+				}
+			}
 		}
 		const {privateReason, publicReason} = this.parseSpoiler(reason);
 		const reasonText = publicReason ? ` (${publicReason})` : `.`;

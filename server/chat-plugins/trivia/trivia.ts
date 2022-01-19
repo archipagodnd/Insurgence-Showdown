@@ -1985,6 +1985,88 @@ const triviaCommands: Chat.ChatCommands = {
 		`/trivia migrate [source category], [destination category] — Moves all questions in a category to another category. Requires: # &`,
 	],
 
+	async edit(target, room, user) {
+		room = this.requireRoom('questionworkshop' as RoomID);
+		this.checkCan('mute', null, room);
+
+		let isQuestionOnly = false;
+		let isAnswersOnly = false;
+		const args = target.split('|').map(arg => arg.trim());
+
+		let oldQuestionText = args.shift();
+		if (toID(oldQuestionText) === 'question') {
+			isQuestionOnly = true;
+			oldQuestionText = args.shift();
+		} else if (toID(oldQuestionText) === 'answers') {
+			isAnswersOnly = true;
+			oldQuestionText = args.shift();
+		}
+		if (!oldQuestionText) return this.parse(`/help trivia edit`);
+
+		await database.ensureQuestionExists(oldQuestionText);
+
+		let newQuestionText: string | undefined;
+		if (!isAnswersOnly) {
+			newQuestionText = args.shift();
+			if (!newQuestionText) {
+				isAnswersOnly = true; // for modlog formatting
+			} else {
+				if (newQuestionText.length > MAX_QUESTION_LENGTH) {
+					throw new Chat.ErrorMessage(`The new question text is too long. The limit is ${MAX_QUESTION_LENGTH} characters.`);
+				}
+			}
+		}
+
+		const answers: ID[] = [];
+		if (!isQuestionOnly) {
+			const answerArgs = args.shift();
+			if (!answerArgs) {
+				if (isAnswersOnly) throw new Chat.ErrorMessage(`You must specify new answers.`);
+				isQuestionOnly = true; // for modlog formatting
+			} else {
+				for (const arg of answerArgs?.split(',') || []) {
+					const answer = toID(arg);
+					if (!answer) {
+						throw new Chat.ErrorMessage(`Answers cannot be empty; double-check your syntax.`);
+					}
+					if (answer.length > MAX_ANSWER_LENGTH) {
+						throw new Chat.ErrorMessage(`The answer '${answer}' is too long. The limit is ${MAX_ANSWER_LENGTH} characters.`);
+					}
+					if (answers.includes(answer)) {
+						throw new Chat.ErrorMessage(`You may not specify duplicate answers.`);
+					}
+					answers.push(answer);
+				}
+			}
+		}
+
+		// We _could_ edit it in place but I think this isn't that much overhead and
+		// it keeps the API simpler (we'd still have to SELECT from the questions table to get the ID,
+		// and passing a SQLite ID around is an implementation detail).
+		if (!isQuestionOnly && !answers.length) {
+			throw new Chat.ErrorMessage(`You must specify at least one answer.`);
+		}
+		await database.editQuestion(
+			Utils.escapeHTML(oldQuestionText),
+			// Cast is safe because if `newQuestionText` is undefined, `isAnswersOnly` is true.
+			isAnswersOnly ? undefined : Utils.escapeHTML(newQuestionText!),
+			isQuestionOnly ? undefined : answers
+		);
+
+		let actionString = `edited question '${oldQuestionText}'`;
+		if (!isAnswersOnly) actionString += ` to '${newQuestionText}'`;
+		if (answers.length) {
+			actionString += ` and changed the answers to ${answers.join(', ')}`;
+		}
+		this.modlog('TRIVIAQUESTION EDIT', null, actionString);
+		this.privateModAction(`${user.name} ${actionString}.`);
+	},
+	edithelp: [
+		`/trivia edit <old question text> | <new question text> | <answer1, answer2, ...> - Edit a question in the trivia database, replacing answers if specified. Requires: % @ # &`,
+		`/trivia edit question | <old question text> | <new question text> - Alternative syntax for /trivia edit.`,
+		`/trivia edit answers | <old question text> | <new answers> - Alternative syntax for /trivia edit.`,
+	],
+
 	async qs(target, room, user) {
 		room = this.requireRoom('questionworkshop' as RoomID);
 
@@ -2219,7 +2301,7 @@ const triviaCommands: Chat.ChatCommands = {
 		return this.sendReply(buffer);
 	},
 	ladderhelp: [
-		`/trivia ladder [n] - Displays the top [n] users on the cycle-specific Trivia leaderboard. If [n] isn't specified, shows 15 users.`,
+		`/trivia ladder [n] - Displays the top [n] users on the cycle-specific Trivia leaderboard. If [n] isn't specified, shows 100 users.`,
 		`/trivia alltimewinsladder [n] - Like /trivia ladder, but displays the all-time Trivia leaderboard.`,
 		`/trivia alltimescoreladder [n] - Like /trivia ladder, but displays the Trivia leaderboard which is neither all-time nor cycle-specific.`,
 	],
@@ -2431,10 +2513,13 @@ const triviaCommands: Chat.ChatCommands = {
 				`<li><code>/trivia delete [question]</code> - Delete a question from the trivia database. Requires: % @ # &</li>` +
 				`<li><code>/trivia move [category] | [question]</code> - Change the category of question in the trivia database. Requires: % @ # &</li>` +
 				`<li><code>/trivia migrate [source category], [destination category]</code> — Moves all questions in a category to another category. Requires: # &</li>` +
+				Utils.html`<li><code>${'/trivia edit <old question text> | <new question text> | <answer1, answer2, ...>'}</code>: Edit a question in the trivia database, replacing answers if specified. Requires: % @ # &` +
+				Utils.html`<li><code>${'/trivia edit answers | <old question text> | <new answers>'}</code>: Replaces the answers of a question. Requires: % @ # &</li>` +
+				Utils.html`<li><code>${'/trivia edit question | <old question text> | <new question text>'}</code>: Edits only the text of a question. Requires: % @ # &</li>` +
 				`<li><code>/trivia qs</code> - View the distribution of questions in the question database.</li>` +
 				`<li><code>/trivia qs [category]</code> - View the questions in the specified category. Requires: % @ # &</li>` +
 				`<li><code>/trivia clearqs [category]</code> - Clear all questions in the given category. Requires: # &</li>` +
-				`<li><code>/trivia moveusedevent<code> - Tells you whether or not moving used event questions to a different category is enabled.</li>` +
+				`<li><code>/trivia moveusedevent</code> - Tells you whether or not moving used event questions to a different category is enabled.</li>` +
 				`<li><code>/trivia moveusedevent [on or off]</code> - Toggles moving used event questions to a different category. Requires: # &</li>` +
 			`</ul></details>` +
 			`<details><summary><strong>Informational commands</strong></summary><ul>` +
@@ -2446,7 +2531,7 @@ const triviaCommands: Chat.ChatCommands = {
 				`<li><code>/trivia lastofficialscore</code> - View the scores from the last Trivia game. Intended for bots.</li>` +
 			`</ul></details>` +
 			`<details><summary><strong>Leaderboard commands</strong></summary><ul>` +
-				`<li><code>/trivia ladder [n]</code> - Displays the top <code>[n]</code> users on the cycle-specific Trivia leaderboard. If <code>[n]</code> isn't specified, shows 15 users.</li>` +
+				`<li><code>/trivia ladder [n]</code> - Displays the top <code>[n]</code> users on the cycle-specific Trivia leaderboard. If <code>[n]</code> isn't specified, shows 100 users.</li>` +
 				`<li><code>/trivia alltimewinsladder</code> - Like <code>/trivia ladder</code>, but displays the all-time wins Trivia leaderboard (formerly all-time).</li>` +
 				`<li><code>/trivia alltimescoreladder</code> - Like <code>/trivia ladder</code>, but displays the all-time score Trivia leaderboard (formerly non—all-time)</li>` +
 				`<li><code>/trivia resetcycleleaderboard</code> - Resets the cycle-specific Trivia leaderboard. Requires: # &` +
