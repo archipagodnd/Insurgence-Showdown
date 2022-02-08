@@ -4639,7 +4639,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		forme: "Delta",
 		types: ["Ice", "Flying"],
 		baseStats: {hp: 100, atk: 50, def: 50, spa: 86, spd: 96, spe: 70},
-		abilities: {0: "Snow Cloak", 1: "Keen Eye", H: "No Guard"},
+		abilities: {0: "No Guard", 1: "Keen Eye", H: "Snow Cloak"},
 		weightkg: 40.8,
 		heightm: 1,
 		color: "Red",

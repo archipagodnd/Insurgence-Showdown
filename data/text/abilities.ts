@@ -639,7 +639,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	illuminate: {
 		name: "Illuminate",
-		shortDesc: "Boosts accuracy in Darkness",
+		shortDesc: "Increases evasion in Darkness",
 	},
 	illusion: {
 		name: "Illusion",

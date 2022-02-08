@@ -1839,14 +1839,16 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	illuminate: {
 		name: "Illuminate",
+		onModifyAccuracyPriority: -1,
 		onModifyAccuracy(accuracy) {
 			if (typeof accuracy !== 'number') return;
 			if (this.field.isWeather('darkness')) {
 				this.debug('Illuminate - decreasing accuracy');
-				return accuracy * 0.75;
+				return this.chainModify([3277, 4096]);
 			}
 		},
-		rating: 0,
+		isBreakable: true,
+		rating: 1.5,
 		num: 35,
 	},
 	illusion: {
