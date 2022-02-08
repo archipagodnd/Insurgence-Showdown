@@ -280,11 +280,13 @@ export class HelpTicket extends Rooms.RoomGame {
 		if (user.isStaff && this.ticket.userid !== user.id) this.involvedStaff.add(user.id);
 		if (this.ticket.active) return;
 		const blockedMessages = [
-			'hi', 'hello', 'hullo', 'hey', 'yo', 'ok',
+			'hello', 'hullo', 'hey',
 			'hesrude', 'shesrude', 'hesinappropriate', 'shesinappropriate', 'heswore', 'sheswore',
 			'help', 'yes',
 		];
-		if ((!user.isStaff || this.ticket.userid === user.id) && blockedMessages.includes(toID(message))) {
+		if (
+			(!user.isStaff || this.ticket.userid === user.id) && (message.length < 3 || blockedMessages.includes(toID(message)))
+		) {
 			this.room.add(`|c|&Staff|${this.room.tr`Hello! The global staff team would be happy to help you, but you need to explain what's going on first.`}`);
 			this.room.add(`|c|&Staff|${this.room.tr`Please post the information I requested above so a global staff member can come to help.`}`);
 			this.room.update();
@@ -2287,7 +2289,6 @@ export const commands: Chat.ChatCommands = {
 
 				connection.send(`>view-${pageId}\n|deinit`);
 				Chat.refreshPageFor(`help-list-${HelpTicket.getTypeId(ticket.type)}`, 'staff');
-				Chat.runHandlers('TicketCreate', ticket, user);
 				return this.popupReply(`Your report has been submitted.`);
 			}
 
@@ -2405,7 +2406,6 @@ export const commands: Chat.ChatCommands = {
 			tickets[user.id] = ticket;
 			writeTickets();
 			notifyStaff();
-			Chat.runHandlers('TicketCreate', ticket, user);
 			connection.send(`>view-help-request\n|deinit`);
 		},
 

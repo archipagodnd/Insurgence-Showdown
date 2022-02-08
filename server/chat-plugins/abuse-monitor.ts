@@ -25,6 +25,7 @@ const ATTRIBUTES = {
 	"SEXUALLY_EXPLICIT": {},
 	"FLIRTATION": {},
 };
+const PUNISHMENTS = ['WARN', 'MUTE', 'LOCK', 'WEEKLOCK'];
 const NOJOIN_COMMAND_WHITELIST: {[k: string]: string} = {
 	'lock': '/lock',
 	'weeklock': '/weeklock',
@@ -41,13 +42,31 @@ const REPORT_NAMECOLORS: {[k: string]: string} = {
 	other: '', // black - empty since handled by dark mode
 };
 
+export let migrated = global.Chat?.oldPlugins['abuse-monitor']?.migrated || false;
+
 export const cache: {
 	[roomid: string]: {
 		users: Record<string, number>,
-		staffNotified?: ID,
+		// can be a string and not string[] if it was added to the object before this patch was done.
+		// todo: move this to just ID[]
+		staffNotified?: ID | ID[],
 		claimed?: ID,
+		recommended?: Record<string, {type: string, reason: string}>,
 	},
-} = global.Chat?.oldPlugins['abuse-monitor']?.cache || {};
+} = (() => {
+	const plugin = global.Chat?.oldPlugins['abuse-monitor'];
+	if (!plugin?.cache) return {};
+	if (plugin.migrated) return plugin.cache;
+	for (const k in plugin.cache) {
+		const cur = plugin.cache[k];
+		if (typeof cur.recommended?.type === 'string') { // would be object if it was the new entry
+			// we cannot feasibly determine who it was (but it __is__ logged in <<abuselog>>, so staff can)
+			delete cur.recommended;
+		}
+	}
+	migrated = true;
+	return plugin.cache;
+})();
 
 const defaults: FilterSettings = {
 	threshold: 4,
@@ -58,6 +77,9 @@ const defaults: FilterSettings = {
 		IDENTITY_ATTACK: {0.8: 2},
 		SEVERE_TOXICITY: {0.8: 2},
 	},
+	punishments: [
+		{certainty: 0.93, type: 'IDENTITY_ATTACK', punishment: 'WARN', count: 2},
+	],
 };
 
 export const settings: FilterSettings = (() => {
@@ -71,24 +93,26 @@ export const settings: FilterSettings = (() => {
 	}
 })();
 
+interface PunishmentSettings {
+	count?: number;
+	certainty?: number;
+	type?: string;
+	punishment: typeof PUNISHMENTS[number];
+}
+
 interface FilterSettings {
 	disabled?: boolean;
 	thresholdIncrement: {turns: number, amount: number, minTurns?: number} | null;
 	threshold: number;
 	minScore: number;
 	specials: {[k: string]: {[k: number]: number | "MAXIMUM"}};
+	punishments: PunishmentSettings[];
 }
 
 export interface PerspectiveRequest {
 	languages: string[];
 	requestedAttributes: AnyObject;
 	comment: {text: string};
-}
-
-interface PMResult {
-	score: number;
-	flags: string[];
-	response?: Record<string, number>;
 }
 
 interface PMRequest {
@@ -105,6 +129,13 @@ interface BattleInfo {
 function nextMonth(month: string) {
 	const next = new Date(new Date(`${month}-15`).getTime() + 30 * 24 * 60 * 60 * 1000);
 	return next.toISOString().slice(0, 7);
+}
+
+function isFlaggedUserid(name: string, room: RoomID) {
+	const id = toID(name);
+	const entry = cache[room]?.staffNotified;
+	if (!entry) return false;
+	return typeof entry === 'string' ? entry === id : entry.includes(id);
 }
 
 // Mostly stolen from my code in helptickets.
@@ -240,15 +271,47 @@ export async function classify(text: string) {
 	}
 }
 
-export const PM = new ProcessManager.QueryProcessManager<PMRequest, PMResult>(module, async query => {
-	const now = Date.now();
-	const result = await classify(query.comment);
-	if (!result) return {score: 0, flags: []};
-	const delta = Date.now() - now;
-	if (delta > 1000) {
-		Monitor.slow(`[Abuse Monitor] ${delta}ms - ${JSON.stringify(query)}`);
+async function recommend(user: User, room: GameRoom, response: Record<string, number>) {
+	const keys = Utils.sortBy(Object.keys(response), k => -response[k]);
+	const recommended: [string, string][] = [];
+	const prevRecommend = cache[room.roomid]?.recommended?.[user.id];
+	for (const punishment of settings.punishments) {
+		if (prevRecommend?.type) { // avoid making extra db queries by frontloading this check
+			if (PUNISHMENTS.indexOf(punishment.punishment) <= PUNISHMENTS.indexOf(prevRecommend?.type)) continue;
+		}
+		for (const type of keys) {
+			const num = response[type];
+			if (punishment.type && punishment.type !== type) continue;
+			if (punishment.certainty && punishment.certainty > num) continue;
+			if (punishment.count) {
+				const hits = await Chat.database.all(
+					`SELECT * FROM perspective_flags WHERE userid = ? AND type = ? AND certainty >= ?`,
+					[user.id, type, num]
+				);
+				if (hits.length < punishment.count) continue;
+				recommended.push([punishment.punishment, type]);
+			}
+		}
 	}
+	if (recommended.length) {
+		Utils.sortBy(recommended, ([punishment]) => -PUNISHMENTS.indexOf(punishment));
+		// go by most severe
+		const [punishment, reason] = recommended[0];
+		if (cache[room.roomid]) {
+			if (!cache[room.roomid].recommended) cache[room.roomid].recommended = {};
+			cache[room.roomid].recommended![user.id] = {type: punishment, reason: reason.replace(/_/g, ' ').toLowerCase()};
+		}
+		Rooms.get('abuselog')?.add(
+			`|c|&|/log [Abuse-Monitor] ` +
+			`<<${room.roomid}>> - punishment ${punishment} recommended for ${user.id} ` +
+			`(${reason.replace(/_/g, ' ').toLowerCase()})`
+		).update();
+	}
+}
+
+function makeScore(roomid: RoomID, result: Record<string, number>) {
 	let score = 0;
+	let main = '';
 	const flags = new Set<string>();
 	for (const type in result) {
 		const data = result[type];
@@ -259,9 +322,13 @@ export const PM = new ProcessManager.QueryProcessManager<PMRequest, PMResult>(mo
 				if (data < Number(k)) continue;
 				const num = settings.specials[type][k];
 				if (num === 'MAXIMUM') {
-					score = settings.threshold;
+					score = calcThreshold(roomid);
+					main = type;
 				} else {
-					if (num > score) score = num;
+					if (num > score) {
+						score = num;
+						main = type;
+					}
 				}
 			}
 		}
@@ -269,16 +336,21 @@ export const PM = new ProcessManager.QueryProcessManager<PMRequest, PMResult>(mo
 			// min score ensures that if a category is above that minimum score, they will get
 			// at least a point.
 			// we previously ensured that this was above minScore if set, so this is fine
-			if (score < 1) score = 1;
+			if (score < 1) {
+				score = 1;
+				main = type;
+			}
 		}
 		if (score !== curScore) flags.add(type);
 	}
-	return {
-		score,
-		flags: [...flags],
-		// undefined so that json.stringify ignores it - save bandwidth
-		response: query.fullResponse ? result : undefined,
-	};
+	return {score, flags: [...flags], main};
+}
+
+type PMResult = Record<string, number> | null;
+export const PM = new ProcessManager.QueryProcessManager<PMRequest, PMResult>(module, async query => {
+	const result = await classify(query.comment);
+	if (!result) return null;
+	return result;
 }, PM_TIMEOUT, message => {
 	if (message.startsWith('SLOW\n')) {
 		Monitor.slow(message.slice(5));
@@ -312,23 +384,40 @@ if (!PM.isParentProcess) {
 export const chatfilter: Chat.ChatFilter = function (message, user, room) {
 	// 2 lines to not hit max-len
 	if (!room?.battle || !['rated', 'unrated'].includes(room.battle.challengeType)) return;
-	if (settings.disabled || cache[room.roomid]?.staffNotified) return;
+	if (settings.disabled) return;
 	// startsWith('!') - broadcasting command, ignore it.
 	if (!Config.perspectiveKey || message.startsWith('!')) return;
 
 	const roomid = room.roomid;
 	void (async () => {
-		const {score, flags} = await PM.query({comment: message});
+		const response = await PM.query({comment: message});
+		const {score, flags, main} = makeScore(roomid, response || {});
 		if (score) {
 			if (!cache[roomid]) cache[roomid] = {users: {}};
 			if (!cache[roomid].users[user.id]) cache[roomid].users[user.id] = 0;
 			cache[roomid].users[user.id] += score;
 			let hitThreshold = 0;
 			if (cache[roomid].users[user.id] >= calcThreshold(roomid)) {
-				cache[roomid].staffNotified = user.id;
+				let notified = cache[roomid].staffNotified;
+				if (notified) {
+					if (!Array.isArray(notified)) {
+						cache[roomid].staffNotified = notified = [notified];
+					}
+					if (!notified.includes(user.id)) {
+						notified.push(user.id);
+					}
+				} else {
+					cache[roomid].staffNotified = [user.id];
+				}
 				notifyStaff();
 				hitThreshold = 1;
 				void room?.uploadReplay?.(user, this.connection, "forpunishment");
+				await Chat.database.run(
+					`INSERT INTO perspective_flags (userid, score, certainty, type, roomid, time) VALUES (?, ?, ?, ?, ?, ?)`,
+					// response exists if we got this far
+					[user.id, score, response![main], main, room.roomid, Date.now()]
+				);
+				void recommend(user, room, response || {});
 			}
 			await Chat.database.run(
 				'INSERT INTO perspective_logs (userid, message, score, flags, roomid, time, hit_threshold) VALUES (?, ?, ?, ?, ?, ?, ?)',
@@ -356,7 +445,15 @@ export const handlers: Chat.Handlers = {
 		const entry = cache[roomid];
 		if (entry) {
 			delete cache[roomid];
-			if (entry.staffNotified) notifyStaff();
+			if (entry.staffNotified) {
+				notifyStaff();
+				void Chat.database.run(
+					`INSERT INTO perspective_stats (staff, roomid, result, timestamp) VALUES ($staff, $roomid, $result, $timestamp) ` +
+					`ON CONFLICT (roomid) DO UPDATE SET result = $result, timestamp = $timestamp`,
+					// 2 means dead
+					{staff: '', roomid, result: 2, timestamp: Date.now()}
+				);
+			}
 		}
 	},
 	onRoomClose(roomid, user) {
@@ -383,7 +480,6 @@ function getFlaggedRooms() {
 function saveSettings(isBackup = false) {
 	FS(`config/chat-plugins/nf${isBackup ? ".backup" : ""}.json`).writeUpdate(() => JSON.stringify(settings));
 }
-
 
 export function notifyStaff() {
 	const staffRoom = Rooms.get('staff');
@@ -423,8 +519,10 @@ export const commands: Chat.ChatCommands = {
 			const text = target.trim();
 			if (!text) return this.parse(`/help abusemonitor`);
 			this.runBroadcast();
-			let {score, flags, response} = await PM.query({comment: text, fullResponse: true});
+			let response = await PM.query({comment: text, fullResponse: true});
 			if (!response) response = {};
+			// intentionally hardcoded to staff to ensure threshold is never altered.
+			const {score, flags} = makeScore('staff', response);
 			let buf = `<strong>Score for "${text}":</strong> ${score}<br />`;
 			buf += `<strong>Flags:</strong> ${flags.join(', ')}<br />`;
 			buf += `<strong>Score breakdown:</strong><br />`;
@@ -486,7 +584,7 @@ export const commands: Chat.ChatCommands = {
 			let result = toID(rawResult) === 'success' ? 1 : toID(rawResult) === 'failure' ? 0 : null;
 			if (result === null) return this.popupReply(`Invalid result - must be 'success' or 'failure'.`);
 			const inserted = await Chat.database.get(`SELECT result FROM perspective_stats WHERE roomid = ?`, [roomid]);
-			if (inserted?.result) {
+			if (inserted?.result === 1) { // (hardcode on 1 because 2 is dead)
 				// has already been logged as accurate - ensure if one success is logged it's still a success if it's hit again
 				// (even if it's a failure now, it was a success before - that's what's relevant.)
 				result = inserted.result;
@@ -678,6 +776,106 @@ export const commands: Chat.ChatCommands = {
 			this.globalModlog("ABUSEMONITOR MIN", null, "" + num);
 			this.sendReply(`|html|Remember to use <code>/am respawn</code> to deploy the settings to the child processes.`);
 		},
+		ap: 'addpunishment',
+		addpunishment(target, room, user) {
+			checkAccess(this);
+			if (!toID(target)) return this.parse(`/help am`);
+			const targets = target.split(',').map(f => f.trim());
+			const punishment: Partial<PunishmentSettings> = {};
+			for (const cur of targets) {
+				let [key, value] = Utils.splitFirst(cur, '=').map(f => f.trim());
+				key = toID(key);
+				if (!key || !value) { // sent from the page, val wasn't sent.
+					continue;
+				}
+				switch (key) {
+				case 'punishment': case 'p':
+					if (punishment.punishment) {
+						return this.errorReply(`Duplicate punishment values.`);
+					}
+					value = toID(value).toUpperCase();
+					if (!PUNISHMENTS.includes(value)) {
+						return this.errorReply(`Invalid punishment: ${value}. Valid punishments: ${PUNISHMENTS.join(', ')}.`);
+					}
+					punishment.punishment = value;
+					break;
+				case 'count': case 'num': case 'c':
+					if (punishment.count) {
+						return this.errorReply(`Duplicate count values.`);
+					}
+					const num = parseInt(value);
+					if (isNaN(num)) {
+						return this.errorReply(`Invalid count '${value}'. Must be a number.`);
+					}
+					punishment.count = num;
+					break;
+				case 'type': case 't':
+					if (punishment.type) {
+						return this.errorReply(`Duplicate type values.`);
+					}
+					value = value.replace(/\s/g, '_').toUpperCase();
+					if (!ATTRIBUTES[value as keyof typeof ATTRIBUTES]) {
+						return this.errorReply(
+							`Invalid attribute: ${value}. ` +
+							`Valid attributes: ${Object.keys(ATTRIBUTES).join(', ')}.`
+						);
+					}
+					punishment.type = value;
+					break;
+				case 'certainty': case 'ct':
+					if (punishment.certainty) {
+						return this.errorReply(`Duplicate certainty values.`);
+					}
+					const certainty = parseFloat(value);
+					if (isNaN(certainty) || certainty > 1 || certainty < 0) {
+						return this.errorReply(`Invalid certainty '${value}'. Must be a number above 0 and below 1.`);
+					}
+					punishment.certainty = certainty;
+					break;
+				default:
+					this.errorReply(`Invalid key:  ${key}`);
+					return this.parse(`/help am`);
+				}
+			}
+			if (!punishment.punishment) {
+				return this.errorReply(`A punishment type must be specified.`);
+			}
+			for (const [i, p] of settings.punishments.entries()) {
+				let matches = 0;
+				for (const k in p) {
+					if (p[k as keyof PunishmentSettings] === punishment[k as keyof PunishmentSettings]) matches++;
+				}
+				if (matches === Object.keys(p).length) {
+					return this.errorReply(`This punishment is already stored at ${i + 1}.`);
+				}
+			}
+			settings.punishments.push(punishment as PunishmentSettings);
+			saveSettings();
+			this.refreshPage('abusemonitor-settings');
+			this.privateGlobalModAction(`${user.name} added a ${punishment.punishment} abuse-monitor punishment.`);
+			const str = Object.keys(punishment).map(f => `${f}: ${punishment[f as keyof PunishmentSettings]}`).join(', ');
+			this.stafflog(`Info: ${str}`);
+			this.globalModlog(`ABUSEMONITOR ADDPUNISHMENT`, null, str);
+		},
+		dp: 'deletepunishment',
+		deletepunishment(target, room, user) {
+			checkAccess(this);
+			const idx = parseInt(target) - 1;
+			if (isNaN(idx)) return this.errorReply(`Invalid number.`);
+			const punishment = settings.punishments[idx];
+			if (!punishment) {
+				return this.errorReply(`No punishments exist at index ${idx + 1}.`);
+			}
+			settings.punishments.splice(idx, 1);
+			saveSettings();
+			this.refreshPage('abusemonitor-settings');
+			this.privateGlobalModAction(`${user.name} removed the abuse-monitor punishment indexed at ${idx + 1}.`);
+			this.stafflog(
+				`Punishment: ` +
+				`${Object.keys(punishment).map(f => `${f}: ${punishment[f as keyof PunishmentSettings]}`).join(', ')}`
+			);
+			this.globalModlog(`ABUSEMONITOR REMOVEPUNISHMENT`, null, `${idx + 1}`);
+		},
 		vs: 'viewsettings',
 		settings: 'viewsettings',
 		viewsettings() {
@@ -827,7 +1025,7 @@ export const pages: Chat.PageTable = {
 		},
 		view(query, user) {
 			this.checkCan('lock');
-			const roomid = query.join('-');
+			const roomid = query.join('-') as RoomID;
 			if (!toID(roomid)) {
 				return this.errorReply(`You must specify a roomid to view abuse monitor data for.`);
 			}
@@ -880,14 +1078,21 @@ export const pages: Chat.PageTable = {
 				const id = toID(data.user);
 				if (!id) continue;
 				users.add(id);
-				buf += `<div class="chat chatmessage${cache[roomid].staffNotified === id ? ` highlighted` : ``}">`;
+				buf += `<div class="chat chatmessage">`;
 				buf += `<strong${colorName(id, logData)}>`;
 				buf += Utils.html`<span class="username">${data.user}:</span></strong> ${data.message}</div>`;
 			}
 			buf += `</div></details>`;
+			const recs = cache[roomid].recommended || {};
+			if (Object.keys(recs).length) {
+				for (const id in recs) {
+					const rec = recs[id];
+					buf += `<p><strong>Recommended action for ${id}:</strong> ${rec.type} (${rec.reason})</p>`;
+				}
+			}
 			buf += `<p><strong>Users:</strong><small> (click a name to punish)</small></p>`;
 			const sortedUsers = Utils.sortBy([...users], ([id, num]) => (
-				[cache[roomid].staffNotified === id, -num]
+				[isFlaggedUserid(id, roomid), -num, id]
 			));
 			for (const [id] of sortedUsers) {
 				const curUser = Users.getExact(id);
@@ -994,12 +1199,18 @@ export const pages: Chat.PageTable = {
 			buf += `<p>${Chat.count(logs.length, 'logs')} found.</p>`;
 			let successes = 0;
 			let failures = 0;
+			let dead = 0;
 			const staffStats: Record<string, number> = {};
-			const dayStats: Record<string, {successes: number, failures: number, total: number}> = {};
+			const dayStats: Record<string, {successes: number, failures: number, dead: number, total: number}> = {};
 			for (const log of logs) {
 				const cur = Chat.toTimestamp(new Date(log.timestamp)).split(' ')[0];
-				if (!dayStats[cur]) dayStats[cur] = {successes: 0, failures: 0, total: 0};
-				if (log.result) {
+				if (!dayStats[cur]) dayStats[cur] = {successes: 0, failures: 0, dead: 0, total: 0};
+				if (log.result === 2) {
+					dead++;
+					dayStats[cur].dead++;
+					// don't increment total - we don't want dead to count in the percentages
+					continue;
+				} else if (log.result === 1) {
 					successes++;
 					dayStats[cur].successes++;
 				} else {
@@ -1010,8 +1221,14 @@ export const pages: Chat.PageTable = {
 				staffStats[log.staff]++;
 				dayStats[cur].total++;
 			}
-			buf += `<p><strong>Success rate:</strong> ${Math.floor((successes / logs.length) * 100)}%</p>`;
-			buf += `<p><strong>Failure rate:</strong> ${Math.floor((failures / logs.length) * 100)}%</p>`;
+			const percent = (numerator: number, denom: number) => Math.floor((numerator / denom) * 100);
+			buf += `<p><strong>Success rate:</strong> ${percent(successes, successes + failures)}% (${successes})</p>`;
+			buf += `<p><strong>Failure rate:</strong> ${percent(failures, successes + failures)}% (${failures})</p>`;
+			buf += `<p><details class="readmore"><summary><strong>Stats including dead flags</strong></summary>`;
+			buf += `<p><strong>Total dead: ${dead}</strong></p>`;
+			buf += `<p><strong>Success rate:</strong> ${percent(successes, logs.length)}% (${successes})</p>`;
+			buf += `<p><strong>Failure rate:</strong> ${percent(failures, logs.length)}% (${failures})</p>`;
+			buf += `</summary></details></p>`;
 			buf += `<p><strong>Day stats:</strong></p>`;
 			buf += `<div class="ladder pad"><table>`;
 			let header = '';
@@ -1021,8 +1238,14 @@ export const pages: Chat.PageTable = {
 				const cur = dayStats[day];
 				if (!cur.total) continue;
 				header += `<th>${day.split('-')[2]} (${cur.total})</th>`;
-				data += `<td>${cur.successes} (${Math.floor((cur.successes / cur.total) * 100)}%)`;
-				if (cur.failures) data += ` | ${cur.failures} (${Math.floor((cur.failures / cur.total) * 100)}%)</td>`;
+				data += `<td><small>${cur.successes} (${percent(cur.successes, cur.total)}%)`;
+				if (cur.failures) {
+					data += ` | ${cur.failures} (${percent(cur.failures, cur.total)}%)`;
+				} else { // so one cannot confuse dead tickets & false hit tickets
+					data += ' | 0 (0%)';
+				}
+				if (cur.dead) data += ` | ${cur.dead}`;
+				data += '</small></td>';
 				// i + 1 ensures it's above 0 always (0 % 5 === 0)
 				if ((i + 1) % 5 === 0 && sortedDays[i + 1]) {
 					buf += `<tr>${header}</tr><tr>${data}</tr>`;
@@ -1067,6 +1290,24 @@ export const pages: Chat.PageTable = {
 				if (incr.minTurns) buf += ` after turn ${incr.minTurns}`;
 				buf += `<br />`;
 			}
+			buf += `</div><div class="infobox"><h3>Punishment settings</h3><hr />`;
+			if (settings.punishments.length) {
+				for (const [i, p] of settings.punishments.entries()) {
+					buf += `&bull; ${i + 1}: `;
+					buf += Object.keys(p).map(f => `${f}: ${p[f as keyof PunishmentSettings]}`).join(', ');
+					buf += ` (<button class="button" name="send" value="/msgroom staff,/am dp ${i + 1}">delete</button>)`;
+					buf += `<br />`;
+				}
+				buf += `<br />`;
+			}
+			buf += `<details class="readmore"><summary>Add a punishment</summary>`;
+			buf += `<form data-submitsend="/msgroom staff,/am ap p={punishment},t={type},ct={certainty},c={count}">`;
+			buf += `Punishment: <input name="punishment" /> <small>(required)</small><br />`;
+			buf += `Type: <input name="type" /> <small>(required)</small><br />`;
+			buf += `Certainty: <input name="certainty" /> <small>(optional)</small><br />`;
+			buf += `Count: <input name="count" /> <small>(optional)</small><br />`;
+			buf += `<button class="button notifying" type="submit">Add punishment</button></details>`;
+			buf += `</form><br />`;
 			buf += `</div><div class="infobox"><h3>Scoring:</h3><hr />`;
 			const keys = Utils.sortBy(Object.keys(ATTRIBUTES), k => [-Object.keys(settings.specials[k] || {}).length, k]);
 			for (const k of keys) {
