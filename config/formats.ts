@@ -136,6 +136,18 @@ export const Formats: FormatList = [
 		],
 	},
 	{
+    name: "[Gen 8] Multi Battle",
+    mod: 'gen8',
+    gameType: 'multi',
+    searchShow: false,
+    tournamentShow: false,
+    rated: false,
+    ruleset: [
+        'Max Team Size = 4', 'Picked Team Size = 3',
+        'Standard NatDex', 'Species Clause', 'Sleep Clause Mod',
+    ],
+	},
+	{
 		name: "[Gen 8] NatDex OU",
 		mod: 'gen8',
 		ruleset: ['Standard NatDex', 'Ban Unbalanced Moves', 'Dynamax Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Sleep Clause Mod', 'Z-Move Clause'],
