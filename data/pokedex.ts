@@ -21190,7 +21190,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Pyroak",
 		types: ["Fire", "Grass"],
 		baseStats: {hp: 120, atk: 70, def: 105, spa: 95, spd: 90, spe: 60},
-		abilities: {0: "Rock Head", 1: "Battle Armor", H: "White Smoke"},
+		abilities: {0: "Rock Head", 1: "Battle Armor", H: "Contrary"},
 		heightm: 2.1,
 		weightkg: 168,
 		color: "Brown",
