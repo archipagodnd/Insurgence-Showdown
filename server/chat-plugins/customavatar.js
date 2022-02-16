@@ -27,7 +27,7 @@ function downloadImage(image_url, name, extension) {
 		})
 		.on('response', response => {
 			if (response.statusCode !== 200) return;
-			const type = response.headers['content-type'].split('/');
+			let type = response.headers['content-type'].split('/');
 			if (type[0] !== 'image') return;
 
 			response.pipe(fs.createWriteStream(AVATAR_PATH + name + extension));
@@ -41,7 +41,7 @@ function loadCustomAvatars() {
 		files
 			.filter(file => VALID_EXTENSIONS.includes(path.extname(file)))
 			.forEach(file => {
-				const name = path.basename(file, path.extname(file));
+				let name = path.basename(file, path.extname(file));
 				Config.customavatars[name] = file;
 			});
 	});
@@ -51,15 +51,15 @@ loadCustomAvatars();
 
 exports.commands = {
 	customavatar: {
-		set(target, room, user) {
-			this.checkCan('announce', null, room);
-			const parts = target.split(',').map(param => param.trim());
+		set: function (target, room, user) {
+			this.checkCan('ban', null, room);
+			let parts = target.split(',').map(param => param.trim());
 			if (parts.length < 2) return this.parse('/help customavatar');
 
-			const name = toID(parts[0]);
+			let name = toID(parts[0]);
 			let avatarUrl = parts[1];
 			if (!/^https?:\/\//i.test(avatarUrl)) avatarUrl = 'http://' + avatarUrl;
-			const ext = path.extname(avatarUrl);
+			let ext = path.extname(avatarUrl);
 
 			if (!VALID_EXTENSIONS.includes(ext)) {
 				return this.errorReply("Image url must have .jpg, .png, or .gif extension.");
@@ -74,10 +74,10 @@ exports.commands = {
 		},
 
 		remove: 'delete',
-		delete(target, room, user) {
-			this.checkCan('announce', null, room);
-			const userid = toID(target);
-			const image = Config.customavatars[userid];
+		delete: function (target, room, user) {
+			this.checkCan('ban', null, room);
+			let userid = toID(target);
+			let image = Config.customavatars[userid];
 
 			if (!image) return this.errorReply(target + " does not have a custom avatar.");
 
@@ -96,7 +96,7 @@ exports.commands = {
 		},
 
 		'': 'help',
-		help(target, room, user) {
+		help: function (target, room, user) {
 			this.parse('/help customavatar');
 		},
 	},
@@ -106,7 +106,7 @@ exports.commands = {
 		"/customavatar set [username], [image link] - Set a user's avatar.",
 		"/customavatar delete [username] - Delete a user's avatar."],
 
-	ca(target, room, user) {
+	ca: function (target, room, user) {
 		this.parse(`/customavatar set ${target}`);
 	},
 };
