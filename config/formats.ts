@@ -590,8 +590,15 @@ export const Formats: FormatList = [
 			}
 			const irrevokablyRestricted = [
 				'Assist', 'Copycat', 'Metronome', 'Mirror Move', 'Sleep Talk', // Could call another unsafe trademark
+				'Recycle', 'Trace', // Causes endless turns
 				'Skill Swap', // Self-propagates indefinitely
 			];
+			for (const m of set.moves) {
+				const move = dex.moves.get(m);
+				if (irrevokablyRestricted.includes(move.name)) {
+					return [`${move.name} is banned from Trademark, irrespective of custom rules, because it can cause endless turns.`];
+				}
+			}
 			if (irrevokablyRestricted.includes(ability.name)) {
 				return [`${ability.name} cannot safely function as a trademark.`];
 			}
