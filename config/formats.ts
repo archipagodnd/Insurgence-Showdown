@@ -77,6 +77,18 @@ export const Formats: FormatList = [
 		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Double Item Clause', 'Little Cup', 'Dynamax Clause'],
 		banlist: ['Dragon Rage', 'Sonic Boom'],
 	},
+	{
+    name: "[Gen 8] Draft Multi Battle",
+    mod: 'gen8',
+    gameType: 'multi',
+    searchShow: false,
+    tournamentShow: false,
+    rated: false,
+    ruleset: [
+        'Max Team Size = 4', 'Picked Team Size = 3',
+				'Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Dynamax Clause',
+    ],
+	},
 
 	// Sw/Sh Singles
 	///////////////////////////////////////////////////////////////////
@@ -120,32 +132,6 @@ export const Formats: FormatList = [
 		mod: 'gen8',
 		team: 'random',
 		ruleset: ['[Gen 8] Random Battle', 'Blitz'],
-	},
-	{
-		name: "[Gen 8] Multi Random Battle",
-
-		mod: 'gen8',
-		team: 'random',
-		gameType: 'multi',
-		searchShow: false,
-		tournamentShow: false,
-		rated: false,
-		ruleset: [
-			'Max Team Size = 3',
-			'Obtainable', 'Species Clause', 'HP Percentage Mod', 'Cancel Mod', 'Sleep Clause Mod',
-		],
-	},
-	{
-    name: "[Gen 8] Multi Battle",
-    mod: 'gen8',
-    gameType: 'multi',
-    searchShow: false,
-    tournamentShow: false,
-    rated: false,
-    ruleset: [
-        'Max Team Size = 4', 'Picked Team Size = 3',
-        'Standard NatDex', 'Species Clause', 'Sleep Clause Mod',
-    ],
 	},
 	{
 		name: "[Gen 8] NatDex OU",
@@ -420,6 +406,32 @@ export const Formats: FormatList = [
 				return [`${set.name || set.species} has illegal moves.`, `(Pok\u00e9mon can only have one Metronome in their moveset)`];
 			}
 		},
+	},
+	{
+		name: "[Gen 8] Multi Random Battle",
+
+		mod: 'gen8',
+		team: 'random',
+		gameType: 'multi',
+		searchShow: false,
+		tournamentShow: false,
+		rated: false,
+		ruleset: [
+			'Max Team Size = 3',
+			'Obtainable', 'Species Clause', 'HP Percentage Mod', 'Cancel Mod', 'Sleep Clause Mod',
+		],
+	},
+	{
+    name: "[Gen 8] Multi Battle",
+    mod: 'gen8',
+    gameType: 'multi',
+    searchShow: false,
+    tournamentShow: false,
+    rated: false,
+    ruleset: [
+        'Max Team Size = 4', 'Picked Team Size = 3',
+        'Standard NatDex', 'Species Clause', 'Sleep Clause Mod', 'Dynamax Clause',
+    ],
 	},
 	{
 		name: "[Gen 8] Doubles Custom Game",
