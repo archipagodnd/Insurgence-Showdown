@@ -1,6 +1,13 @@
 'use strict';
 
 /**
+ * The exports for replays
+ */
+
+exports.serverid = 'aplinsurgence';
+exports.servertoken = 'RgQLhWiS1suf';
+
+/**
  * The server port - the port to run Pokemon Showdown under
  */
 exports.port = 8000;
