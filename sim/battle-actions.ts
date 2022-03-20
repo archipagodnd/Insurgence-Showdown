@@ -1768,29 +1768,6 @@ export class BattleActions {
 		const speciesid = pokemon.canMegaEvo || pokemon.canUltraBurst;
 		if (!speciesid) return false;
 
-		// Pokémon affected by Sky Drop cannot mega evolve. Enforce it here for now.
-		for (const foeActive of pokemon.foes()) {
-			if (foeActive.volatiles['skydrop']?.source === pokemon) {
-				return false;
-			}
-		}
-		if (pokemon.species.name === 'Zoroark' && pokemon.illusion !== null) {
-			const illusionMon = pokemon.illusion;
-			let altForme = this.dex.species.get(illusionMon.species.otherFormes);
-			if (altForme[0]) {
-				altForme = this.dex.species.get(illusionMon.species.otherFormes[0]);
-				if (
-					altForme && (altForme.name.endsWith("-Mega") || altForme.name.endsWith("-Mega-X"))
-				) {
-					let gender = pokemon.illusion.details.slice(pokemon.illusion.details.length - 3);
-					if (gender !== ", F" && gender !== ", M") {
-						gender = "";
-					}
-					pokemon.illusion.requiredItem = altForme.requiredItem;
-					pokemon.illusion.details = altForme.name.concat(gender);
-				}
-			}
-		}
 		pokemon.formeChange(speciesid, pokemon.getItem(), true);
 
 		// Limit one mega evolution

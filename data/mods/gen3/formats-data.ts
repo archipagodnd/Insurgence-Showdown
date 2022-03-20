@@ -17,7 +17,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	charizard: {
 		randomBattleMoves: ["bellydrum", "dragondance", "earthquake", "fireblast", "hiddenpowerflying", "substitute"],
-		tier: "UUBL",
+		tier: "OU",
 	},
 	squirtle: {
 		tier: "LC",
@@ -544,7 +544,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 	},
 	porygon2: {
 		randomBattleMoves: ["icebeam", "recover", "return", "thunderbolt", "thunderwave", "toxic"],
-		tier: "OU",
+		tier: "UUBL",
 	},
 	omanyte: {
 		tier: "LC",
@@ -835,7 +835,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "UU",
 	},
 	skarmory: {
-		randomBattleMoves: ["drillpeck", "protect", "rest", "roar", "sleeptalk", "spikes", "toxic"],
+		randomBattleMoves: ["doubleedge", "drillpeck", "protect", "rest", "roar", "sleeptalk", "spikes", "toxic"],
 		tier: "OU",
 	},
 	houndour: {
