@@ -89,6 +89,18 @@ export const Formats: FormatList = [
 				'Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Dynamax Clause',
     ],
 	},
+	{
+    name: "[Gen 8] Legacy Draft Multi Battle",
+    mod: 'gen8',
+    gameType: 'multi',
+    searchShow: false,
+    tournamentShow: false,
+    rated: false,
+    ruleset: [
+        'Max Team Size = 4', 'Picked Team Size = 3',
+				'Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Dynamax Clause',
+    ],
+	},
 
 	// Sw/Sh Singles
 	///////////////////////////////////////////////////////////////////
