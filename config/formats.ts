@@ -101,6 +101,12 @@ export const Formats: FormatList = [
 				'Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Dynamax Clause',
     ],
 	},
+	{
+		name: "[Gen 8] BBL Draft",
+
+		mod: 'gen8legends',
+		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', 'Team Preview', 'Dynamax Clause'],
+	},
 
 	// Sw/Sh Singles
 	///////////////////////////////////////////////////////////////////
