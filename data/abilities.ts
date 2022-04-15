@@ -2806,6 +2806,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (move && (source === this.effectState.target || target === this.effectState.target)) return 0;
 		},
 		onAnyAccuracy(accuracy, target, source, move) {
+			if (move.ohko) {
+				return;
+			}
 			if (move && (source === this.effectState.target || target === this.effectState.target)) {
 				return true;
 			}
