@@ -1657,8 +1657,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "DUber",
 	},
 	mewtwoarmor: {
-		randomBattleMoves: ["fireblast", "nastyplot", "psystrike", "recover", "shadowball"],
-		randomBattleLevel: 72,
 		tier: "Uber",
 	},
 	mewtwoshadow: {
@@ -2313,8 +2311,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "DOU",
 	},
 	tyranitararmor: {
-		randomBattleMoves: ["crunch", "dragondance", "earthquake", "firepunch", "stealthrock", "stoneedge"],
-		randomBattleLevel: 78,
 		tier: "OU",
 	},
 	tyranitarmega: {
@@ -2952,8 +2948,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "(DUU)",
 	},
 	flygonarmor: {
-		randomBattleMoves: ["defog", "dragondance", "earthquake", "firepunch", "outrage", "uturn"],
-		randomBattleLevel: 80,
 		tier: "UU",
 	},
 	flygonmega: {
@@ -5163,8 +5157,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Uber",
 	},
 	volcaronadeltaarmor: {
-		randomBattleMoves: ["corrode", "darkpulse", "roost", "taunt", "earthpower"],
-		randomBattleLevel: 74,
 		tier: "Uber",
 	},
 	cobalion: {
@@ -5241,8 +5233,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "DUber",
 	},
 	zekromarmor: {
-		randomBattleMoves: ["boltstrike", "dragondance", "outrage", "roost"],
-		randomBattleLevel: 69,
 		tier: "Uber",
 	},
 	landorus: {
