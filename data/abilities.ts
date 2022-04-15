@@ -3212,7 +3212,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 5,
 		onResidual(pokemon) {
-			if (['raindance', 'primordialsea', 'darkness'].includes(pokemon.effectiveWeather())) return;
+			if (['primordialsea', 'darkness'].includes(pokemon.effectiveWeather())) return;
 			if (this.field.isWeather(['sunnyday', 'desolateland'])) {
 				this.heal(pokemon.baseMaxhp / 8);
 			} else {
