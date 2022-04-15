@@ -1458,7 +1458,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	drakonvoice: {
 		name: "Drakon Voice",
 		desc: "No additional effect.",
-		shortDesc: "No additional effect. Hits adjacent Pokemon.",
+		shortDesc: "No additional effect. Hits adjacent foes.",
 	},
 	dreameater: {
 		name: "Dream Eater",
