@@ -14,12 +14,26 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			}
 		},
 	},
+	foundry: {
+		inherit: true,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.foundryBoosted) return this.chainModify([5325, 4096]);
+		},
+		rating: 4.5,
+	},
 	galewings: {
 		inherit: true,
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move && move.type === 'Flying') return priority + 1;
 		},
 		rating: 4,
+	},
+	intoxicate: {
+		inherit: true,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.intoxicateBoosted) return this.chainModify([5325, 4096]);
+		},
+		rating: 4.5,
 	},
 	ironbarbs: {
 		inherit: true,
@@ -67,6 +81,14 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 			if (move.pixilateBoosted) return this.chainModify([5325, 4096]);
 		},
 		rating: 4.5,
+	},
+	prismguard: {
+		inherit: true,
+		onDamagingHit(damage, target, source, move) {
+			if (!move.flags['contact']) {
+				this.damage(source.baseMaxhp / 8, source, target, null, true);
+			}
+		},
 	},
 	refrigerate: {
 		inherit: true,

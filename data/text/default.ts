@@ -310,6 +310,12 @@ export const DefaultText: {[k: string]: DefaultText} = {
 		activate: "  The mysterious strong winds weakened the attack!",
 		block: "  The mysterious strong winds blow on regardless!",
 	},
+	newmoon: {
+		weatherName: "Darkness",
+		start: "  The sky faded to pitch-black!",
+		end: "  The sky brightened again.",
+		upkeep: "  (The sky is dark.)",
+	},
 
 	// terrain
 	electricterrain: {

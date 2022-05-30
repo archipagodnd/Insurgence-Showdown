@@ -15,6 +15,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		inherit: true,
 		baseStats: {hp: 35, atk: 80, def: 50, spa: 50, spd: 70, spe: 120},
 	},
+	dugtriodelta: {
+		inherit: true,
+		baseStats: {hp: 35, atk: 80, def: 50, spa: 50, spd: 70, spe: 120},
+	},
 	alakazammega: {
 		inherit: true,
 		baseStats: {hp: 55, atk: 50, def: 65, spa: 175, spd: 95, spe: 150},
@@ -24,6 +28,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 52, atk: 65, def: 55, spa: 58, spd: 62, spe: 60},
 	},
 	dodrio: {
+		inherit: true,
+		baseStats: {hp: 60, atk: 110, def: 70, spa: 60, spd: 60, spe: 100},
+	},
+	dodriodelta: {
 		inherit: true,
 		baseStats: {hp: 60, atk: 110, def: 70, spa: 60, spd: 60, spe: 100},
 	},
@@ -40,6 +48,10 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		baseStats: {hp: 95, atk: 95, def: 85, spa: 125, spd: 65, spe: 55},
 	},
 	noctowl: {
+		inherit: true,
+		baseStats: {hp: 100, atk: 50, def: 50, spa: 76, spd: 96, spe: 70},
+	},
+	noctowldelta: {
 		inherit: true,
 		baseStats: {hp: 100, atk: 50, def: 50, spa: 76, spd: 96, spe: 70},
 	},
@@ -66,17 +78,17 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	raikou: {
 		inherit: true,
 		abilities: {0: "Pressure", H: "Volt Absorb"},
-		unreleasedHidden: true,
+		//unreleasedHidden: true, //dream mist
 	},
 	entei: {
 		inherit: true,
 		abilities: {0: "Pressure", H: "Flash Fire"},
-		unreleasedHidden: true,
+		//unreleasedHidden: true, //dream mist
 	},
 	suicune: {
 		inherit: true,
 		abilities: {0: "Pressure", H: "Water Absorb"},
-		unreleasedHidden: true,
+		//unreleasedHidden: true, //dream mist
 	},
 	swellow: {
 		inherit: true,
@@ -278,6 +290,14 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		color: "Red",
 	},
 	crustle: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 95, def: 125, spa: 65, spd: 75, spe: 45},
+	},
+	crustledeltab: {
+		inherit: true,
+		baseStats: {hp: 70, atk: 95, def: 125, spa: 65, spd: 75, spe: 45},
+	},
+	crustledeltac: {
 		inherit: true,
 		baseStats: {hp: 70, atk: 95, def: 125, spa: 65, spd: 75, spe: 45},
 	},

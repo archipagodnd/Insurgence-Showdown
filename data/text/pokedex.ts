@@ -3132,7 +3132,19 @@ export const PokedexText: {[k: string]: PokedexText} = {
 		name: "Hydreigon",
 	},
 	hydreigonmegafive: {
-		name: "Hydreigon-Mega",
+		name: "Hydreigon-Mega-Five",
+	},
+	hydreigonmegasix: {
+		name: "Hydreigon-Mega-Six",
+	},
+	hydreigonmegaseven: {
+		name: "Hydreigon-Mega-Seven",
+	},
+	hydreigonmegaeight: {
+		name: "Hydreigon-Mega-Eight",
+	},
+	hydreigonmeganine: {
+		name: "Hydreigon-Mega-Nine",
 	},
 	hydreigondelta: {
 		name: "Hydreigon-Delta",

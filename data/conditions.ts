@@ -368,13 +368,6 @@ export const Conditions: {[k: string]: ConditionData} = {
 		name: 'futuremove',
 		duration: 3,
 		onResidualOrder: 3,
-		onStart(target) {
-			if (!target.side.foe.active[0].hasAbility('periodicorbit')) {
-				this.effectState.trueDuration = -1;
-			} else {
-				this.effectState.trueDuration = 0;
-			}
-		},
 		onEnd(target) {
 			const data = this.effectState;
 			// time's up; time to hit! :D
@@ -403,44 +396,9 @@ export const Conditions: {[k: string]: ConditionData} = {
 			if (data.source.isActive && data.source.hasItem('lifeorb') && this.gen >= 5) {
 				this.singleEvent('AfterMoveSecondarySelf', data.source.getItem(), data.source.itemState, data.source, target, data.source.getItem());
 			}
+			this.activeMove = null;
 
 			this.checkWin();
-		},
-		onResidual(target) {
-			if (this.effectState.trueDuration < 0) return;
-			this.effectState.trueDuration += 1;
-
-			const opponent = target.active[0];
-
-			if (this.effectState.trueDuration === 3) {
-				const data = this.effectState;
-				// time's up; time to hit! :D
-				const move = this.dex.moves.get(data.move);
-				if (opponent.fainted || opponent === data.source) {
-					this.hint(`${move.name} did not hit because the opponent is ${(opponent.fainted ? 'fainted' : 'the user')}.`);
-					return;
-				}
-				opponent.removeVolatile('Protect');
-				opponent.removeVolatile('Endure');
-
-				if (data.source.hasAbility('infiltrator') && this.gen >= 6) {
-					data.moveData.infiltrates = true;
-				}
-				if (data.source.hasAbility('normalize') && this.gen >= 6) {
-					data.moveData.type = 'Normal';
-				}
-				if (data.source.hasAbility('adaptability') && this.gen >= 6) {
-					data.moveData.stab = 2;
-				}
-				const hitMove = new this.dex.Move(data.moveData) as ActiveMove;
-
-				this.actions.trySpreadMoveHit([opponent], data.source, hitMove, true);
-				if (data.source.isActive && data.source.hasItem('lifeorb') && this.gen >= 5) {
-					this.singleEvent('AfterMoveSecondarySelf', data.source.getItem(), data.source.itemState, data.source, opponent, data.source.getItem());
-				}
-
-				this.checkWin();
-			}
 		},
 	},
 	futuremoveperiodic: {
@@ -479,6 +437,42 @@ export const Conditions: {[k: string]: ConditionData} = {
 			this.activeMove = null;
 
 			this.checkWin();
+		},
+	},
+	wish: {
+		name: 'wish',
+		duration: 2,
+		durationCallback(pokemon) {
+			if (pokemon.hasAbility('periodicorbit')) return 4;
+			return 2;
+		},
+		onStart(pokemon, source) {
+			this.effectState.hp = source.maxhp / 2;
+		},
+		onResidualOrder: 4,
+		onEnd(target) {
+			if (target && !target.fainted) {
+				const damage = this.heal(this.effectState.hp, target, target);
+				if (damage) {
+					this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectState.source.name);
+				}
+			}
+		},
+	},
+	wishperiodic: {
+		name: 'wishperiodic',
+		duration: 2,
+		onStart(pokemon, source) {
+			this.effectState.hp = source.maxhp / 2;
+		},
+		onResidualOrder: 4,
+		onEnd(target) {
+			if (target && !target.fainted) {
+				const damage = this.heal(this.effectState.hp, target, target);
+				if (damage) {
+					this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectState.source.name);
+				}
+			}
 		},
 	},
 	healreplacement: {
@@ -534,8 +528,8 @@ export const Conditions: {[k: string]: ConditionData} = {
 
 	// weather is implemented here since it's so important to the game
 
-	darkness: {
-		name: 'Darkness',
+	newmoon: {
+		name: 'NewMoon',
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback(source, effect) {
@@ -546,26 +540,26 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 		onWeatherModifyDamage(damage, attacker, defender, move) {
 			if (move.type === 'Dark' || move.type === 'Ghost') {
-				this.debug('darkness damage boost');
+				this.debug('newmoon damage boost');
 				return this.chainModify(1.35);
 			}
 			if (move.type === 'Fairy') {
-				this.debug('darkness fairy weaken');
+				this.debug('newmoon fairy weaken');
 				return this.chainModify(0.75);
 			}
 		},
 		onFieldStart(field, source, effect) {
 			if (effect?.effectType === 'Ability') {
 				if (this.gen <= 5) this.effectState.duration = 0;
-				this.add('-weather', 'Darkness', '[from] ability: ' + effect, '[of] ' + source);
+				this.add('-weather', 'NewMoon', '[from] ability: ' + effect.name, '[of] ' + source);
 			} else {
-				this.add('-weather', 'Darkness');
+				this.add('-weather', 'NewMoon');
 			}
 		},
 		onFieldResidualOrder: 1,
 		onFieldResidual() {
-			this.add('-weather', 'Darkness', '[upkeep]');
-			if (this.field.isWeather('darkness')) this.eachEvent('Weather');
+			this.add('-weather', 'NewMoon', '[upkeep]');
+			if (this.field.isWeather('newmoon')) this.eachEvent('Weather');
 		},
 		onFieldEnd() {
 			this.add('-weather', 'none');

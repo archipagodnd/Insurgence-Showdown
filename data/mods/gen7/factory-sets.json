@@ -3886,7 +3886,7 @@
 			},
 			"sets": [{
 				"species": "Steelix",
-				"item": ["Steelixite"],
+				"item": ["Steelixite Steel"],
 				"ability": ["Sturdy"],
 				"evs": {"hp": 252, "atk": 208, "spd": 48},
 				"ivs": {"spe": 0},
@@ -13788,21 +13788,21 @@
 			},
 			"sets": [{
 				"species": "Steelix",
-				"item": ["Steelixite"],
+				"item": ["Steelixite Steel"],
 				"ability": ["Sturdy"],
 				"evs": {"hp": 252, "def": 4, "spd": 252},
 				"nature": "Impish",
 				"moves": [["Curse"], ["Heavy Slam"], ["Rest"], ["Sleep Talk"]]
 			}, {
 				"species": "Steelix",
-				"item": ["Steelixite"],
+				"item": ["Steelixite Steel"],
 				"ability": ["Sturdy"],
 				"evs": {"hp": 252, "def": 252, "spd": 4},
 				"nature": "Impish",
 				"moves": [["Toxic"], ["Heavy Slam"], ["Earthquake"], ["Dragon Tail", "Roar"]]
 			}, {
 				"species": "Steelix",
-				"item": ["Steelixite"],
+				"item": ["Steelixite Steel"],
 				"ability": ["Sturdy"],
 				"evs": {"hp": 252, "def": 252, "spd": 4},
 				"nature": "Impish",
