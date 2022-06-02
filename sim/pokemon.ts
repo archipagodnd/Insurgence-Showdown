@@ -1309,7 +1309,7 @@ export class Pokemon {
 			'venusaur', 'bisharp', 'gardevoir', 'gallade', 'sunflora', 'scizor',
 			'glalie', 'froslass', 'typhlosion', 'pidgeot', 'girafarig', 'sableye',
 			'mawile', 'medicham', 'camerupt', 'lopunny', 'lucario', 'hoopa',
-			'muk', 'emolga', 'volcarona', 'meloetta',
+			'muk', 'emolga', 'volcarona',
 		];
 
 		if (deltaPokemon.includes(deltaID)) {
@@ -1328,8 +1328,8 @@ export class Pokemon {
 			deltaID = 'sunfloradelta';
 		} else if (deltaID === 'meloettapirouette') {
 			deltaID = 'meloettadeltamagician';
-		} else if (deltaID === 'meloettadark') {
-			deltaID = 'meloettadelta';
+		} else if (deltaID === 'meloetta') {
+			deltaID = 'meloettadeltamime';
 		} else if (deltaID === 'hoopaunbound') {
 			deltaID = 'hoopadeltaunbound';
 		} else if (['charizardmegax', 'charizardmegay'].includes(deltaID)) {
