@@ -2421,43 +2421,43 @@ export const Formats: FormatList = [
 		ruleset: ['Standard', 'Mega Rayquaza Clause'],
 		banlist: ['Baton Pass'],
 	},
-	{
-		name: "[Gen 7] RU",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3645338/">USM RU Sample Teams</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3645873/">USM RU Viability Rankings</a>`,
-		],
-
-		mod: 'gen7',
-		searchShow: false,
-		ruleset: ['[Gen 7] UU'],
-		banlist: ['UU', 'RUBL', 'Mimikyu', 'Aurora Veil'],
-		unbanlist: ['Drought'],
-	},
-	{
-		name: "[Gen 7] NU",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3632667/">USM NU Sample Teams</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3645166/">USM NU Viability Rankings</a>`,
-		],
-
-		mod: 'gen7',
-		searchShow: false,
-		ruleset: ['[Gen 7] RU'],
-		banlist: ['RU', 'NUBL', 'Drought'],
-	},
-	{
-		name: "[Gen 7] PU",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3611496/">USM PU Sample Teams</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3614892/">USM PU Viability Rankings</a>`,
-		],
-
-		mod: 'gen7',
-		searchShow: false,
-		ruleset: ['[Gen 7] NU'],
-		banlist: ['NU', 'PUBL'],
-	},
+	// {
+	// 	name: "[Gen 7] RU",
+	// 	threads: [
+	// 		`&bullet; <a href="https://www.smogon.com/forums/threads/3645338/">USM RU Sample Teams</a>`,
+	// 		`&bullet; <a href="https://www.smogon.com/forums/threads/3645873/">USM RU Viability Rankings</a>`,
+	// 	],
+	//
+	// 	mod: 'gen7',
+	// 	searchShow: false,
+	// 	ruleset: ['[Gen 7] UU'],
+	// 	banlist: ['UU', 'RUBL', 'Mimikyu', 'Aurora Veil'],
+	// 	unbanlist: ['Drought'],
+	// },
+	// {
+	// 	name: "[Gen 7] NU",
+	// 	threads: [
+	// 		`&bullet; <a href="https://www.smogon.com/forums/threads/3632667/">USM NU Sample Teams</a>`,
+	// 		`&bullet; <a href="https://www.smogon.com/forums/threads/3645166/">USM NU Viability Rankings</a>`,
+	// 	],
+	//
+	// 	mod: 'gen7',
+	// 	searchShow: false,
+	// 	ruleset: ['[Gen 7] RU'],
+	// 	banlist: ['RU', 'NUBL', 'Drought'],
+	// },
+	// {
+	// 	name: "[Gen 7] PU",
+	// 	threads: [
+	// 		`&bullet; <a href="https://www.smogon.com/forums/threads/3611496/">USM PU Sample Teams</a>`,
+	// 		`&bullet; <a href="https://www.smogon.com/forums/threads/3614892/">USM PU Viability Rankings</a>`,
+	// 	],
+	//
+	// 	mod: 'gen7',
+	// 	searchShow: false,
+	// 	ruleset: ['[Gen 7] NU'],
+	// 	banlist: ['NU', 'PUBL'],
+	// },
 	{
 		name: "[Gen 7] LC",
 		threads: [
@@ -2526,23 +2526,23 @@ export const Formats: FormatList = [
 		// searchShow: false,
 		ruleset: ['Obtainable', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause'],
 	},
-	{
-		name: "[Gen 7] ZU",
-		desc: `The unofficial usage-based tier below PU.`,
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3646743/">ZU Metagame Discussion</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3643412/">ZU Viability Rankings</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3646739/">ZU Sample Teams</a>`,
-		],
-
-		mod: 'gen7',
-		searchShow: false,
-		ruleset: ['[Gen 7] PU'],
-		banlist: [
-			'PU', 'Carracosta', 'Crabominable', 'Exeggutor-Base', 'Gorebyss', 'Jynx', 'Raticate-Alola',
-			'Shiftry', 'Throh', 'Turtonator', 'Type: Null', 'Ursaring', 'Victreebel',
-		],
-	},
+	// {
+	// 	name: "[Gen 7] ZU",
+	// 	desc: `The unofficial usage-based tier below PU.`,
+	// 	threads: [
+	// 		`&bullet; <a href="https://www.smogon.com/forums/threads/3646743/">ZU Metagame Discussion</a>`,
+	// 		`&bullet; <a href="https://www.smogon.com/forums/threads/3643412/">ZU Viability Rankings</a>`,
+	// 		`&bullet; <a href="https://www.smogon.com/forums/threads/3646739/">ZU Sample Teams</a>`,
+	// 	],
+	//
+	// 	mod: 'gen7',
+	// 	searchShow: false,
+	// 	ruleset: ['[Gen 7] PU'],
+	// 	banlist: [
+	// 		'PU', 'Carracosta', 'Crabominable', 'Exeggutor-Base', 'Gorebyss', 'Jynx', 'Raticate-Alola',
+	// 		'Shiftry', 'Throh', 'Turtonator', 'Type: Null', 'Ursaring', 'Victreebel',
+	// 	],
+	// },
 	{
 		name: "[Gen 7] CAP",
 		threads: [
