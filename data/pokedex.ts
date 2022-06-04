@@ -711,6 +711,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Black",
 		prevo: "Rattata-Alola",
 		evoLevel: 20,
+		evoCondition: "at night",
 		eggGroups: ["Field"],
 	},
 	raticatealolatotem: {
@@ -2988,6 +2989,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Purple",
 		prevo: "Cubone",
 		evoLevel: 28,
+		evoCondition: "at night",
 		eggGroups: ["Monster"],
 	},
 	marowakalolatotem: {
@@ -11219,6 +11221,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Sneasel",
 		evoType: "levelHold",
 		evoItem: "Razor Claw",
+		evoCondition: "at night",
 		eggGroups: ["Field"],
 	},
 	magnezone: {
@@ -16666,6 +16669,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Red",
 		prevo: "Tyrunt",
 		evoLevel: 39,
+		evoCondition: "during the day",
 		eggGroups: ["Monster", "Dragon"],
 	},
 	amaura: {
@@ -16710,6 +16714,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Blue",
 		prevo: "Amaura",
 		evoLevel: 39,
+		evoCondition: "at night",
 		eggGroups: ["Monster"],
 		otherFormes: ["Aurorus-Delta"],
 		formeOrder: ["Aurorus", "Aurorus-Delta"],
@@ -17618,6 +17623,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Brown",
 		prevo: "Yungoos",
 		evoLevel: 20,
+		evoCondition: "during the day",
 		eggGroups: ["Field"],
 		otherFormes: ["Gumshoos-Totem"],
 		formeOrder: ["Gumshoos", "Gumshoos-Totem"],
@@ -17860,7 +17866,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Red",
 		prevo: "Rockruff",
 		evoLevel: 25,
-		evoCondition: "during the night",
+		evoCondition: "at night",
 		eggGroups: ["Field"],
 	},
 	lycanrocdusk: {
@@ -20694,7 +20700,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Blue",
 		eggGroups: ["Undiscovered"],
 		requiredItem: "Rusted Sword",
-		changesFrom: "Zacian",
+		battleOnly: "Zacian",
 		cannotDynamax: true,
 	},
 	zamazenta: {
@@ -20728,7 +20734,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Red",
 		eggGroups: ["Undiscovered"],
 		requiredItem: "Rusted Shield",
-		changesFrom: "Zamazenta",
+		battleOnly: "Zamazenta",
 		cannotDynamax: true,
 	},
 	eternatus: {
@@ -21060,6 +21066,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		prevo: "Sneasel-Hisui",
 		evoType: "useItem",
 		evoItem: "Razor Claw",
+		evoCondition: "during the day",
 		eggGroups: ["Field"],
 	},
 	overqwil: {

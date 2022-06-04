@@ -9,12 +9,16 @@ exports.servertoken = 'RgQLhWiS1suf';
 
 /**
  * The server port - the port to run Pokemon Showdown under
+ *
+ * @type {number}
  */
 exports.port = 8000;
 
 /**
  * The server address - the address at which Pokemon Showdown should be hosting
  *   This should be kept set to 0.0.0.0 unless you know what you're doing.
+ *
+ * @type {string}
  */
 exports.bindaddress = '0.0.0.0';
 
@@ -136,6 +140,8 @@ exports.debugdexsearchprocesses = true;
  * Pokemon of the Day - put a pokemon's name here to make it Pokemon of the Day
  *   The PotD will always be in the #2 slot (not #1 so it won't be a lead)
  *   in every Random Battle team.
+ *
+ * @type {ID}
  */
 exports.potd = '';
 
@@ -325,6 +331,8 @@ exports.laddermodchat = false;
  * forced timer - force the timer on for all battles
  *   Players will be unable to turn it off.
  *   This setting can also be turned on with the command /forcetimer.
+ *
+ * @type {boolean}
  */
 exports.forcetimer = false;
 
@@ -404,6 +412,8 @@ exports.inactiveuserthreshold = 1000 * 60 * 60;
  * autolockdown - whether or not to automatically kill the server when it is
  * in lockdown mode and the final battle finishes.  This is potentially useful
  * to prevent forgetting to restart after a lockdown where battles are finished.
+ *
+ * @type {boolean}
  */
 exports.autolockdown = true;
 
@@ -475,7 +485,7 @@ exports.disablehotpatchall = false;
  * Battles involving user IDs which begin with one of the prefixes configured here
  * will be unaffected by various battle privacy commands such as /modjoin, /hideroom
  * or /ionext.
- * @type {string[]}
+ * @type {string[] | undefined}
  */
 exports.forcedpublicprefixes = [];
 
