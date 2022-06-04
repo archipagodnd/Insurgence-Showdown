@@ -873,12 +873,20 @@ export const commands: Chat.ChatCommands = {
 			targets.pop();
 		}
 
+		let isOmnitype = toID(targets[0]) === 'omnitype';
 		let species: {types: string[], [k: string]: any} = dex.species.get(targets[0]);
 		const type1 = dex.types.get(targets[0]);
 		const type2 = dex.types.get(targets[1]);
 		const type3 = dex.types.get(targets[2]);
 
-		if (species.exists) {
+		if (isOmnitype) {
+			const types = [];
+			for (const type of dex.types.names()) {
+				if(type !== 'Shadow') types.push(type);
+			}
+			species = {types: types};
+			target = 'Giratina-Primal with Omnitype';
+		} else if (species.exists) {
 			target = species.name;
 		} else {
 			const types = [];
@@ -914,7 +922,7 @@ export const commands: Chat.ChatCommands = {
 				case 2:
 					weaknesses.push(`<b>${type}</b>`);
 					break;
-				case 3:
+				case 3: case 4:
 					weaknesses.push(`<b><i>${type}</i></b>`);
 					break;
 				case -1:
@@ -923,7 +931,7 @@ export const commands: Chat.ChatCommands = {
 				case -2:
 					resistances.push(`<b>${type}</b>`);
 					break;
-				case -3:
+				case -3: case -4:
 					resistances.push(`<b><i>${type}</i></b>`);
 					break;
 				}
@@ -1150,7 +1158,7 @@ export const commands: Chat.ChatCommands = {
 			let buffer = '<div class="scrollable"><table cellpadding="1" width="100%"><tr><th></th>';
 			const icon: {[k: string]: string} = {};
 			for (const type of dex.types.names()) {
-				icon[type] = `<img src="https://${Config.routes.client}/sprites/types/${type}.png" width="32" height="14">`;
+				icon[type] = `<img src="https://raw.githubusercontent.com/Poilerwags/Sprites/master/play.pokemonshowdown.com/sprites/types/${type}.png" width="32" height="14">`;
 				// row of icons at top
 				buffer += `<th>${icon[type]}</th>`;
 			}

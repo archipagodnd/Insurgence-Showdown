@@ -72,7 +72,7 @@ describe('Truant', function () {
 	it('should prevent a newly-Mega Evolved Pokemon from acting if given the ability', function () {
 		battle = common.createBattle();
 		battle.setPlayer('p1', {team: [{species: "Slaking", ability: 'truant', item: 'choicescarf', moves: ['entrainment']}]});
-		battle.setPlayer('p2', {team: [{species: "Steelix", ability: 'sturdy', item: 'steelixite', moves: ['heavyslam']}]});
+		battle.setPlayer('p2', {team: [{species: "Steelix", ability: 'sturdy', item: 'steelixitesteel', moves: ['heavyslam']}]});
 
 		assert.false.hurts(battle.p1.active[0], () => battle.makeChoices('move entrainment', 'move heavyslam mega'));
 	});

@@ -28,7 +28,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	achillesheel: {
 		name: "Achilles Heel",
-		shortDesc: "Always deals super effective damage unless the target is immune.",
+		desc: "Always deals super effective damage (unless the target is immune).",
+		shortDesc: "Always deals super effective damage.",
 	},
 	acid: {
 		name: "Acid",
@@ -141,7 +142,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	ancientroar: {
 		name: "Ancient Roar",
 		desc: "No additional effect.",
-		shortDesc: "No additional effect. Hits adjacent Pokémon.",
+		shortDesc: "No additional effect.",
 	},
 	appleacid: {
 		name: "Apple Acid",
@@ -4286,7 +4287,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	permafrost: {
 		name: "Permafrost",
 		desc: "Sets up a hazard on the opposing side of the field, having a chance to freeze each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to five times before failing. The chance to paralyze increases with 10% per layer and is doubled in Hail. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, is hit by Defog, or a grounded Ice-type or Fire-type Pokemon switches in. Safeguard prevents the opposing party from being poisoned on switch-in, but a substitute does not.",
-		shortDesc: "Chance to freeze grounded foes on switch-in. Max 5 layers, 10% chance per layer; doubled in Hail.",
+		shortDesc: "Chance to freeze grounded foes on switch-in.",
 		start: "  Permafrost was scattered on the ground all around [TEAM]!",
 		end: "  The permafrost disappeared from the ground around [TEAM]!",
 	},
@@ -4318,7 +4319,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	phantomforce: {
 		name: "Phantom Force",
-		desc: "If this move is successful, it breaks through the target's Baneful Bunker, Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks. If the user is holding a Power Herb, the move completes in one turn.",
+		desc: "If this move is successful, it breaks through the target's Baneful Bunker, Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks. If the user is holding a Power Herb or the weather is New Moon, the move completes in one turn.",
 		shortDesc: "Disappears turn 1. Hits turn 2. Breaks protection.",
 		gen6: {
 			desc: "If this move is successful, it breaks through the target's Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks. If the user is holding a Power Herb, the move completes in one turn. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
@@ -5220,7 +5221,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	shadowforce: {
 		name: "Shadow Force",
-		desc: "If this move is successful, it breaks through the target's Baneful Bunker, Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks. If the user is holding a Power Herb, the move completes in one turn.",
+		desc: "If this move is successful, it breaks through the target's Baneful Bunker, Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks. If the user is holding a Power Herb or the weather is New Moon, the move completes in one turn.",
 		shortDesc: "Disappears turn 1. Hits turn 2. Breaks protection.",
 		gen6: {
 			desc: "If this move is successful, it breaks through the target's Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks. If the user is holding a Power Herb, the move completes in one turn. Damage doubles and no accuracy check is done if the target has used Minimize while active.",

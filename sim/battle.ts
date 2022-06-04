@@ -2017,7 +2017,7 @@ export class Battle {
 		case 'drain':
 			this.add('-heal', target, target.getHealth, '[from] drain', '[of] ' + source);
 			break;
-		case 'wish':
+		case 'wishperiodic': case 'wish':
 			break;
 		case 'zpower':
 			this.add('-heal', target, target.getHealth, '[zeffect]');

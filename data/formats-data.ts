@@ -3105,9 +3105,11 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	castformsnowy: {
 		isNonstandard: "Past",
 	},
-	castformnewmoon: {
+	castformcloudy: {
+		isNonstandard: "Past",
 	},
-	castformsandstorm: {
+	castformsandy: {
+		isNonstandard: "Past",
 	},
 	kecleon: {
 		isNonstandard: "Past",
@@ -5129,7 +5131,23 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "(DUU)",
 	},
 	hydreigonmegafive: {
-		isNonstandard: "Past",
+		//isNonstandard: "Past",
+		tier: "Uber",
+	},
+	hydreigonmegasix: {
+		//isNonstandard: "Past",
+		tier: "Uber",
+	},
+	hydreigonmegaseven: {
+		//isNonstandard: "Past",
+		tier: "Uber",
+	},
+	hydreigonmegaeight: {
+		//isNonstandard: "Past",
+		tier: "Uber",
+	},
+	hydreigonmeganine: {
+		//isNonstandard: "Past",
 		tier: "Uber",
 	},
 	hydreigondelta: {

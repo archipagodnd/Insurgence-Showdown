@@ -719,7 +719,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		effectType: 'ValidatorRule',
 		name: 'Evasion Abilities Clause',
 		desc: "Bans abilities that boost Evasion under certain weather conditions",
-		banlist: ['Sand Veil', 'Snow Cloak'],
+		banlist: ['Sand Veil', 'Snow Cloak', 'Illuminate'],
 		onBegin() {
 			this.add('rule', 'Evasion Abilities Clause: Evasion abilities are banned');
 		},
@@ -1194,8 +1194,9 @@ export const Rulesets: {[k: string]: FormatData} = {
 		},
 		onEffectivenessPriority: 1,
 		onEffectiveness(typeMod, target, type, move) {
-			// The effectiveness of Freeze Dry on Water isn't reverted
+			// The effectiveness of Freeze Dry on Water and Corrode on Steel aren't reverted.
 			if (move && move.id === 'freezedry' && type === 'Water') return;
+			if (move && move.id === 'corrode' && type === 'Steel') return;
 			if (move && !this.dex.getImmunity(move, type)) return 1;
 			return -typeMod;
 		},

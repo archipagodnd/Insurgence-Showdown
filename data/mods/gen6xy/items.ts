@@ -91,7 +91,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: "Future",
 	},
-	steelixite: {
+	steelixitesteel: {
 		inherit: true,
 		isNonstandard: "Future",
 	},

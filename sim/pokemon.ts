@@ -269,7 +269,8 @@ export class Pokemon {
 		[key: string]: any,
 	};
 
-	constructor(set: string | AnyObject, side: Side) {
+	//If no gender is defined in set and defaultGender is defined, defaultGender will be used instead of a random one.
+	constructor(set: string | AnyObject, side: Side, defaultGender: GenderName | undefined = undefined) {
 		this.side = side;
 		this.battle = side.battle;
 
@@ -298,7 +299,7 @@ export class Pokemon {
 		set.level = this.battle.clampIntRange(set.adjustLevel || set.level || 100, 1, 9999);
 		this.level = set.level;
 		const genders: {[key: string]: GenderName} = {M: 'M', F: 'F', N: 'N'};
-		this.gender = genders[set.gender] || this.species.gender || (this.battle.random() * 2 < 1 ? 'M' : 'F');
+		this.gender = genders[set.gender] || defaultGender || this.species.gender || (this.battle.random() * 2 < 1 ? 'M' : 'F');
 		if (this.gender === 'N') this.gender = '';
 		this.happiness = typeof set.happiness === 'number' ? this.battle.clampIntRange(set.happiness, 0, 255) : 255;
 		this.pokeball = this.set.pokeball || 'pokeball';
@@ -448,6 +449,87 @@ export class Pokemon {
 		this.hp = 0;
 		this.clearVolatile();
 		this.hp = this.maxhp;
+	}
+
+	illusionClone(): Pokemon {
+		const clone = new Pokemon(this.set, this.side, this.gender);
+
+		clone.moveSlots = this.moveSlots;
+		clone.hpType = this.hpType;
+		clone.hpPower = this.hpPower;
+		clone.position = this.position;
+		clone.details = this.details;
+		clone.baseSpecies = this.baseSpecies;
+		clone.species = this.species;
+		clone.speciesState = this.speciesState;
+		clone.status = this.status;
+		clone.statusState = this.statusState;
+		clone.volatiles = this.volatiles;
+		clone.showCure = this.showCure;
+		clone.baseStoredStats = this.baseStoredStats;
+		clone.storedStats = this.storedStats;
+		clone.boosts = this.boosts;
+		clone.baseAbility = this.baseAbility;
+		clone.ability = this.ability;
+		clone.abilityState = this.abilityState;
+		clone.item = this.item;
+		clone.itemState = this.itemState;
+		clone.lastItem = this.lastItem;
+		clone.usedItemThisTurn = this.usedItemThisTurn;
+		clone.ateBerry = this.ateBerry;
+		clone.trapped = this.trapped;
+		clone.maybeTrapped = this.maybeTrapped;
+		clone.maybeDisabled = this.maybeDisabled;
+		clone.illusion = this.illusion;
+		clone.transformed = this.transformed;
+		clone.maxhp = this.maxhp;
+		clone.baseMaxhp = this.baseMaxhp;
+		clone.hp = this.hp;
+		clone.fainted = this.fainted;
+		clone.faintQueued = this.faintQueued;
+		clone.subFainted = this.subFainted;
+		clone.types = this.types;
+		clone.addedType = this.addedType;
+		clone.knownType = this.knownType;
+		clone.apparentType = this.apparentType;
+		clone.switchFlag = this.switchFlag;
+		clone.forceSwitchFlag = this.forceSwitchFlag;
+		clone.skipBeforeSwitchOutEventFlag = this.skipBeforeSwitchOutEventFlag;
+		clone.draggedIn = this.draggedIn;
+		clone.newlySwitched = this.newlySwitched;
+		clone.beingCalledBack = this.beingCalledBack;
+		clone.lastMove = this.lastMove;
+		clone.lastMoveUsed = this.lastMoveUsed;
+		clone.lastMoveTargetLoc = this.lastMoveTargetLoc;
+		clone.moveThisTurn = this.moveThisTurn;
+		clone.statsRaisedThisTurn = this.statsRaisedThisTurn;
+		clone.statsLoweredThisTurn = this.statsLoweredThisTurn;
+		clone.moveLastTurnResult = this.moveLastTurnResult;
+		clone.moveThisTurnResult = this.moveThisTurnResult;
+		clone.hurtThisTurn = this.hurtThisTurn;
+		clone.lastDamage = this.lastDamage;
+		clone.attackedBy = this.attackedBy;
+		clone.isActive = this.isActive;
+		clone.activeTurns = this.activeTurns;
+		clone.activeMoveActions = this.activeMoveActions;
+		clone.previouslySwitchedIn = this.previouslySwitchedIn;
+		clone.truantTurn = this.truantTurn;
+		clone.isStarted = this.isStarted;
+		clone.duringMove = this.duringMove;
+		clone.weighthg = this.weighthg;
+		clone.speed = this.speed;
+		clone.abilityOrder = this.abilityOrder;
+		clone.canMegaEvo = this.canMegaEvo;
+		clone.canUltraBurst = this.canUltraBurst;
+		clone.staleness = this.staleness;
+		clone.pendingStaleness = this.pendingStaleness;
+		clone.volatileStaleness = this.volatileStaleness;
+		clone.modifiedStats = this.modifiedStats;
+		clone.modifyStat = this.modifyStat;
+		clone.recalculateStats = this.recalculateStats;
+		clone.m = this.m;
+
+		return clone;
 	}
 
 	toJSON(): AnyObject {
@@ -1229,6 +1311,134 @@ export class Pokemon {
 		return true;
 	}
 
+	morphInto(target: Pokemon, effect?: Effect) {
+		if (!this.transformInto(target, effect)) return false;
+		if (target.species.id.includes('delta')) return true;
+		
+		let deltaID: string = target.species.id;
+		const deltaPokemon = [ //Pokémon with only 1 delta form that don't have their delta in their otherFormes list.
+			'venusaur', 'bisharp', 'gardevoir', 'gallade', 'sunflora', 'scizor',
+			'glalie', 'froslass', 'typhlosion', 'pidgeot', 'girafarig', 'sableye',
+			'mawile', 'medicham', 'camerupt', 'lopunny', 'lucario', 'hoopa',
+			'muk', 'emolga', 'volcarona',
+		];
+
+		if (deltaPokemon.includes(deltaID)) {
+			deltaID += 'delta';
+		} else if (deltaID === 'charizard') {
+			deltaID = ['charizarddelta', 'charizarddeltae'][this.battle.random(2)];
+		} else if (deltaID === 'blastoise') {
+			deltaID = ['blastoisedelta', 'blastoisedeltas'][this.battle.random(2)];
+		} else if (deltaID === 'milotic') {
+			deltaID = ['miloticdelta', 'miloticdeltaf'][this.battle.random(2)];
+		} else if (deltaID === 'metagross') {
+			deltaID = ['metagrossdeltas', 'metagrossdeltar'][this.battle.random(2)];
+		} else if (deltaID === 'metagrossmega') {
+			deltaID = ['metagrossdeltasmega', 'metagrossdeltarmega'][this.battle.random(2)];
+		} else if (deltaID === 'sunfloraf') {
+			deltaID = 'sunfloradelta';
+		} else if (deltaID === 'meloettapirouette') {
+			deltaID = 'meloettadeltamagician';
+		} else if (deltaID === 'meloetta') {
+			deltaID = 'meloettadeltamime';
+		} else if (deltaID === 'hoopaunbound') {
+			deltaID = 'hoopadeltaunbound';
+		} else if (['charizardmegax', 'charizardmegay'].includes(deltaID)) {
+			deltaID = 'charizarddeltamega';
+		} else if (['sunflorafmega', 'sunflorammega'].includes(deltaID)) {
+			deltaID = 'sunfloradeltamega';
+		} else if (target.species.isMega) {
+			deltaID = deltaID.substr(0, (deltaID.length - 4)) + 'deltamega';
+		} else if (target.species.otherFormes) {
+			const deltaFormes = [];
+			for (const forme of target.species.otherFormes) {
+				if (forme.includes('Delta')) {
+					deltaFormes[deltaFormes.length] = forme;
+				}
+			}
+			if (deltaFormes.length === 1) {
+				deltaID = deltaFormes[0];
+			} else if (deltaFormes.length > 1) {
+				deltaID = deltaFormes[this.battle.random(deltaFormes.length)];
+			}
+		} else return true;
+
+		deltaID = toID(deltaID);
+		if(deltaID !== target.species.id) {
+			const deltaSpecies = this.battle.dex.species.get(deltaID);
+			if(deltaSpecies.exists) {
+				if (this.formeChange(deltaSpecies, effect)) {
+					//If deltaSpecies has multiple abilities, picks one at random.
+					let abilitySlot = 0; //abilitySlot is currently being used to count the amount of abilites deltaSpecies can have.
+					if (deltaSpecies.abilities[1]) abilitySlot++;
+					if (deltaSpecies.abilities['H']) abilitySlot++;
+					abilitySlot = abilitySlot > 0 ? this.battle.random(abilitySlot + 1) : 0; //Now abilitySlot is the randomly selected ability slot.
+					if (deltaSpecies.abilities['H'] && (abilitySlot === 2 || (abilitySlot === 1 && !deltaSpecies.abilities[1]))) {
+						this.setAbility(deltaSpecies.abilities['H'], this, true);
+					} else if (deltaSpecies.abilities[1] && abilitySlot === 1) {
+						this.setAbility(deltaSpecies.abilities[1], this, true);
+					} else this.setAbility(deltaSpecies.abilities[0], this, true);
+
+					const noLearnsetDeltas = ['victinidelta', 'jirachidelta']; //Deltas with no level-up moves.
+					if (!noLearnsetDeltas.includes(deltaID)) {
+						const learnsetData = {...(this.battle.dex.data.Learnsets[deltaID]?.learnset || {})};
+						const dict: any = {};
+						const oldDeltas = [ //Deltas that have no gen 6 level-up moves, but do have gen 5 ones.
+							'aerodactyldelta', 'aggrondeltai', 'blastoisedeltas', 'charizarddeltae',
+							'chimechodelta', 'houndoomdelta', 'machampdelta', 'miloticdeltaf',
+							'ninetalesdelta', 'pinsirdelta', 'raichudeltas', 'zangoosedelta',
+						];
+						const learnPrefix = oldDeltas.includes(deltaID) ? "5L" : "6L";
+						for (const move in learnsetData) {
+							const learnmoment = learnsetData[move].filter(learn => learn.startsWith(learnPrefix));
+							if (learnmoment.length <= 0) continue;
+							const learnLvls: number[] = [];
+							for (let i=0; i < learnmoment.length; i++) {
+								if (learnmoment[i].length > 2) learnLvls[learnLvls.length] = parseInt(learnmoment[i].slice(2));
+							}
+							for (let i = learnLvls.length - 1; i >= 0; i--) {
+								if (learnLvls[i] <= target.level) {
+									dict[move] = learnLvls[i];
+									break;
+								}
+							}
+						}
+						const items = Object.keys(dict).map(function (key) {
+							return [key, dict[key]];
+						});
+						items.reverse();
+						items.sort(function (first, second) {
+							return second[1] - first[1];
+						});
+						let numberOfMoves = this.battle.ruleTable.maxMoveCount;
+						if (numberOfMoves <= 0) numberOfMoves = 4;
+						if (items.length < numberOfMoves) numberOfMoves = items.length;
+						if (numberOfMoves > 24) numberOfMoves = 24;
+						if (numberOfMoves > 0) {
+							this.moveSlots = [];
+							for (let i = 0; i < numberOfMoves; i++) {
+								const slotMove = this.battle.dex.moves.get(items[i][0]);
+								const slotPP = Math.floor(slotMove.noPPBoosts ? slotMove.pp : slotMove.pp * 8 / 5);
+								this.moveSlots.push({
+									move: slotMove.name,
+									id: slotMove.id,
+									pp: slotPP === 1 ? 1 : 5,
+									maxpp: slotPP === 1 ? 1 : 5,
+									target: slotMove.target,
+									disabled: false,
+									used: false,
+									virtual: true,
+								});
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * Changes this Pokemon's species to the given speciesId (or species).
 	 * This function only handles changes to stats and type.
@@ -1292,12 +1502,13 @@ export class Pokemon {
 			this.baseSpecies = rawSpecies;
 			this.details = species.name + (this.level === 100 ? '' : ', L' + this.level) +
 				(this.gender === '' ? '' : ', ' + this.gender) + (this.set.shiny ? ', shiny' : '');
-			this.battle.add('detailschange', this, (this.illusion || this).details);
 			if (source.effectType === 'Item') {
 				if (source.zMove) {
+					this.battle.add('detailschange', this, (this.illusion || this).details);
 					this.battle.add('-burst', this, apparentSpecies, species.requiredItem);
 					this.moveThisTurnResult = true; // Ultra Burst counts as an action for Truant
 				} else if (source.onPrimal) {
+					this.battle.add('detailschange', this, (this.illusion || this).details);
 					if (this.illusion) {
 						this.ability = '';
 						this.battle.add('-primal', this.illusion);
@@ -1306,19 +1517,37 @@ export class Pokemon {
 					}
 				} else {
 					if (this.illusion) {
-						const illusionStone = this.illusion.requiredItem;
-						if (typeof illusionStone !== 'undefined') {
-							this.battle.add('-mega', this, apparentSpecies, illusionStone);
+						if(!this.illusion.species.isMega) {
+							const illusionMega = this.illusion.canMegaEvo ? this.illusion.canMegaEvo : this.illusion.species.id + 'mega';
+																									//Which mega Charizard & Mewtwo will default to is controlled by data/aliases.ts
+							const illusionRawSpecies = this.battle.dex.species.get(illusionMega);
+							if(illusionRawSpecies.exists) {
+								const illusionSpecies = this.illusion.setSpecies(illusionRawSpecies, source);
+								if(illusionSpecies) {
+									this.illusion.baseSpecies = illusionRawSpecies;
+									this.illusion.details = illusionSpecies.name + (this.level === 100 ? '' : ', L' + this.level) +
+										(this.illusion.gender === '' ? '' : ', ' + this.illusion.gender) + (this.illusion.set.shiny ? ', shiny' : '');
+
+									this.battle.add('detailschange', this, this.illusion.details);
+									
+									const illusionStone = illusionRawSpecies.requiredItem;
+									if (typeof illusionStone !== 'undefined') {
+										this.battle.add('-mega', this, apparentSpecies, illusionStone);
+									}
+								}
+							}
 						}
 					} else {
+						this.battle.add('detailschange', this, this.details);
 						this.battle.add('-mega', this, apparentSpecies, species.requiredItem);
 					}
 					this.moveThisTurnResult = true; // Mega Evolution counts as an action for Truant
 				}
 			} else if (source.effectType === 'Status') {
+				this.battle.add('detailschange', this, (this.illusion || this).details);
 				// Shaymin-Sky -> Shaymin
 				this.battle.add('-formechange', this, species.name, message);
-			}
+			} else this.battle.add('detailschange', this, (this.illusion || this).details);
 		} else {
 			if (source.effectType === 'Ability') {
 				this.battle.add('-formechange', this, species.name, message, `[from] ability: ${source.name}`);

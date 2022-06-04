@@ -2894,7 +2894,7 @@
 		},
 		"sets": [{
 			"species": "Steelix",
-			"item": "Steelixite",
+			"item": "Steelixite Steel",
 			"ability": "Sturdy",
 			"evs": {"hp": 244, "atk": 148, "spd": 116},
 			"ivs": {"spe": 0},

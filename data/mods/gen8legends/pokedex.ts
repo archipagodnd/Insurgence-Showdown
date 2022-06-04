@@ -4099,7 +4099,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		weightkg: 740,
 		color: "Gray",
 		eggGroups: ["Mineral"],
-		requiredItem: "Steelixite",
+		requiredItem: "Steelixite Steel",
 	},
 	snubbull: {
 		num: 209,

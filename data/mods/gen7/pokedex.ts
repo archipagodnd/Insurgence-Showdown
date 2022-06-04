@@ -81,7 +81,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 	heatran: {
 		inherit: true,
 		abilities: {0: "Flash Fire", H: "Flame Body"},
-		unreleasedHidden: true,
+		//unreleasedHidden: true, //dream mist
 	},
 	aegislash: {
 		inherit: true,

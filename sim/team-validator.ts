@@ -527,10 +527,16 @@ export class TeamValidator {
 				tierSpecies = dex.species.get('Kyogre-Primal');
 			} else if (canMegaEvo && species.id === 'rayquaza' && set.moves.map(toID).includes('dragonascent' as ID)) {
 				tierSpecies = dex.species.get('Rayquaza-Mega');
-			} else if (item.id === 'rustedsword' && species.id === 'zacian') {
-				tierSpecies = dex.species.get('Zacian-Crowned');
-			} else if (item.id === 'rustedshield' && species.id === 'zamazenta') {
-				tierSpecies = dex.species.get('Zamazenta-Crowned');
+      } else if (item.id === 'rustedsword' && species.id === 'zacian') {
+        tierSpecies = dex.species.get('Zacian-Crowned');
+      } else if (item.id === 'rustedshield' && species.id === 'zamazenta') {
+        tierSpecies = dex.species.get('Zamazenta-Crowned');
+			} else if (item.id === 'crystalpiecearceus' && species.id === 'arceus') {
+				tierSpecies = dex.species.get('Arceus-Primal');
+			} else if (item.id === 'crystalpiecegiratina' && species.id === 'giratina') {
+				tierSpecies = dex.species.get('Giratina-Primal');
+			} else if (item.id === 'crystalpieceregigigas' && species.id === 'regigigas') {
+				tierSpecies = dex.species.get('Regigigas-Primal');
 			}
 		}
 
@@ -573,8 +579,8 @@ export class TeamValidator {
 
 					if (unreleasedHidden && ruleTable.has('-unreleased')) {
 						problems.push(`${name}'s Hidden Ability is unreleased.`);
-					} else if (dex.gen === 7 && ['entei', 'suicune', 'raikou'].includes(species.id) && this.minSourceGen > 1) {
-						problems.push(`${name}'s Hidden Ability is only available from Virtual Console, which is not allowed in this format.`);
+					//} else if (dex.gen === 7 && ['entei', 'suicune', 'raikou'].includes(species.id) && this.minSourceGen > 1) {
+					//	problems.push(`${name}'s Hidden Ability is only available from Virtual Console, which is not allowed in this format.`);
 					} else if (dex.gen === 6 && ability.name === 'Symbiosis' &&
 						(set.species.endsWith('Orange') || set.species.endsWith('White'))) {
 						problems.push(`${name}'s Hidden Ability is unreleased for the Orange and White forms.`);
@@ -587,6 +593,9 @@ export class TeamValidator {
 						}
 						set.gender = 'M';
 						setSources.sources = ['5D'];
+					}
+					if (species.baseSpecies === 'Arceus' && species.name !== 'Arceus') {
+						problems.push(`${name} will not be ${species.types[0]}-type if it doesn't have the ability Multitype.`);
 					}
 				} else {
 					setSources.isHidden = false;
@@ -785,7 +794,7 @@ export class TeamValidator {
 			// nickname is the name of a species
 			if (nameSpecies.baseSpecies === species.baseSpecies) {
 				set.name = species.baseSpecies;
-			} else if (nameSpecies.name !== species.name && nameSpecies.name !== species.baseSpecies) {
+			} else if (nameSpecies.name !== species.name && nameSpecies.name !== species.baseSpecies && !species.name.startsWith(nameSpecies.name)) {
 				// nickname species doesn't match actual species
 				// Nickname Clause
 				problems.push(`${name} must not be nicknamed a different Pokémon species than what it actually is.`);
@@ -1784,13 +1793,15 @@ export class TeamValidator {
 				}
 			}
 			if (species.abilities['H']) {
+				const canUseDreamMist = dex.gen >= 6 && eventData.generation <= 6; // https://wiki.p-insurgence.com/Dream_Mist
+
 				const isHidden = (set.ability === species.abilities['H']);
-				if (!isHidden && eventData.isHidden) {
+				if (!isHidden && eventData.isHidden && !canUseDreamMist) {
 					if (fastReturn) return true;
 					problems.push(`${name} must have its Hidden Ability${etc}.`);
 				}
 
-				const canUseAbilityPatch = dex.gen >= 8 && this.format.mod !== 'gen8dlc1';
+				const canUseAbilityPatch = (dex.gen >= 8 && this.format.mod !== 'gen8dlc1') || canUseDreamMist;
 				if (isHidden && !eventData.isHidden && !canUseAbilityPatch) {
 					if (fastReturn) return true;
 					problems.push(`${name} must not have its Hidden Ability${etc}.`);

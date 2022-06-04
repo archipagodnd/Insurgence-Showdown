@@ -82,12 +82,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 15,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		onBasePower(basePower, pokemon, target, move) {
-			if (target.types.length === 2) return this.chainModify(0.5);
-		},
-		onEffectiveness(typeMod, target, type) {
-			if (type !== 'Ghost') return 1;
-		},
+		//Super-effective unless target is immune, implemented in sim/battle-actions.ts
 		secondary: null,
 		target: "normal",
 		type: "Normal",
@@ -435,7 +430,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, sound: 1, bypasssub: 1},
 		secondary: null,
-		target: "allAdjacentFoes",
+		target: "normal",
 		type: "Rock",
 		contestType: "Cool",
 	},
@@ -829,13 +824,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (!target.getMoveHitData(move).crit && !move.infiltrates) {
 						this.debug('Aurora Veil weaken');
 						if (this.activePerHalf > 1) {
-							if (this.field.isWeather(['darkness'])) {
+							if (this.field.isWeather('newmoon')) {
 								return this.chainModify([8, 15]);
 							} else {
 								return this.chainModify([2732, 4096]);
 							}
 						}
-						if (this.field.isWeather(['darkness'])) {
+						if (this.field.isWeather('newmoon')) {
 							return this.chainModify(0.4);
 						} else {
 							return this.chainModify(0.5);
@@ -3562,26 +3557,27 @@ export const Moves: {[moveid: string]: MoveData} = {
 		isFutureMove: true,
 		onTry(source, target) {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
-			if (source.hasAbility('periodicorbit')) {
-				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
-					duration: 6,
-					move: 'doomdesire',
-					source: source,
-					moveData: {
-						id: 'doomdesire',
-						name: "Doom Desire",
-						accuracy: 100,
-						basePower: 140,
-						category: "Special",
-						priority: 0,
-						flags: {},
-						effectType: 'Move',
-						isFutureMove: true,
-						type: 'Steel',
-					},
-				});
-			} else {
-				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+			const periodic = source.hasAbility('periodicorbit');
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+				duration: periodic ? 5 : 3,
+				move: 'doomdesire',
+				source: source,
+				moveData: {
+					id: 'doomdesire',
+					name: "Doom Desire",
+					accuracy: 100,
+					basePower: 140,
+					category: "Special",
+					priority: 0,
+					flags: {},
+					ignoreImmunity: false,
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'Steel',
+				},
+			});
+			if (periodic && target.side.addSlotCondition(target, 'futuremoveperiodic')) {
+				Object.assign(target.side.slotConditions[target.position]['futuremoveperiodic'], {
 					duration: 3,
 					move: 'doomdesire',
 					source: source,
@@ -3593,13 +3589,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 						category: "Special",
 						priority: 0,
 						flags: {},
+						ignoreImmunity: false,
 						effectType: 'Move',
 						isFutureMove: true,
 						type: 'Steel',
 					},
 				});
 			}
-			this.add('-start', source, 'move: Doom Desire');
+			this.add('-start', source, 'Doom Desire');
 			return this.NOT_FAIL;
 		},
 		secondary: null,
@@ -3982,7 +3979,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, sound: 1, bypasssub: 1},
 		secondary: null,
-		target: "allAdjacent",
+		target: "allAdjacentFoes",
 		type: "Dragon",
 		contestType: "Tough",
 	},
@@ -5332,7 +5329,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, reflectable: 1, mirror: 1},
 		onModifyMove(move) {
-			if (this.field.isWeather(['darkness'])) move.boosts = {accuracy: -2};
+			if (this.field.isWeather('newmoon')) move.boosts = {accuracy: -2};
 		},
 		boosts: {
 			accuracy: -1,
@@ -6078,27 +6075,27 @@ export const Moves: {[moveid: string]: MoveData} = {
 		isFutureMove: true,
 		onTry(source, target) {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
-			if (source.hasAbility('periodicorbit')) {
-				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
-					duration: 6,
-					move: 'futuresight',
-					source: source,
-					moveData: {
-						id: 'futuresight',
-						name: "Future Sight",
-						accuracy: 100,
-						basePower: 120,
-						category: "Special",
-						priority: 0,
-						flags: {},
-						ignoreImmunity: false,
-						effectType: 'Move',
-						isFutureMove: true,
-						type: 'Psychic',
-					},
-				});
-			} else {
-				Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+			const periodic = source.hasAbility('periodicorbit');
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
+				duration: periodic ? 5 : 3,
+				move: 'futuresight',
+				source: source,
+				moveData: {
+					id: 'futuresight',
+					name: "Future Sight",
+					accuracy: 100,
+					basePower: 120,
+					category: "Special",
+					priority: 0,
+					flags: {},
+					ignoreImmunity: false,
+					effectType: 'Move',
+					isFutureMove: true,
+					type: 'Psychic',
+				},
+			});
+			if (periodic && target.side.addSlotCondition(target, 'futuremoveperiodic')) {
+				Object.assign(target.side.slotConditions[target.position]['futuremoveperiodic'], {
 					duration: 3,
 					move: 'futuresight',
 					source: source,
@@ -6253,7 +6250,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return null;
 		},
 		onModifyMove(move) {
-			if (this.field.isWeather(['darkness'])) move.boosts = {spa: 1, spd: 1, spe: 1};
+			if (this.field.isWeather('newmoon')) move.boosts = {spa: 1, spd: 1, spe: 1};
 		},
 		boosts: {
 			spa: 2,
@@ -8661,7 +8658,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {snatch: 1},
 		onModifyMove(move) {
-			if (this.field.isWeather(['darkness'])) move.boosts = {atk: 2, accuracy: 2};
+			if (this.field.isWeather('newmoon')) move.boosts = {atk: 2, accuracy: 2};
 		},
 		boosts: {
 			atk: 1,
@@ -9970,13 +9967,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (!target.getMoveHitData(move).crit && !move.infiltrates) {
 						this.debug('Light Screen weaken');
 						if (this.activePerHalf > 1) {
-							if (this.field.isWeather(['darkness'])) {
+							if (this.field.isWeather('newmoon')) {
 								return this.chainModify([8, 15]);
 							} else {
 								return this.chainModify([2732, 4096]);
 							}
 						}
-						if (this.field.isWeather(['darkness'])) {
+						if (this.field.isWeather('newmoon')) {
 							return this.chainModify(0.4);
 						} else {
 							return this.chainModify(0.5);
@@ -10235,7 +10232,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name, defender);
-			if (this.field.isWeather(['darkness'])) {
+			if (this.field.isWeather('newmoon')) {
 				this.attrLastMove('[still]');
 				this.addMove('-anim', attacker, move.name, defender);
 				return;
@@ -11909,7 +11906,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			case 'hail':
 				factor = 0.25;
 				break;
-			case 'darkness':
+			case 'newmoon':
 				factor = 0.667;
 				break;
 			}
@@ -11948,7 +11945,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			case 'hail':
 				factor = 0.25;
 				break;
-			case 'darkness':
+			case 'newmoon':
 				factor = 0.16667;
 				break;
 			}
@@ -11975,134 +11972,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {allyanim: 1},
 		onHit(target, pokemon) {
-			const pkmn = target.species.id.toString();
-			const pkmnLevel = pokemon.level;
-			let opponentID = target.species.id;
-			const deltaFormes = [];
-			const dict = {};
-			const deltaPokemon = [
-				'venusaur', 'charizard', 'blastoise', 'bisharp', 'gardevoir', 'gallade',
-				'sunflora', 'scizor', 'glalie', 'froslass', 'typhlosion', 'pidgeot',
-				'girafarig', 'sableye', 'mawile', 'medicham', 'camerupt', 'milotic',
-				'lopunny', 'lucario', 'hoopa', 'muk', 'emolga', 'volcarona',
-			];
-			const megaDelta = [
-				'venusaurmega', 'blastoisemega', 'bisharpmega', 'gardevoirmega', 'gallademega',
-				'scizormega', 'glaliemega', 'froslassmega', 'typhlosionmega', 'pidgeotmega',
-				'girafarigmega', 'sableyemega', 'mawilemega', 'medichammega', 'cameruptmega',
-				'miloticmega', 'lopunnymega', 'lucariomega',
-			];
-			if (target.species.otherFormes) {
-				for (const forme of target.species.otherFormes) {
-					if (forme.includes('Delta')) {
-						const deltaForme = forme.replace('-', '').replace('-', '').toLowerCase();
-						deltaFormes[deltaFormes.length] = deltaForme;
-					}
-				}
-				if (deltaFormes.length === 1) {
-					opponentID = deltaFormes[0];
-				} else if (deltaFormes.length > 1) {
-					opponentID = deltaFormes[Math.floor(Math.random() * deltaFormes.length)];
-				}
+			if (!pokemon.morphInto(target)) {
+				return false;
 			}
-			if (deltaPokemon.includes(pkmn)) {
-				opponentID = pkmn + 'delta';
-			} else if (pkmn === 'meloetta') {
-				opponentID = 'meloettadeltamime';
-			} else if (pkmn === 'metagross') {
-				opponentID = ['metagrossdeltas', 'metagrossdeltar'][Math.floor(Math.random() * 2)];
-			} else if (pkmn === 'metagrossmega') {
-				opponentID = ['metagrossdeltasmega', 'metagrossdeltarmega'][Math.floor(Math.random() * 2)];
-			} else if (pkmn === 'hoopaunbound') {
-				opponentID = 'hoopadeltaunbound';
-			} else if (megaDelta.includes(pkmn)) {
-				opponentID = pkmn.substr(0, (pkmn.length - 4)) + 'deltamega';
-			} else if (['charizardmegax', 'charizardmegay'].includes(pkmn)) {
-				opponentID = 'charizarddeltamega';
-			} else if (['sunflorafmega', 'sunflorammega'].includes(pkmn)) {
-				opponentID = 'sunfloradeltamega';
-			}
-			pokemon.formeChange(opponentID);
-			const newAbility = this.dex.data.Pokedex[opponentID].abilities[0];
-			pokemon.setAbility(newAbility.replace(' ', '').replace(' ', '').replace('(', '').replace(')', '').toLowerCase());
-
-			if (target.species.id !== opponentID) {
-				const learnsetData = {...(this.dex.data.Learnsets[opponentID]?.learnset || {})};
-				for (const move in learnsetData) {
-					let learnmoment = (learnsetData[move].filter(learn => learn.startsWith("6L")));
-					if (!learnmoment[0]) continue;
-					if (learnmoment.length > 1) {
-						if (learnmoment[1].slice(2) > pkmnLevel) {
-							learnmoment = [learnmoment[0]];
-						} else {
-							learnmoment = [learnmoment[1]];
-						}
-					}
-					if (learnmoment[0].slice(2) > pkmnLevel) continue;
-					dict[move] = Number(learnmoment[0].slice(2));
-				}
-				const items = Object.keys(dict).map(function (key) {
-					return [key, dict[key]];
-				});
-				items.sort(function (first, second) {
-					return second[1] - first[1];
-				});
-				let numberOfMoves = 4;
-				if (items.length < 4) {
-					numberOfMoves = items.length;
-				}
-				for (let i = 0; i < numberOfMoves; i++) {
-					const slotMove = this.dex.getActiveMove(items[i][0]);
-					pokemon.moveSlots[i] = {
-						move: slotMove.name,
-						id: slotMove.id,
-						pp: 5,
-						maxpp: 5,
-						target: slotMove.target,
-						disabled: false,
-						used: false,
-						virtual: true,
-					};
-				}
-			} else {
-				for (let i = 0; i < target.moveSlots.length; i++) {
-					pokemon.moveSlots[i] = {
-						move: target.moveSlots[i].move,
-						id: target.moveSlots[i].id,
-						pp: 5,
-						maxpp: 5,
-						target: target.moveSlots[i].target,
-						disabled: false,
-						used: false,
-						virtual: true,
-					};
-				}
-			}
-			for (const moveSlot of pokemon.moveSlots) {
-				moveSlot.maxpp = 5;
-				moveSlot.pp = 5;
-			}
-			pokemon.baseMaxhp = Math.floor(Math.floor(
-				2 * pokemon.species.baseStats['hp'] + pokemon.set.ivs['hp'] + Math.floor(pokemon.set.evs['hp'] / 4) + 100
-			) * pokemon.level / 100 + 10);
-			const newMaxHP = pokemon.volatiles['dynamax'] ? (2 * pokemon.baseMaxhp) : pokemon.baseMaxhp;
-			pokemon.hp = Math.floor(newMaxHP * (pokemon.hp / pokemon.maxhp));
-			pokemon.maxhp = newMaxHP;
-
-			let i: BoostID;
-			for (i in target.boosts) {
-				pokemon.boosts[i] = target.boosts[i];
-			}
-			const volatilesToCopy = ['focusenergy', 'gmaxchistrike', 'laserfocus'];
-			for (const volatile of volatilesToCopy) {
-				if (target.volatiles[volatile]) {
-					pokemon.addVolatile(volatile);
-					if (volatile === 'gmaxchistrike') pokemon.volatiles[volatile].layers = target.volatiles[volatile].layers;
-				} else {
-					pokemon.removeVolatile(volatile);
-				}
-			}
-			this.add('-copyboost', pokemon, target, '[from] move: Morph', '[silent]');
 		},
 		secondary: null,
 		target: "normal",
@@ -12419,7 +12291,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 5,
 		priority: 0,
 		flags: {},
-		weather: 'Darkness',
+		weather: 'NewMoon',
 		secondary: null,
 		target: "all",
 		type: "Dark",
@@ -12466,7 +12338,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onResidualOrder: 11,
 			onResidual(pokemon) {
-				if (this.field.isWeather(['darkness'])) {
+				if (this.field.isWeather('newmoon')) {
 					this.damage(pokemon.baseMaxhp / 2);
 				} else {
 					this.damage(pokemon.baseMaxhp / 4);
@@ -13110,7 +12982,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name);
-			if (['darkness'].includes(attacker.effectiveWeather())) {
+			if (['newmoon'].includes(attacker.effectiveWeather())) {
 				this.attrLastMove('[still]');
 				this.addMove('-anim', attacker, move.name, defender);
 				return;
@@ -14500,13 +14372,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (!target.getMoveHitData(move).crit && !move.infiltrates) {
 						this.debug('Reflect weaken');
 						if (this.activePerHalf > 1) {
-							if (this.field.isWeather(['darkness'])) {
+							if (this.field.isWeather('newmoon')) {
 								return this.chainModify([8, 15]);
 							} else {
 								return this.chainModify([2732, 4096]);
 							}
 						}
-						if (this.field.isWeather(['darkness'])) {
+						if (this.field.isWeather('newmoon')) {
 							return this.chainModify(0.4);
 						} else {
 							return this.chainModify(0.5);
@@ -14679,32 +14551,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {allyanim: 1},
 		onHit(target, pokemon) {
-			const pkmn = target.species.id;
-			if (
-				pkmn === 'yanmega' ||
-				(pkmn.substr(-4) !== 'mega' &&
-				pkmn.substr(-5) !== 'megax' &&
-				pkmn.substr(-5) !== 'megay' &&
-				pkmn.substr(-8) !== 'megabase' &&
-				pkmn.substr(-5) !== 'megae' &&
-				pkmn.substr(-5) !== 'megaf' &&
-				pkmn.substr(-5) !== 'megag' &&
-				pkmn.substr(-5) !== 'megaj' &&
-				pkmn.substr(-5) !== 'megal' &&
-				pkmn.substr(-5) !== 'megas' &&
-				pkmn.substr(-5) !== 'megau' &&
-				pkmn.substr(-5) !== 'megav' &&
-				pkmn.substr(-8) !== 'megafive' &&
-				pkmn.substr(-7) !== 'megasix' &&
-				pkmn.substr(-9) !== 'megaseven' &&
-				pkmn.substr(-9) !== 'megaeight' &&
-				pkmn.substr(-8) !== 'meganine' &&
-				pkmn.substr(-8) !== 'megafire' &&
-				pkmn.substr(-9) !== 'megasteel')
-			) return;
-			const nonMega = target.baseSpecies.baseSpecies;
-
-			target.formeChange(nonMega, this.effect, true);
+			if (target.species.isMega) target.formeChange(target.baseSpecies.baseSpecies, this.effect, true);
 		},
 		secondary: null,
 		target: "normal",
@@ -15704,7 +15551,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				return;
 			}
 			this.add('-prepare', attacker, move.name);
-			if (['darkness'].includes(attacker.effectiveWeather())) {
+			if (['newmoon'].includes(attacker.effectiveWeather())) {
 				this.attrLastMove('[still]');
 				this.addMove('-anim', attacker, move.name, defender);
 				return;
@@ -16837,7 +16684,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
 			}
-			if (this.field.isWeather(['darkness'])) {
+			if (pokemon.effectiveWeather() === 'newmoon') {
 				this.debug('weakened by weather');
 				return this.chainModify(0.3);
 			}
@@ -16876,6 +16723,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (['raindance', 'primordialsea', 'sandstorm', 'hail'].includes(pokemon.effectiveWeather())) {
 				this.debug('weakened by weather');
 				return this.chainModify(0.5);
+			}
+			if (pokemon.effectiveWeather() === 'newmoon') {
+				this.debug('weakened by weather');
+				return this.chainModify(0.3);
 			}
 		},
 		secondary: null,
@@ -18181,7 +18032,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {protect: 1, mirror: 1, nonsky: 1},
 		onBasePower(basePower, pokemon, target) {
-			if (this.field.isWeather(['darkness'])) {
+			if (this.field.isWeather('newmoon')) {
 				this.debug('weakened by weather');
 				return this.chainModify(1.5);
 			}
@@ -18406,7 +18257,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			case 'hail':
 				factor = 0.25;
 				break;
-			case 'darkness':
+			case 'newmoon':
 				factor = 0.16667;
 				break;
 			}
@@ -20072,7 +19923,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			case 'hail':
 				move.type = 'Ice';
 				break;
-			case 'darkness':
+			case 'newmoon':
 				move.type = 'Dark';
 				break;
 			}
@@ -20093,7 +19944,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			case 'hail':
 				move.basePower *= 2;
 				break;
-			case 'darkness':
+			case 'newmoon':
 				move.basePower *= 2;
 				break;
 			}
@@ -20231,9 +20082,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 					if (this.clampIntRange(pokemon.runEffectiveness(fire), -6, 6) > 0) {
 						if (pokemon.position !== target.position) {
 							const immune = ['comatose', 'waterveil', 'waterbubble'];
-							const status = ['par', 'psn', 'tox', 'slp', 'frz'];
-							if (!immune.includes(pokemon.ability) && !status.includes(pokemon.status)) {
-								pokemon.status = 'brn';
+							if (!immune.includes(pokemon.ability) && pokemon.status === '') {
+								pokemon.status = 'brn' as ID;
 							}
 						}
 					}
@@ -20285,59 +20135,11 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 10,
 		priority: 0,
 		flags: {snatch: 1, heal: 1},
-		slotCondition: 'Wish',
-		condition: {
-			duration: 2,
-			durationCallback(pokemon) {
-				if (pokemon.hasAbility('periodicorbit')) {
-					return 4;
-				}	else {
-					return 2;
-				}
-			},
-			onStart(pokemon, source) {
-				this.effectState.hp = source.maxhp / 2;
-			},
-			onResidualOrder: 4,
-			onEnd(target) {
-				if (target && !target.fainted) {
-					const damage = this.heal(this.effectState.hp, target, target);
-					if (damage) {
-						this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectState.source.name);
-					}
-				}
-			},
-		},
-		secondary: null,
-		target: "self",
-		type: "Normal",
-		zMove: {boost: {spd: 1}},
-		contestType: "Cute",
-	},
-	wishperiodic: {
-		num: 273,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		name: "Wish Periodic",
-		pp: 10,
-		priority: 0,
-		flags: {snatch: 1, heal: 1},
-		slotCondition: 'WishPeriodic',
-		condition: {
-			duration: 2,
-			onStart(pokemon, source) {
-				this.effectState.hp = source.maxhp / 2;
-			},
-			onResidualOrder: 4,
-			onEnd(target) {
-				if (target && !target.fainted) {
-					const damage = this.heal(this.effectState.hp, target, target);
-					if (damage) {
-						this.add('-heal', target, target.getHealth, '[from] move: Wish Periodic', '[wisher] ' + this.effectState.source.name);
-					}
-				}
-			},
+		//slotCondition: 'Wish',
+		onTry(source) {
+			if (!source.side.addSlotCondition(source, 'wish')) return false;
+			if (source.hasAbility('periodicorbit')) source.side.addSlotCondition(source, 'wishperiodic');
+			return this.NOT_FAIL;
 		},
 		secondary: null,
 		target: "self",

@@ -387,7 +387,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	etherealshroud: {
 		name: "Ethereal Shroud",
-		desc: "If a Pokemon uses a Bug- or Poison-type attack against this Pokemon, that Pokemon's attacking stat is halved when calculating the damage to this Pokemon. This Pokémon is immune to Normal- and Fighting type moves.",
+		desc: "If a Pokemon uses a Bug- or Poison-type attack against this Pokemon, that Pokemon's attacking stat is halved when calculating the damage to this Pokemon. This Pokemon is immune to Normal- and Fighting type moves.",
 		shortDesc: "Gains the immunities and resistances of the Ghost-type.",
 	},
 	eventhorizon: {
@@ -639,7 +639,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	illuminate: {
 		name: "Illuminate",
-		shortDesc: "Increases evasion in Darkness",
+		desc: "If Darkness is active, this Pokemon's evasiveness is multiplied by 1.25.",
+		shortDesc: "If Darkness is active, this Pokemon's evasiveness is 1.25x.",
 	},
 	illusion: {
 		name: "Illusion",
@@ -757,8 +758,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	lernean: {
 		name: "Lernean",
-		desc: "This Pokemon gains a head for each 20% of damage it has taken, it hits once for each head with decreasing damage per hit. It doesn't lose heads on recovery.",
-		shortDesc: "This Pokemon gains more heads the lower it's HP gets and hits once for each head.",
+		desc: "If this Pokemon is a Hydreigon-Mega, it will gain more heads if its HP decreases below 80%, 60%, 40%, or 20%, gaining multiple heads if its HP falls below multiple of these thresholds at once. Restoring HP does not remove heads and more heads will not generate if a threshold has previously been reached. It starts with 5 heads and hits once for each head with decreasing damage per hit.",
+		shortDesc: "If Hydreigon-Mega, gains heads when losing HP and hits once for each head.",
 	},
 	levitate: {
 		name: "Levitate",
@@ -977,7 +978,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	noguard: {
 		name: "No Guard",
-		shortDesc: "Every move used by or against this Pokemon will always hit.",
+		shortDesc: "Every non-OHKO move used by or against this Pokemon will always hit.",
 	},
 	normalize: {
 		name: "Normalize",
@@ -1003,8 +1004,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	omnitype: {
 		name: "Omnitype",
-		desc: "This Pokemon has the defensive properties of every type.",
-		shortDesc: "This Pokemon has the defensive properties of every type.",
+		shortDesc: "If this Pokemon is a Giratina-Primal, it has the defensive properties of every type.",
 
 		activate: "  [POKEMON] has become every type!",
 	},
@@ -1053,7 +1053,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	periodicorbit: {
 		name: "Periodic Orbit",
 		desc: "Wish happens after one and three turns, Future Sight and Doom Desire happen after two and five turns.",
-		shortDesc: "Wish, Future Sight and Doom Desire happen twice.",
+		shortDesc: "Wish, Future Sight, and Doom Desire happen twice.",
 	},
 	perishbody: {
 		name: "Perish Body",
@@ -1064,7 +1064,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	phototroph: {
 		name: "Phototroph",
-		desc: "Restores 1/16 of this Pokémons maximum HP, rounded down, at the end of each turn. If Sunny Day is active, this Pokemon restores 1/8 of its maximum HP, rounded down, at the end of each turn. Does not heal in Darkness or Rain.",
+		desc: "Restores 1/16 of this Pokemon's maximum HP, rounded down, at the end of each turn. If Sunny Day is active, this Pokemon restores 1/8 of its maximum HP, rounded down, at the end of each turn. Does not heal in Darkness or Rain.",
 		shortDesc: "Restores 1/16 of its max HP each turn. Heals 1/8 in Sun and nothing in Darkness or Rain.",
 	},
 	pickpocket: {
@@ -1336,7 +1336,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	sandstream: {
 		name: "Sand Stream",
-		shortDesc: "On switch-in, this Pokemon summons Sandstorm.",
+		desc: "On switch-in, this Pokemon summons Sandstorm. This Pokemon takes no damage from Sandstorm.",
+		shortDesc: "On switch-in, this Pokemon summons Sandstorm; immunity to Sandstorm.",
 	},
 	sandveil: {
 		name: "Sand Veil",
@@ -1475,7 +1476,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	snowwarning: {
 		name: "Snow Warning",
-		shortDesc: "On switch-in, this Pokemon summons Hail.",
+		desc: "On switch-in, this Pokemon summons Hail. This Pokemon takes no damage from Hail.",
+		shortDesc: "On switch-in, this Pokemon summons Hail; immunity to Hail.",
 	},
 	solarpower: {
 		name: "Solar Power",

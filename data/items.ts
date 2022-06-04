@@ -1727,7 +1727,7 @@ export const Items: {[itemid: string]: ItemData} = {
 			}
 		},
 		onModifyAtkPriority: 1,
-		onModifyAtk(spd, pokemon) {
+		onModifyAtk(atk, pokemon) {
 			if (pokemon.baseSpecies.name === 'Clamperl-Delta') {
 				return this.chainModify(2);
 			}
@@ -1772,7 +1772,7 @@ export const Items: {[itemid: string]: ItemData} = {
 			basePower: 30,
 		},
 		onModifyDefPriority: 1,
-		onModifyDef(spd, pokemon) {
+		onModifyDef(def, pokemon) {
 			if (pokemon.baseSpecies.name === 'Clamperl-Delta') {
 				return this.chainModify(2);
 			}
@@ -1900,7 +1900,7 @@ export const Items: {[itemid: string]: ItemData} = {
 		onTakeItem: false,
 		zMove: "Extreme Evoboost",
 		zMoveFrom: "Last Resort",
-		itemUser: ["Eevee"],
+		itemUser: ["Eevee", "Eevee-Pre-Mega"],
 		num: 805,
 		gen: 7,
 		isNonstandard: "Past",
@@ -2084,13 +2084,13 @@ export const Items: {[itemid: string]: ItemData} = {
 		},
 		onModifyDefPriority: 2,
 		onModifyDef(def, pokemon) {
-			if (pokemon.baseSpecies.nfe) {
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 2,
 		onModifySpD(spd, pokemon) {
-			if (pokemon.baseSpecies.nfe) {
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
 				return this.chainModify(1.5);
 			}
 		},
@@ -4133,7 +4133,7 @@ export const Items: {[itemid: string]: ItemData} = {
 			basePower: 60,
 		},
 		onTakeItem(item, pokemon, source) {
-			if ((source && source.baseSpecies.num === 150) || pokemon.baseSpecies.num === 150) {
+			if ((source && source.baseSpecies.baseSpecies === 'Mewtwo') || pokemon.baseSpecies.baseSpecies === 'Mewtwo') {
 				return false;
 			}
 			return true;
@@ -7494,7 +7494,7 @@ export const Items: {[itemid: string]: ItemData} = {
 			basePower: 60,
 		},
 		onTakeItem(item, pokemon, source) {
-			if ((source && source.baseSpecies.num === -101) || pokemon.baseSpecies.num === -101) {
+			if ((source && source.baseSpecies.baseSpecies === 'Volcarona-Delta') || pokemon.baseSpecies.baseSpecies === 'Volcarona-Delta') {
 				return false;
 			}
 			return true;
@@ -8145,7 +8145,7 @@ export const Items: {[itemid: string]: ItemData} = {
 	},
 	vilevial: {
 		name: "Vile Vial",
-		spritenum: 752,
+		spritenum: 741,
 		fling: {
 			basePower: 60,
 		},

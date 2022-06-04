@@ -380,8 +380,8 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Delta Bisharpite",
 		desc: "If held by a Bisharp-Delta, this item allows it to Mega Evolve in battle.",
 	},
-	deltablastoisenite: {
-		name: "Delta Blastoisenite",
+	deltablastoisinite: {
+		name: "Delta Blastoisinite",
 		desc: "If held by a Blastoise-Delta, this item allows it to Mega Evolve in battle.",
 	},
 	deltacameruptite: {
@@ -558,7 +558,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 	},
 	eevite: {
 		name: "Eevite",
-		desc: "If held by a Eevee-Pre-Mega, this item allows it to Mega Evolve in battle.",
+		desc: "If held by an Eevee-Pre-Mega, this item allows it to Mega Evolve in battle.",
 	},
 	eeviumz: {
 		name: "Eevium Z",
@@ -1908,8 +1908,8 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Star Sweet",
 		desc: "Evolves Milcery into Alcremie when held and spun around.",
 	},
-	steelixite: {
-		name: "Steelixite",
+	steelixitesteel: {
+		name: "Steelixite Steel",
 		desc: "If held by a Steelix, this item allows it to Mega Evolve in battle.",
 	},
 	steelixitefire: {
@@ -1958,9 +1958,13 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Sudowoodite",
 		desc: "If held by a Sudowoodo, this item allows it to Mega Evolve in battle.",
 	},
-	sunflorite: {
-		name: "Sunflorite",
-		desc: "If held by a Sunflora, this item allows it to Mega Evolve in battle.",
+	sunfloritef: {
+		name: "Sunflorite-F",
+		desc: "If held by a female Sunflora, this item allows it to Mega Evolve in battle.",
+	},
+	sunfloritem: {
+		name: "Sunflorite-M",
+		desc: "If held by a male Sunflora, this item allows it to Mega Evolve in battle.",
 	},
 	sunstone: {
 		name: "Sun Stone",
@@ -2434,7 +2438,7 @@ export const ItemsText: {[k: string]: ItemText} = {
 			desc: "Holder's Psychic-type attacks have 1.1x power.",
 		},
 	},
-	typhlosinite: {
+	typhlosionite: {
 		name: "Typhlosionite",
 		desc: "If held by a Typhlosion, this item allows it to Mega Evolve in battle.",
 	},
