@@ -5131,23 +5131,23 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "(DUU)",
 	},
 	hydreigonmegafive: {
-		//isNonstandard: "Past",
+		isNonstandard: "Past",
 		tier: "Uber",
 	},
 	hydreigonmegasix: {
-		//isNonstandard: "Past",
+		isNonstandard: "Past",
 		tier: "Uber",
 	},
 	hydreigonmegaseven: {
-		//isNonstandard: "Past",
+		isNonstandard: "Past",
 		tier: "Uber",
 	},
 	hydreigonmegaeight: {
-		//isNonstandard: "Past",
+		isNonstandard: "Past",
 		tier: "Uber",
 	},
 	hydreigonmeganine: {
-		//isNonstandard: "Past",
+		isNonstandard: "Past",
 		tier: "Uber",
 	},
 	hydreigondelta: {

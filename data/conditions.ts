@@ -540,11 +540,11 @@ export const Conditions: {[k: string]: ConditionData} = {
 		},
 		onWeatherModifyDamage(damage, attacker, defender, move) {
 			if (move.type === 'Dark' || move.type === 'Ghost') {
-				this.debug('newmoon damage boost');
+				this.debug('New Moon damage boost');
 				return this.chainModify(1.35);
 			}
 			if (move.type === 'Fairy') {
-				this.debug('newmoon fairy weaken');
+				this.debug('New Moon fairy weaken');
 				return this.chainModify(0.75);
 			}
 		},

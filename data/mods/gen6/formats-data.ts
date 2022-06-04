@@ -529,7 +529,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NU",
 		doublesTier: "(DUU)",
 	},
-	steelixmega: {
+	steelixmegasteel: {
 		randomBattleMoves: ["dragontail", "earthquake", "heavyslam", "roar", "stealthrock", "toxic"],
 		randomDoubleBattleMoves: ["earthquake", "explosion", "heavyslam", "protect", "rockslide", "stealthrock"],
 		tier: "RUBL",
