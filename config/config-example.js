@@ -440,36 +440,6 @@ exports.noguestsecurity = false;
  */
 exports.customavatars = {
 	// 'userid': 'customavatar.png'
-  'Gies': 'gies.png',
-  'EdmontonPoilerwags': 'gies.png',
-  'BabyGrootTheEpic': 'babygroot.png',
-  'Serena_9001': 'babygroot.png',
-  'CRISPR-CasLapras': 'charlie.png',
-  'Ridin On': 'ridinon.png',
-  '1 is a number': 'bloop.png',
-  'blopusflopus': 'bloop.png',
-  'Eggshmimpt219': 'egg.png',
-  'chonkmoment': 'chonk.png',
-  'chonkmoment': 'chonk2.png',
-  'chonkmoment': 'chonk3.png',
-  'John961': 'jeanpaul.png',
-  'g117013': 'devil.png',
-  'Cobrapoison': 'cobrapoison.png',
-  'SirePingu': 'sirepingu.png',
-  'Ilovescaldburns': 'ilovescaldburns.png',
-  'justamente': 'ilovescaldburns.png',
-  'gibraltarslayer': 'ilovescaldburns.png',
-  'acetrainerlavinia': 'lavinia.png',
-  'kakashi gamerkid': 'gamerkid.png',
-  'lumikage': 'lumikage.png',
-  'lumikage': 'lumikage2.png',
-  'swiftraven': 'swiftraven.png',
-  'ultrav6565': 'ultrav.png',
-  'reukra999': 'reukra.png',
-  'beemad': 'beemad.png',
-  'icyshrooms': 'icyshrooms.png',
-  'vecheata': 'vecheata.png',
-  'vecheata': 'vecheata2.png',
 };
 
 
