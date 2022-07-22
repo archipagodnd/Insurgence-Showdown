@@ -3574,6 +3574,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					effectType: 'Move',
 					isFutureMove: true,
 					type: 'Steel',
+					recentForme: source.species,
 				},
 			});
 			if (periodic && target.side.addSlotCondition(target, 'futuremoveperiodic')) {
@@ -6092,6 +6093,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					effectType: 'Move',
 					isFutureMove: true,
 					type: 'Psychic',
+					recentForme: source.species,
 				},
 			});
 			if (periodic && target.side.addSlotCondition(target, 'futuremoveperiodic')) {
@@ -8050,7 +8052,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			onSwap(target) {
 				if (!target.fainted && (target.hp < target.maxhp || target.status)) {
 					target.heal(target.maxhp);
-					target.setStatus('');
+					target.clearStatus();
 					this.add('-heal', target, target.getHealth, '[from] move: Healing Wish');
 					target.side.removeSlotCondition(target, 'healingwish');
 				}
@@ -9306,7 +9308,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 				return false;
 			}
 			this.add('-singleturn', target, 'move: Instruct', '[of] ' + source);
-			this.actions.runMove(target.lastMove.id, target, target.lastMoveTargetLoc!);
+			this.queue.prioritizeAction(this.queue.resolveAction({
+				choice: 'move',
+				pokemon: target,
+				moveid: target.lastMove.id,
+				targetLoc: target.lastMoveTargetLoc!,
+			})[0] as MoveAction);
 		},
 		secondary: null,
 		target: "normal",
@@ -10276,7 +10283,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 					)
 				) {
 					target.heal(target.maxhp);
-					target.setStatus('');
+					target.clearStatus();
 					for (const moveSlot of target.moveSlots) {
 						moveSlot.pp = moveSlot.maxpp;
 					}

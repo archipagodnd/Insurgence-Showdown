@@ -463,6 +463,8 @@ export class Battle {
 					handler.end.call(...endCallArgs as [any, ...any[]]);
 					if (this.ended) return;
 					continue;
+				} else if (handler.effect.name === "futuremove" && handler.state.source.isActive) {
+					handler.state.moveData.recentForme = handler.state.source.species;
 				}
 			}
 
@@ -2060,13 +2062,7 @@ export class Battle {
 			denominator = numerator[1];
 			numerator = numerator[0];
 		}
-		let nextMod = 0;
-		if (this.event.ceilModifier) {
-			nextMod = Math.ceil(numerator * 4096 / (denominator || 1));
-		} else {
-			nextMod = this.trunc(numerator * 4096 / (denominator || 1));
-		}
-
+		const nextMod = this.trunc(numerator * 4096 / (denominator || 1));
 		this.event.modifier = ((previousMod * nextMod + 2048) >> 12) / 4096;
 	}
 
