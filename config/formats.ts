@@ -237,7 +237,7 @@ export const Formats: FormatList = [
 			'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Magearna', 'Marshadow', 'Melmetal', 'Mew', 'Mewtwo', 'Mimikyu', 'Necrozma', 'Necrozma-Dawn-Wings',
 			'Necrozma-Dusk-Mane', 'Palkia', 'Rayquaza', 'Reshiram', 'Sableye', 'Snorlax', 'Solgaleo', 'Victini', 'Xerneas', 'Yveltal', 'Zacian', 'Zacian-Crowned',
 			'Zamazenta', 'Zamazenta-Crowned', 'Zekrom', 'Moody', 'Power Construct', 'Bright Powder', 'Focus Band', 'Focus Sash', 'Lax Incense', 'Quick Claw',
-			'Acupressure', 'Hypnosis', 'Perish Song', 'Sing',
+			'Acupressure', 'Hypnosis', 'Perish Song', 'Sing', 'Grass Whistle', 'Lovely Kiss',c
 		],
 	},
 	{
@@ -2553,6 +2553,8 @@ export const Formats: FormatList = [
 			'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Lunala', 'Marshadow', 'Mewtwo', 'Mimikyu', 'Necrozma-Dawn-Wings', 'Necrozma-Dusk-Mane',
 			'Palkia', 'Rayquaza', 'Reshiram', 'Salamence-Mega', 'Shaymin-Sky', 'Snorlax', 'Solgaleo', 'Tapu Koko', 'Xerneas', 'Yveltal', 'Zekrom',
 			'Moody', 'Focus Sash', 'Grass Whistle', 'Hypnosis', 'Perish Song', 'Sing', 'Detect + Fightinium Z',
+			'Crygonal-Mega', 'Hoopa-Delta-Unbound' , 'Hydreigon-Mega-Five', 'Metagross-Delta-R-Mega', 'Metagross-Delta-S-Mega', 'Mewtwo-Shadow', 'Regigigas-Primal',
+			'Volcarona-Delta', 'Volcarona-Delta-Armor', 'Zekrom-Armor', 'Arceus-Primal', 'Giratina-Primal',
 		],
 	},
 	{
@@ -2868,6 +2870,8 @@ export const Formats: FormatList = [
 			'Giratina-Origin', 'Groudon', 'Ho-Oh', 'Kangaskhan-Mega', 'Kyogre', 'Kyurem-White', 'Lugia', 'Mewtwo',
 			'Palkia', 'Rayquaza', 'Reshiram', 'Salamence-Mega', 'Shaymin-Sky', 'Snorlax', 'Xerneas', 'Yveltal',
 			'Zekrom', 'Focus Sash', 'Soul Dew', 'Grass Whistle', 'Hypnosis', 'Perish Song', 'Sing', 'Yawn',
+			'Crygonal-Mega', 'Hoopa-Delta-Unbound' , 'Hydreigon-Mega-Five', 'Metagross-Delta-R-Mega', 'Metagross-Delta-S-Mega', 'Mewtwo-Shadow', 'Regigigas-Primal',
+			'Volcarona-Delta', 'Volcarona-Delta-Armor', 'Zekrom-Armor', 'Arceus-Primal', 'Giratina-Primal',
 		],
 	},
 	{
