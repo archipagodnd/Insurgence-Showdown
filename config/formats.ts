@@ -322,14 +322,14 @@ export const Formats: FormatList = [
 		name: "[Gen 8] NatDex Doubles OU",
 		mod: 'gen8',
 		gameType: 'doubles',
-		ruleset: ['Standard NatDex Doubles', 'Dynamax Clause', 'Swagger Clause', 'Z-Move Clause' , 'Max Level = 120', 'Adjust Level = 100'],
+		ruleset: ['Standard NatDex Doubles', 'Dynamax Clause', 'Swagger Clause', 'Z-Move Clause', 'Max Level = 120', 'Adjust Level = 100'],
 		banlist: ['DUber', 'Power Construct', 'Shadow Tag'],
 	},
 	{
 		name: "[Gen 8] NatDex Doubles Ubers",
 		mod: 'gen8',
 		gameType: 'doubles',
-		ruleset: ['Standard NatDex Doubles', '!Gravity Sleep Clause', 'Z-Move Clause' , 'Max Level = 120', 'Adjust Level = 100'],
+		ruleset: ['Standard NatDex Doubles', '!Gravity Sleep Clause', 'Z-Move Clause', 'Max Level = 120', 'Adjust Level = 100'],
 		banlist: [],
 	},
 	{
@@ -348,43 +348,25 @@ export const Formats: FormatList = [
 		banlist: ['Corsola-Galar', 'Cutiefly', 'Ponyta-Base', 'Scyther', 'Sneasel', 'Swirlix', 'Tangela', 'Vulpix-Base', 'Ally Switch'],
 	},
 	{
-		name: "[Gen 8] VGC 2022",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3677186/">VGC 2022 Metagame Discussion</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3695848/">VGC 2022 Sample Teams</a>`,
-			`&bullet; <a href="https://www.smogon.com/forums/threads/3696395/">VGC 2022 Viability Rankings</a>`,
-		],
+		name: "[Gen 8] NatDex VGC 2 Restricted",
 
 		mod: 'gen8',
 		gameType: 'doubles',
-		ruleset: ['Flat Rules', '!! Adjust Level = 50', 'Min Source Gen = 8', 'VGC Timer', 'Limit Two Restricted'],
+		ruleset: [
+			'Flat Rules', '!! Adjust Level = 50', 'VGC Timer', 'Limit Two Restricted',
+			'Max Level = 120', '+Unobtainable', '+Past', '+PastMove', 'Z-Move Clause',
+		],
 		restricted: ['Restricted Legendary'],
 	},
 	{
-		name: "[Gen 8] VGC Series 13",
+		name: "[Gen 8] NatDex VGC No Restricted",
 
 		mod: 'gen8',
 		gameType: 'doubles',
-		searchShow: false,
-		ruleset: ['Flat Rules', '!! Adjust Level = 50', 'Min Source Gen = 8', 'VGC Timer'],
-		banlist: ['Eternatus-Eternamax'],
-		unbanlist: ['Mythical', 'Restricted Legendary'],
-	},
-	{
-		name: "[Gen 8] VGC 2021",
-
-		mod: 'gen8',
-		gameType: 'doubles',
-		searchShow: false,
-		ruleset: ['Flat Rules', '!! Adjust Level = 50', 'Min Source Gen = 8', 'VGC Timer'],
-	},
-	{
-		name: "[Gen 8] VGC 2020",
-
-		mod: 'gen8dlc1',
-		gameType: 'doubles',
-		searchShow: false,
-		ruleset: ['Flat Rules', '!! Adjust Level = 50', 'Min Source Gen = 8', 'VGC Timer'],
+		ruleset: [
+			'Flat Rules', '!! Adjust Level = 50', 'VGC Timer', 'Max Level = 120',
+			'+Unobtainable', '+Past', '+PastMove', 'Z-Move Clause',
+		],
 	},
 	{
 		name: "[Gen 8] NatDex 2v2 Doubles",
