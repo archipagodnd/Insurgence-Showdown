@@ -601,12 +601,13 @@ export const commands: Chat.ChatCommands = {
 					if (room.battle.format.includes('doubles') || room.battle.format.includes('vgc')) {
 						tierDisplay = 'doubles tiers';
 					} else if (room.battle.format.includes('nationaldex')) {
-						tierDisplay = 'numbers';
+						tierDisplay = 'National Dex tiers';
 					}
 				}
 				if (!tierDisplay) tierDisplay = 'tiers';
 				const displayedTier = tierDisplay === 'tiers' ? pokemon.tier :
 					tierDisplay === 'doubles tiers' ? pokemon.doublesTier :
+					tierDisplay === 'National Dex tiers' ? pokemon.natDexTier :
 					pokemon.num >= 0 ? String(pokemon.num) : pokemon.tier;
 				buffer += `|raw|${Chat.getDataPokemonHTML(pokemon, dex.gen, displayedTier)}\n`;
 				if (showDetails) {
@@ -2598,6 +2599,11 @@ export const commands: Chat.ChatCommands = {
 		room.sendMods(`|uhtmlchange|request-${target}|`);
 		room.sendRankedUsers(`|tempnotifyoff|pendingapprovals`, '%');
 		this.privateModAction(`${user.name} denied ${target}'s request to display ${entry.link}.`);
+
+		const targetUser = Users.get(target);
+		if (!targetUser) return;
+		room.sendUser(targetUser, `|raw|<div class="broadcast-red">Your media request was denied.</div>`);
+		room.sendUser(targetUser, `|notify|Media request denied`);
 	},
 	denyshowhelp: [`/denyshow [user] - Denies the media display request of [user]. Requires: % @ # &`],
 
