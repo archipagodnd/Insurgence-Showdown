@@ -246,7 +246,7 @@ export const Formats: FormatList = [
 			'Acupressure', 'Hypnosis', 'Perish Song', 'Sing', 'Grass Whistle', 'Lovely Kiss', 'Detect + Fightinium Z',
 			'Cryogonal-Mega', 'Hoopa-Delta-Unbound' , 'Hydreigon-Mega-Five', 'Metagross-Delta-R-Mega', 'Metagross-Delta-S-Mega', 'Mewtwo-Shadow', 'Regigigas-Primal',
 			'Volcarona-Delta', 'pokemon:volcaronadeltaarmor', 'pokemon:zekromarmor', 'Arceus-Primal', 'Giratina-Primal', 'Metagross-Delta-R-Crystal',
-			'Arceus', 'Darkrai', 'Deoxys', 'Blastoise-Mega', 'Gengar-Mega', 'Salamence-Mega', 'Shaymin-Sky', 'Kangaskhan-Mega',
+			'Arceus', 'Darkrai', 'Deoxys', 'Metagross-Delta-R', 'Gengar-Mega', 'Salamence-Mega', 'Shaymin-Sky', 'Kangaskhan-Mega',
 		],
 		unbanlist: ['Zamazenta-Crowned'],
 	},
