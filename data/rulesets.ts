@@ -107,6 +107,16 @@ export const Rulesets: {[k: string]: FormatData} = {
 			'Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
 		],
 	},
+	standardnatdexdoubles: {
+		effectType: 'ValidatorRule',
+		name: 'Standard NatDex Doubles',
+		desc: "The standard ruleset for all official Smogon doubles tiers",
+		ruleset: [
+			'Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'OHKO Clause',
+			'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause',
+			'HP Percentage Mod', 'Cancel Mod', '+Unobtainable', '+Past', '+PastMove', 'Sketch Gen 8 Moves',
+		],
+	},
 	standardoms: {
 		effectType: 'ValidatorRule',
 		name: 'Standard OMs',

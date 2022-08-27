@@ -170,7 +170,7 @@ export const Formats: FormatList = [
 		ruleset: ['[Gen 8] NatDex OU', 'Blitz'],
 	},
 	{
-		name: "[Gen 8] Ubers",
+		name: "[Gen 8] NatDex Ubers",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3676539/">Ubers Metagame Discussion</a>`,
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3675564/">Ubers Sample Teams</a>`,
@@ -322,14 +322,14 @@ export const Formats: FormatList = [
 		name: "[Gen 8] NatDex Doubles OU",
 		mod: 'gen8',
 		gameType: 'doubles',
-		ruleset: ['Standard Doubles', 'Dynamax Clause', 'Swagger Clause'],
+		ruleset: ['Standard NatDex Doubles', 'Dynamax Clause', 'Swagger Clause', 'Z-Move Clause' , 'Max Level = 120', 'Adjust Level = 100'],
 		banlist: ['DUber', 'Power Construct', 'Shadow Tag'],
 	},
 	{
 		name: "[Gen 8] NatDex Doubles Ubers",
 		mod: 'gen8',
 		gameType: 'doubles',
-		ruleset: ['Standard Doubles', '!Gravity Sleep Clause'],
+		ruleset: ['Standard NatDex Doubles', '!Gravity Sleep Clause', 'Z-Move Clause' , 'Max Level = 120', 'Adjust Level = 100'],
 		banlist: [],
 	},
 	{
