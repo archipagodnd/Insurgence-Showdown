@@ -735,6 +735,7 @@ export const Formats: FormatList = [
 		banlist: [
 			'Calyrex-Shadow', 'Eternatus', 'Kyogre', 'Zacian',
 			'Beedrillite', 'Blazikenite', 'Gengarite', 'Kangaskhanite', 'Mawilite', 'Medichamite', 'Pidgeotite',
+			'Delta Medichamite', 'Marowite', 'Cryogonite', 'Delta Pidgeotite', 'Stunfiskite',
 			'Moody', 'Shadow Tag', 'Baton Pass', 'Electrify',
 		],
 		restricted: [
