@@ -50,6 +50,12 @@ export const Formats: FormatList = [
 		ruleset: ['Obtainable', 'Draft', '+Unreleased', '+Past', '+PastMove', 'Team Preview', 'Dynamax Clause', 'Adjust Level = 100', 'Max Level = 120', 'Default Level = 100'],
 	},
 	{
+		name: "[Gen 8] National Dex Unrestricted",
+
+		mod: 'gen8',
+		ruleset: ['Draft', '+Unreleased', '-Nonexistent', 'Obtainable Formes', 'Obtainable Misc', '+CAP', '+Past', '+PastMove', 'Team Preview'],
+	},
+	{
 		name: "[Gen 8] NatDex LC National Dex Draft",
 
 		mod: 'gen8',
