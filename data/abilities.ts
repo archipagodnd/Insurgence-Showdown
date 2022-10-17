@@ -647,8 +647,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				}
 			}
 			if (statsLowered) {
-				this.add('-ability', target, 'Competitive');
-				this.boost({spa: 2}, target, target, null, true);
+				this.boost({spa: 2}, target, target, null, false, true);
 			}
 		},
 		name: "Competitive",
@@ -845,8 +844,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				}
 			}
 			if (statsLowered) {
-				this.add('-ability', target, 'Defiant');
-				this.boost({atk: 2}, target, target, null, true);
+				this.boost({atk: 2}, target, target, null, false, true);
 			}
 		},
 		name: "Defiant",
@@ -2706,6 +2704,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (pokemon.transformed) return;
 			this.add('-ability', pokemon, 'Neutralizing Gas');
 			pokemon.abilityState.ending = false;
+			const strongWeathers = ['desolateland', 'primordialsea', 'deltastream'];
 			for (const target of this.getAllActive()) {
 				if (target.illusion) {
 					this.singleEvent('End', this.dex.abilities.get('Illusion'), target.abilityState, target, pokemon, 'neutralizinggas');
@@ -2713,6 +2712,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				if (target.volatiles['slowstart']) {
 					delete target.volatiles['slowstart'];
 					this.add('-end', target, 'Slow Start', '[silent]');
+				}
+				if (strongWeathers.includes(target.getAbility().id)) {
+					this.singleEvent('End', this.dex.abilities.get(target.getAbility().id), target.abilityState, target, pokemon, 'neutralizinggas');
 				}
 			}
 		},
