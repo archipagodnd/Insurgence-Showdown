@@ -356,11 +356,17 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	growlithedelta: {
 		name: "Growlithe-Delta",
 	},
+	growlithehisui: {
+		name: "Growlithe-Hisui",
+	},
 	arcanine: {
 		name: "Arcanine",
 	},
 	arcaninedelta: {
 		name: "Arcanine-Delta",
+	},
+	arcaninehisui: {
+		name: "Arcanine-Hisui",
 	},
 	poliwag: {
 		name: "Poliwag",
@@ -581,8 +587,14 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	voltorb: {
 		name: "Voltorb",
 	},
+	voltorbhisui: {
+		name: "Voltorb-Hisui",
+	},
 	electrode: {
 		name: "Electrode",
+	},
+	electrodehisui: {
+		name: "Electrode-Hisui",
 	},
 	exeggcute: {
 		name: "Exeggcute",
@@ -881,6 +893,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	typhlosiondeltamega: {
 		name: "Typhlosion-Delta-Mega",
 	},
+	typhlosionhisui: {
+		name: "Typhlosion-Hisui",
+	},
 	totodile: {
 		name: "Totodile",
 	},
@@ -1049,11 +1064,17 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	wooperdelta: {
 		name: "Wooper-Delta",
 	},
+	wooperpaldea: {
+		name: "Wooper-Paldea",
+	},
 	quagsire: {
 		name: "Quagsire",
 	},
 	quagsiredelta: {
 		name: "Quagsire-Delta",
+	},
+	quagsirepaldea: {
+		name: "Quagsire-Paldea",
 	},
 	espeon: {
 		name: "Espeon",
@@ -1130,6 +1151,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	qwilfish: {
 		name: "Qwilfish",
 	},
+	qwilfishhisui: {
+		name: "Qwilfish-Hisui",
+	},
 	scizor: {
 		name: "Scizor",
 	},
@@ -1156,6 +1180,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	sneasel: {
 		name: "Sneasel",
+	},
+	sneaselhisui: {
+		name: "Sneasel-Hisui",
 	},
 	teddiursa: {
 		name: "Teddiursa",
@@ -2417,8 +2444,14 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	dialga: {
 		name: "Dialga",
 	},
+	dialgaorigin: {
+		name: "Dialga-Origin",
+	},
 	palkia: {
 		name: "Palkia",
+	},
+	palkiaorigin: {
+		name: "Palkia-Origin",
 	},
 	heatran: {
 		name: "Heatran",
@@ -2554,6 +2587,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	samurott: {
 		name: "Samurott",
+	},
+	samurotthisui: {
+		name: "Samurott-Hisui",
 	},
 	patrat: {
 		name: "Patrat",
@@ -2729,11 +2765,17 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	lilligantdeltaf: {
 		name: "Lilligant-Delta-F",
 	},
+	lilliganthisui: {
+		name: "Lilligant-Hisui",
+	},
 	basculin: {
 		name: "Basculin",
 	},
 	basculinbluestriped: {
 		name: "Basculin-Blue-Striped",
+	},
+	basculinwhitestriped: {
+		name: "Basculin-White-Striped",
 	},
 	sandile: {
 		name: "Sandile",
@@ -2846,11 +2888,17 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	zorua: {
 		name: "Zorua",
 	},
+	zoruahisui: {
+		name: "Zorua-Hisui",
+	},
 	zoroark: {
 		name: "Zoroark",
 	},
 	zoroarkmega: {
 		name: "Zoroark-Mega",
+	},
+	zoroarkhisui: {
+		name: "Zoroark-Hisui",
 	},
 	minccino: {
 		name: "Minccino",
@@ -3100,6 +3148,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	braviary: {
 		name: "Braviary",
+	},
+	braviaryhisui: {
+		name: "Braviary-Hisui",
 	},
 	vullaby: {
 		name: "Vullaby",
@@ -3452,11 +3503,17 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	sliggoodelta: {
 		name: "Sliggoo-Delta",
 	},
+	sliggoohisui: {
+		name: "Sliggoo-Hisui",
+	},
 	goodra: {
 		name: "Goodra",
 	},
 	goodradelta: {
 		name: "Goodra-Delta",
+	},
+	goodrahisui: {
+		name: "Goodra-Hisui",
 	},
 	klefki: {
 		name: "Klefki",
@@ -3508,6 +3565,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	avaluggdelta: {
 		name: "Avalugg-Delta",
+	},
+	avalugghisui: {
+		name: "Avalugg-Hisui",
 	},
 	noibat: {
 		name: "Noibat",
@@ -3568,6 +3628,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	decidueye: {
 		name: "Decidueye",
+	},
+	decidueyehisui: {
+		name: "Decidueye-Hisui",
 	},
 	litten: {
 		name: "Litten",
@@ -4315,6 +4378,33 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	calyrexshadow: {
 		name: "Calyrex-Shadow",
+	},
+	wyrdeer: {
+		name: "Wydreer",
+	},
+	kleavor: {
+		name: "Kleavor",
+	},
+	ursaluna: {
+		name: "Ursaluna",
+	},
+	basculegion: {
+		name: "Basculegion",
+	},
+	basculegionf: {
+		name: "Basculegion-F",
+	},
+	sneasler: {
+		name: "Sneasler",
+	},
+	overqwil: {
+		name: "Overqwil",
+	},
+	enamorus: {
+		name: "Enamorus",
+	},
+	enamorustherian: {
+		name: "Enamorus-Therian",
 	},
 	missingno: {
 		name: "MissingNo.",
