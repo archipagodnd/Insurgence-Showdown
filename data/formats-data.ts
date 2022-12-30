@@ -1456,6 +1456,21 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
 	},
+	taurospaldea: {
+		tier: "UU",
+		doublesTier: "DUU",
+		natDexTier: "UU",
+	},
+	taurospaldeafire: {
+		tier: "UU",
+		doublesTier: "DUU",
+		natDexTier: "UU",
+	},
+	taurospaldeawater: {
+		tier: "UU",
+		doublesTier: "DUU",
+		natDexTier: "UU",
+	},
 	magikarp: {
 		tier: "LC",
 	},
@@ -2159,8 +2174,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		natDexTier: "RU",
 	},
 	girafarig: {
-		isNonstandard: "Past",
-		tier: "PU",
+		tier: "LC",
 	},
 	girafarigdelta: {
 		randomBattleMoves: ["toxicspikes", "corrode", "thunderbolt", "autotomize", "nastyplot", "flashcannon"],
@@ -2174,6 +2188,11 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	girafarigdeltamega: {
 		isNonstandard: "Past",
 		tier: "RU",
+	},
+	farigiraf: {
+		tier: "UU",
+		doublesTier: "DOU",
+		natDexTier: "UU",
 	},
 	pineco: {
 		isNonstandard: "Past",
@@ -2196,6 +2215,11 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomBattleMoves: ["firstimpression", "liquidation", "iciclespear", "pinmissile", "aquajet", "rockblast", "watershuriken"],
 		randomBattleLevel: 90,
 		tier: "PU",
+	},
+	dudunsparce: {
+		tier: "UU",
+		doublesTier: "DUU",
+		natDexTier: "UU",
 	},
 	gligar: {
 		isNonstandard: "Past",
