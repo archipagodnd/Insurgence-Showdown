@@ -7194,13 +7194,9 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "NFE",
 	},
 	cinderace: {
-		randomBattleMoves: ["courtchange", "gunkshot", "highjumpkick", "pyroball", "uturn", "zenheadbutt"],
-		randomBattleLevel: 74,
-		randomDoubleBattleMoves: ["courtchange", "gunkshot", "highjumpkick", "protect", "pyroball", "suckerpunch", "uturn"],
-		randomDoubleBattleLevel: 80,
 		tier: "OU",
-		doublesTier: "DUU",
-		natDexTier: "Uber",
+		doublesTier: "DOU",
+		natDexTier: "UU",
 	},
 	cinderacegmax: {
 		randomBattleLevel: 74,

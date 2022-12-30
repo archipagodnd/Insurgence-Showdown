@@ -971,7 +971,7 @@ export class RandomTeams {
 		if (abilities.has('Cud Chew') && moves.has('substitute')) return 'Cud Chew';
 		if (abilities.has('Guts') && (moves.has('facade') || moves.has('sleeptalk'))) return 'Guts';
 		if (abilities.has('Harvest') && moves.has('substitute')) return 'Harvest';
-		if (abilities.has('Insomnia') && species.id === 'hypno') return 'Insomnia';
+		if (species.id === 'hypno') return 'Insomnia';
 		if (abilities.has('Pressure') && role === 'Bulky Setup') return 'Pressure';
 		if (abilities.has('Serene Grace') && moves.has('headbutt')) return 'Serene Grace';
 		if (abilities.has('Technician') && counter.get('technician')) return 'Technician';
@@ -1190,6 +1190,7 @@ export class RandomTeams {
 		if (species.id === 'toxtricity' && moves.has('shiftgear')) return 'Throat Spray';
 		if (species.id === 'palkia') return 'Lustrous Orb';
 		if (moves.has('substitute') || ability === 'Moody') return 'Leftovers';
+		if (moves.has('stickyweb') && isLead) return 'Focus Sash';
 		if (
 			!teamDetails.defog && !teamDetails.rapidSpin &&
 			this.dex.getEffectiveness('Rock', species) >= 1
@@ -1217,7 +1218,7 @@ export class RandomTeams {
 		) return 'Air Balloon';
 		if (['Bulky Attacker', 'Bulky Support', 'Bulky Setup'].some(m => role === (m))) return 'Leftovers';
 		if (role === 'Fast Support' || role === 'Fast Bulky Setup') {
-			return (counter.damagingMoves.size >= 3) ? 'Life Orb' : 'Leftovers';
+			return (counter.damagingMoves.size >= 3 && !moves.has('nuzzle')) ? 'Life Orb' : 'Leftovers';
 		}
 		if (
 			['flamecharge', 'rapidspin', 'trailblaze'].every(m => !moves.has(m)) &&
@@ -1672,20 +1673,33 @@ export class RandomTeams {
 			} else {
 				const formes = ['gastrodoneast', 'pumpkaboosuper', 'zygarde10'];
 				let learnset = this.dex.species.getLearnset(species.id);
+				let learnsetSpecies = species;
 				if (formes.includes(species.id) || !learnset) {
-					learnset = this.dex.species.getLearnset(this.dex.species.get(species.baseSpecies).id);
+					learnsetSpecies = this.dex.species.get(species.baseSpecies);
+					learnset = this.dex.species.getLearnset(learnsetSpecies.id);
 				}
 				if (learnset) {
 					pool = Object.keys(learnset).filter(
 						moveid => learnset![moveid].find(learned => learned.startsWith(String(this.gen)))
 					);
 				}
-				if (species.changesFrom) {
+				if (learnset && learnsetSpecies === species && species.changesFrom) {
 					learnset = this.dex.species.getLearnset(toID(species.changesFrom));
-					const basePool = Object.keys(learnset!).filter(
-						moveid => learnset![moveid].find(learned => learned.startsWith(String(this.gen)))
-					);
-					pool = [...new Set(pool.concat(basePool))];
+					for (const moveid in learnset) {
+						if (!pool.includes(moveid) && learnset[moveid].some(source => source.startsWith(String(this.gen)))) {
+							pool.push(moveid);
+						}
+					}
+				}
+				const evoRegion = learnsetSpecies.evoRegion && learnsetSpecies.gen !== this.gen;
+				while (learnsetSpecies.prevo) {
+					learnsetSpecies = this.dex.species.get(learnsetSpecies.prevo);
+					for (const moveid in learnset) {
+						if (!pool.includes(moveid) &&
+							learnset[moveid].some(source => source.startsWith(String(this.gen)) && !evoRegion)) {
+							pool.push(moveid);
+						}
+					}
 				}
 			}
 
