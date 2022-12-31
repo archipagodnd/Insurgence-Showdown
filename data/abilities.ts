@@ -591,16 +591,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		condition: {
 			duration: 2,
 			onStart(pokemon) {
-				const fainted = pokemon.side.pokemon.filter(ally => ally === pokemon || ally.fainted);
-				if ((fainted.length - 1) === 0) return;
-				const spaBoost = fainted.length - 1;
-				this.boost({spe: 1, spa: spaBoost}, pokemon);
+				if (pokemon.side.totalFainted === 0) return;
+				this.boost({spe: 1, spa: pokemon.side.totalFainted}, pokemon);
 			},
 			onEnd(pokemon) {
-				const fainted = pokemon.side.pokemon.filter(ally => ally === pokemon || ally.fainted);
-				if ((fainted.length - 1) === 0) return;
-				const spaBoost = fainted.length - 1;
-				this.boost({spe: -1, spa: -spaBoost}, pokemon);
+				if (pokemon.side.totalFainted === 0) return;
+				this.boost({spe: -1, spa: -pokemon.side.totalFainted}, pokemon);
 			},
 		},
 		name: "Chlorofury",
@@ -1281,7 +1277,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return this.chainModify(0.5);
 			}
 		},
+		onSourceModifySpAPriority: 6,
+		onSourceModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Bug' || move.type === 'Poison') {
+				this.debug('Ethereal Shroud weaken');
+				return this.chainModify(0.5);
+			}
+		},
 		name: "Ethereal Shroud",
+		isBreakable: true,
 		gen: 6,
 		rating: 3.5,
 		num: 10,
@@ -3926,7 +3930,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			}
 			if (pokemon.types[0] !== 'Ice') return;
 			if (typeof accuracy !== 'number') return;
-			if (this.field.isWeather('hail')) {
+			if (this.field.isWeather(['hail', 'snow'])) {
 				this.debug('Snow Cloak - decreasing accuracy');
 				return accuracy * 0.8;
 			}
@@ -5741,18 +5745,14 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		condition: {
 			duration: 2,
 			durationCallback(pokemon) {
-				const fainted = pokemon.side.pokemon.filter(ally => ally === pokemon || ally.fainted);
-				const boostDur = fainted.length;
-				return boostDur;
+				return pokemon.side.totalFainted + 1;
 			},
 			onStart(pokemon) {
-				const fainted = pokemon.side.pokemon.filter(ally => ally === pokemon || ally.fainted);
-				if ((fainted.length - 1) === 0) return;
+				if (pokemon.side.totalFainted === 0) return;
 				this.boost({atk: 1, def: 1, spa: 1, spd: 1, spe: 1});
 			},
 			onEnd(pokemon) {
-				const fainted = pokemon.side.pokemon.filter(ally => ally === pokemon || ally.fainted);
-				if ((fainted.length - 1) === 0) return;
+				if (pokemon.side.totalFainted === 0) return;
 				this.boost({atk: -1, def: -1, spa: -1, spd: -1, spe: -1});
 			},
 		},
@@ -5823,6 +5823,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			}
 		},
 		name: "Vaporization",
+		isBreakable: true,
 		gen: 6,
 		rating: 3.5,
 		num: 30,
@@ -6093,6 +6094,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			}
 		},
 		name: "Wind Force",
+		isBreakable: true,
 		gen: 6,
 		rating: 3,
 		num: 32,
@@ -6119,7 +6121,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onAllySideConditionStart(target, source, sideCondition) {
 			const pokemon = this.effectState.target;
-			if (sideCondition.id === 'tailwind') {
+			if (sideCondition.id === 'tailwind' || sideCondition.id === 'jetstream') {
 				pokemon.addVolatile('charge');
 			}
 		},
@@ -6143,7 +6145,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onAllySideConditionStart(target, source, sideCondition) {
 			const pokemon = this.effectState.target;
-			if (sideCondition.id === 'tailwind') {
+			if (sideCondition.id === 'tailwind' || sideCondition.id === 'jetstream') {
 				this.boost({atk: 1}, pokemon, pokemon);
 			}
 		},

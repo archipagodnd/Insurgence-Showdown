@@ -10147,30 +10147,24 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Jet Stream",
 		pp: 30,
 		priority: 0,
-		flags: {snatch: 1},
-		volatileStatus: 'jetstream',
+		flags: {snatch: 1, wind: 1},
+		sideCondition: 'jetstream',
 		condition: {
 			duration: 2,
-			onStart(pokemon, source, effect) {
-				if (effect && (['imposter', 'psychup', 'transform'].includes(effect.id))) {
-					this.add('-start', pokemon, 'move: Jet Stream', '[silent]');
-				} else {
-					this.add('-start', pokemon, 'move: Jet Stream');
-				}
-			},
-			onRestart(pokemon) {
-				this.effectState.duration = 2;
-				this.add('-start', pokemon, 'move: Jet Stream');
+			onSideStart(side) {
+				this.add('-sidestart', side, 'move: Jet Stream');
 			},
 			onModifyPriority(priority) {
 				return priority + 1;
 			},
-			onEnd(pokemon) {
-				this.add('-end', pokemon, 'move: Jet Stream', '[silent]');
+			onSideResidualOrder: 26,
+			onSideResidualSubOrder: 6,
+			onSideEnd(side) {
+				this.add('-sideend', side, 'move: Jet Stream');
 			},
 		},
 		secondary: null,
-		target: "allyTeam",
+		target: "allySide",
 		type: "Dragon",
 		zMove: {boost: {atk: 1}},
 	},
