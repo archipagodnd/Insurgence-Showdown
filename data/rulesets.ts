@@ -94,7 +94,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		ruleset: [
 			'Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'OHKO Clause',
 			'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause',
-			'HP Percentage Mod', 'Cancel Mod', '+Unobtainable', '+Past', '+PastMove', 'Sketch Gen 8 Moves',
+			'HP Percentage Mod', 'Cancel Mod', '+Unobtainable', '+Past', '+PastMove', 'Sketch Post-Gen 7 Moves',
 		],
 	},
 	standardoms: {
@@ -179,6 +179,29 @@ export const Rulesets: {[k: string]: FormatData} = {
 		effectType: 'ValidatorRule',
 		name: 'Draft',
 		desc: "The custom Draft League ruleset",
+		ruleset: [
+			'Obtainable', '+Unreleased', '+CAP', 'Sketch Post-Gen 7 Moves', 'Team Preview', 'Sleep Clause Mod', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
+			'Adjust Level = 100', 'Max Level = 120', 'Default Level = 100',
+		],
+		onDamagingHit(damage, target, source, move) {
+			if (target.illusion) {
+				this.debug('illusion cleared');
+				target.illusion = null;
+				const details = target.species.name + (target.level === 100 ? '' : ', L' + target.level) +
+				(target.gender === '' ? '' : ', ' + target.gender) + (target.set.shiny ? ', shiny' : '');
+				this.add('replace', target, details);
+				this.add('-end', target, 'Illusion');
+			}
+		},
+		onFaint(pokemon) {
+			pokemon.illusion = null;
+		},
+		// timer: {starting: 60 * 60, grace: 0, addPerTurn: 10, maxPerTurn: 100, timeoutAutoChoose: true},
+	},
+	lcdraft: {
+		effectType: 'ValidatorRule',
+		name: 'LC Draft',
+		desc: "The custom LC Draft League ruleset",
 		ruleset: [
 			'Obtainable', '+Unreleased', '+CAP', 'Sketch Post-Gen 7 Moves', 'Team Preview', 'Sleep Clause Mod', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
 		],
