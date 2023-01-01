@@ -1258,17 +1258,6 @@ export const Formats: FormatList = [
 		banlist: ['Baton Pass'],
 	},
 	{
-		name: "[Gen 7] Ubers",
-		threads: [
-			`&bullet; <a href="https://www.smogon.com/forums/posts/8286276/">USM Ubers</a>`,
-		],
-
-		mod: 'gen7',
-		searchShow: false,
-		ruleset: ['Standard', 'Mega Rayquaza Clause'],
-		banlist: ['Baton Pass'],
-	},
-	{
 		name: "[Gen 7] UU",
 		threads: [
 			`&bullet; <a href="https://www.smogon.com/forums/threads/3621217/">USM UU Sample Teams</a>`,
