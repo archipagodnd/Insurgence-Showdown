@@ -8,7 +8,11 @@
 
 import {FS, Net} from "../../lib";
 
+const fs = require('fs');
+const path = require('path');
+const request = require('request');
 const AVATARS_FILE = 'config/avatars.json';
+const VALID_EXTENSIONS = ['.jpg', '.png', '.gif'];
 
 /**
  * Avatar IDs should be in one of these formats:
@@ -39,6 +43,21 @@ interface AvatarEntry {
 }
 
 const customAvatars: {[userid: string]: AvatarEntry} = Object.create(null);
+
+function downloadImage(image_url, name, extension) {
+	request
+		.get(image_url)
+		.on('error', err => {
+			console.error(err);
+		})
+		.on('response', response => {
+			if (response.statusCode !== 200) return;
+			const type = response.headers['content-type'].split('/');
+			if (type[0] !== 'image') return;
+
+			response.pipe(fs.createWriteStream(path.join(__dirname, '../../../config/avatars/') + name + extension));
+		});
+}
 
 try {
 	const configAvatars = JSON.parse(FS(AVATARS_FILE).readSync());
@@ -628,6 +647,10 @@ const OFFICIAL_AVATARS_FIFTY = new Set([
 	'rose-zerosuit',
 ]);
 
+let CUSTOM_AVATARS = new Set([
+	'gies.png',
+]);
+
 for (const avatar of OFFICIAL_AVATARS_BELIOT419) OFFICIAL_AVATARS.add(avatar);
 for (const avatar of OFFICIAL_AVATARS_GNOMOWLADNY) OFFICIAL_AVATARS.add(avatar);
 for (const avatar of OFFICIAL_AVATARS_BRUMIRAGE) OFFICIAL_AVATARS.add(avatar);
@@ -636,6 +659,7 @@ for (const avatar of OFFICIAL_AVATARS_KYLEDOVE) OFFICIAL_AVATARS.add(avatar);
 for (const avatar of OFFICIAL_AVATARS_HYOOPPA) OFFICIAL_AVATARS.add(avatar);
 for (const avatar of OFFICIAL_AVATARS_GRAPO) OFFICIAL_AVATARS.add(avatar);
 for (const avatar of OFFICIAL_AVATARS_FIFTY) OFFICIAL_AVATARS.add(avatar);
+for (const avatar of CUSTOM_AVATARS) OFFICIAL_AVATARS.add(avatar);
 
 export const commands: Chat.ChatCommands = {
 	avatar(target, room, user) {
@@ -681,6 +705,9 @@ export const commands: Chat.ChatCommands = {
 			}
 			if (OFFICIAL_AVATARS_FIFTY.has(avatar)) {
 				this.sendReply(`|raw|(${this.tr`Artist: `}Fifty Shades of Rez)`);
+			}
+			if (CUSTOM_AVATARS.has(avatar)) {
+				this.sendReply(`|raw|(Custom Avatar)`);
 			}
 		}
 	},
@@ -759,18 +786,47 @@ export const commands: Chat.ChatCommands = {
 	],
 
 	personalavatar: 'defaultavatar',
-	async defaultavatar(target, room, user) {
-		this.checkCan('bypassall');
+	pa: 'defaultavatar',
+	ca: 'defaultavatar',
+	defaultavatar(target, room, user) {
+		this.checkCan('ban');
 		if (!target) return this.parse(`/help defaultavatar`);
-		const [inputUsername, inputAvatar] = this.splitOne(target);
+		let [inputUsername, avatarUrl] = this.splitOne(target);
+		inputUsername = inputUsername.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
 		if (!Users.isUsername(inputUsername)) {
 			throw new Chat.ErrorMessage(`"${inputUsername}" is not a valid username.`);
 		}
 		const userid = toID(inputUsername);
-		const avatar = await Avatars.validate(inputAvatar, {rejectOfficial: true});
+
+		if (!/^https?:\/\//i.test(avatarUrl)) avatarUrl = 'http://' + avatarUrl;
+		const ext = path.extname(avatarUrl);
+
+		if (!VALID_EXTENSIONS.includes(ext)) {
+			return this.errorReply("Image url must have .jpg, .png, or .gif extension.");
+		}
+
+		// console.log(inputUsername, ext);
+
+		let i = 0;
+		let quitLoop = false;
+		let newName = "";
+		while (quitLoop === false) {
+			i++;
+			newName = inputUsername + i.toString();
+			// console.log(newName);
+			// console.log(fs.existsSync((path.join(__dirname, '../../../config/avatars/') + newName + ext)))
+			if (!fs.existsSync((path.join(__dirname, '../../../config/avatars/') + newName + ext))) {
+				quitLoop = true;
+			}
+		}
+
+		downloadImage(avatarUrl, newName, ext);
+
+		// const avatar = await Avatars.validate(inputUsername + ext, {rejectOfficial: true});
+		const avatar = newName + ext;
 
 		if (!Avatars.addPersonal(userid, avatar)) {
-			throw new Chat.ErrorMessage(`User "${inputUsername}" can already use avatar "${avatar}".`);
+			throw new Chat.ErrorMessage(`User "${newName}" can already use avatar "${avatar}".`);
 		}
 		this.globalModlog('PERSONAL AVATAR', userid, avatar);
 		this.sendReplyBox(<div>
@@ -806,6 +862,7 @@ export const commands: Chat.ChatCommands = {
 	denyavatar: 'removeavatar',
 	disallowavatar: 'removeavatar',
 	removeavatars: 'removeavatar',
+	ra: 'removeavatar',
 	removeavatar(target, room, user) {
 		this.checkCan('bypassall');
 		if (!target) return this.parse(`/help defaultavatar`);
@@ -829,6 +886,7 @@ export const commands: Chat.ChatCommands = {
 				{Avatars.img(avatar)}<br />
 				Removed from <username class="username">{inputUsername}</username>
 			</div>);
+			fs.unlinkSync(path.join(__dirname, '../../../config/avatars/') + avatar);
 		} else {
 			// delete all
 			delete customAvatars[userid];
@@ -838,6 +896,27 @@ export const commands: Chat.ChatCommands = {
 				{allowed.map(curAvatar => [Avatars.img(curAvatar!), ' '])}<br />
 				Removed from <username class="username">{inputUsername}</username>
 			</div>);
+			let i = 0;
+			let quitLoop = false;
+			let newName = "";
+			while (quitLoop === false) {
+				i++;
+				newName = inputUsername + i.toString();
+				if (
+					!fs.existsSync((path.join(__dirname, '../../../config/avatars/') + newName + '.png')) ||
+					!fs.existsSync((path.join(__dirname, '../../../config/avatars/') + newName + '.jpg')) ||
+					!fs.existsSync((path.join(__dirname, '../../../config/avatars/') + newName + '.gif'))
+				) {
+					quitLoop = true;
+				}
+				if (fs.existsSync((path.join(__dirname, '../../../config/avatars/') + newName + '.png'))) {
+					fs.unlinkSync(path.join(__dirname, '../../../config/avatars/') + newName + '.png');
+				} else if (fs.existsSync((path.join(__dirname, '../../../config/avatars/') + newName + '.jpg'))) {
+					fs.unlinkSync(path.join(__dirname, '../../../config/avatars/') + newName + '.jpg');
+				} else if (fs.existsSync((path.join(__dirname, '../../../config/avatars/') + newName + '.gif'))) {
+					fs.unlinkSync(path.join(__dirname, '../../../config/avatars/') + newName + '.gif');
+				}
+			}
 		}
 	},
 	removeavatarhelp: 'addavatarhelp',
