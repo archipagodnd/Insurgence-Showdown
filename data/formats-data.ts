@@ -7470,7 +7470,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
 	},
-	sunfloramega: {
+	sunflorammega: {
 		isNonstandard: "Past",
 		tier: "Illegal",
 		natDexTier: "UU",

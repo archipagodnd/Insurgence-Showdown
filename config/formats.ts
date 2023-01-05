@@ -138,7 +138,7 @@ export const Formats: FormatList = [
 		name: "[Gen 9] National Dex CAP",
 
 		mod: 'gen9',
-		ruleset: ['[Gen 9] National Dex OU', '+CAP'],
+		ruleset: ['[Gen 9] National Dex', '+CAP'],
 		banlist: ['Crucibellite'],
 	},
 	{
@@ -1104,22 +1104,10 @@ export const Formats: FormatList = [
 		ruleset: ['Standard NatDex'],
 	},
 	{
-		name: "[Gen 8] National Dex ZU",
-		desc: `The unofficial usage-based tier below PU.`,
-		mod: 'gen8',
-		searchShow: false,
-		ruleset: ['[Gen 8] National Dex PU'],
-		banlist: [
-			'PU', 'Arctovish', 'Aurorus', 'Basculin', 'Centiskorch', 'Drampa', 'Exeggutor-Alola', 'Gallade', 'Glastrier', 'Haunter', 'Magmortar', 'Magneton',
-			'Malamar', 'Ninjask', 'Omastar', 'Rotom-Frost', 'Turtonator', 'Vanilluxe', 'Vikavolt', 'Silvally-Dragon', 'Silvally-Ground', 'Sneasel',
-			'Damp Rock', 'Grassy Seed',
-		],
-	},
-	{
 		name: "[Gen 8] National Dex CAP",
 		mod: 'gen8',
 		searchShow: false,
-		ruleset: ['[Gen 8] National Dex OU', '+CAP'],
+		ruleset: ['[Gen 8] National Dex', '+CAP'],
 		banlist: ['Crucibellite'],
 	},
 	{
