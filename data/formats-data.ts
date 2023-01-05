@@ -69,6 +69,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	charizardmegax: {
 		isNonstandard: "Past",
 		tier: "OU",
+		natDexTier: "UUBL",
 	},
 	charizardmegay: {
 		isNonstandard: "Past",
@@ -2937,6 +2938,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	mawilemega: {
 		isNonstandard: "Past",
 		tier: "OU",
+		natDexTier: "UUBL"
 	},
 	mawiledeltamega: {
 		isNonstandard: "Past",
@@ -2991,6 +2993,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	medichammega: {
 		isNonstandard: "Past",
 		tier: "OU",
+		natDexTier: "UUBL",
 	},
 	medichamdeltamega: {
 		isNonstandard: "Past",
@@ -8011,7 +8014,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	espathra: {
 		tier: "UUBL",
 		doublesTier: "(DUU)",
-		natDexTier: "RU",
+		natDexTier: "UUBL",
 	},
 	wiglett: {
 		tier: "LC",
@@ -8377,7 +8380,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	annihilape: {
 		tier: "OU",
 		doublesTier: "DOU",
-		natDexTier: "UU",
+		natDexTier: "UUBL",
 	},
 	missingno: {
 		tier: "AG",
