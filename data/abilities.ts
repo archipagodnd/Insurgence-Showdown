@@ -1563,6 +1563,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onBasePower(basePower, pokemon, target, move) {
 			if (move.typeChangerBoosted === this.effect) return this.chainModify([4915, 4096]);
 		},
+		onTryMovePriority: -2,
+		onTryMove(pokemon, target, move) {
+			if (move.id === 'stealthrock') {
+				this.actions.useMove('stealthcoal', pokemon, target);
+				return null;
+			}
+		},
 		name: "Foundry",
 		rating: 4,
 		num: 13,
