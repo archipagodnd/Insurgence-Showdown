@@ -4309,7 +4309,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			const regurgMove = this.dex.getActiveMove('sonicboom');
 			regurgMove.name = "Regurgitation";
 			regurgMove.accuracy = true;
-			console.log(pokemon.species);
 			if (pokemon.species.name === 'Muk-Delta-Water') regurgMove.type = 'Water';
 			if (pokemon.species.name === 'Muk-Delta-Grass') regurgMove.type = 'Grass';
 			if (pokemon.species.name === 'Muk-Delta-Fire') regurgMove.type = 'Fire';
