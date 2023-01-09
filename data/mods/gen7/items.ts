@@ -219,11 +219,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	sunfloritef: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	sunfloritem: {
+	sunflorite: {
 		inherit: true,
 		isNonstandard: null,
 	},

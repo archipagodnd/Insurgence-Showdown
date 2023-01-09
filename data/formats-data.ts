@@ -7465,17 +7465,12 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Illegal",
 		natDexTier: "RU",
     },
-	sunfloraf: {
-		tier: "RU",
-		doublesTier: "(DUU)",
-		natDexTier: "RU",
-	},
-	sunflorammega: {
+	sunfloramegam: {
 		isNonstandard: "Past",
 		tier: "Illegal",
 		natDexTier: "UU",
     },
-	sunflorafmega: {
+	sunfloramegaf: {
 		isNonstandard: "Past",
 		tier: "Illegal",
 		natDexTier: "UU",
