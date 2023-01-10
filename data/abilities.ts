@@ -2017,6 +2017,19 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 1,
 		num: 115,
 	},
+	icecleats: {
+		onModifySpe(spe, pokemon) {
+			if (this.field.isWeather(['hail', 'snow'])) {
+				return this.chainModify(2);
+			}
+		},
+		onImmunity(type, pokemon) {
+			if (type === 'hail') return false;
+		},
+		name: "Ice Cleats",
+		rating: 3,
+		num: 185,
+	},
 	iceface: {
 		onStart(pokemon) {
 			if (this.field.isWeather(['hail', 'snow']) &&
