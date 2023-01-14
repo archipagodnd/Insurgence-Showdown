@@ -22073,7 +22073,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		num: 955,
 		name: "Flittle",
 		types: ["Psychic"],
-		baseStats: {hp: 30, atk: 35, def: 30, spa: 55, spd: 40, spe: 75},
+		baseStats: {hp: 30, atk: 35, def: 30, spa: 55, spd: 30, spe: 75},
 		abilities: {0: "Anticipation", 1: "Frisk", H: "Speed Boost"},
 		heightm: 0.2,
 		weightkg: 1.5,
@@ -22484,7 +22484,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 2.2,
 		weightkg: 320,
 		color: "Purple",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	screamtail: {
@@ -22497,7 +22497,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.2,
 		weightkg: 8,
 		color: "Pink",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	brutebonnet: {
@@ -22510,7 +22510,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.2,
 		weightkg: 21,
 		color: "Gray",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	fluttermane: {
@@ -22523,7 +22523,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.4,
 		weightkg: 4,
 		color: "Gray",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	slitherwing: {
@@ -22536,7 +22536,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 3.2,
 		weightkg: 92,
 		color: "Red",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	sandyshocks: {
@@ -22549,7 +22549,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 2.3,
 		weightkg: 60,
 		color: "Gray",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	irontreads: {
@@ -22562,7 +22562,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 0.9,
 		weightkg: 240,
 		color: "Gray",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	ironbundle: {
@@ -22575,7 +22575,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 0.6,
 		weightkg: 11,
 		color: "Red",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	ironhands: {
@@ -22588,7 +22588,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.8,
 		weightkg: 380.7,
 		color: "Gray",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	ironjugulis: {
@@ -22601,7 +22601,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.3,
 		weightkg: 111,
 		color: "Blue",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	ironmoth: {
@@ -22614,7 +22614,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.2,
 		weightkg: 36,
 		color: "Yellow",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	ironthorns: {
@@ -22627,7 +22627,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.6,
 		weightkg: 303,
 		color: "Green",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	frigibax: {
@@ -22777,7 +22777,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 2,
 		weightkg: 380,
 		color: "Green",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	ironvaliant: {
@@ -22790,7 +22790,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.4,
 		weightkg: 35,
 		color: "White",
-		tags: ["Sub-Legendary", "Paradox"],
+		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
 	koraidon: {
