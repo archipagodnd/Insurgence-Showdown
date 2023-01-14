@@ -1216,63 +1216,29 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
-	crystalpiecearceus: {
-		name: "Crystal Piece Arceus",
+	crystalpiece: {
+		name: "Crystal Piece",
 		spritenum: 752 + 7,
-		itemUser: ["Arceus"],
+		itemUser: ["Arceus", "Giratina", "Regigigas"],
 		onSwitchIn(pokemon) {
-			if (pokemon.isActive && pokemon.baseSpecies.name === 'Arceus') {
+			if (pokemon.isActive && (pokemon.baseSpecies.name === 'Arceus' || pokemon.baseSpecies.name === 'Giratina' || pokemon.baseSpecies.name === 'Regigigas')) {
 				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
 			}
 		},
 		onPrimal(pokemon) {
-			pokemon.formeChange('Arceus-Primal', this.effect, true);
+			if (pokemon.baseSpecies.name === 'Arceus') {
+				pokemon.formeChange('Arceus-Primal', this.effect, true);
+			} else if (pokemon.baseSpecies.name === 'Giratina') {
+				pokemon.formeChange('Giratina-Primal', this.effect, true);
+			} else if (pokemon.baseSpecies.name === 'Regigigas') {
+				pokemon.formeChange('Regigigas-Primal', this.effect, true);
+			}
 		},
 		onTakeItem(item, source) {
-			if (source.baseSpecies.baseSpecies === 'Arceus') return false;
+			if (source.baseSpecies.baseSpecies === 'Arceus' || source.baseSpecies.name === 'Giratina' || source.baseSpecies.name === 'Regigigas') return false;
 			return true;
 		},
 		num: 929,
-		gen: 6,
-		isNonstandard: "Past",
-	},
-	crystalpiecegiratina: {
-		name: "Crystal Piece Giratina",
-		spritenum: 752 + 7,
-		itemUser: ["Giratina"],
-		onSwitchIn(pokemon) {
-			if (pokemon.isActive && pokemon.baseSpecies.name === 'Giratina') {
-				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
-			}
-		},
-		onPrimal(pokemon) {
-			pokemon.formeChange('Giratina-Primal', this.effect, true);
-		},
-		onTakeItem(item, source) {
-			if (source.baseSpecies.baseSpecies === 'Giratina') return false;
-			return true;
-		},
-		num: 930,
-		gen: 6,
-		isNonstandard: "Past",
-	},
-	crystalpieceregigigas: {
-		name: "Crystal Piece Regigigas",
-		spritenum: 752 + 7,
-		onSwitchIn(pokemon) {
-			if (pokemon.isActive && pokemon.baseSpecies.name === 'Regigigas') {
-				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
-			}
-		},
-		onPrimal(pokemon) {
-			pokemon.formeChange('Regigigas-Primal', this.effect, true);
-		},
-		onTakeItem(item, source) {
-			if (source.baseSpecies.baseSpecies === 'Regigigas') return false;
-			return true;
-		},
-		itemUser: ["Regigigas"],
-		num: 931,
 		gen: 6,
 		isNonstandard: "Past",
 	},

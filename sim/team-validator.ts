@@ -407,11 +407,11 @@ export class TeamValidator {
 				tierSpecies = dex.species.get('Zacian-Crowned');
 			} else if (item.id === 'rustedshield' && species.id === 'zamazenta') {
 				tierSpecies = dex.species.get('Zamazenta-Crowned');
-			} else if (item.id === 'crystalpiecearceus' && species.id === 'arceus') {
+			} else if (item.id === 'crystalpiece' && species.id === 'arceus') {
 				tierSpecies = dex.species.get('Arceus-Primal');
-			} else if (item.id === 'crystalpiecegiratina' && species.id === 'giratina') {
+			} else if (item.id === 'crystalpiece' && species.id === 'giratina') {
 				tierSpecies = dex.species.get('Giratina-Primal');
-			} else if (item.id === 'crystalpieceregigigas' && species.id === 'regigigas') {
+			} else if (item.id === 'crystalpiece' && species.id === 'regigigas') {
 				tierSpecies = dex.species.get('Regigigas-Primal');
 			}
 		}

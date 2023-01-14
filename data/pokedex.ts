@@ -12022,7 +12022,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1,
 		color: "Red",
 		eggGroups: ["Undiscovered"],
-		requiredItem: "Crystal Piece Regigigas",
+		requiredItem: "Crystal Piece",
 	},
 	giratina: {
 		num: 487,
@@ -12069,7 +12069,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1,
 		color: "Red",
 		eggGroups: ["Undiscovered"],
-		requiredItem: "Crystal Piece Giratina",
+		requiredItem: "Crystal Piece",
 	},
 	cresselia: {
 		num: 488,
@@ -12460,7 +12460,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1,
 		color: "Red",
 		eggGroups: ["Undiscovered"],
-		requiredItem: "Crystal Piece Arceus",
+		requiredItem: "Crystal Piece",
 	},
 	victini: {
 		num: 494,

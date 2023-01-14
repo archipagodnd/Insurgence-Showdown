@@ -23,15 +23,7 @@ export const Items: {[k: string]: ModdedItemData} = {
 		inherit: true,
 		isNonstandard: null,
 	},
-	crystalpiecearceus: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	crystalpiecegiratina: {
-		inherit: true,
-		isNonstandard: null,
-	},
-	crystalpieceregigigas: {
+	crystalpiece: {
 		inherit: true,
 		isNonstandard: null,
 	},

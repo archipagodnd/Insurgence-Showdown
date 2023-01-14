@@ -340,17 +340,9 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Crystal Fragment",
 		desc: "If held by a Metagross-Delta-R, this item allows it to Mega Evolve in battle.",
 	},
-	crystalpiecearceus: {
-		name: "Crystal Piece Arceus",
-		desc: "If held by an Arceus-Pre-Primal this item triggers its Primal Reversion in battle.",
-	},
-	crystalpiecegiratina: {
-		name: "Crystal Piece Giratina",
-		desc: "If held by a Giratina this item triggers its Primal Reversion in battle.",
-	},
-	crystalpieceregigigas: {
-		name: "Crystal Piece Regigigas",
-		desc: "If held by a Regigigas this item triggers its Primal Reversion in battle.",
+	crystalpiece: {
+		name: "Crystal Piece",
+		desc: "If held by an Arceus, Giratina or Regigigas this item triggers its Primal Reversion in battle.",
 	},
 	custapberry: {
 		name: "Custap Berry",
