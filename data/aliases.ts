@@ -428,11 +428,11 @@ export const Aliases: {[alias: string]: string} = {
 	shadowmewtwo: "Mewtwo-Shadow",
 
 	//insurgence abilities
-	speedswapability: "Trick House",
-	blazeboost: "Fired Up",
+	// speedswapability: "Trick House",
+	// blazeboost: "Fired Up",
 
-	//insurgence moves
-	wildfiretm: "Brush Fire",
+	// //insurgence moves
+	// wildfiretm: "Brush Fire",
 
 	//insurgence items
 	steelixite: "Steelixite Steel",
@@ -1484,7 +1484,7 @@ export const Aliases: {[alias: string]: string} = {
 	vinelash: "G-Max Vine Lash",
 	volcalith: "G-Max Volcalith",
 	voltcrash: "G-Max Volt Crash",
-	wildfire: "G-Max Wildfire",
+	// wildfire: "G-Max Wildfire",
 	windrage: "G-Max Wind Rage",
 
 	// Japanese names

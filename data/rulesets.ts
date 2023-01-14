@@ -30,7 +30,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		onFaint(pokemon) {
 			pokemon.illusion = null;
 		},
-		banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
+		banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Wildfire'],
 	},
 	standardnext: {
 		effectType: 'ValidatorRule',
@@ -110,7 +110,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		name: 'Ban Unbalanced Moves',
 		desc: "Bans moves that are not balanced for competitive play.",
 		banlist: ['Permafrost', 'Livewire'],
-		// banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Brush Fire'],
+		// banlist: ['Permafrost', 'Livewire', 'Achilles Heel', 'Wildfire'],
 	},
 	standardnatdex: {
 		effectType: 'ValidatorRule',

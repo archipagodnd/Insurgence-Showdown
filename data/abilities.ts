@@ -5671,11 +5671,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3.5,
 		num: 205,
 	},
-	trickhouse: {
+	speedswap: {
 		onStart(source) {
 			this.field.addPseudoWeather('trickroom');
 		},
-		name: "Trick House",
+		name: "Speed Swap",
 		gen: 6,
 		rating: 4.5,
 		num: 40,

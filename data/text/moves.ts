@@ -7377,8 +7377,8 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded half up, but not less than 1 HP.",
 		shortDesc: "Has 1/4 recoil.",
 	},
-	brushfire: {
-		name: "Brush Fire",
+	wildfire: {
+		name: "Wildfire",
 		desc: "Burns the target. If the target is a grass type it burns all fire-weak Pokemon in the opponents party.",
 		shortDesc: "Burns the foe(s).",
 	},

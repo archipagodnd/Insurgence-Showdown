@@ -21917,12 +21917,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Electric",
 		contestType: "Tough",
 	},
-	brushfire: {
+	wildfire: {
 		num: 17,
 		accuracy: 70,
 		basePower: 0,
 		category: "Status",
-		name: "Brush Fire",
+		name: "Wildfire",
 		pp: 10,
 		priority: 0,
 		status: 'brn',
@@ -21930,7 +21930,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		onHit(target, source) {
 			if (target.hasType('Grass')) {
 				for (const pokemon of target.side.pokemon) {
-					const fire = this.dex.getActiveMove('Brush Fire');
+					const fire = this.dex.getActiveMove('Wildfire');
 					if (this.clampIntRange(pokemon.runEffectiveness(fire), -6, 6) > 0) {
 						if (pokemon.position !== target.position) {
 							const immune = ['comatose', 'waterveil', 'waterbubble'];
