@@ -526,7 +526,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 2,
 		num: 66,
 	},
-	firedup: {
+	blazeboost: {
 		onBeforeMovePriority: 0.5,
 		onBeforeMove(attacker, defender, move) {
 			if (move.category === 'Status') return;
@@ -545,7 +545,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				}
 			}
 		},
-		name: "Fired Up",
+		name: "Blaze Boost",
 		gen: 6,
 		rating: 4,
 		num: 12,

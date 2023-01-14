@@ -486,8 +486,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Filter",
 		shortDesc: "This Pokemon receives 3/4 damage from supereffective attacks.",
 	},
-	firedup: {
-		name: "Fired Up",
+	blazeboost: {
+		name: "Blaze Boost",
 		desc: "Before this Pokemon uses a Fire-type attack its Attack, Special Attack, and Speed are all increased by 1 stage each. 10% chance to burn upon contact.",
 		shortDesc: "Raises Attack, Sp. Atk and Speed before using a Fire-type attack. Can burn on contact.",
 	},
@@ -2129,8 +2129,8 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Triage",
 		shortDesc: "This Pokemon's healing moves have their priority increased by 3.",
 	},
-	trickhouse: {
-		name: "Trick House",
+	speedswap: {
+		name: "Speed Swap",
 		shortDesc: "On switch-in, this Pokemon sets up Trick Room.",
 	},
 	truant: {
