@@ -202,28 +202,28 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				!effect.multihit &&
 				(!effect.negateSecondary && !(effect.hasSheerForce && source.hasAbility('sheerforce')))
 			) {
-				target.abilityState.checkedAngerShell = false;
+				this.effectState.checkedAngerShell = false;
 			} else {
-				target.abilityState.checkedAngerShell = true;
+				this.effectState.checkedAngerShell = true;
 			}
 		},
-		onTryEatItem(item, pokemon) {
+		onTryEatItem(item) {
 			const healingItems = [
 				'aguavberry', 'enigmaberry', 'figyberry', 'iapapaberry', 'magoberry', 'sitrusberry', 'wikiberry', 'oranberry', 'berryjuice',
 			];
 			if (healingItems.includes(item.id)) {
-				return pokemon.abilityState.checkedAngerShell;
+				return this.effectState.checkedAngerShell;
 			}
 			return true;
 		},
 		onAfterMoveSecondary(target, source, move) {
-			target.abilityState.checkedAngerShell = true;
+			this.effectState.checkedAngerShell = true;
 			if (!source || source === target || !target.hp || !move.totalDamage) return;
 			const lastAttackedBy = target.getLastAttackedBy();
 			if (!lastAttackedBy) return;
 			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
 			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
-				this.boost({atk: 1, spa: 1, spe: 1, def: -1, spd: -1});
+				this.boost({atk: 1, spa: 1, spe: 1, def: -1, spd: -1}, target, target);
 			}
 		},
 		name: "Anger Shell",
@@ -436,9 +436,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onAnyModifySpD(spd, target, source, move) {
 			const abilityHolder = this.effectState.target;
-			if (abilityHolder === target) return;
+			if (target.hasAbility('Beads of Ruin')) return;
 			if (!move.ruinedSpD?.hasAbility('Beads of Ruin')) move.ruinedSpD = abilityHolder;
-			if (move.ruinedSpD !== abilityHolder && move.ruinedSpD !== target) return;
+			if (move.ruinedSpD !== abilityHolder) return;
 			this.debug('Beads of Ruin SpD drop');
 			return this.chainModify(0.75);
 		},
@@ -464,28 +464,28 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				!effect.multihit &&
 				(!effect.negateSecondary && !(effect.hasSheerForce && source.hasAbility('sheerforce')))
 			) {
-				target.abilityState.checkedBerserk = false;
+				this.effectState.checkedBerserk = false;
 			} else {
-				target.abilityState.checkedBerserk = true;
+				this.effectState.checkedBerserk = true;
 			}
 		},
-		onTryEatItem(item, pokemon) {
+		onTryEatItem(item) {
 			const healingItems = [
 				'aguavberry', 'enigmaberry', 'figyberry', 'iapapaberry', 'magoberry', 'sitrusberry', 'wikiberry', 'oranberry', 'berryjuice',
 			];
 			if (healingItems.includes(item.id)) {
-				return pokemon.abilityState.checkedBerserk;
+				return this.effectState.checkedBerserk;
 			}
 			return true;
 		},
 		onAfterMoveSecondary(target, source, move) {
-			target.abilityState.checkedBerserk = true;
+			this.effectState.checkedBerserk = true;
 			if (!source || source === target || !target.hp || !move.totalDamage) return;
 			const lastAttackedBy = target.getLastAttackedBy();
 			if (!lastAttackedBy) return;
 			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
 			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
-				this.boost({spa: 1});
+				this.boost({spa: 1}, target, target);
 			}
 		},
 		name: "Berserk",
@@ -4121,7 +4121,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return this.chainModify(0.5);
 			}
 		},
-		isBreakable: true, // TODO verify the assumption that this can be supprsed by Mold Breaker & friends
+		isBreakable: true,
 		name: "Purifying Salt",
 		rating: 4,
 		num: 272,
@@ -5415,11 +5415,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onAnyModifyDef(def, target, source, move) {
 			const abilityHolder = this.effectState.target;
-			if (abilityHolder === target) return;
+			if (target.hasAbility('Sword of Ruin')) return;
 			if (!move.ruinedDef?.hasAbility('Sword of Ruin')) move.ruinedDef = abilityHolder;
-			if (move.ruinedDef !== abilityHolder && move.ruinedDef !== target) return;
+			if (move.ruinedDef !== abilityHolder) return;
 			this.debug('Sword of Ruin Def drop');
-			// TODO Placeholder
 			return this.chainModify(0.75);
 		},
 		name: "Sword of Ruin",
@@ -5433,11 +5432,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onAnyModifyAtk(atk, source, target, move) {
 			const abilityHolder = this.effectState.target;
-			if (abilityHolder === source) return;
+			if (source.hasAbility('Tablets of Ruin')) return;
 			if (!move.ruinedAtk) move.ruinedAtk = abilityHolder;
 			if (move.ruinedAtk !== abilityHolder) return;
 			this.debug('Tablets of Ruin Atk drop');
-			// TODO Placeholder
 			return this.chainModify(0.75);
 		},
 		name: "Tablets of Ruin",
@@ -5880,11 +5878,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onAnyModifySpA(spa, source, target, move) {
 			const abilityHolder = this.effectState.target;
-			if (abilityHolder === source) return;
+			if (source.hasAbility('Vessel of Ruin')) return;
 			if (!move.ruinedSpA) move.ruinedSpA = abilityHolder;
 			if (move.ruinedSpA !== abilityHolder) return;
 			this.debug('Vessel of Ruin SpA drop');
-			// TODO Placeholder
 			return this.chainModify(0.75);
 		},
 		name: "Vessel of Ruin",
