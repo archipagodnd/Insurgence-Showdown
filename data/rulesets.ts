@@ -21,7 +21,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 			if (target.illusion) {
 				this.debug('illusion cleared');
 				target.illusion = null;
-				const details = target.species.name + (target.level === 100 ? '' : ', L' + target.level) +
+				const details = target.species.name + (target.level === 120 ? '' : ', L' + target.level) +
 				(target.gender === '' ? '' : ', ' + target.gender) + (target.set.shiny ? ', shiny' : '');
 				this.add('replace', target, details);
 				this.add('-end', target, 'Illusion');
@@ -165,7 +165,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 			if (target.illusion) {
 				this.debug('illusion cleared');
 				target.illusion = null;
-				const details = target.species.name + (target.level === 100 ? '' : ', L' + target.level) +
+				const details = target.species.name + (target.level === 120 ? '' : ', L' + target.level) +
 				(target.gender === '' ? '' : ', ' + target.gender) + (target.set.shiny ? ', shiny' : '');
 				this.add('replace', target, details);
 				this.add('-end', target, 'Illusion');
@@ -181,13 +181,13 @@ export const Rulesets: {[k: string]: FormatData} = {
 		desc: "The custom Draft League ruleset",
 		ruleset: [
 			'Obtainable', '+Unreleased', '+CAP', 'Sketch Post-Gen 7 Moves', 'Team Preview', 'Sleep Clause Mod', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
-			'Adjust Level = 100', 'Max Level = 120', 'Default Level = 100',
+			'Adjust Level = 120', 'Max Level = 120', 'Default Level = 120',
 		],
 		onDamagingHit(damage, target, source, move) {
 			if (target.illusion) {
 				this.debug('illusion cleared');
 				target.illusion = null;
-				const details = target.species.name + (target.level === 100 ? '' : ', L' + target.level) +
+				const details = target.species.name + (target.level === 120 ? '' : ', L' + target.level) +
 				(target.gender === '' ? '' : ', ' + target.gender) + (target.set.shiny ? ', shiny' : '');
 				this.add('replace', target, details);
 				this.add('-end', target, 'Illusion');
@@ -209,7 +209,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 			if (target.illusion) {
 				this.debug('illusion cleared');
 				target.illusion = null;
-				const details = target.species.name + (target.level === 100 ? '' : ', L' + target.level) +
+				const details = target.species.name + (target.level === 120 ? '' : ', L' + target.level) +
 				(target.gender === '' ? '' : ', ' + target.gender) + (target.set.shiny ? ', shiny' : '');
 				this.add('replace', target, details);
 				this.add('-end', target, 'Illusion');
@@ -638,12 +638,6 @@ export const Rulesets: {[k: string]: FormatData} = {
 				return [set.species + " doesn't have an evolution family."];
 			}
 		},
-	},
-	level120: {
-		effectType: 'ValidatorRule',
-		name: 'Level 120',
-		desc: "Allows Pokémon up to Level 120.",
-		ruleset: ['Max Level = 120', 'Default Level = 120', 'Overflow Stat Mod'],
 	},
 	blitz: {
 		effectType: 'Rule',

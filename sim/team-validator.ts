@@ -471,7 +471,7 @@ export class TeamValidator {
 		if (ruleTable.adjustLevelDown && set.level >= ruleTable.adjustLevelDown) {
 			adjustLevel = ruleTable.adjustLevelDown;
 		}
-		if (set.level === adjustLevel || (set.level === 100 && ruleTable.maxLevel < 100)) {
+		if (set.level === adjustLevel || (set.level === 120 && ruleTable.maxLevel < 120)) {
 			// Note that we're temporarily setting level 50 pokemon in VGC to level 100
 			// This allows e.g. level 50 Hydreigon even though it doesn't evolve until level 64.
 			// Leveling up can't make an obtainable pokemon unobtainable, so this is safe.
@@ -2015,7 +2015,7 @@ export class TeamValidator {
 		const format = this.format;
 		const ruleTable = dex.formats.getRuleTable(format);
 		const alreadyChecked: {[k: string]: boolean} = {};
-		const level = set.level || 100;
+		const level = set.level || 120;
 
 		let cantLearnReason = null;
 

@@ -208,7 +208,7 @@ export class RuleTable extends Map<string, string> {
 		this.maxMoveCount = Number(this.valueRules.get('maxmovecount')) || 4;
 		this.minSourceGen = Number(this.valueRules.get('minsourcegen')) || 1;
 		this.minLevel = Number(this.valueRules.get('minlevel')) || 1;
-		this.maxLevel = Number(this.valueRules.get('maxlevel')) || 100;
+		this.maxLevel = Number(this.valueRules.get('maxlevel')) || 120;
 		this.defaultLevel = Number(this.valueRules.get('defaultlevel')) || 0;
 		this.adjustLevel = Number(this.valueRules.get('adjustlevel')) || null;
 		this.adjustLevelDown = Number(this.valueRules.get('adjustleveldown')) || null;
@@ -251,8 +251,8 @@ export class RuleTable extends Map<string, string> {
 			// defaultLevel will set level 100 pokemon to the default level, which can break
 			// Max Total Level if Max Level is above 100.
 			const maxTeamSize = this.pickedTeamSize || this.maxTeamSize;
-			if (this.maxTotalLevel && this.maxLevel > 100 && this.maxLevel * maxTeamSize > this.maxTotalLevel) {
-				this.defaultLevel = 100;
+			if (this.maxTotalLevel && this.maxLevel > 120 && this.maxLevel * maxTeamSize > this.maxTotalLevel) {
+				this.defaultLevel = 120;
 			} else {
 				this.defaultLevel = this.maxLevel;
 			}

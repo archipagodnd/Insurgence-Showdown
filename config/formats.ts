@@ -149,11 +149,6 @@ export const Formats: FormatList = [
 		banlist: ['Sub-Legendary'],
 	},
 	{
-		name: "[Gen 9] National Dex Level 120 AG",
-		mod: 'gen9',
-		ruleset: ['Standard NatDex', 'Max Level = 120', 'Default Level = 120'],
-	},
-	{
 		name: "[Gen 9] Custom Game",
 
 		mod: 'gen9',
@@ -200,78 +195,78 @@ export const Formats: FormatList = [
 	// Draft League
 	///////////////////////////////////////////////////////////////////
 
-	{
-		section: "Draft",
-		column: 1,
-	},
-	{
-		name: "[Gen 9] NatDex Draft",
+	// {
+	// 	section: "Draft",
+	// 	column: 1,
+	// },
+	// {
+	// 	name: "[Gen 9] NatDex Draft",
 
-		mod: 'gen9',
-		searchShow: false,
-		ruleset: ['Draft', '+Unobtainable', '+Past'],
-	},
-	{
-		name: "[Gen 9] NatDex 6v6 Doubles Draft",
+	// 	mod: 'gen9',
+	// 	searchShow: false,
+	// 	ruleset: ['Draft', '+Unobtainable', '+Past'],
+	// },
+	// {
+	// 	name: "[Gen 9] NatDex 6v6 Doubles Draft",
 
-		mod: 'gen9',
-		gameType: 'doubles',
-		searchShow: false,
-		ruleset: ['Draft', '!Sleep Clause Mod', '!Evasion Moves Clause', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
-	},
-	{
-		name: "[Gen 9] NatDex 4v4 Doubles Draft",
+	// 	mod: 'gen9',
+	// 	gameType: 'doubles',
+	// 	searchShow: false,
+	// 	ruleset: ['Draft', '!Sleep Clause Mod', '!Evasion Moves Clause', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
+	// },
+	// {
+	// 	name: "[Gen 9] NatDex 4v4 Doubles Draft",
 
-		mod: 'gen9',
-		gameType: 'doubles',
-		searchShow: false,
-		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
-	},
-	{
-		name: "[Gen 9] NatDex LC Draft",
+	// 	mod: 'gen9',
+	// 	gameType: 'doubles',
+	// 	searchShow: false,
+	// 	ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
+	// },
+	// {
+	// 	name: "[Gen 9] NatDex LC Draft",
 
-		mod: 'gen9',
-		searchShow: false,
-		ruleset: ['LC Draft', '+Unobtainable', '+Past', 'Double Item Clause', 'Little Cup'],
-		banlist: ['Dragon Rage', 'Sonic Boom'],
-	},
-	{
-		name: "[Gen 8] NatDex Draft",
+	// 	mod: 'gen9',
+	// 	searchShow: false,
+	// 	ruleset: ['LC Draft', '+Unobtainable', '+Past', 'Double Item Clause', 'Little Cup'],
+	// 	banlist: ['Dragon Rage', 'Sonic Boom'],
+	// },
+	// {
+	// 	name: "[Gen 8] NatDex Draft",
 
-		mod: 'gen8',
-		searchShow: false,
-		ruleset: ['Draft', '+Past'],
-	},
-	{
-		name: "[Gen 8] NatDex 4v4 Doubles Draft",
+	// 	mod: 'gen8',
+	// 	searchShow: false,
+	// 	ruleset: ['Draft', '+Past'],
+	// },
+	// {
+	// 	name: "[Gen 8] NatDex 4v4 Doubles Draft",
 
-		mod: 'gen8',
-		gameType: 'doubles',
-		searchShow: false,
-		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Past'],
-	},
-	{
-		name: "[Gen 8] NatDex LC Draft",
+	// 	mod: 'gen8',
+	// 	gameType: 'doubles',
+	// 	searchShow: false,
+	// 	ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Past'],
+	// },
+	// {
+	// 	name: "[Gen 8] NatDex LC Draft",
 
-		mod: 'gen8',
-		searchShow: false,
-		ruleset: ['LC Draft', '+Past', 'Double Item Clause', 'Little Cup'],
-		banlist: ['Dragon Rage', 'Sonic Boom'],
-	},
-	{
-		name: "[Gen 7] Draft",
+	// 	mod: 'gen8',
+	// 	searchShow: false,
+	// 	ruleset: ['LC Draft', '+Past', 'Double Item Clause', 'Little Cup'],
+	// 	banlist: ['Dragon Rage', 'Sonic Boom'],
+	// },
+	// {
+	// 	name: "[Gen 7] Draft",
 
-		mod: 'gen7',
-		searchShow: false,
-		ruleset: ['Draft', '+LGPE'],
-	},
-	{
-		name: "[Gen 6] Draft",
+	// 	mod: 'gen7',
+	// 	searchShow: false,
+	// 	ruleset: ['Draft', '+LGPE'],
+	// },
+	// {
+	// 	name: "[Gen 6] Draft",
 
-		mod: 'gen6',
-		searchShow: false,
-		ruleset: ['Draft'],
-	},
+	// 	mod: 'gen6',
+	// 	searchShow: false,
+	// 	ruleset: ['Draft'],
+	// },
 
 	// Other Metagames
 	///////////////////////////////////////////////////////////////////
@@ -1243,12 +1238,6 @@ export const Formats: FormatList = [
 		ruleset: ['Flat Rules', '!! Adjust Level = 50', 'VGC Timer'],
 	},
 	{
-		name: "[Gen 8] National Dex Level 120 AG",
-		mod: 'gen8',
-		searchShow: false,
-		ruleset: ['Standard NatDex', 'Max Level = 120', 'Default Level = 120'],
-	},
-	{
 		name: "[Gen 8] Custom Game",
 		mod: 'gen8',
 		searchShow: false,
@@ -1492,12 +1481,6 @@ export const Formats: FormatList = [
 		ruleset: ['Flat Rules'],
 	},
 	{
-		name: "[Gen 7]  Level 120 AG",
-		mod: 'gen7',
-		searchShow: false,
-		ruleset: ['Standard', 'Max Level = 120', 'Default Level = 120'],
-	},
-	{
 		name: "[Gen 7] Custom Game",
 
 		mod: 'gen7',
@@ -1709,12 +1692,6 @@ export const Formats: FormatList = [
 		mod: 'gen6',
 		searchShow: false,
 		ruleset: ['Flat Rules'],
-	},
-	{
-		name: "[Gen 6]  Level 120 AG",
-		mod: 'gen6',
-		searchShow: false,
-		ruleset: ['Standard', 'Max Level = 120', 'Default Level = 120'],
 	},
 	{
 		name: "[Gen 6] Pure Hackmons",

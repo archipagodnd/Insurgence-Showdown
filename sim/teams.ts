@@ -179,7 +179,7 @@ export const Teams = new class Teams {
 			}
 
 			// level
-			if (set.level && set.level !== 100) {
+			if (set.level && set.level !== 120) {
 				buf += '|' + set.level;
 			} else {
 				buf += '|';
@@ -384,7 +384,7 @@ export const Teams = new class Teams {
 		}
 
 		// details
-		if (set.level && set.level !== 100) {
+		if (set.level && set.level !== 120) {
 			out += `Level: ${set.level}  \n`;
 		}
 		if (set.shiny) {
@@ -602,7 +602,7 @@ export const Teams = new class Teams {
 					nature: '',
 					evs: {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0},
 					ivs: {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31},
-					level: 100,
+					level: 120,
 					moves: [],
 				};
 				sets.push(curSet);

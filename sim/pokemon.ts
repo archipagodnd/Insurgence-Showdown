@@ -302,7 +302,7 @@ export class Pokemon {
 		this.name = set.name.substr(0, 20);
 		this.fullname = this.side.id + ': ' + this.name;
 
-		set.level = this.battle.clampIntRange(set.adjustLevel || set.level || 100, 1, 9999);
+		set.level = this.battle.clampIntRange(set.adjustLevel || set.level || 120, 1, 9999);
 		this.level = set.level;
 		const genders: {[key: string]: GenderName} = {M: 'M', F: 'F', N: 'N'};
 		this.gender = genders[set.gender] || defaultGender || this.species.gender || (this.battle.random() * 2 < 1 ? 'M' : 'F');
@@ -339,7 +339,7 @@ export class Pokemon {
 		}
 
 		this.position = 0;
-		this.details = this.species.name + (this.level === 100 ? '' : ', L' + this.level) +
+		this.details = this.species.name + (this.level === 120 ? '' : ', L' + this.level) +
 			(this.gender === '' ? '' : ', ' + this.gender) + (this.set.shiny ? ', shiny' : '');
 
 		this.status = '';
@@ -571,7 +571,7 @@ export class Pokemon {
 		const health = this.getHealth();
 		let details = this.details;
 		if (this.illusion) {
-			const illusionDetails = this.illusion.species.name + (this.level === 100 ? '' : ', L' + this.level) +
+			const illusionDetails = this.illusion.species.name + (this.level === 120 ? '' : ', L' + this.level) +
 				(this.illusion.gender === '' ? '' : ', ' + this.illusion.gender) + (this.illusion.set.shiny ? ', shiny' : '');
 			details = illusionDetails;
 		}
@@ -1539,7 +1539,7 @@ export class Pokemon {
 			this.illusion ? this.illusion.species.name : species.baseSpecies;
 		if (isPermanent) {
 			this.baseSpecies = rawSpecies;
-			this.details = species.name + (this.level === 100 ? '' : ', L' + this.level) +
+			this.details = species.name + (this.level === 120 ? '' : ', L' + this.level) +
 				(this.gender === '' ? '' : ', ' + this.gender) + (this.set.shiny ? ', shiny' : '');
 			let details = (this.illusion || this).details;
 			if (this.terastallized) details += `, tera:${this.terastallized}`;
@@ -1567,7 +1567,7 @@ export class Pokemon {
 								const illusionSpecies = this.illusion.setSpecies(illusionRawSpecies, source);
 								if(illusionSpecies) {
 									this.illusion.baseSpecies = illusionRawSpecies;
-									this.illusion.details = illusionSpecies.name + (this.level === 100 ? '' : ', L' + this.level) +
+									this.illusion.details = illusionSpecies.name + (this.level === 120 ? '' : ', L' + this.level) +
 										(this.illusion.gender === '' ? '' : ', ' + this.illusion.gender) + (this.illusion.set.shiny ? ', shiny' : '');
 
 									this.battle.add('detailschange', this, this.illusion.details);
