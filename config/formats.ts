@@ -23,7 +23,7 @@ export const Formats: FormatList = [
 	///////////////////////////////////////////////////////////////////
 
 	{
-		section: "OR/AS Singles",
+		section: "Insurgence Singles",
 		column: 1,
 	},
 	{
@@ -176,7 +176,7 @@ export const Formats: FormatList = [
 	///////////////////////////////////////////////////////////////////
 
 	{
-		section: "OR/AS Doubles/Triples",
+		section: "Insurgence Doubles/Triples",
 		column: 1,
 	},
 	{
