@@ -18517,10 +18517,10 @@ export const Moves: {[moveid: string]: MoveData} = {
 		priority: 0,
 		flags: {contact: 1, charge: 1, protect: 1, mirror: 1, distance: 1},
 		onTry(pokemon) {
-			if (pokemon.species.name === 'Hoopa-Delta-Unbound') {
+			if (pokemon.species.name === 'Hoopa-Delta-Unleashed') {
 				return;
 			}
-			this.hint("Only a Pokemon whose form is Hoopa-Delta-Unbound can use this move.");
+			this.hint("Only a Pokemon whose form is Hoopa-Delta-Unleashed can use this move.");
 			if (pokemon.species.name === 'Hoopa-Delta') {
 				this.add('-fail', pokemon, 'move: Spirit Away', '[forme]');
 				return null;

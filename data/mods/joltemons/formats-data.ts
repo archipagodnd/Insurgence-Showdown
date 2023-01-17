@@ -2851,7 +2851,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "DOU",
 		randomBattleMoves: ["aridabsorption", "curse", "heavyslam", "earthquake"],
 	},
-	steelixmega: {
+	steelixmegasteel: {
 		tier: "UU",
 		doublesTier: "DOU",
 		randomBattleMoves: ["aridabsorption", "stealthrock", "irontail", "earthquake"],

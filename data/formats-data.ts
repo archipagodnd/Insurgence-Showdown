@@ -7380,7 +7380,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Illegal",
 		natDexTier: "UU",
     },
-    hoopadeltaunbound: {
+    hoopadeltaunleashed: {
 		isNonstandard: "Past",
 		tier: "Illegal",
 		natDexTier: "Uber",

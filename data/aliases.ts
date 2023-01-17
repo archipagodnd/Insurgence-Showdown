@@ -399,7 +399,8 @@ export const Aliases: {[alias: string]: string} = {
 	deltameloettamagician: "Meloetta-Delta-Magician",
 	deltahoopa: "Hoopa-Delta",
 	deltahoopaconfined: "Hoopa-Delta",
-	deltahoopaunbound: "Hoopa-Delta-Unbound",
+	deltahoopaunleashed: "Hoopa-Delta-Unleashed",
+	deltahoopaunbound: "Hoopa-Delta-Unleashed",
 
 	//armor formes
 	armormewtwo: "Mewtwo-Armor",

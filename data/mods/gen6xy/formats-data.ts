@@ -35,7 +35,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		isNonstandard: "Future",
 		tier: "Illegal",
 	},
-	steelixmega: {
+	steelixmegasteel: {
 		isNonstandard: "Future",
 		tier: "Illegal",
 	},

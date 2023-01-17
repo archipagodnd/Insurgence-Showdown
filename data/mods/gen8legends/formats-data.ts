@@ -803,7 +803,7 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "RU",
 		doublesTier: "(DUU)",
 	},
-	steelixmega: {
+	steelixmegasteel: {
 		isNonstandard: "Past",
 		tier: "Illegal",
 	},

@@ -3596,8 +3596,8 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	hoopadelta: {
 		name: "Hoopa-Delta",
 	},
-	hoopadeltaunbound: {
-		name: "Hoopa-Delta-Unbound",
+	hoopadeltaunleased: {
+		name: "Hoopa-Delta-Unleashed",
 	},
 	volcanion: {
 		name: "Volcanion",

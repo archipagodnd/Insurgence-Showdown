@@ -4087,7 +4087,7 @@ export const Pokedex: {[k: string]: ModdedSpeciesData} = {
 		otherFormes: ["Steelix-Mega"],
 		formeOrder: ["Steelix", "Steelix-Mega"],
 	},
-	steelixmega: {
+	steelixmegasteel: {
 		num: 208,
 		name: "Steelix-Mega",
 		baseSpecies: "Steelix",

@@ -1381,7 +1381,7 @@ export class Pokemon {
 		} else if (deltaID === 'meloetta') {
 			deltaID = 'meloettadeltamime';
 		} else if (deltaID === 'hoopaunbound') {
-			deltaID = 'hoopadeltaunbound';
+			deltaID = 'hoopadeltaunleashed';
 		} else if (['charizardmegax', 'charizardmegay'].includes(deltaID)) {
 			deltaID = 'charizarddeltamega';
 		} else if (['sunflorafmega', 'sunflorammega'].includes(deltaID)) {

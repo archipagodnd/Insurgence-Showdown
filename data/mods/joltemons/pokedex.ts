@@ -741,7 +741,7 @@ export const Pokedex: {[speciesid: string]: ModdedSpeciesData} = {
 		inherit: true,
 		abilities: {0: "Sturdy", 1: "Gravitation", H: "Overcoat"},
 	},
-	steelixmega: {
+	steelixmegasteel: {
 		inherit: true,
 		abilities: {0: "Gravitation"},
 	},

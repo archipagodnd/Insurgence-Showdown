@@ -92031,7 +92031,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 		],
 		eventOnly: true,
 	},
-	hoopadeltaunbound: {
+	hoopadeltaunleashed: {
 		eventOnly: true,
 	},
 	volcanion: {
