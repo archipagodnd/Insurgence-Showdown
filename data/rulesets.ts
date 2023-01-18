@@ -15,7 +15,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		name: 'Standard',
 		desc: "The standard ruleset for all offical Smogon singles tiers (Ubers, OU, etc.)",
 		ruleset: [
-			'Obtainable', 'Team Preview', 'Sleep Clause Mod', 'Nickname Clause', 'OHKO Clause', 'Evasion Items Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
+			'Obtainable', 'Team Preview', 'Sleep Clause Mod', 'Nickname Clause', 'OHKO Clause', 'Evasion Items Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Overflow Stat Mod',
 		],
 		onDamagingHit(damage, target, source, move) {
 			if (target.illusion) {
@@ -46,7 +46,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		name: 'Flat Rules',
 		desc: "The in-game Flat Rules: Adjust Level Down 50, Species Clause, Item Clause, -Mythical, -Restricted Legendary, Bring 6 Pick 3-6 depending on game type.",
 		ruleset: ['Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'Item Clause', 'Adjust Level Down = 50', 'Picked Team Size = Auto', 'Cancel Mod'],
-		banlist: ['Mythical', 'Restricted Legendary'],
+		banlist: ['Mythical', 'Restricted Legendary', 'Overflow Stat Mod'],
 	},
 	limittworestricted: {
 		effectType: 'ValidatorRule',
@@ -84,7 +84,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		desc: "The standard ruleset for all official Smogon doubles tiers",
 		ruleset: [
 			'Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
-			'Min Source Gen = 9',
+			'Min Source Gen = 9', 'Overflow Stat Mod'
 		],
 	},
 	standardnatdexdoubles: {
@@ -93,7 +93,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		desc: "The standard ruleset for all official Smogon doubles tiers",
 		ruleset: [
 			'Obtainable', 'Team Preview', 'Species Clause', 'Nickname Clause', 'OHKO Clause',
-			'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause',
+			'Evasion Moves Clause', 'Gravity Sleep Clause', 'Endless Battle Clause', 'Overflow Stat Mod',
 			'HP Percentage Mod', 'Cancel Mod', '+Unobtainable', '+Past', '+PastMove', 'Sketch Post-Gen 7 Moves',
 		],
 	},
@@ -117,7 +117,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		name: 'Standard NatDex',
 		desc: "The standard ruleset for all National Dex tiers",
 		ruleset: [
-			'Obtainable', '+Unobtainable', '+Past', 'Sketch Post-gen 7 Moves', '+PastMove', 'Team Preview', 'Nickname Clause', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
+			'Obtainable', '+Unobtainable', '+Past', 'Sketch Post-gen 7 Moves', '+PastMove', 'Team Preview', 'Nickname Clause', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause', 'Overflow Stat Mod',
 		],
 		unbanlist: ['Adamant Crystal', 'Griseous Core', 'Lustrous Globe', 'Bleakwind Storm', 'Lunar Blessing', 'Mystical Power', 'Sandsear Storm', 'Wildbolt Storm'],
 		onValidateSet(set) {
@@ -181,7 +181,7 @@ export const Rulesets: {[k: string]: FormatData} = {
 		desc: "The custom Draft League ruleset",
 		ruleset: [
 			'Obtainable', '+Unreleased', '+CAP', 'Sketch Post-Gen 7 Moves', 'Team Preview', 'Sleep Clause Mod', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod',
-			'Adjust Level = 120', 'Max Level = 120', 'Default Level = 120',
+			'Adjust Level = 120', 'Max Level = 120', 'Default Level = 120', 'Overflow Stat Mod',
 		],
 		onDamagingHit(damage, target, source, move) {
 			if (target.illusion) {
