@@ -6708,7 +6708,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				if (target.illusion) {
 					this.debug('illusion cleared');
 					target.illusion = null;
-					const details = target.species.name + (target.level === 100 ? '' : ', L' + target.level) +
+					const details = target.species.name + (target.level === 120 ? '' : ', L' + target.level) +
 					(target.gender === '' ? '' : ', ' + target.gender) + (target.set.shiny ? ', shiny' : '');
 					this.add('replace', target, details);
 					this.add('-end', target, 'Illusion');

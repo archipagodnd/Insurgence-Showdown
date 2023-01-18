@@ -254,7 +254,7 @@ class TeamGenerator {
 					spe: randomIVs(),
 				},
 				nature: this.prng.sample(this.natures),
-				level: this.prng.next(50, 100),
+				level: this.prng.next(50, 120),
 				happiness: this.prng.next(256),
 				shiny: this.prng.randomChance(1, 1024),
 			});

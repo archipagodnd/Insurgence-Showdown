@@ -1743,7 +1743,7 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		const item = this.sampleIfArray(setData.set.item);
 		const ability = this.sampleIfArray(setData.set.ability);
 		const nature = this.sampleIfArray(setData.set.nature);
-		const level = this.adjustLevel || setData.set.level || (tier === "LC" ? 5 : 100);
+		const level = this.adjustLevel || setData.set.level || (tier === "LC" ? 5 : 120);
 
 		return {
 			name: setData.set.name || species.baseSpecies,

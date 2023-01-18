@@ -229,7 +229,7 @@ function battleFactorySets(species: string | Species, tier: string | null, gen =
 			buf += `<li>${set.species}${set.gender ? ` (${set.gender})` : ``} @ ${Array.isArray(set.item) ? set.item.map(formatItem).join(" / ") : formatItem(set.item)}</li>`;
 			buf += `<li>Ability: ${Array.isArray(set.ability) ? set.ability.map(formatAbility).join(" / ") : formatAbility(set.ability)}</li>`;
 			if (TIERS[toID(tier)] === "LC" && !set.level) buf += `<li>Level: 5</li>`;
-			if (set.level && set.level < 100) buf += `<li>Level: ${set.level}</li>`;
+			if (set.level && set.level < 120) buf += `<li>Level: ${set.level}</li>`;
 			if (set.shiny) buf += `<li>Shiny: Yes</li>`;
 			if (set.happiness) buf += `<li>Happiness: ${set.happiness}</li>`;
 			if (set.evs) {
@@ -324,7 +324,7 @@ function CAP1v1Sets(species: string | Species) {
 		buf += `<ul style="list-style-type:none;">`;
 		buf += `<li>${set.species || species.name}${set.gender ? ` (${set.gender})` : ``} @ ${Array.isArray(set.item) ? set.item.map(formatItem).join(" / ") : formatItem(set.item)}</li>`;
 		buf += `<li>Ability: ${Array.isArray(set.ability) ? set.ability.map(formatAbility).join(" / ") : formatAbility(set.ability)}</li>`;
-		if (set.level && set.level < 100) buf += `<li>Level: ${set.level}</li>`;
+		if (set.level && set.level < 120) buf += `<li>Level: ${set.level}</li>`;
 		if (set.shiny) buf += `<li>Shiny: Yes</li>`;
 		if (set.happiness) buf += `<li>Happiness: ${set.happiness}</li>`;
 		if (set.evs) {

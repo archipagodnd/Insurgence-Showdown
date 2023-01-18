@@ -68,7 +68,7 @@ async function updateLevels(database: SQL.DatabaseManager) {
 		if (total > 10) {
 			if (wins / total >= 0.55) level--;
 			if (wins / total <= 0.45) level++;
-			level = Math.max(1, Math.min(100, level));
+			level = Math.max(1, Math.min(120, level));
 			await updateSpecies?.run([level, species_id]);
 			await updateHistory?.run([level, species_id]);
 		}

@@ -2366,7 +2366,7 @@ function runLearn(target: string, cmd: string, canAll: boolean, formatid: string
 	const targets = target.split(',');
 	let formatName = format.name;
 	let minSourceGen = undefined;
-	let level = 100;
+	let level = 120;
 
 	while (targets.length) {
 		const targetid = toID(targets[0]);

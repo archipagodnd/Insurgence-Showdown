@@ -235,7 +235,7 @@ function cleanName(name: string) {
 function movesetToPokemonSet(dex: ModdedDex, format: Format, pokemon: string, set: smogon.Moveset) {
 	const level = getLevel(format, set.levels[0]);
 	return {
-		level: level === 100 ? undefined : level,
+		level: level === 120 ? undefined : level,
 		moves: set.moveslots.map(ms => ms[0]).map(s => s.type ? `${s.move} ${s.type}` : s.move),
 		ability: fixedAbility(dex, pokemon, set.abilities[0]),
 		item: set.items[0] === 'No Item' ? undefined : set.items[0],
@@ -334,7 +334,7 @@ function toPokemonSet(
 	if (hp) {
 		const type = hp.slice(13);
 		if (type && dex.getHiddenPower(fillStats(set.ivs, fill)).type !== type) {
-			if (!set.ivs || (dex.gen >= 7 && (!set.level || set.level === 100))) {
+			if (!set.ivs || (dex.gen >= 7 && (!set.level || set.level === 120))) {
 				set.hpType = type;
 				fill = 31;
 			} else if (dex.gen === 2) {

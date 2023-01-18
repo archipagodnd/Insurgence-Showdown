@@ -1265,7 +1265,7 @@ export const commands: Chat.ChatCommands = {
 		let pokemon: StatsTable | undefined;
 		let useStat: StatID | '' = '';
 
-		let level = 100;
+		let level = 120;
 		let calcHP = false;
 		let nature = 1.0;
 		let iv = 31;

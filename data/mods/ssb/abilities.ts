@@ -35,7 +35,7 @@ export function changeSet(context: Battle, pokemon: Pokemon, newSet: SSBSet, cha
 	let percent = (pokemon.hp / pokemon.baseMaxhp);
 	if (newSet.species === 'Shedinja') percent = 1;
 	pokemon.formeChange(newSet.species, context.effect, true);
-	const details = pokemon.species.name + (pokemon.level === 100 ? '' : ', L' + pokemon.level) +
+	const details = pokemon.species.name + (pokemon.level === 120 ? '' : ', L' + pokemon.level) +
 		(pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
 	if (oldShiny !== pokemon.set.shiny) context.add('replace', pokemon, details);
 	if (changeAbility) pokemon.setAbility(newSet.ability as string);
@@ -2064,7 +2064,7 @@ export const Abilities: {[k: string]: ModdedAbilityData} = {
 				this.debug('illusion cleared');
 				let disguisedAs = this.toID(pokemon.illusion.name);
 				pokemon.illusion = null;
-				const details = pokemon.species.name + (pokemon.level === 100 ? '' : ', L' + pokemon.level) +
+				const details = pokemon.species.name + (pokemon.level === 120 ? '' : ', L' + pokemon.level) +
 					(pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
 				this.add('replace', pokemon, details);
 				this.add('-end', pokemon, 'Illusion');

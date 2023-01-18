@@ -1865,7 +1865,7 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 				message = "YO!! I can't believe it, you cracked open a Shiny Minior! Its multicolored interior dazzles its opponents and throws off their priority moves. Big grats. Rating: ★ ★ ★ ★ ★ ★";
 			}
 			target.formeChange(forme, move, true);
-			const details = target.species.name + (target.level === 100 ? '' : ', L' + target.level) +
+			const details = target.species.name + (target.level === 120 ? '' : ', L' + target.level) +
 				(target.gender === '' ? '' : ', ' + target.gender) + (target.set.shiny ? ', shiny' : '');
 			if (shiny) this.add('replace', target, details);
 			this.add(`c:|${Math.floor(Date.now() / 1000)}|${getName('GMars')}|${message}`);

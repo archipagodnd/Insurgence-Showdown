@@ -248,8 +248,8 @@ export class RuleTable extends Map<string, string> {
 		}
 
 		if (!this.defaultLevel) {
-			// defaultLevel will set level 100 pokemon to the default level, which can break
-			// Max Total Level if Max Level is above 100.
+			// defaultLevel will set level 120 pokemon to the default level, which can break
+			// Max Total Level if Max Level is above 120.
 			const maxTeamSize = this.pickedTeamSize || this.maxTeamSize;
 			if (this.maxTotalLevel && this.maxLevel > 120 && this.maxLevel * maxTeamSize > this.maxTotalLevel) {
 				this.defaultLevel = 120;

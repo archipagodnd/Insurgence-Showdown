@@ -196,7 +196,7 @@ NICKNAME|SPECIES|ITEM|ABILITY|MOVES|NATURE|EVS|GENDER|IVS|SHINY|LEVEL|HAPPINESS,
 
 - `SHINY` is `S` for shiny, and blank for non-shiny.
 
-- `LEVEL` is left blank for level 100.
+- `LEVEL` is left blank for level 120.
 
 - `HAPPINESS` is left blank for 255.
 
