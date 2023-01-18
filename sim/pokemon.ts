@@ -1374,8 +1374,6 @@ export class Pokemon {
 			deltaID = ['metagrossdeltas', 'metagrossdeltar'][this.battle.random(2)];
 		} else if (deltaID === 'metagrossmega') {
 			deltaID = ['metagrossdeltasmega', 'metagrossdeltarmega'][this.battle.random(2)];
-		} else if (deltaID === 'sunfloraf') {
-			deltaID = 'sunfloradelta';
 		} else if (deltaID === 'meloettapirouette') {
 			deltaID = 'meloettadeltamagician';
 		} else if (deltaID === 'meloetta') {
@@ -1384,7 +1382,7 @@ export class Pokemon {
 			deltaID = 'hoopadeltaunleashed';
 		} else if (['charizardmegax', 'charizardmegay'].includes(deltaID)) {
 			deltaID = 'charizarddeltamega';
-		} else if (['sunflorafmega', 'sunflorammega'].includes(deltaID)) {
+		} else if (['sunfloramegaf', 'sunfloramegam'].includes(deltaID)) {
 			deltaID = 'sunfloradeltamega';
 		} else if (target.species.isMega) {
 			deltaID = deltaID.substr(0, (deltaID.length - 4)) + 'deltamega';
