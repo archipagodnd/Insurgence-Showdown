@@ -530,28 +530,28 @@ export const Formats: FormatList = [
 		ruleset: ['[Gen 6] OU', 'STABmons Move Legality'],
 		banlist: ['Diggersby', 'Kyurem-Black', 'Porygon-Z', 'Thundurus', 'Aerodactylite', 'Altarianite', "King's Rock", 'Metagrossite', 'Razor Fang'],
 	},
-	{
-		name: "[Gen 6] Inverse Battle",
-		desc: "Battle with an inverted type chart.",
-		threads: [
-			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3518146/\">Inverse Battle</a>",
-			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3526371/\">Inverse Battle Viability Ranking</a>",
-		],
+	// {
+	// 	name: "[Gen 6] Inverse Battle",
+	// 	desc: "Battle with an inverted type chart.",
+	// 	threads: [
+	// 		"&bullet; <a href=\"https://www.smogon.com/forums/threads/3518146/\">Inverse Battle</a>",
+	// 		"&bullet; <a href=\"https://www.smogon.com/forums/threads/3526371/\">Inverse Battle Viability Ranking</a>",
+	// 	],
 		
-		mod: 'gen6',
-		ruleset: ['Standard', 'Baton Pass Clause', 'Swagger Clause', 'Inverse Mod'],
-		banlist: ['Arceus', 'Blaziken', 'Darkrai', 'Deoxys', 'Deoxys-Attack', 'Deoxys-Defense', 'Deoxys-Speed', 'Diggersby', 'Giratina-Origin', 'Groudon',
-			'Ho-Oh', 'Hoopa-Unbound', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Serperior',
-			'Shaymin-Sky', 'Snorlax', 'Xerneas', 'Yveltal', 'Zekrom', 'Gengarite', 'Kangaskhanite', 'Salamencite', 'Soul Dew', 'Shadow Tag',
-		],
-		onNegateImmunity: false,
-		onEffectiveness: function (typeMod, target, type, move) {
-			// The effectiveness of Freeze Dry on Water isn't reverted
-			if (move && move.id === 'freezedry' && type === 'Water') return;
-			if (move && !this.getImmunity(move, type)) return 1;
-			return -typeMod;
-		},
-	},
+	// 	mod: 'gen6',
+	// 	ruleset: ['Standard', 'Baton Pass Clause', 'Swagger Clause', 'Inverse Mod'],
+	// 	banlist: ['Arceus', 'Blaziken', 'Darkrai', 'Deoxys', 'Deoxys-Attack', 'Deoxys-Defense', 'Deoxys-Speed', 'Diggersby', 'Giratina-Origin', 'Groudon',
+	// 		'Ho-Oh', 'Hoopa-Unbound', 'Kyogre', 'Kyurem-Black', 'Kyurem-White', 'Lugia', 'Mewtwo', 'Palkia', 'Rayquaza', 'Reshiram', 'Serperior',
+	// 		'Shaymin-Sky', 'Snorlax', 'Xerneas', 'Yveltal', 'Zekrom', 'Gengarite', 'Kangaskhanite', 'Salamencite', 'Soul Dew', 'Shadow Tag',
+	// 	],
+	// 	onNegateImmunity: false,
+	// 	onEffectiveness: function (typeMod, target, type, move) {
+	// 		// The effectiveness of Freeze Dry on Water isn't reverted
+	// 		if (move && move.id === 'freezedry' && type === 'Water') return;
+	// 		if (move && !this.getImmunity(move, type)) return 1;
+	// 		return -typeMod;
+	// 	},
+	// },
 	{
 		name: "[Gen 6] Battle Factory",
 		desc: `Randomized teams of Pok&eacute;mon for a generated Smogon tier with sets that are competitively viable.`,
