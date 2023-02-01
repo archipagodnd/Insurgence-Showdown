@@ -2759,8 +2759,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 					const negativeBoost: SparseBoostsTable = {};
 					negativeBoost[b] = boost[b];
 					delete boost[b];
-					this.add('-ability', target, 'Mirror Armor');
-					this.boost(negativeBoost, source, target, null, true);
+					if (source.hp) {
+						this.add('-ability', target, 'Mirror Armor');
+						this.boost(negativeBoost, source, target, null, true);
+					}
 				}
 			}
 		},
@@ -5508,6 +5510,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onDamagingHit(damage, target, source, move) {
 			if (move.type === 'Fire') {
 				this.boost({atk: 1});
+			}
+		},
+		onUpdate(pokemon) {
+			if (pokemon.status === 'brn') {
+				this.add('-activate', pokemon, 'ability: Thermal Exchange');
+				pokemon.cureStatus();
 			}
 		},
 		onSetStatus(status, target, source, effect) {
