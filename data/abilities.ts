@@ -2419,7 +2419,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				'dynamaxcannon', 'endeavor', 'fling', 'iceball', 'rollout',
 				'dragonrage', 'sonicboom', 'seismictoss', 'naturalgift'
 			].includes(move.id)) return;
-			if (!move.flags['charge'] && !move.spreadHit && !move.isZ && !move.isMax) {
+			if (!move.flags['charge'] && !move.isZ && !move.isMax) {
 				if (source.species.id === 'hydreigonmeganine') move.multihit = 9;
 				else if (source.species.id === 'hydreigonmegaeight') move.multihit = 8;
 				else if (source.species.id === 'hydreigonmegaseven') move.multihit = 7;
