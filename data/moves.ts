@@ -3988,7 +3988,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
 			const periodic = source.hasAbility('periodicorbit');
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
-				duration: periodic ? 5 : 3,
+				duration: periodic ? 6 : 3,
 				move: 'doomdesire',
 				source: source,
 				moveData: {
@@ -6627,7 +6627,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			if (!target.side.addSlotCondition(target, 'futuremove')) return false;
 			const periodic = source.hasAbility('periodicorbit');
 			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
-				duration: periodic ? 5 : 3,
+				duration: periodic ? 6 : 3,
 				move: 'futuresight',
 				source: source,
 				moveData: {
