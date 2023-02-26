@@ -522,6 +522,11 @@ export class TeamValidator {
 				set.gender = 'M';
 			}
 		}
+		if (species.baseSpecies === 'Muk-Delta' && species.id !== 'mukdelta' && ability.id !== 'regurgitation') {
+			if (ruleTable.has('obtainablemisc')) {
+				problems.push(`${name} must have Regurgitation unless it is in the base forme.`);
+			}
+		}
 		if (species.id === 'melmetal' && set.gigantamax && this.dex.species.getLearnsetData(species.id).eventData) {
 			setSources.sourcesBefore = 0;
 			setSources.sources = ['8S0 melmetal'];
