@@ -9437,6 +9437,26 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Water",
 		contestType: "Beautiful",
 	},
+	hydrosteam: {
+		num: 876,
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		name: "Hydro Steam",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, defrost: 1},
+		thawsTarget: true,
+		secondary: null,
+		onBasePower(basePower, source) {
+			if (source.effectiveWeather() === 'sunnyday') {
+				this.debug('hydro steam sun boost');
+				return this.chainModify(1.5);
+			}
+		},
+		target: "normal",
+		type: "Water",
+	},
 	hydrovortex: {
 		num: 642,
 		accuracy: true,
@@ -14723,6 +14743,25 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Psychic",
 		contestType: "Beautiful",
+	},
+	psyblade: {
+		num: 875,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		name: "Psyblade",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1, slicing: 1},
+		secondary: null,
+		onBasePower(basePower, source) {
+			if (this.field.getPseudoWeather('electricterrain') && source.isGrounded()) {
+				this.debug('psyblade electric terrain boost');
+				return this.chainModify(1.5);
+			}
+		},
+		target: "normal",
+		type: "Psychic",
 	},
 	psychup: {
 		num: 244,
