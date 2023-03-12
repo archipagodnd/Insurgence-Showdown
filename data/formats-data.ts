@@ -6854,7 +6854,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	aipomdelta: {
 		isNonstandard: "Past",
 		tier: "Illegal",
-		natDexTier: "LC",
+		natDexTier: "NFE",
     },
     ambipomdelta: {
 		isNonstandard: "Past",

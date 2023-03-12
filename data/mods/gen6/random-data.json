@@ -2412,5 +2412,668 @@
         "level": 80,
         "moves": ["earthpower", "fireblast", "hiddenpowerice", "sludgewave", "steameruption", "substitute", "superpower"],
         "doublesMoves": ["earthquake", "heatwave", "protect", "rockslide", "sludgebomb", "steameruption", "substitute"]
+    },
+    "venusaurdelta": {
+		"moves": ["calmmind", "moonblast", "psychic", "moonlight", "leechseed", "earthquake"],
+		"level": 84
+    },
+    "venusaurdeltamega": {
+		"moves": ["calmmind", "moonblast", "psychic", "moonlight", "leechseed", "earthquake"],
+		"level": 80
+    },
+    "charizarddelta": {
+		"moves": ["dragondance", "shadowball", "outrage", "dracometeor", "earthquake"],
+		"level": 86
+    },
+    "charizarddeltamega": {
+		"moves": ["dragondance", "shadowball", "outrage", "dracometeor", "earthquake"],
+		"level": 80
+    },
+    "blastoisedelta": {
+		"moves": ["knockoff", "closecombat", "ironhead", "uturn", "stealthrock", "spikes"],
+		"level": 86
+    },
+	"blastoisedeltamega": {
+		"moves": ["nastyplot", "darkpulse", "flashcannon", "focusblast", "uturn", "stealthrock", "spikes"],
+		"level": 82
+    },
+    "bisharpdelta": {
+		"moves": ["uturn", "highjumpkick", "knockoff", "ironhead", "acrobatics"],
+		"level": 84
+    },
+	"bisharpdeltamega": {
+		"moves": ["uturn", "highjumpkick", "knockoff", "aerialace", "bulkup"],
+		"level": 80
+    },
+    "gardevoirdelta": {
+		"moves": ["icebeam", "thunderbolt", "earthpower", "moonblast", "voltswitch", "calmmind"],
+		"level": 86
+    },
+	"gardevoirdeltamega": {
+		"moves": ["icebeam", "thunderbolt", "earthpower", "moonblast", "voltswitch", "calmmind"],
+		"level": 82
+    },
+    "galladedelta": {
+		"moves": ["iciclecrash", "iceshard", "wildcharge", "knockoff", "drainpunch", "swordsdance"],
+		"level": 86
+    },
+	"galladedeltamega": {
+		"moves": ["iciclecrash", "iceshard", "wildcharge", "knockoff", "drainpunch", "swordsdance"],
+		"level": 82
+    },
+    "sunfloradelta": {
+		"moves": ["corrode", "willowisp", "earthpower", "fireblast", "painsplit", "nastyplot", "trickroom"],
+		"level": 88
+    },
+	"sunfloradeltamega": {
+		"moves": ["corrode", "willowisp", "earthpower", "fireblast", "painsplit", "nastyplot", "trickroom"],
+		"level": 86
+    },
+    "avaluggdelta": {
+		"moves": ["stealthrock", "rapidspin", "slackoff", "stoneedge", "outrage", "earthquake"],
+		"level": 84
+    },
+	"scytherdelta": {
+		"moves": ["honeclaws", "roost", "iciclecrash", "closecombat", "knockoff"],
+		"level": 84
+    },
+    "scizordelta": {
+		"moves": ["swordsdance", "icepunch", "closecombat", "roost", "knockoff", "iceshard", "agility"],
+		"level": 84
+    },
+	"scizordeltamega": {
+		"moves": ["swordsdance", "icepunch", "closecombat", "roost", "knockoff", "iceshard", "agility"],
+		"level": 80
+    },
+    "scraftydelta": {
+		"moves": ["bulkup", "synthesis", "woodhammer", "rockslide", "knockoff", "superpower"],
+		"level": 86
+    },
+	"vespiquendelta": {
+		"moves": ["roost", "stealthrock", "flashcannon", "voltswitch", "calmmind", "fireblast"],
+		"level": 80
+    },
+    "weezingdelta": {
+		"moves": ["boomburst", "thunderbolt", "calmmind", "roost", "hurricane"],
+		"level": 84
+    },
+    "lieparddelta": {
+		"moves": ["swordsdance", "shadowclaw", "playrough", "knockoff", "uturn"],
+		"level": 86
+    },
+    "trevenantdelta": {
+		"moves": ["closecombat", "iceshard", "knockoff", "playrough", "earthquake"],
+		"level": 88
+    },
+    "glaliedelta": {
+		"moves": ["spikes", "stealthrock", "headsmash", "flareblitz", "earthquake", "energyball"],
+		"level": 90
+    },
+	"glaliedeltamega": {
+		"moves": ["spikes", "stealthrock", "headsmash", "flareblitz", "earthquake", "energyball"],
+		"level": 86
+    },
+    "froslassdelta": {
+		"moves": ["spikes", "stealthrock", "eruption", "taunt", "earthquake", "energyball", "fireblast"],
+		"level": 88
+    },
+	"froslassdeltamega": {
+		"moves": ["shadowball", "eruption", "taunt", "earthpower", "energyball", "fireblast"],
+		"level": 88
+    },
+    "luxraydelta": {
+		"moves": ["gunkshot", "ironhead", "earthquake", "toxicspikes", "glare", "knockoff"],
+		"level": 88
+    },
+    "noiverndelta": {
+		"moves": ["nastyplot", "flashcannon", "boomburst", "petaldance", "uturn"],
+		"level": 84
+    },
+    "roseradedelta": {
+		"moves": ["spikes", "moonblast", "calmmind", "darkpulse", "moonlight", "heatwave"],
+		"level": 82
+    },
+    "drifblimdelta": {
+		"moves": ["willowisp", "hurricane", "inferno", "roost", "scald", "calmmind"],
+		"level": 84
+    },
+    "mukdelta": {
+		"moves": ["earthquake", "recover", "stealthrock", "stoneedge", "knockoff"],
+		"level": 84
+    },
+    "quagsiredelta": {
+		"moves": ["leechseed", "willowisp", "synthesis", "flamethrower", "seedbomb", "earthquake", "knockoff"],
+		"level": 88
+    },
+    "snorlaxdelta": {
+		"moves": ["bulkup", "synthesis", "woodhammer", "rockslide", "drainpunch", "bellydrum"],
+		"level": 80
+    },
+    "mismagiusdelta": {
+		"moves": ["moonblast", "freezedry", "uturn", "trick", "powergem", "calmmind"],
+		"level": 84
+    },
+    "typhlosiondelta": {
+		"moves": ["voltswitch", "flashcannon", "energyball", "dazzlinggleam", "thunderbolt"],
+		"level": 88
+    },
+	"typhlosiondeltamega": {
+		"moves": ["voltswitch", "flashcannon", "energyball", "dazzlinggleam", "thunderbolt"],
+		"level": 82
+    },
+    "sceptiledelta": {
+		"moves": ["dragondance", "highjumpkick", "outrage", "knockoff", "facade", "dracometeor"],
+		"level": 82
+    },
+    "blazikendelta": {
+		"moves": ["hurricane", "psychic", "earthquake", "knockoff", "uturn"],
+		"level": 84
+    },
+    "torterradelta": {
+		"moves": ["stealthrock", "recover", "spikes", "earthquake", "curse", "waterfall", "stoneedge"],
+		"level": 84
+    },
+    "serperiordelta": {
+		"moves": ["slackoff", "uturn", "scald", "glare", "dracometeor", "earthquake", "icebeam"],
+		"level": 80
+    },
+    "greninjadelta": {
+		"moves": ["spikes", "uturn", "willowisp", "endeavor", "fireblast", "knockoff", "leafstorm"],
+		"level": 82
+    },
+    "pidgeotdelta": {
+		"moves": ["dragondance", "knockoff", "outrage", "irontail", "uturn", "glare"],
+		"level": 88
+    },
+	"pidgeotdeltamega": {
+		"moves": ["dragondance", "knockoff", "outrage", "irontail", "uturn", "glare"],
+		"level": 86
+    },
+    "dugtriodelta": {
+		"moves": ["headcharge", "iciclecrash", "earthquake", "extremespeed", "knockoff"],
+		"level": 88
+    },
+    "arcaninedelta": {
+		"moves": ["swordsdance", "extremespeed", "earthquake", "dracojet", "outrage"],
+		"level": 76
+    },
+    "tentacrueldelta": {
+		"moves": ["corrode", "powerwhip", "synthesis", "knockoff", "toxicspikes", "sleeppowder"],
+		"level": 86
+    },
+    "golemdelta": {
+		"moves": ["stoneedge", "zenheadbutt", "earthquake", "icepunch", "stealthrock", "knockoff"],
+		"level": 86
+    },
+    "dodriodelta": {
+		"moves": ["workup", "zenheadbutt", "drillrun", "superpower", "knockoff", "hypnosis"],
+		"level": 88
+    },
+    "tangrowthdelta": {
+		"moves": ["earthquake", "knockoff", "drainpunch", "stealthrock", "spikes", "synthesis"],
+		"level": 84
+    },
+    "dittodelta": {
+		"moves": ["morph", "retrograde", "mirrormove", "transform"],
+		"level": 100
+    },
+    "kabutopsdelta": {
+		"moves": ["knockoff", "leechlife", "gunkshot", "superpower", "swordsdance"],
+		"level": 86
+    },
+    "dragonitedelta": {
+		"moves": ["wildcharge", "waterfall", "icepunch", "uturn", "knockoff", "earthquake"],
+		"level": 82
+    },
+    "noctowldelta": {
+		"moves": ["blizzard", "hurricane", "tailwind", "roost"],
+		"level": 90
+    },
+    "lanturndelta": {
+		"moves": ["willowisp", "hex", "flamethrower", "sludgebomb", "earthpower"],
+		"level": 86
+    },
+    "raichudelta": {
+		"moves": ["moonblast", "hurricane", "rapidspin", "focusblast", "knockoff", "uturn"],
+		"level": 84
+    },
+    "ambipomdelta": {
+		"moves": ["shadowclaw", "fakeout", "return", "uturn", "achillesheel", "knockoff"],
+		"level": 78
+    },
+    "yanmegadelta": {
+		"moves": ["leafstorm", "hurricane", "uturn", "energyball", "airslash"],
+		"level": 84
+    },
+    "girafarigdelta": {
+		"moves": ["toxicspikes", "corrode", "thunderbolt", "autotomize", "nastyplot", "flashcannon"],
+		"level": 90
+    },
+	"girafarigdeltamega": {
+		"moves": ["toxicspikes", "corrode", "thunderbolt", "autotomize", "nastyplot", "flashcannon"],
+		"level": 86
+    },
+    "dunsparcedelta": {
+		"moves": ["swordsdance", "iciclespear", "pinmissile", "aquajet", "rockblast", "watershuriken"],
+		"level": 90
+    },
+    "shuckledelta": {
+		"moves": ["spikes", "seismictoss", "knockoff", "toxic", "rest", "sleeptalk"],
+		"level": 90
+    },
+    "octillerydelta": {
+		"moves": ["overheat", "energyball", "earthpower", "vacuumwave", "scald", "ancientpower"],
+		"level": 86
+    },
+    "electiviredelta": {
+		"moves": ["swordsdance", "stoneedge", "outrage", "earthquake", "dracojet"],
+		"level": 84
+    },
+    "magmortardelta": {
+		"moves": ["waterpulse", "flashcannon", "aurasphere", "icebeam", "energyball"],
+		"level": 84
+    },
+    "ludicolodelta": {
+		"moves": ["calmmind", "psyshock", "scald", "focusblast", "icebeam", "thunderbolt"],
+		"level": 86
+    },
+    "shiftrydelta": {
+		"moves": ["nastyplot", "thunderbolt", "energyball", "dazzlinggleam", "voltswitch", "fireblast"],
+		"level": 86
+    },
+    "sableyedelta": {
+		"moves": ["swordsdance", "fireblast", "stoneedge", "earthquake", "knockoff", "willowisp"],
+		"level": 90
+    },
+	"sableyedeltamega": {
+		"moves": ["swordsdance", "fireblast", "stoneedge", "earthquake", "knockoff", "willowisp"],
+		"level": 88
+    },
+    "mawiledelta": {
+		"moves": ["spikes", "toxicspikes", "knockoff", "swordsdance", "suckerpunch", "petalblizzard"],
+		"level": 90
+    },
+	"mawiledeltamega": {
+		"moves": ["spikes", "toxicspikes", "knockoff", "swordsdance", "suckerpunch", "petalblizzard"],
+		"level": 86
+    },
+    "aggrondelta": {
+		"moves": ["flareblitz", "ironhead", "knockoff", "earthquake", "stealthrock", "autotomize"],
+		"level": 84
+    },
+    "medichamdelta": {
+		"moves": ["earthpower", "moonblast", "calmmind", "slackoff", "aurasphere", "psychic"],
+		"level": 86
+    },
+	"medichamdeltamega": {
+		"moves": ["earthpower", "moonblast", "calmmind", "slackoff", "aurasphere", "psychic"],
+		"level": 80
+    },
+    "cameruptdelta": {
+		"moves": ["toxic", "corrode", "flamethrower", "scald", "earthquake"],
+		"level": 90
+    },
+	"cameruptdeltamega": {
+		"moves": ["toxic", "corrode", "flamethrower", "scald", "earthquake"],
+		"level": 88
+    },
+    "plusledelta": {
+		"moves": ["quiverdance", "hypervoice", "fireblast", "energyball", "psychic"],
+		"level": 90
+    },
+    "minundelta": {
+		"moves": ["quiverdance", "hypervoice", "icebeam", "energyball", "psychic"],
+		"level": 90
+    },
+    "wailorddelta": {
+		"moves": ["blizzard", "hurricane", "roost", "surf", "uturn", "freezedry"],
+		"level": 90
+    },
+    "miloticdelta": {
+		"moves": ["willowisp", "recover", "shadowball", "aurasphere", "calmmind"],
+		"level": 78
+    },
+	"miloticdeltamega": {
+		"moves": ["willowisp", "recover", "shadowball", "aurasphere", "calmmind"],
+		"level": 78
+    },
+    "huntaildelta": {
+		"moves": ["shellsmash", "crunch", "outrage", "ironhead", "firefang"],
+		"level": 82
+    },
+    "gorebyssdelta": {
+		"moves": ["shellsmash", "moonblast", "dragonpulse", "dracometeor", "icebeam"],
+		"level": 82
+    },
+    "metagrossdeltas": {
+		"moves": ["uturn", "stickyweb", "earthquake", "stealthrock", "spikes", "knockoff", "stoneedge"],
+		"level": 78
+    },
+	"metagrossdeltasmega": {
+		"moves": ["uturn", "stickyweb", "earthquake", "stealthrock", "spikes", "knockoff", "stoneedge"],
+		"level": 76
+    },
+    "metagrossdeltar": {
+		"moves": ["headsmash", "woodhammer", "earthquake", "voltswitch", "diamondstorm", "stealthrock"],
+		"level": 76
+    },
+	"metagrossdeltarmega": {
+		"moves": ["headsmash", "woodhammer", "earthquake", "voltswitch", "diamondstorm", "stealthrock"],
+		"level": 74
+    },
+	"metagrossdeltarcrystal": {
+		"moves": ["headsmash", "woodhammer", "earthquake", "voltswitch", "diamondstorm", "stealthrock", "crystalrush"],
+		"level": 74
+    },
+    "lopunnydelta": {
+		"moves": ["bulkup", "highjumpkick", "knockoff", "poisonjab", "uturn"],
+		"level": 88
+	},
+	"lopunnydeltamega": {
+		"moves": ["bulkup", "highjumpkick", "knockoff", "poisonjab", "uturn", "zenheadbutt"],
+		"level": 82
+    },
+    "lucariodelta": {
+		"moves": ["earthquake", "knockoff", "stoneedge", "suckerpunch", "swordsdance", "blizzard"],
+		"level": 86
+    },
+	"lucariodeltamega": {
+		"moves": ["earthquake", "knockoff", "stoneedge", "suckerpunch", "swordsdance", "blizzard"],
+		"level": 82
+    },
+    "toxicroakdelta": {
+		"moves": ["flareblitz", "earthquake", "knockoff", "thunderpunch", "superpower"],
+		"level": 88
+    },
+    "scolipededelta": {
+		"moves": ["stealthrock", "spikes", "flareblitz", "stoneedge", "earthquake", "swordsdance"],
+		"level": 88
+    },
+    "lilligantdeltaw": {
+		"moves": ["tailglow", "recover", "hydropump", "fireblast", "energyball"],
+		"level": 84
+    },
+    "lilligantdeltaf": {
+		"moves": ["calmmind", "roost", "hurricane", "focusblast", "moonblat", "heatwave"],
+		"level": 88
+    },
+    "reuniclusdelta": {
+		"moves": ["trickroom", "shadowball", "powergem", "focusblast", "calmmind", "earthpower"],
+		"level": 84
+    },
+    "darmanitandelta": {
+		"moves": ["shadowclaw", "knockoff", "uturn", "superpower", "shadowsneak"],
+		"level": 82
+    },
+    "maractusdelta": {
+		"moves": ["shiftgear", "meteormash", "knockoff", "wildcharge", "uturn", "overheat"],
+		"level": 90
+    },
+    "crustledeltab": {
+		"moves": ["spikes", "earthquake", "gunkshot", "swordsdance", "leafblade"],
+		"level": 88
+    },
+    "crustledeltac": {
+		"moves": ["shellsmash", "playrough", "facade", "brickbreak", "knockoff"],
+		"level": 74
+    },
+    "cofagrigusdelta": {
+		"moves": ["corrode", "earthpower", "painsplit", "willowisp", "toxic", "flashcannon"],
+		"level": 88
+    },
+    "emolgadelta": {
+		"moves": ["fireblast", "knockoff", "woodhammer", "uturn", "willowisp"],
+		"level": 78
+    },
+    "escavalierdelta": {
+		"moves": ["trickroom", "swordsdance", "playrough", "knockoff", "superpower", "zenheadbutt"],
+		"level": 80
+    },
+    "amoongussdelta": {
+		"moves": ["willowisp", "shadowball", "taunt", "knockoff", "destinybond", "icebeam"],
+		"level": 88
+    },
+    "chandeluredelta": {
+		"moves": ["moonblast", "fireblast", "earthpower", "trick", "calmmind"],
+		"level": 78
+    },
+    "haxorusdelta": {
+		"moves": ["swordsdance", "waterfall", "ironhead", "knockoff", "earthquake"],
+		"level": 80
+    },
+    "golurkdelta": {
+		"moves": ["closecombat", "bulkup", "knockoff", "bulletpunch", "icepunch", "facade", "drainpunch"],
+		"level": 86
+    },
+    "heatmordelta": {
+		"moves": ["shiftgear", "gunkshot", "ironhead", "crunch", "fireblast"],
+		"level": 84
+    },
+    "hydreigondelta": {
+		"moves": ["earthpower", "hypervoice", "fireblast", "glare", "uturn"],
+		"level": 80
+    },
+    "volcaronadelta": {
+		"moves": ["corrode", "darkpulse", "roost", "taunt", "earthpower"],
+		"level": 76
+    },
+    "aurorusdelta": {
+		"moves": ["scald", "recover", "icebeam", "earthpower", "calmmind"],
+		"level": 80
+    },
+    "goodradelta": {
+		"moves": ["earthpower", "scald", "icebeam", "stealthrock", "calmmind"],
+		"level": 84
+    },
+    "regirockdelta": {
+		"moves": ["earthquake", "stealthrock", "knockoff", "recover", "stoneedge"],
+		"level": 78
+    },
+    "regicedelta": {
+		"moves": ["scald", "stealthrock", "knockoff", "recover", "icebeam"],
+		"level": 76
+    },
+    "registeeldelta": {
+		"moves": ["lavaplume", "stealthrock", "knockoff", "recover", "earthquake", "willowisp"],
+		"level": 80
+    },
+    "meloettadeltamime": {
+		"moves": ["knockoff", "playrough", "uturn", "ironhead", "suckerpunch", "taunt"],
+		"level": 76
+    },
+    "meloettadeltamagician": {
+		"moves": ["calmmind", "psychic", "darkpulse", "focusblast", "uturn", "trick"],
+		"level": 84
+    },
+    "hoopadelta": {
+		"moves": ["aeroblast", "moonblast", "heatwave", "voltswitch", "icebeam", "nastyplot"],
+		"level": 80
+    },
+    "hoopadeltaunleashed": {
+		"moves": ["aeroblast", "moonblast", "heatwave", "voltswitch", "icebeam", "nastyplot"],
+		"level": 76
+    },
+	"ufi": {
+		"moves": ["calmmind", "nanorepair", "storedpower", "thunderbolt", "icebeam"],
+		"level": 76
+	},
+	"poliwrathmega": {
+        "moves": ["hypnosis", "waterfall", "dynamicpunch", "bulkup", "icepunch"],
+        "level": 82
+    },
+	"marowakmega": {
+		"moves": ["earthquake", "stoneedge", "swordsdance", "shadowsneak", "shadowclaw"],
+        "level": 84
+    },
+	"eeveemegabase": {
+        "moves": ["icebeam", "voltswitch", "flareblitz", "leafblade", "moonblast", "psychic", "foulplay", "scald"],
+        "level": 82
+    },
+	"meganiummega": {
+        "level": 84,
+        "moves": ["calmmind", "moonblast", "gigadrain", "synthesis", "toxic"]
+    },
+	"typhlosionmega": {
+        "level": 80,
+        "moves": ["eruption", "extrasensory", "fireblast", "focusblast", "hiddenpowergrass"]
+    },
+	"feraligatrmega": {
+        "level": 78,
+        "moves": ["aquajet", "crunch", "dragondance", "earthquake", "icepunch", "swordsdance", "waterfall"]
+    },
+	"sudowoodomega": {
+        "moves": ["headsmash", "woodhammer", "earthquake", "curse", "stealthrock"]
+    },
+	"politoedmega": {
+        "level": 82,
+        "moves": ["encore", "icebeam", "protect", "rest", "scald", "toxic"]
+    },
+	"sunfloramegam": {
+        "moves": ["leafstorm", "gigadrain", "earthpower", "sludgebomb", "morningsun", "hiddenpowerfire"],
+        "level": 84
+    },
+	"sunfloramegaf": {
+        "moves": ["leafstorm", "gigadrain", "earthpower", "sludgebomb", "morningsun"],
+        "level": 84
+    },
+	"girafarigmega": {
+        "moves": ["calmmind", "hyperfang", "icefang", "firefang", "thunderfang", "crunch"],
+        "level": 82
+    },
+	"steelixmegafire": {
+		"moves": ["stealthrock", "stoneedge", "gyroball", "earthquake", "toxic"],
+        "level": 84
+    },
+	"magcargomega": {
+		"moves": ["shellsmash", "fireblast", "earthpower", "hiddenpowergrass", "stealthrock"],
+        "level": 84
+    },
+	"donphanmega": {
+		"moves": ["rapidspin", "earthquake", "knockoff", "stealthrock", "gunkshot"],
+        "level": 82
+    },
+	"miltankmega": {
+		"moves": ["curse", "milkdrink", "return", "earthquake", "healbell"],
+        "level": 82
+    },
+	"shiftrymega": {
+		"moves": ["swordsdance", "suckerpunch", "knockoff", "leafblade", "lowkick", "explosion"],
+        "level": 84
+    },
+	"flygonmega": {
+		"moves": ["boomburst", "drakonvoice", "ancientroar", "bugbuzz", "uturn"],
+        "level": 78
+    },
+	"cacturnemega": {
+		"moves": ["swordsdance", "suckerpunch", "seedbomb", "drainpunch", "thunderpunch"],
+        "level": 84
+    },
+	"crawdauntmega": {
+        "level": 78,
+        "moves": ["aquajet", "crabhammer", "dragondance", "knockoff", "superpower", "swordsdance"]
+    },
+	"miloticmega": {
+        "level": 78,
+        "moves": ["moonblast", "icebeam", "scald", "recover", "refresh", "toxic"]
+    },
+	"jirachimega": {
+		"moves": ["wish", "calmmind", "doomdesire", "psychic", "protect"],
+        "level": 76
+    },
+	"chatotmega": {
+		"moves": ["nastyplot", "boomburst", "chatter", "heatwave", "uturn"],
+        "level": 82
+    },
+	"spiritombmega": {
+		"moves": ["phantomforce", "knockoff", "shadowsneak", "willowisp", "pursuit"],
+        "level": 82
+    },
+	"froslassmega": {
+        "level": 82,
+        "moves": ["destinybond", "icebeam", "shadowball", "spikes", "taunt", "willowisp"]
+    },
+	"zebstrikamega": {
+        "moves": ["thunderbolt", "voltswitch", "dazzlinggleam", "hiddenpowerice", "overheat"],
+        "level": 82
+    },
+	"zoroarkmega": {
+        "moves": ["darkpulse", "flamethrower", "focusblast", "nastyplot", "sludgebomb", "trick"],
+        "doublesMoves": ["darkpulse", "flamethrower", "focusblast", "knockoff", "nastyplot", "protect", "suckerpunch", "uturn"]
+    },
+	"gothitellemega": {
+        "moves": ["calmmind", "psychic", "darkpulse", "thunderbolt", "taunt"],
+        "level": 82
+    },
+	"reuniclusmega": {
+        "level": 82,
+        "moves": ["calmmind", "focusblast", "psychic", "psyshock", "recover", "shadowball"],
+        "doublesMoves": ["energyball", "focusblast", "helpinghand", "hiddenpowerfire", "protect", "psychic", "psyshock", "shadowball"]
+    },
+	"cryogonalmega": {
+        "moves": ["freezedry", "substitute", "recover", "knockoff", "protect"],
+        "level": 74
+    },
+	"haxorusmega": {
+        "moves": ["swordsdance", "outrage", "ironhead", "earthquake", "superpower"],
+        "level": 74
+    },
+	"stunfiskmega": {
+        "moves": ["earthpower", "thunderbolt", "sludgewave", "voltswitch", "surf"],
+        "level": 80
+    },
+	"bisharpmega": {
+        "level": 78,
+        "moves": ["ironhead", "knockoff", "lowkick", "suckerpunch", "swordsdance"],
+        "doublesMoves": ["brickbreak", "ironhead", "knockoff", "protect", "substitute", "suckerpunch", "swordsdance"]
+    },
+	"hydreigonmegafive": {
+        "moves": ["dracometeor", "darkpulse", "flashcannon", "earthpower", "roost"],
+        "level": 76
+    },
+	"mewtwoarmor": {
+        "level": 76,
+        "moves": ["aurasphere", "calmmind", "fireblast", "icebeam", "psystrike", "recover"],
+        "doublesMoves": ["aurasphere", "calmmind", "fireblast", "icebeam", "protect", "psystrike", "recover", "substitute", "taunt", "thunderbolt", "willowisp"]
+    },
+	"tyranitararmor": {
+        "level": 80,
+        "moves": ["crunch", "earthquake", "fireblast", "icebeam", "pursuit", "stealthrock", "stoneedge"],
+        "doublesMoves": ["crunch", "earthquake", "firepunch", "icepunch", "protect", "rockslide", "stealthrock", "stoneedge"]
+    },
+	"flygonarmor": {
+        "level": 84,
+        "moves": ["defog", "earthquake", "fireblast", "outrage", "roost", "stoneedge", "uturn"],
+        "doublesMoves": ["dragonclaw", "earthquake", "feint", "fireblast", "firepunch", "protect", "rockslide", "tailwind", "uturn"]
+    },
+	"leavannyarmor": {
+        "level": 88,
+        "moves": ["knockoff", "leafblade", "stickyweb", "swordsdance", "xscissor"],
+        "doublesMoves": ["leafblade", "poisonjab", "protect", "stickyweb", "swordsdance", "xscissor"]
+    },
+	"zekromarmor": {
+        "level": 76,
+        "moves": ["boltstrike", "dracometeor", "dragonclaw", "honeclaws", "outrage", "roost", "substitute", "voltswitch"],
+        "doublesMoves": ["boltstrike", "dracometeor", "dragonclaw", "fusionbolt", "honeclaws", "protect", "roost", "substitute", "tailwind", "voltswitch"]
+    },
+	"volcaronadeltaarmor": {
+		"moves": ["corrode", "darkpulse", "roost", "taunt", "earthpower"],
+		"level": 76
+    },
+	"regigigasprimal": {
+        "level": 76,
+        "moves": ["earthquake", "drainpunch", "knockoff", "return", "toxic"],
+        "doublesMoves": ["earthquake", "icywind", "knockoff", "return", "rockslide", "substitute", "thunderwave", "wideguard"]
+    },
+	"giratinaprimal": {
+        "moves": ["dracometeor", "shadowball", "aurasphere", "willowisp", "hex", "earthpower"],
+        "level": 74
+    },
+	"arceusprimal": {
+		"moves": ["swordsdance", "extremespeed", "shadowclaw", "earthquake", "recover"],
+        "level": 74
+    },
+	"mewtwoshadow": {
+		"moves": ["psystrike", "calmmind", "recover", "darkpulse", "focusblast"],
+		"level": 76
     }
 }

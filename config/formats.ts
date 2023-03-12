@@ -99,6 +99,21 @@ export const Formats: FormatList = [
 		banlist: ['NU', 'PUBL', 'Chatter'],
 	},
 	{
+		name: "[Gen 6] LC",
+		threads: [
+			`&bullet; <a href="https://www.smogon.com/dex/xy/formats/lc/">ORAS LC Banlist</a>`,
+			`&bullet; <a href="https://www.smogon.com/forums/threads/3547566/">ORAS LC Viability Rankings</a>`,
+		],
+
+		mod: 'gen6',
+		ruleset: ['Standard', 'Little Cup'],
+		banlist: [
+			'Drifloon', 'Gligar', 'Meditite', 'Misdreavus', 'Murkrow', 'Scyther', 'Sneasel', 'Swirlix', 'Tangela', 'Yanma',
+			'Baton Pass', 'Dragon Rage', 'Sonic Boom', 'Swagger',
+			'Aipom-Delta', 'Tangela-Delta', 'Scyther-Delta', 'Misdreavus-Delta', 'Yanma-Delta', 'Dwebble-Delta-C',
+		],
+	},
+	{
 		name: "[Gen 6] 1v1",
 		desc: `Bring three Pok&eacute;mon to Team Preview and choose one to battle.`,
 		threads: [
@@ -308,6 +323,8 @@ export const Formats: FormatList = [
 		banlist: [
 			'Corsola-Galar', 'Cutiefly', 'Drifloon', 'Gastly', 'Gothita', 'Magby', 'Rufflet', 'Scraggy', 'Scyther', 'Sneasel', 'Swirlix',
 			'Tangela', 'Vullaby', 'Vulpix-Alola', 'Woobat', 'Zigzagoon-Base', 'Chlorophyll', 'Moody', 'Baton Pass', 'Sticky Web', 'Dunsparce', 'Flittle',
+			'Aipom-Delta', 'Tangela-Delta', 'Qwilfish-Hisui', 'Mr. Mime-Galar', 'Basculin', 'Type: Null', 'Scyther-Delta', 'Misdreavus-Delta', 'Yanma-Delta',
+			'Dwebble-Delta-C', 'Yanma', 'Murkrow', 'Misdreavus', 'Girafarig', 'Gligar',
 		],
 	},
 	{
@@ -1461,6 +1478,8 @@ export const Formats: FormatList = [
 		banlist: [
 			'Corsola-Galar', 'Cutiefly', 'Drifloon', 'Gastly', 'Gothita', 'Magby', 'Rufflet', 'Scraggy', 'Scyther', 'Sneasel', 'Swirlix',
 			'Tangela', 'Vullaby', 'Vulpix-Alola', 'Woobat', 'Zigzagoon-Base', 'Chlorophyll', 'Moody', 'Baton Pass', 'Sticky Web',
+			'Aipom-Delta', 'Tangela-Delta', 'Mr. Mime-Galar', 'Type: Null', 'Scyther-Delta', 'Misdreavus-Delta', 'Yanma-Delta',
+			'Dwebble-Delta-C', 'Yanma', 'Murkrow', 'Misdreavus', 'Gligar',
 		],
 	},
 	{
@@ -1664,6 +1683,8 @@ export const Formats: FormatList = [
 			'Aipom', 'Cutiefly', 'Drifloon', 'Gligar', 'Gothita', 'Meditite', 'Misdreavus', 'Murkrow', 'Porygon',
 			'Scyther', 'Sneasel', 'Swirlix', 'Tangela', 'Trapinch', 'Vulpix-Base', 'Wingull', 'Yanma',
 			'Eevium Z', 'Baton Pass', 'Dragon Rage', 'Sonic Boom', 'Sticky Web',
+			'Aipom-Delta', 'Tangela-Delta', 'Type: Null', 'Scyther-Delta', 'Misdreavus-Delta', 'Yanma-Delta',
+			'Dwebble-Delta-C',
 		],
 	},
 	{

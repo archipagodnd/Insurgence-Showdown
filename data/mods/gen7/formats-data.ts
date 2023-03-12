@@ -3527,8 +3527,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     venusaurdelta: {
-		randomBattleMoves: ["calmmind", "moonblast", "psychic", "moonlight", "leechseed", "earthquake"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["calmmind", "moonblast", "psychic", "moonlight", "leechseed", "earthquake"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
     venusaurdeltamega: {
@@ -3541,8 +3541,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     charizarddelta: {
-		randomBattleMoves: ["dragondance", "shadowbone", "outrage", "dracometeor", "earthquake"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["dragondance", "shadowbone", "outrage", "dracometeor", "earthquake"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
     charizarddeltamega: {
@@ -3555,8 +3555,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     blastoisedelta: {
-		randomBattleMoves: ["nastyplot", "darkpulse", "flashcannon", "focusblast", "uturn", "stealthrock", "spikes"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["nastyplot", "darkpulse", "flashcannon", "focusblast", "uturn", "stealthrock", "spikes"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
 	blastoisedeltamega: {
@@ -3566,8 +3566,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     bisharpdelta: {
-		randomBattleMoves: ["uturn", "highjumpkick", "knockoff", "ironhead", "acrobatics"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["uturn", "highjumpkick", "knockoff", "ironhead", "acrobatics"],
+		// randomBattleLevel: 82,
 		tier: "UU",
     },
 	bisharpdeltamega: {
@@ -3580,16 +3580,16 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     gardevoirdelta: {
-		randomBattleMoves: ["icebeam", "thunderbolt", "earthpower", "moonblast", "voltswitch", "calmmind"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["icebeam", "thunderbolt", "earthpower", "moonblast", "voltswitch", "calmmind"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
 	gardevoirdeltamega: {
 		tier: "OU",
     },
     galladedelta: {
-		randomBattleMoves: ["iciclecrash", "iceshard", "wildcharge", "knockoff", "drainpunch", "swordsdance"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["iciclecrash", "iceshard", "wildcharge", "knockoff", "drainpunch", "swordsdance"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
 	galladedeltamega: {
@@ -3599,8 +3599,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     sunfloradelta: {
-		randomBattleMoves: ["corrode", "willowisp", "earthpower", "fireblast", "painsplit", "nastyplot", "trickroom"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["corrode", "willowisp", "earthpower", "fireblast", "painsplit", "nastyplot", "trickroom"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
 	sunfloradeltamega: {
@@ -3610,18 +3610,18 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     avaluggdelta: {
-		randomBattleMoves: ["stealthrock", "rapidspin", "slackoff", "stoneedge", "outrage", "earthquake"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["stealthrock", "rapidspin", "slackoff", "stoneedge", "outrage", "earthquake"],
+		// randomBattleLevel: 84,
 		tier: "UU",
     },
 	scytherdelta: {
-		randomBattleMoves: ["honeclaws", "roost", "iciclecrash", "closecombat", "knockoff"],
-		randomBattleLevel: 80,
+		// randomBattleMoves: ["honeclaws", "roost", "iciclecrash", "closecombat", "knockoff"],
+		// randomBattleLevel: 80,
 		tier: "UU",
     },
     scizordelta: {
-		randomBattleMoves: ["swordsdance", "icepunch", "closecombat", "roost", "knockoff", "iceshard", "agility"],
-		randomBattleLevel: 80,
+		// randomBattleMoves: ["swordsdance", "icepunch", "closecombat", "roost", "knockoff", "iceshard", "agility"],
+		// randomBattleLevel: 80,
 		tier: "UU",
     },
 	scizordeltamega: {
@@ -3631,56 +3631,56 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     scraftydelta: {
-		randomBattleMoves: ["bulkup", "synthesis", "woodhammer", "rockslide", "knockoff", "superpower"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["bulkup", "synthesis", "woodhammer", "rockslide", "knockoff", "superpower"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	combeedelta: {
 		tier: "LC",
     },
 	vespiquendelta: {
-		randomBattleMoves: ["roost", "stealthrock", "flashcannon", "voltswitch", "calmmind", "fireblast"],
-		randomBattleLevel: 80,
+		// randomBattleMoves: ["roost", "stealthrock", "flashcannon", "voltswitch", "calmmind", "fireblast"],
+		// randomBattleLevel: 80,
 		tier: "OU",
     },
 	koffingdelta: {
 		tier: "LC",
     },
     weezingdelta: {
-		randomBattleMoves: ["boomburst", "thunderbolt", "calmmind", "roost", "hurricane"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["boomburst", "thunderbolt", "calmmind", "roost", "hurricane"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	purrloindelta: {
 		tier: "LC",
     },
     lieparddelta: {
-		randomBattleMoves: ["swordsdance", "shadowclaw", "playrough", "knockoff", "uturn"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["swordsdance", "shadowclaw", "playrough", "knockoff", "uturn"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	phantumpdelta: {
 		tier: "LC",
     },
     trevenantdelta: {
-		randomBattleMoves: ["closecombat", "auroraveil", "iceshard", "knockoff", "playrough", "earthquake"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["closecombat", "auroraveil", "iceshard", "knockoff", "playrough", "earthquake"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
 	snoruntdelta: {
 		tier: "LC",
     },
     glaliedelta: {
-		randomBattleMoves: ["spikes", "stealthrock", "headsmash", "flareblitz", "earthquake", "energyball"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["spikes", "stealthrock", "headsmash", "flareblitz", "earthquake", "energyball"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	glaliedeltamega: {
 		tier: "RU",
     },
     froslassdelta: {
-		randomBattleMoves: ["spikes", "stealthrock", "eruption", "taunt", "earthquake", "energyball", "fireblast"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["spikes", "stealthrock", "eruption", "taunt", "earthquake", "energyball", "fireblast"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	froslassdeltamega: {
@@ -3693,16 +3693,16 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     luxraydelta: {
-		randomBattleMoves: ["gunkshot", "ironhead", "earthquake", "toxicspikes", "glare", "knockoff"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["gunkshot", "ironhead", "earthquake", "toxicspikes", "glare", "knockoff"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
 	noibatdelta: {
 		tier: "LC",
     },
     noiverndelta: {
-		randomBattleMoves: ["nastyplot", "flashcannon", "boomburst", "petaldance", "uturn"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["nastyplot", "flashcannon", "boomburst", "petaldance", "uturn"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	budewdelta: {
@@ -3712,48 +3712,48 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     roseradedelta: {
-		randomBattleMoves: ["spikes", "moonblast", "calmmind", "darkpulse", "moonlight", "heatwave"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["spikes", "moonblast", "calmmind", "darkpulse", "moonlight", "heatwave"],
+		// randomBattleLevel: 82,
 		tier: "OU",
     },
 	drifloondelta: {
 		tier: "LC",
     },
     drifblimdelta: {
-		randomBattleMoves: ["willowisp", "hurricane", "inferno", "roost", "scald", "calmmind"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["willowisp", "hurricane", "inferno", "roost", "scald", "calmmind"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	grimerdelta: {
 		tier: "LC",
     },
     mukdelta: {
-		randomBattleMoves: ["earthquake", "recover", "stealthrock", "stoneedge", "knockoff"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["earthquake", "recover", "stealthrock", "stoneedge", "knockoff"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	wooperdelta: {
 		tier: "LC",
     },
     quagsiredelta: {
-		randomBattleMoves: ["leechseed", "willowisp", "strengthsap", "flamethrower", "seedbomb", "earthquake", "knockoff"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["leechseed", "willowisp", "strengthsap", "flamethrower", "seedbomb", "earthquake", "knockoff"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
 	munchlaxdelta: {
 		tier: "LC",
     },
     snorlaxdelta: {
-		randomBattleMoves: ["bulkup", "synthesis", "woodhammer", "rockslide", "drainpunch", "bellydrum"],
-		randomBattleLevel: 80,
+		// randomBattleMoves: ["bulkup", "synthesis", "woodhammer", "rockslide", "drainpunch", "bellydrum"],
+		// randomBattleLevel: 80,
 		tier: "OU",
     },
 	misdreavusdelta: {
 		tier: "LC",
     },
     mismagiusdelta: {
-		randomBattleMoves: ["moonblast", "freezedry", "uturn", "trick", "powergem", "calmmind"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["moonblast", "freezedry", "uturn", "trick", "powergem", "calmmind"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	cyndaquildelta: {
@@ -3763,8 +3763,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     typhlosiondelta: {
-		randomBattleMoves: ["voltswitch", "flashcannon", "energyball", "dazzlinggleam", "thunderbolt"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["voltswitch", "flashcannon", "energyball", "dazzlinggleam", "thunderbolt"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	typhlosiondeltamega: {
@@ -3777,8 +3777,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     sceptiledelta: {
-		randomBattleMoves: ["dragondance", "highjumpkick", "outrage", "knockoff", "facade", "dracometeor"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["dragondance", "highjumpkick", "outrage", "knockoff", "facade", "dracometeor"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
 	torchicdelta: {
@@ -3788,8 +3788,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     blazikendelta: {
-		randomBattleMoves: ["hurricane", "psychic", "earthquake", "knockoff", "uturn"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["hurricane", "psychic", "earthquake", "knockoff", "uturn"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	turtwigdelta: {
@@ -3799,8 +3799,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     torterradelta: {
-		randomBattleMoves: ["stealthrock", "recover", "spikes", "earthquake", "curse", "liquidation", "stoneedge"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["stealthrock", "recover", "spikes", "earthquake", "curse", "liquidation", "stoneedge"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	snivydelta: {
@@ -3810,8 +3810,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     serperiordelta: {
-		randomBattleMoves: ["slackoff", "flipturn", "scald", "glare", "dracometeor", "earthquake", "icebeam"],
-		randomBattleLevel: 80,
+		// randomBattleMoves: ["slackoff", "flipturn", "scald", "glare", "dracometeor", "earthquake", "icebeam"],
+		// randomBattleLevel: 80,
 		tier: "OU",
     },
 	froakiedelta: {
@@ -3821,8 +3821,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     greninjadelta: {
-		randomBattleMoves: ["spikes", "uturn", "willowisp", "endeavor", "flareblitz", "knockoff", "leafstorm"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["spikes", "uturn", "willowisp", "endeavor", "flareblitz", "knockoff", "leafstorm"],
+		// randomBattleLevel: 82,
 		tier: "UU",
     },
 	pidgeydelta: {
@@ -3832,8 +3832,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     pidgeotdelta: {
-		randomBattleMoves: ["dragondance", "knockoff", "outrage", "irontail", "uturn"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["dragondance", "knockoff", "outrage", "irontail", "uturn"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	pidgeotdeltamega: {
@@ -3843,24 +3843,24 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     dugtriodelta: {
-		randomBattleMoves: ["headcharge", "iciclecrash", "earthquake", "extremespeed", "knockoff"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["headcharge", "iciclecrash", "earthquake", "extremespeed", "knockoff"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
 	growlithedelta: {
 		tier: "LC",
     },
     arcaninedelta: {
-		randomBattleMoves: ["swordsdance", "extremespeed", "earthquake", "dracojet", "outrage"],
-		randomBattleLevel: 76,
+		// randomBattleMoves: ["swordsdance", "extremespeed", "earthquake", "dracojet", "outrage"],
+		// randomBattleLevel: 76,
 		tier: "OU",
     },
 	tentacooldelta: {
 		tier: "LC",
     },
     tentacrueldelta: {
-		randomBattleMoves: ["corrode", "powerwhip", "strengthsap", "knockoff", "toxicspikes", "sleeppowder"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["corrode", "powerwhip", "strengthsap", "knockoff", "toxicspikes", "sleeppowder"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	geodudedelta: {
@@ -3870,37 +3870,37 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     golemdelta: {
-		randomBattleMoves: ["stoneedge", "zenheadbutt", "earthquake", "icepunch", "stealthrock", "knockoff"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["stoneedge", "zenheadbutt", "earthquake", "icepunch", "stealthrock", "knockoff"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	doduodelta: {
 		tier: "LC",
     },
     dodriodelta: {
-		randomBattleMoves: ["workup", "zenheadbutt", "drillrun", "superpower", "knockoff", "hypnosis"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["workup", "zenheadbutt", "drillrun", "superpower", "knockoff", "hypnosis"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
 	tangeladelta: {
 		tier: "LC",
     },
     tangrowthdelta: {
-		randomBattleMoves: ["earthquake", "knockoff", "closecombat", "stealthrock", "spikes", "synthesis"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["earthquake", "knockoff", "closecombat", "stealthrock", "spikes", "synthesis"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
     dittodelta: {
-		randomBattleMoves: ["morph", "retrograde", "mirrormove", "transform"],
-		randomBattleLevel: 100,
+		// randomBattleMoves: ["morph", "retrograde", "mirrormove", "transform"],
+		// randomBattleLevel: 100,
 		tier: "RU",
     },
 	kabutodelta: {
 		tier: "LC",
     },
     kabutopsdelta: {
-		randomBattleMoves: ["knockoff", "leechlife", "gunkshot", "superpower", "swordsdance"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["knockoff", "leechlife", "gunkshot", "superpower", "swordsdance"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	dratinidelta: {
@@ -3910,24 +3910,24 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     dragonitedelta: {
-		randomBattleMoves: ["wildcharge", "liquidation", "icepunch", "uturn", "knockoff", "earthquake"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["wildcharge", "liquidation", "icepunch", "uturn", "knockoff", "earthquake"],
+		// randomBattleLevel: 82,
 		tier: "OU",
     },
 	hoothootdelta: {
 		tier: "LC",
     },
     noctowldelta: {
-		randomBattleMoves: ["blizzard", "hurricane", "tailwind", "roost"],
-		randomBattleLevel: 90,
+		// randomBattleMoves: ["blizzard", "hurricane", "tailwind", "roost"],
+		// randomBattleLevel: 90,
 		tier: "RU",
     },
 	chinchoudelta: {
 		tier: "LC",
     },
     lanturndelta: {
-		randomBattleMoves: ["willowisp", "hex", "flamethrower", "sludgebomb", "earthpower"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["willowisp", "hex", "flamethrower", "sludgebomb", "earthpower"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	pichudelta: {
@@ -3937,50 +3937,50 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     raichudelta: {
-		randomBattleMoves: ["moonblast", "hurricane", "rapidspin", "focusblast", "knockoff", "uturn"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["moonblast", "hurricane", "rapidspin", "focusblast", "knockoff", "uturn"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	aipomdelta: {
-		tier: "LC",
+		tier: "NFE",
     },
     ambipomdelta: {
-		randomBattleMoves: ["shadowclaw", "fakeout", "return", "uturn", "achillesheel", "knockoff"],
-		randomBattleLevel: 78,
+		// randomBattleMoves: ["shadowclaw", "fakeout", "return", "uturn", "achillesheel", "knockoff"],
+		// randomBattleLevel: 78,
 		tier: "OU",
     },
 	yanmadelta: {
 		tier: "LC",
     },
     yanmegadelta: {
-		randomBattleMoves: ["leafstorm", "hurricane", "uturn", "energyball", "airslash"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["leafstorm", "hurricane", "uturn", "energyball", "airslash"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
     girafarigdelta: {
-		randomBattleMoves: ["toxicspikes", "corrode", "thunderbolt", "autotomize", "nastyplot", "flashcannon"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["toxicspikes", "corrode", "thunderbolt", "autotomize", "nastyplot", "flashcannon"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
 	girafarigdeltamega: {
 		tier: "RU",
     },
     dunsparcedelta: {
-		randomBattleMoves: ["firstimpression", "liquidation", "iciclespear", "pinmissile", "aquajet", "rockblast", "watershuriken"],
-		randomBattleLevel: 90,
+		// randomBattleMoves: ["firstimpression", "liquidation", "iciclespear", "pinmissile", "aquajet", "rockblast", "watershuriken"],
+		// randomBattleLevel: 90,
 		tier: "RU",
     },
     shuckledelta: {
-		randomBattleMoves: ["spikes", "seismictoss", "knockoff", "toxic", "rest", "sleeptalk"],
-		randomBattleLevel: 90,
+		// randomBattleMoves: ["spikes", "seismictoss", "knockoff", "toxic", "rest", "sleeptalk"],
+		// randomBattleLevel: 90,
 		tier: "RU",
     },
 	remoraiddelta: {
 		tier: "LC",
     },
     octillerydelta: {
-		randomBattleMoves: ["overheat", "energyball", "earthpower", "vacuumwave", "scald", "ancientpower"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["overheat", "energyball", "earthpower", "vacuumwave", "scald", "ancientpower"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	elekiddelta: {
@@ -3990,8 +3990,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     electiviredelta: {
-		randomBattleMoves: ["swordsdance", "stoneedge", "outrage", "earthquake", "dracojet"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["swordsdance", "stoneedge", "outrage", "earthquake", "dracojet"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	magbydelta: {
@@ -4001,8 +4001,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     magmortardelta: {
-		randomBattleMoves: ["waterpulse", "flashcannon", "aurasphere", "icebeam", "energyball"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["waterpulse", "flashcannon", "aurasphere", "icebeam", "energyball"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	lotaddelta: {
@@ -4012,8 +4012,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     ludicolodelta: {
-		randomBattleMoves: ["calmmind", "psyshock", "scald", "focusblast", "icebeam", "thunderbolt"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["calmmind", "psyshock", "scald", "focusblast", "icebeam", "thunderbolt"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	seedotdelta: {
@@ -4023,21 +4023,21 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     shiftrydelta: {
-		randomBattleMoves: ["nastyplot", "thunderbolt", "energyball", "dazzlinggleam", "voltswitch", "fireblast"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["nastyplot", "thunderbolt", "energyball", "dazzlinggleam", "voltswitch", "fireblast"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
     sableyedelta: {
-		randomBattleMoves: ["swordsdance", "fireblast", "stoneedge", "earthquake", "knockoff", "willowisp"],
-		randomBattleLevel: 90,
+		// randomBattleMoves: ["swordsdance", "fireblast", "stoneedge", "earthquake", "knockoff", "willowisp"],
+		// randomBattleLevel: 90,
 		tier: "RU",
     },
 	sableyedeltamega: {
 		tier: "RU",
     },
     mawiledelta: {
-		randomBattleMoves: ["spikes", "toxicspikes", "knockoff", "swordsdance", "suckerpunch", "petalblizzard"],
-		randomBattleLevel: 90,
+		// randomBattleMoves: ["spikes", "toxicspikes", "knockoff", "swordsdance", "suckerpunch", "petalblizzard"],
+		// randomBattleLevel: 90,
 		tier: "RU",
     },
 	mawiledeltamega: {
@@ -4050,16 +4050,16 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     aggrondelta: {
-		randomBattleMoves: ["flareblitz", "ironhead", "knockoff", "earthquake", "stealthrock", "autotomize"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["flareblitz", "ironhead", "knockoff", "earthquake", "stealthrock", "autotomize"],
+		// randomBattleLevel: 84,
 		tier: "UU",
     },
 	medititedelta: {
 		tier: "LC",
     },
     medichamdelta: {
-		randomBattleMoves: ["earthpower", "moonblast", "calmmind", "slackoff", "aurasphere", "psychic"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["earthpower", "moonblast", "calmmind", "slackoff", "aurasphere", "psychic"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
 	medichamdeltamega: {
@@ -4069,37 +4069,37 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     cameruptdelta: {
-		randomBattleMoves: ["toxic", "corrode", "flamethrower", "scald", "earthquake"],
-		randomBattleLevel: 90,
+		// randomBattleMoves: ["toxic", "corrode", "flamethrower", "scald", "earthquake"],
+		// randomBattleLevel: 90,
 		tier: "RU",
     },
 	cameruptdeltamega: {
 		tier: "RU",
     },
     plusledelta: {
-		randomBattleMoves: ["quiverdance", "hypervoice", "fireblast", "energyball", "psychic"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["quiverdance", "hypervoice", "fireblast", "energyball", "psychic"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
     minundelta: {
-		randomBattleMoves: ["quiverdance", "hypervoice", "icebeam", "energyball", "psychic"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["quiverdance", "hypervoice", "icebeam", "energyball", "psychic"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
 	wailmerdelta: {
 		tier: "LC",
     },
     wailorddelta: {
-		randomBattleMoves: ["blizzard", "hurricane", "roost", "surf", "uturn", "freezedry"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["blizzard", "hurricane", "roost", "surf", "uturn", "freezedry"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
 	feebasdelta: {
 		tier: "LC",
     },
     miloticdelta: {
-		randomBattleMoves: ["willowisp", "recover", "shadowball", "aurasphere", "calmmind"],
-		randomBattleLevel: 78,
+		// randomBattleMoves: ["willowisp", "recover", "shadowball", "aurasphere", "calmmind"],
+		// randomBattleLevel: 78,
 		tier: "UU",
     },
 	miloticdeltamega: {
@@ -4109,13 +4109,13 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     huntaildelta: {
-		randomBattleMoves: ["shellsmash", "crunch", "outrage", "ironhead", "firefang"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["shellsmash", "crunch", "outrage", "ironhead", "firefang"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
     gorebyssdelta: {
-		randomBattleMoves: ["shellsmash", "moonblast", "dragonpulse", "dracometeor", "icebeam"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["shellsmash", "moonblast", "dragonpulse", "dracometeor", "icebeam"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
 	beldumdeltas: {
@@ -4125,8 +4125,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     metagrossdeltas: {
-		randomBattleMoves: ["uturn", "stickyweb", "earthquake", "stealthrock", "spikes", "knockoff", "stoneedge"],
-		randomBattleLevel: 78,
+		// randomBattleMoves: ["uturn", "stickyweb", "earthquake", "stealthrock", "spikes", "knockoff", "stoneedge"],
+		// randomBattleLevel: 78,
 		tier: "OU",
     },
 	metagrossdeltasmega: {
@@ -4139,8 +4139,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     metagrossdeltar: {
-		randomBattleMoves: ["headsmash", "woodhammer", "earthquake", "voltswitch", "diamondstorm", "stealthrock"],
-		randomBattleLevel: 76,
+		// randomBattleMoves: ["headsmash", "woodhammer", "earthquake", "voltswitch", "diamondstorm", "stealthrock"],
+		// randomBattleLevel: 76,
 		tier: "OU",
     },
 	metagrossdeltarmega: {
@@ -4153,8 +4153,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     lopunnydelta: {
-		randomBattleMoves: ["bulkup", "highjumpkick", "knockoff", "poisonjab", "uturn", "zenheadbutt"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["bulkup", "highjumpkick", "knockoff", "poisonjab", "uturn", "zenheadbutt"],
+		// randomBattleLevel: 86,
 		tier: "RU",
 	},
 	lopunnydeltamega: {
@@ -4164,8 +4164,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     lucariodelta: {
-		randomBattleMoves: ["earthquake", "knockoff", "stoneedge", "suckerpunch", "swordsdance", "blizzard"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["earthquake", "knockoff", "stoneedge", "suckerpunch", "swordsdance", "blizzard"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
 	lucariodeltamega: {
@@ -4175,8 +4175,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "LC",
     },
     toxicroakdelta: {
-		randomBattleMoves: ["flareblitz", "earthquake", "knockoff", "thunderpunch", "superpower"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["flareblitz", "earthquake", "knockoff", "thunderpunch", "superpower"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	venipededelta: {
@@ -4186,24 +4186,24 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     scolipededelta: {
-		randomBattleMoves: ["stealthrock", "spikes", "flareblitz", "stoneedge", "earthquake", "swordsdance"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["stealthrock", "spikes", "flareblitz", "stoneedge", "earthquake", "swordsdance"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	petilildeltaw: {
 		tier: "LC",
     },
     lilligantdeltaw: {
-		randomBattleMoves: ["tailglow", "recover", "hydropump", "fireblast", "energyball"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["tailglow", "recover", "hydropump", "fireblast", "energyball"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	petilildeltaf: {
 		tier: "LC",
     },
     lilligantdeltaf: {
-		randomBattleMoves: ["calmmind", "roost", "hurricane", "focusblast", "moonblat", "heatwave"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["calmmind", "roost", "hurricane", "focusblast", "moonblat", "heatwave"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
 	solosisdelta: {
@@ -4213,66 +4213,66 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     reuniclusdelta: {
-		randomBattleMoves: ["trickroom", "shadowball", "powergem", "focusblast", "calmmind", "earthpower"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["trickroom", "shadowball", "powergem", "focusblast", "calmmind", "earthpower"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
 	darumakadelta: {
 		tier: "LC",
     },
     darmanitandelta: {
-		randomBattleMoves: ["shadowclaw", "knockoff", "uturn", "superpower", "shadowsneak"],
-		randomBattleLevel: 80,
+		// randomBattleMoves: ["shadowclaw", "knockoff", "uturn", "superpower", "shadowsneak"],
+		// randomBattleLevel: 80,
 		tier: "UU",
     },
     maractusdelta: {
-		randomBattleMoves: ["shiftgear", "meteormash", "knockoff", "wildcharge", "uturn", "overheat"],
-		randomBattleLevel: 90,
+		// randomBattleMoves: ["shiftgear", "meteormash", "knockoff", "wildcharge", "uturn", "overheat"],
+		// randomBattleLevel: 90,
 		tier: "RU",
     },
 	dwebbledeltab: {
 		tier: "LC",
     },
     crustledeltab: {
-		randomBattleMoves: ["spikes", "earthquake", "gunkshot", "swordsdance", "leafblade"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["spikes", "earthquake", "gunkshot", "swordsdance", "leafblade"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	dwebbledeltac: {
 		tier: "LC",
     },
     crustledeltac: {
-		randomBattleMoves: ["shellsmash", "playrough", "facade", "brickbreak", "knockoff"],
-		randomBattleLevel: 74,
+		// randomBattleMoves: ["shellsmash", "playrough", "facade", "brickbreak", "knockoff"],
+		// randomBattleLevel: 74,
 		tier: "Uber",
     },
 	yamaskdelta: {
 		tier: "LC",
     },
     cofagrigusdelta: {
-		randomBattleMoves: ["corrode", "earthpower", "painsplit", "willowisp", "toxic", "flashcannon"],
-		randomBattleLevel: 88,
+		// randomBattleMoves: ["corrode", "earthpower", "painsplit", "willowisp", "toxic", "flashcannon"],
+		// randomBattleLevel: 88,
 		tier: "RU",
     },
     emolgadelta: {
-		randomBattleMoves: ["fireblast", "knockoff", "woodhammer", "uturn", "willowisp"],
-		randomBattleLevel: 78,
+		// randomBattleMoves: ["fireblast", "knockoff", "woodhammer", "uturn", "willowisp"],
+		// randomBattleLevel: 78,
 		tier: "OU",
     },
 	karrablastdelta: {
 		tier: "LC",
     },
     escavalierdelta: {
-		randomBattleMoves: ["trickroom", "swordsdance", "playrough", "knockoff", "superpower", "zenheadbutt"],
-		randomBattleLevel: 78,
+		// randomBattleMoves: ["trickroom", "swordsdance", "playrough", "knockoff", "superpower", "zenheadbutt"],
+		// randomBattleLevel: 78,
 		tier: "UU",
     },
 	foongusdelta: {
 		tier: "LC",
     },
     amoongussdelta: {
-		randomBattleMoves: ["willowisp", "shadowball", "taunt", "knockoff", "destinybond", "icebeam"],
-		randomBattleLevel: 86,
+		// randomBattleMoves: ["willowisp", "shadowball", "taunt", "knockoff", "destinybond", "icebeam"],
+		// randomBattleLevel: 86,
 		tier: "RU",
     },
 	litwickdelta: {
@@ -4282,8 +4282,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     chandeluredelta: {
-		randomBattleMoves: ["moonblast", "fireblast", "earthpower", "trick", "calmmind"],
-		randomBattleLevel: 76,
+		// randomBattleMoves: ["moonblast", "fireblast", "earthpower", "trick", "calmmind"],
+		// randomBattleLevel: 76,
 		tier: "OU",
     },
 	axewdelta: {
@@ -4293,21 +4293,21 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     haxorusdelta: {
-		randomBattleMoves: ["swordsdance", "liquidation", "anchorshot", "knockoff", "earthquake"],
-		randomBattleLevel: 78,
+		// randomBattleMoves: ["swordsdance", "liquidation", "anchorshot", "knockoff", "earthquake"],
+		// randomBattleLevel: 78,
 		tier: "OU",
     },
 	golettdelta: {
 		tier: "LC",
     },
     golurkdelta: {
-		randomBattleMoves: ["closecombat", "bulkup", "knockoff", "bulletpunch", "icepunch", "facade", "drainpunch"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["closecombat", "bulkup", "knockoff", "bulletpunch", "icepunch", "facade", "drainpunch"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
     heatmordelta: {
-		randomBattleMoves: ["shiftgear", "gunkshot", "ironhead", "crunch", "fireblast"],
-		randomBattleLevel: 82,
+		// randomBattleMoves: ["shiftgear", "gunkshot", "ironhead", "crunch", "fireblast"],
+		// randomBattleLevel: 82,
 		tier: "RU",
     },
 	deinodelta: {
@@ -4317,24 +4317,24 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     hydreigondelta: {
-		randomBattleMoves: ["earthpower", "hypervoice", "fireblast", "glare", "uturn"],
-		randomBattleLevel: 78,
+		// randomBattleMoves: ["earthpower", "hypervoice", "fireblast", "glare", "uturn"],
+		// randomBattleLevel: 78,
 		tier: "UU",
     },
 	larvestadelta: {
 		tier: "LC",
     },
     volcaronadelta: {
-		randomBattleMoves: ["corrode", "darkpulse", "roost", "taunt", "earthpower"],
-		randomBattleLevel: 74,
+		// randomBattleMoves: ["corrode", "darkpulse", "roost", "taunt", "earthpower"],
+		// randomBattleLevel: 74,
 		tier: "Uber",
     },
 	amauradelta: {
 		tier: "LC",
     },
     aurorusdelta: {
-		randomBattleMoves: ["scald", "recover", "icebeam", "earthpower", "calmmind"],
-		randomBattleLevel: 80,
+		// randomBattleMoves: ["scald", "recover", "icebeam", "earthpower", "calmmind"],
+		// randomBattleLevel: 80,
 		tier: "OU",
     },
 	goomydelta: {
@@ -4344,48 +4344,48 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "NFE",
     },
     goodradelta: {
-		randomBattleMoves: ["earthpower", "scald", "icebeam", "stealthrock", "calmmind"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["earthpower", "scald", "icebeam", "stealthrock", "calmmind"],
+		// randomBattleLevel: 84,
 		tier: "UU",
     },
     regirockdelta: {
-		randomBattleMoves: ["earthquake", "stealthrock", "knockoff", "recover", "stoneedge"],
-		randomBattleLevel: 78,
+		// randomBattleMoves: ["earthquake", "stealthrock", "knockoff", "recover", "stoneedge"],
+		// randomBattleLevel: 78,
 		tier: "OU",
     },
     regicedelta: {
-		randomBattleMoves: ["scald", "stealthrock", "knockoff", "recover", "icebeam"],
-		randomBattleLevel: 76,
+		// randomBattleMoves: ["scald", "stealthrock", "knockoff", "recover", "icebeam"],
+		// randomBattleLevel: 76,
 		tier: "OU",
     },
     registeeldelta: {
-		randomBattleMoves: ["lavaplume", "stealthrock", "knockoff", "recover", "earthquake", "willowisp"],
-		randomBattleLevel: 80,
+		// randomBattleMoves: ["lavaplume", "stealthrock", "knockoff", "recover", "earthquake", "willowisp"],
+		// randomBattleLevel: 80,
 		tier: "OU",
     },
     meloettadeltamime: {
-		randomBattleMoves: ["knockoff", "playrough", "uturn", "ironhead", "suckerpunch", "taunt"],
-		randomBattleLevel: 76,
+		// randomBattleMoves: ["knockoff", "playrough", "uturn", "ironhead", "suckerpunch", "taunt"],
+		// randomBattleLevel: 76,
 		tier: "OU",
     },
     meloettadeltamagician: {
-		randomBattleMoves: ["calmmind", "psychic", "darkpulse", "focusblast", "uturn", "trick"],
-		randomBattleLevel: 84,
+		// randomBattleMoves: ["calmmind", "psychic", "darkpulse", "focusblast", "uturn", "trick"],
+		// randomBattleLevel: 84,
 		tier: "RU",
     },
     hoopadelta: {
-		randomBattleMoves: ["aeroblast", "moonblast", "heatwave", "voltswitch", "icebeam", "nastyplot"],
-		randomBattleLevel: 80,
+		// randomBattleMoves: ["aeroblast", "moonblast", "heatwave", "voltswitch", "icebeam", "nastyplot"],
+		// randomBattleLevel: 80,
 		tier: "UU",
     },
     hoopadeltaunleashed: {
-		randomBattleMoves: ["aeroblast", "moonblast", "heatwave", "voltswitch", "icebeam", "nastyplot"],
-		randomBattleLevel: 76,
+		// randomBattleMoves: ["aeroblast", "moonblast", "heatwave", "voltswitch", "icebeam", "nastyplot"],
+		// randomBattleLevel: 76,
 		tier: "Uber",
     },
 	ufi: {
-		randomBattleMoves: ["calmmind", "nanorepair", "storedpower", "thunderbolt", "icebeam"],
-		randomBattleLevel: 76,
+		// randomBattleMoves: ["calmmind", "nanorepair", "storedpower", "thunderbolt", "icebeam"],
+		// randomBattleLevel: 76,
 		tier: "Uber",
 	},
 	poliwrathmega: {
@@ -4526,8 +4526,8 @@ export const FormatsData: {[k: string]: ModdedSpeciesFormatsData} = {
 		tier: "AG",
     },
 	mewtwoshadow: {
-		randomBattleMoves: ["psystrike", "calmmind", "recover", "darkpulse", "focusblast"],
-		randomBattleLevel: 72,
+		// randomBattleMoves: ["psystrike", "calmmind", "recover", "darkpulse", "focusblast"],
+		// randomBattleLevel: 72,
 		tier: "Uber",
     },
 	mewtwoshadowmega: {
