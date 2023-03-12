@@ -327,8 +327,6 @@ export interface ActiveMove extends MutableMove, RuinableMove {
 	willChangeForme?: boolean;
 	willChangeFormeDelta?: boolean;
 	infiltrates?: boolean;
-	/** Should Order Up try its after-move boost effect?*/
-	orderUpBoost?: boolean;
 
 	/**
 	 * Has this move been boosted by a Z-crystal or used by a Dynamax Pokemon? Usually the same as
