@@ -415,78 +415,78 @@ export const Formats: FormatList = [
 	// Draft League
 	///////////////////////////////////////////////////////////////////
 
-	// {
-	// 	section: "Draft",
-	// 	column: 2,
-	// },
-	// {
-	// 	name: "[Gen 9] NatDex Draft",
+	{
+		section: "Draft",
+		column: 2,
+	},
+	{
+		name: "[Gen 6] Draft",
 
-	// 	mod: 'gen9',
-	// 	searchShow: false,
-	// 	ruleset: ['Draft', '+Unobtainable', '+Past'],
-	// },
-	// {
-	// 	name: "[Gen 9] NatDex 6v6 Doubles Draft",
+		mod: 'gen6',
+		searchShow: false,
+		ruleset: ['Draft'],
+	},
+	{
+		name: "[Gen 9] NatDex Draft",
 
-	// 	mod: 'gen9',
-	// 	gameType: 'doubles',
-	// 	searchShow: false,
-	// 	ruleset: ['Draft', '!Sleep Clause Mod', '!Evasion Moves Clause', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
-	// },
-	// {
-	// 	name: "[Gen 9] NatDex 4v4 Doubles Draft",
+		mod: 'gen9',
+		searchShow: false,
+		ruleset: ['Draft', '+Unobtainable', '+Past'],
+	},
+	{
+		name: "[Gen 9] NatDex 6v6 Doubles Draft",
 
-	// 	mod: 'gen9',
-	// 	gameType: 'doubles',
-	// 	searchShow: false,
-	// 	ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
-	// },
-	// {
-	// 	name: "[Gen 9] NatDex LC Draft",
+		mod: 'gen9',
+		gameType: 'doubles',
+		searchShow: false,
+		ruleset: ['Draft', '!Sleep Clause Mod', '!Evasion Moves Clause', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
+	},
+	{
+		name: "[Gen 9] NatDex 4v4 Doubles Draft",
 
-	// 	mod: 'gen9',
-	// 	searchShow: false,
-	// 	ruleset: ['LC Draft', '+Unobtainable', '+Past', 'Double Item Clause', 'Little Cup'],
-	// 	banlist: ['Dragon Rage', 'Sonic Boom'],
-	// },
-	// {
-	// 	name: "[Gen 8] NatDex Draft",
+		mod: 'gen9',
+		gameType: 'doubles',
+		searchShow: false,
+		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
+	},
+	{
+		name: "[Gen 9] NatDex LC Draft",
 
-	// 	mod: 'gen8',
-	// 	searchShow: false,
-	// 	ruleset: ['Draft', '+Past'],
-	// },
-	// {
-	// 	name: "[Gen 8] NatDex 4v4 Doubles Draft",
+		mod: 'gen9',
+		searchShow: false,
+		ruleset: ['LC Draft', '+Unobtainable', '+Past', 'Double Item Clause', 'Little Cup'],
+		banlist: ['Dragon Rage', 'Sonic Boom'],
+	},
+	{
+		name: "[Gen 8] NatDex Draft",
 
-	// 	mod: 'gen8',
-	// 	gameType: 'doubles',
-	// 	searchShow: false,
-	// 	ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Past'],
-	// },
-	// {
-	// 	name: "[Gen 8] NatDex LC Draft",
+		mod: 'gen8',
+		searchShow: false,
+		ruleset: ['Draft', '+Past'],
+	},
+	{
+		name: "[Gen 8] NatDex 4v4 Doubles Draft",
 
-	// 	mod: 'gen8',
-	// 	searchShow: false,
-	// 	ruleset: ['LC Draft', '+Past', 'Double Item Clause', 'Little Cup'],
-	// 	banlist: ['Dragon Rage', 'Sonic Boom'],
-	// },
-	// {
-	// 	name: "[Gen 7] Draft",
+		mod: 'gen8',
+		gameType: 'doubles',
+		searchShow: false,
+		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Past'],
+	},
+	{
+		name: "[Gen 8] NatDex LC Draft",
 
-	// 	mod: 'gen7',
-	// 	searchShow: false,
-	// 	ruleset: ['Draft', '+LGPE'],
-	// },
-	// {
-	// 	name: "[Gen 6] Draft",
+		mod: 'gen8',
+		searchShow: false,
+		ruleset: ['LC Draft', '+Past', 'Double Item Clause', 'Little Cup'],
+		banlist: ['Dragon Rage', 'Sonic Boom'],
+	},
+	{
+		name: "[Gen 7] Draft",
 
-	// 	mod: 'gen6',
-	// 	searchShow: false,
-	// 	ruleset: ['Draft'],
-	// },
+		mod: 'gen7',
+		searchShow: false,
+		ruleset: ['Draft', '+LGPE'],
+	},
 
 	// Other Metagames
 	///////////////////////////////////////////////////////////////////
