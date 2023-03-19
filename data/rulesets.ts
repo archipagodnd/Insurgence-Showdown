@@ -2383,9 +2383,8 @@ export const Rulesets: {[k: string]: FormatData} = {
 							basePower: 140,
 							category: "Physical",
 							priority: 0,
-							flags: {},
+							flags: {futuremove: 1},
 							effectType: 'Move',
-							isFutureMove: true,
 							type: 'Steel',
 						},
 					});
@@ -2408,10 +2407,9 @@ export const Rulesets: {[k: string]: FormatData} = {
 							basePower: 120,
 							category: "Physical",
 							priority: 0,
-							flags: {},
+							flags: {futuremove: 1},
 							ignoreImmunity: false,
 							effectType: 'Move',
-							isFutureMove: true,
 							type: 'Psychic',
 						},
 					});
