@@ -203,10 +203,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {protect: 1, mirror: 1},
 	},
-	sheercold: {
-		inherit: true,
-		ohko: true,
-	},
 	sleeptalk: {
 		inherit: true,
 		flags: {nosleeptalk: 1, noassist: 1, failcopycat: 1},
@@ -245,14 +241,6 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 	tackle: {
 		inherit: true,
 		basePower: 50,
-	},
-	thousandarrows: {
-		inherit: true,
-		isNonstandard: "Unobtainable",
-	},
-	thousandwaves: {
-		inherit: true,
-		isNonstandard: "Unobtainable",
 	},
 	thunderwave: {
 		inherit: true,

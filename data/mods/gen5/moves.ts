@@ -754,6 +754,10 @@ export const Moves: {[k: string]: ModdedMoveData} = {
 		inherit: true,
 		flags: {contact: 1, charge: 1, mirror: 1, nosleeptalk: 1},
 	},
+	sheercold: {
+		inherit: true,
+		ohko: true,
+	},
 	sing: {
 		inherit: true,
 		flags: {protect: 1, reflectable: 1, mirror: 1, sound: 1},

@@ -2887,7 +2887,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		contestType: "Cute",
 	},
 	coreenforcer: {
-		num: 687,
+		num: 614,
 		accuracy: 100,
 		basePower: 100,
 		category: "Special",
@@ -12755,7 +12755,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 			switch (pokemon.effectiveWeather()) {
 			case 'sunnyday':
 			case 'desolateland':
-				factor = 0.667;
+				factor = 0.333;
 				break;
 			case 'raindance':
 			case 'primordialsea':
