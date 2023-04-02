@@ -450,7 +450,7 @@ export const Formats: FormatList = [
 		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Unobtainable', '+Past', '+PastMove', 'Min Source Gen = 3'],
 	},
 	{
-		name: "[Gen 9] NatDex LC Draft",
+		name: "[Gen 9] NatDex Draft LC",
 
 		mod: 'gen9',
 		searchShow: false,
@@ -473,7 +473,7 @@ export const Formats: FormatList = [
 		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Past', '+PastMove'],
 	},
 	{
-		name: "[Gen 8] NatDex LC Draft",
+		name: "[Gen 8] NatDex Draft LC",
 
 		mod: 'gen8',
 		searchShow: false,
