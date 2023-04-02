@@ -431,7 +431,7 @@ export const Formats: FormatList = [
 
 		mod: 'gen9',
 		searchShow: false,
-		ruleset: ['Draft', '+Unobtainable', '+Past'],
+		ruleset: ['Draft', '+Unobtainable', '+Past', '+PastMove'],
 	},
 	{
 		name: "[Gen 9] NatDex 6v6 Doubles Draft",
@@ -439,7 +439,7 @@ export const Formats: FormatList = [
 		mod: 'gen9',
 		gameType: 'doubles',
 		searchShow: false,
-		ruleset: ['Draft', '!Sleep Clause Mod', '!Evasion Moves Clause', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
+		ruleset: ['Draft', '!Sleep Clause Mod', '!Evasion Moves Clause', '+Unobtainable', '+Past', '+PastMove', 'Min Source Gen = 3'],
 	},
 	{
 		name: "[Gen 9] NatDex 4v4 Doubles Draft",
@@ -447,14 +447,14 @@ export const Formats: FormatList = [
 		mod: 'gen9',
 		gameType: 'doubles',
 		searchShow: false,
-		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Unobtainable', '+Past', 'Min Source Gen = 3'],
+		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Unobtainable', '+Past', '+PastMove', 'Min Source Gen = 3'],
 	},
 	{
 		name: "[Gen 9] NatDex LC Draft",
 
 		mod: 'gen9',
 		searchShow: false,
-		ruleset: ['LC Draft', '+Unobtainable', '+Past', 'Double Item Clause', 'Little Cup'],
+		ruleset: ['LC Draft', '+Unobtainable', '+Past', '+PastMove', 'Double Item Clause', 'Little Cup'],
 		banlist: ['Dragon Rage', 'Sonic Boom'],
 	},
 	{
@@ -462,7 +462,7 @@ export const Formats: FormatList = [
 
 		mod: 'gen8',
 		searchShow: false,
-		ruleset: ['Draft', '+Past'],
+		ruleset: ['Draft', '+Past', '+PastMove'],
 	},
 	{
 		name: "[Gen 8] NatDex 4v4 Doubles Draft",
@@ -470,14 +470,14 @@ export const Formats: FormatList = [
 		mod: 'gen8',
 		gameType: 'doubles',
 		searchShow: false,
-		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Past'],
+		ruleset: ['Draft', 'Item Clause', '!Sleep Clause Mod', '!OHKO Clause', '!Evasion Moves Clause', '!! Adjust Level = 50', 'Picked Team Size = 4', '+Past', '+PastMove'],
 	},
 	{
 		name: "[Gen 8] NatDex LC Draft",
 
 		mod: 'gen8',
 		searchShow: false,
-		ruleset: ['LC Draft', '+Past', 'Double Item Clause', 'Little Cup'],
+		ruleset: ['LC Draft', '+Past', '+PastMove', 'Double Item Clause', 'Little Cup'],
 		banlist: ['Dragon Rage', 'Sonic Boom'],
 	},
 	{
