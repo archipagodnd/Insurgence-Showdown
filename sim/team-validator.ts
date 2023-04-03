@@ -2186,7 +2186,7 @@ export class TeamValidator {
 							// falls through to E check below
 						} else {
 							// this move is unavailable, skip it
-							cantLearnReason = `is learned at level ${parseInt(learned.substr(2))}. ${species.name.slice(-7,-2)}`;
+							cantLearnReason = `is learned at level ${parseInt(learned.substr(2))}.`;
 							continue;
 						}
 					}
