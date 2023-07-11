@@ -2295,30 +2295,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: 89,
 	},
 	irrelephant: {
-		onModifyMovePriority: -5,
-		onModifyMove(move, source, target) {
-			if (target?.hasAbility('wonderguard')) return;
-			if (!move.ignoreImmunity) move.ignoreImmunity = {};
-			if (move.ignoreImmunity !== true) {
-				move.ignoreImmunity['Psychic'] = true;
-				move.ignoreImmunity['Electric'] = true;
-				move.ignoreImmunity['Poison'] = true;
-				move.ignoreImmunity['Ghost'] = true;
-				move.ignoreImmunity['Dragon'] = true;
-				if (target?.hasAbility('etherealshroud') === false) {
-					move.ignoreImmunity['Fighting'] = true;
-					move.ignoreImmunity['Normal'] = true;
-				}
-				if (
-					target?.volatiles['magnetrise'] || target?.hasItem('airballoon') ||
-					target?.hasAbility('levitate') || target?.hasAbility('omnitype')
-				) {
-					move.ignoreImmunity['Ground'] = false;
-				} else {
-					move.ignoreImmunity['Ground'] = true;
-				}
-			}
-		},
+		// Implemented in sim\pokemon.ts
 		name: "Irrelephant",
 		gen: 6,
 		rating: 3,
@@ -3126,25 +3103,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		onEffectiveness(typeMod, target, type, move) {
 			if (target?.species.id !== 'giratinaprimal') return;
-			let octupleEffective = ['None'];
-			let superEffective = ['Rock'];
-			let neutral = ['Crystal', 'Fairy', 'Fire', 'Flying', 'Ice', 'Water'];
-			let resisted = ['Dark', 'Steel'];
-			let quadResisted = ['None'];
+			let octupleEffective = ['Ground'];
+			let superEffective = ['Rock', 'Ghost'];
+			let neutral = ['Crystal', 'Fairy', 'Fire', 'Flying', 'Ice', 'Water', 'Dragon', 'Fighting', 'Psychic'];
+			let resisted = ['Dark', 'Steel', 'Electric'];
+			let quadResisted = ['Normal', 'Poison'];
 			const sixteenthPower = ['Bug', 'Grass'];
-			if (target.hasItem('ringtarget')) {
-				octupleEffective = octupleEffective.concat(['Ground']);
-				superEffective = superEffective.concat(['Ghost']);
-				neutral = neutral.concat(['Dragon', 'Fighting', 'Psychic']);
-				resisted = resisted.concat(['Electric']);
-				quadResisted = quadResisted.concat(['Normal', 'Poison']);
-			}
-			if (
-				target.hasItem('ironball') || target.volatiles['smackdown'] ||
-				target.volatiles['ingrain'] || this.field.getPseudoWeather('Gravity')
-			) {
-				octupleEffective = octupleEffective.concat(['Ground']);
-			}
+
 			if (target.volatiles['foresight']) {
 				quadResisted = quadResisted.concat(['Normal']);
 				neutral = neutral.concat(['Fighting']);
@@ -3202,19 +3167,20 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				return null;
 			}
 			if (move.category === 'Status' || target === source) return;
-			if (target.hasItem('ringtarget')) return;
-			const immunities = ['Dragon', 'Electric', 'Ghost', 'Ground', 'Poison'];
-			if (immunities.includes(move.type)) {
+			const immunities = ['Dragon', 'Electric', 'Ghost', 'Poison'];
+			if (!source.hasAbility('irrelephant') && !source.hasItem('ringtarget') && immunities.includes(move.type)) {
 				this.add('-immune', this.effectState.target, '[from] ability: Omnitype');
 				return null;
 			}
-			if (target.volatiles['miracleeye']) return;
-			if (move.type === 'Psychic') {
+			if (!source.hasAbility('irrelephant') && !source.hasItem('ringtarget') && !target.hasItem('ironball') && !target.volatiles['smackdown'] && !target.volatiles['ingrain'] && !this.field.getPseudoWeather('Gravity') && (move.type === 'Normal' || move.type === 'Fighting')) {
 				this.add('-immune', this.effectState.target, '[from] ability: Omnitype');
 				return null;
 			}
-			if (target.volatiles['foresight'] || source.hasAbility('scrappy')) return;
-			if (move.type === 'Normal' || move.type === 'Fighting') {
+			if (!source.hasAbility('irrelephant') && !source.hasItem('ringtarget') && !target.volatiles['miracleeye'] && move.type === 'Psychic') {
+				this.add('-immune', this.effectState.target, '[from] ability: Omnitype');
+				return null;
+			}
+			if (!source.hasAbility('irrelephant') && !source.hasItem('ringtarget') && target.volatiles['foresight'] && source.hasAbility('scrappy') && (move.type === 'Normal' || move.type === 'Fighting')) {
 				this.add('-immune', this.effectState.target, '[from] ability: Omnitype');
 				return null;
 			}

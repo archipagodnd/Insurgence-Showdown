@@ -636,7 +636,7 @@ export class BattleActions {
 		const hitResults = [];
 		for (const i of targets.keys()) {
 			hitResults[i] = (move.ignoreImmunity && (move.ignoreImmunity === true || move.ignoreImmunity[move.type])) ||
-				targets[i].runImmunity(move.type, !move.smartTarget);
+				targets[i].runImmunity(move.type, pokemon, !move.smartTarget);
 			if (move.smartTarget && !hitResults[i]) move.smartTarget = false;
 		}
 
@@ -1568,7 +1568,7 @@ export class BattleActions {
 		}
 
 		if (!move.ignoreImmunity || (move.ignoreImmunity !== true && !move.ignoreImmunity[move.type])) {
-			if (!target.runImmunity(move.type, !suppressMessages)) {
+			if (!target.runImmunity(move.type, source, !suppressMessages)) {
 				return false;
 			}
 		}

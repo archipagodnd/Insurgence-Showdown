@@ -124,7 +124,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			if (
 				(!move.ignoreImmunity || (move.ignoreImmunity !== true && !move.ignoreImmunity[move.type])) &&
-				!target.runImmunity(move.type, true)
+				!target.runImmunity(move.type, pokemon, true)
 			) {
 				return false;
 			}
@@ -259,7 +259,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			// Let's test for immunities.
 			if (!move.ignoreImmunity || (move.ignoreImmunity !== true && !move.ignoreImmunity[move.type])) {
-				if (!target.runImmunity(move.type, true)) {
+				if (!target.runImmunity(move.type, source, true)) {
 					return false;
 				}
 			}

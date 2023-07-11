@@ -593,7 +593,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			if (!move.ignoreImmunity || (move.ignoreImmunity !== true && !move.ignoreImmunity[move.type])) {
-				if (!target.runImmunity(move.type, !suppressMessages)) {
+				if (!target.runImmunity(move.type, source, !suppressMessages)) {
 					return false;
 				}
 			}

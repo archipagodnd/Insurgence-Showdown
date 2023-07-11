@@ -372,6 +372,25 @@ export const Formats: FormatList = [
 		banlist: ['Sub-Legendary'],
 	},
 	{
+		name: "[Gen 9] National Dex Multi Battle",
+
+		mod: 'gen9',
+		gameType: 'multi',
+		searchShow: false,
+		tournamentShow: false,
+		rated: false,
+		ruleset: ['Max Team Size = 3', 'Standard NatDex'],
+	},
+	{
+		name: "[Gen 9] National Dex Free-For-All",
+
+		mod: 'gen9',
+		gameType: 'freeforall',
+		tournamentShow: false,
+		rated: false,
+		ruleset: ['Standard NatDex'],
+	},
+	{
 		name: "[Gen 9] Custom Game",
 
 		mod: 'gen9',
@@ -479,6 +498,8 @@ export const Formats: FormatList = [
 
 		mod: 'gen8',
 		searchShow: false,
+	},
+	{
 		name: "[Gen 8] NatDex Draft LC",
 
 		mod: 'gen8',
@@ -1480,7 +1501,7 @@ export const Formats: FormatList = [
 			'Solid Rock', 'Soul-Heart', 'Soul-Stealing 7-Star Strike', 'Spacial Rend', 'Sparkly Swirl', 'Spectral Thief',
 			'Spectrier', 'Speed Boost', 'Spikes', 'Spiky Shield', 'Spin Out', 'Spirit Break', 'Spirit Shackle', 'Splash Plate',
 			'Splintered Stormshards', 'Splishy Splash', 'Spooky Plate', 'Spore', 'Springtide Storm', 'Stakataka', 'Stakeout',
-			'Stamina', 'Stealth Rock', 'Steam Eruption', 'Steelium Z', 'Steelix-Mega', 'Sticky Web', 'Stoked Sparksurfer',
+			'Stamina', 'Stealth Rock', 'Steam Eruption', 'Steelium Z', 'Steelix-Mega-Steel', 'Sticky Web', 'Stoked Sparksurfer',
 			'Stone Axe', 'Stone Edge', 'Stone Plate', 'Stored Power', 'Storm Drain', 'Storm Throw', 'Strange Steam',
 			'Strength Sap', 'Sucker Punch', 'Suicune', 'Sunsteel Strike', 'Super Fang', 'Superpower', 'Supreme Overlord', 'Surf',
 			'Surging Strikes', 'Swampert', 'Swampert-Mega', 'Sword of Ruin', 'Swords Dance', 'Sylveon', 'Synthesis',

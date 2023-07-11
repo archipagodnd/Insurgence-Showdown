@@ -5232,7 +5232,7 @@ export const Items: {[itemid: string]: ItemData} = {
 	steelixitesteel: {
 		name: "Steelixite Steel",
 		spritenum: 621,
-		megaStone: "Steelix-Mega",
+		megaStone: "Steelix-Mega-Steel",
 		megaEvolves: "Steelix",
 		itemUser: ["Steelix"],
 		onTakeItem(item, source) {

@@ -7,6 +7,7 @@
 
 import {State} from './state';
 import {toID} from './dex';
+import { stringify } from 'querystring';
 
 /** A Pokemon's move slot. */
 interface MoveSlot {
@@ -2286,13 +2287,26 @@ export class Pokemon {
 	}
 
 	/** false = immune, true = not immune */
-	runImmunity(type: string, message?: string | boolean) {
+	runImmunity(type: string, source?: Pokemon, message?: string | boolean) {
 		if (!type || type === '???') return true;
 		if (!this.battle.dex.types.isName(type)) {
 			throw new Error("Use runStatusImmunity for " + type);
 		}
 		if (this.fainted) return false;
 
+		if (source && this) {
+			if (source.hasAbility("Irrelephant")) {
+				if (this.ability === 'levitate' && type === 'Ground') {
+					this.battle.add('-immune', this, '[from] ability: Levitate');
+					return false
+				}
+				if (type === "Ground" && this?.item === "airballoon") {
+					this.battle.add('-immune', this);
+					return false
+				}
+				return true
+			}
+		}
 		const negateImmunity = !this.battle.runEvent('NegateImmunity', this, type);
 		const notImmune = type === 'Ground' ?
 			this.isGrounded(negateImmunity) :

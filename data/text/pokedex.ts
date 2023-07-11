@@ -1116,7 +1116,7 @@ export const PokedexText: {[k: string]: PokedexText} = {
 		name: "Steelix",
 	},
 	steelixmegasteel: {
-		name: "Steelix-Mega",
+		name: "Steelix-Mega-Steel",
 	},
 	steelixmegafire: {
 		name: "Steelix-Mega-Fire",
