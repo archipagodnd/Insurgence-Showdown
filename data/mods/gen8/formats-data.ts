@@ -3749,10 +3749,13 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Illegal",
 		natDexTier: "OU",
 	},
-	greninjaash: {
+	greninjabond: {
 		isNonstandard: "Past",
 		tier: "Illegal",
 		natDexTier: "OU",
+	},
+	greninjaash: {
+		isNonstandard: "Past",
 	},
 	bunnelby: {
 		tier: "LC",
@@ -6641,7 +6644,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		natDexTier: "LC",
     },
     lilligantdeltaf: {
-		// randomBattleMoves: ["calmmind", "roost", "airslash", "focusblast", "moonblat", "heatwave"],
+		// randomBattleMoves: ["calmmind", "roost", "airslash", "focusblast", "moonblast", "heatwave"],
 		// randomBattleLevel: 84,
 		isNonstandard: "Past",
 		tier: "Illegal",

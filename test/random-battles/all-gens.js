@@ -9,7 +9,7 @@ const {Utils} = require('../../dist/lib');
 const {testTeam, assertSetValidity, validateLearnset} = require('./tools');
 const {default: Dex} = require('../../dist/sim/dex');
 
-describe('value rule support', () => {
+describe('value rule support (slow)', () => {
 	it('should generate teams of the proper length for the format (i.e. support Max Team Size)', () => {
 		testTeam({format: 'gen9randombattle', rounds: 100}, team => assert.equal(team.length, 6));
 		testTeam({format: 'gen9challengecup1v1', rounds: 100}, team => assert.equal(team.length, 6));
@@ -76,12 +76,18 @@ describe('value rule support', () => {
 });
 
 describe("New set format", () => {
-	const files = ['../../data/random-sets.json'];
+	const files = ['../../data/random-sets.json', '../../data/random-doubles-sets.json'];
 	for (const filename of files) {
 		it(`${filename} should have valid set data`, () => {
 			const setsJSON = require(filename);
-			const validRoles = ["Fast Attacker", "Setup Sweeper", "Wallbreaker", "Tera Blast user",
-				"Bulky Attacker", "Bulky Setup", "Fast Bulky Setup", "Bulky Support", "Fast Support", "AV Pivot"];
+			let validRoles = [];
+			if (filename === '../../data/random-sets.json') {
+				validRoles = ["Fast Attacker", "Setup Sweeper", "Wallbreaker", "Tera Blast user",
+					"Bulky Attacker", "Bulky Setup", "Fast Bulky Setup", "Bulky Support", "Fast Support", "AV Pivot"];
+			} else {
+				validRoles = ["Doubles Fast Attacker", "Doubles Setup Sweeper", "Doubles Wallbreaker", "Tera Blast user",
+					"Doubles Bulky Attacker", "Doubles Bulky Setup", "Offensive Protect", "Bulky Protect", "Doubles Support", "Choice Item user"];
+			}
 			for (const [id, sets] of Object.entries(setsJSON)) {
 				const species = Dex.species.get(id);
 				assert(species.exists, `Misspelled species ID: ${id}`);
@@ -104,13 +110,16 @@ describe("New set format", () => {
 						assert(dexType.exists, `${species.name} has invalid Tera Type: ${type}`);
 						assert.equal(type, dexType.name, `${species.name} has misformatted Tera Type: ${type}`);
 					}
+					for (let i = 0; i < set.teraTypes.length - 1; i++) {
+						assert(set.teraTypes[i + 1] > set.teraTypes[i], `${species} teraTypes should be sorted alphabetically`);
+					}
 				}
 			}
 		});
 	}
 });
 
-describe(`randomly generated teams should be valid (slow)`, () => {
+describe('randomly generated teams should be valid (slow)', () => {
 	for (const format of Dex.formats.all()) {
 		if (!format.team) continue; // format doesn't use randomly generated teams
 
@@ -131,7 +140,7 @@ describe(`randomly generated teams should be valid (slow)`, () => {
 
 describe('Battle Factory and BSS Factory data should be valid (slow)', () => {
 	for (const filename of ['mods/gen8/bss-factory-sets', 'mods/gen7/bss-factory-sets', 'mods/gen7/factory-sets', 'mods/gen6/factory-sets']) {
-		it(`${filename}.json should contain valid sets (slow)`, function () {
+		it(`${filename}.json should contain valid sets`, function () {
 			this.timeout(0);
 			const setsJSON = require(`../../dist/data/${filename}.json`);
 			const mod = filename.split('/')[1] || 'gen' + Dex.gen;
