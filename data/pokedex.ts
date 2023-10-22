@@ -22873,6 +22873,17 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
 	},
+	eriegle: {
+		num: 2001,
+		name: "Eriegle",
+		types: ["Normal", "Flying"],
+		baseStats: {hp: 49, atk: 65, def: 38, spa: 30, spd: 38, spe: 50},
+		abilities: {0: "Keen Eye", 1: "Big Pecks", H: "Rivalry"},
+		heightm: 0.3,
+		weightkg: 2.1,
+		color: "White",
+		eggGroups: ["Flying"],
+	},
 	missingno: {
 		num: 0,
 		name: "MissingNo.",
