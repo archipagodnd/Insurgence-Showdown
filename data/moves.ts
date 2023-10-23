@@ -1603,6 +1603,22 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Fire",
 		contestType: "Beautiful",
 	},
+	bodaciousbuttblast: {
+		num: 999,
+		accuracy: 100,
+		basePower: 200,
+		category: "Physical",
+		name: "Bodacious Butt Blast",
+		pp: 100,
+		priority: 1,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 100,
+			status: 'psn',
+		},
+		target: "normal",
+		type: "Poison",
+	},
 	bodypress: {
 		num: 776,
 		accuracy: 100,
@@ -2117,7 +2133,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	buzzybuzz: {
 		num: 734,
 		accuracy: 100,
-		basePower: 60,
+		basePower: 1,
 		category: "Special",
 		isNonstandard: "LGPE",
 		name: "Buzzy Buzz",
