@@ -2146,6 +2146,45 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	everite: {
+		name: "Everite",
+		spritenum: 130,
+		fling: {
+			basePower: 40,
+		},
+		onModifyAtkPriority: 2,
+		onModifyAtk(atk, pokemon) {
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
+				return this.chainModify(10.0);
+			}
+		},
+		onModifySpAPriority: 2,
+		onModifySpA(spa, pokemon) {
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
+				return this.chainModify(10.0);
+			}
+		},
+		onModifyDefPriority: 2,
+		onModifyDef(def, pokemon) {
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
+				return this.chainModify(10.0);
+			}
+		},
+		onModifySpDPriority: 2,
+		onModifySpD(spd, pokemon) {
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
+				return this.chainModify(10.0);
+			}
+		},
+		onModifySpePriority: 2,
+		onModifySpe(spe, pokemon) {
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
+				return this.chainModify(10.0);
+			}
+		},
+		num: 2000,
+		gen: 5,
+	},
 	eviolite: {
 		name: "Eviolite",
 		spritenum: 130,
