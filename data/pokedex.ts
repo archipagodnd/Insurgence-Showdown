@@ -5432,7 +5432,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	slowkingmega: {
 		num: 199,
 		name: "Slowking-Mega",
-		baseSpecies: "Girafarig",
+		baseSpecies: "Slowking",
 		forme: "Mega",
 		types: ["Water", "Psychic"],
 		baseStats: {hp: 95, atk: 75, def: 80, spa: 100, spd: 110, spe: 30},
