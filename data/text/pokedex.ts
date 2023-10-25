@@ -1073,6 +1073,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	slowking: {
 		name: "Slowking",
 	},
+	slowkingmega: {
+		name: "Slowking-Mega",
+	},
 	misdreavus: {
 		name: "Misdreavus",
 	},
