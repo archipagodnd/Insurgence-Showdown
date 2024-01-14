@@ -1606,7 +1606,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	bodaciousbuttblast: {
 		num: 999,
 		accuracy: 100,
-		basePower: 999,
+		basePower: 200,
 		category: "Physical",
 		name: "Bodacious Butt Blast",
 		pp: 100,
