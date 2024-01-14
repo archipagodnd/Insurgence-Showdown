@@ -44063,7 +44063,6 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			attract: ["8M", "7M", "6M", "5M", "4M", "3M"],
 			aurasphere: ["9M"],
 			bodyslam: ["9M", "8M", "3T"],
-			bodaciousbuttblast: ["9M", "9L35", "8M", "8L35", "7M", "7L26", "6M", "6L26", "6S1", "5M", "5L33", "4M", "4L25", "3M", "3L21"],
 			calmmind: ["9M", "9L35", "8M", "8L35", "7M", "7L26", "6M", "6L26", "6S1", "5M", "5L33", "4M", "4L25", "3M", "3L21"],
 			captivate: ["7L44", "6L44", "5L60", "4M", "4L53"],
 			chargebeam: ["9M", "7M", "6M", "5M", "4M"],
