@@ -350,20 +350,6 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
-	slowkingite: {
-		name: "Slowkingite",
-		spritenum: 617,
-		megaStone: "Slowking-Mega",
-		megaEvolves: "Slowking",
-		itemUser: ["Slowking"],
-		onTakeItem(item, source) {
-			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
-			return true;
-		},
-		num: 2003,
-		gen: 6,
-		isNonstandard: "Past",
-	},
 	auspiciousarmor: {
 		name: "Auspicious Armor",
 		spritenum: 753,
