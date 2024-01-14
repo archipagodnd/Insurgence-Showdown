@@ -2155,31 +2155,31 @@ export const Items: {[itemid: string]: ItemData} = {
 		onModifyAtkPriority: 2,
 		onModifyAtk(atk, pokemon) {
 			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.1);
+				return this.chainModify(1.15);
 			}
 		},
 		onModifySpAPriority: 2,
 		onModifySpA(spa, pokemon) {
 			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.1);
+				return this.chainModify(1.15);
 			}
 		},
 		onModifyDefPriority: 2,
 		onModifyDef(def, pokemon) {
 			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.1);
+				return this.chainModify(1.15);
 			}
 		},
 		onModifySpDPriority: 2,
 		onModifySpD(spd, pokemon) {
 			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.1);
+				return this.chainModify(1.15);
 			}
 		},
 		onModifySpePriority: 2,
 		onModifySpe(spe, pokemon) {
 			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.1);
+				return this.chainModify(1.15);
 			}
 		},
 		num: 2000,
