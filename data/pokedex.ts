@@ -1477,7 +1477,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 0.3,
 		weightkg: 5.4,
 		color: "Red",
-		evos: ["Parasect"],
+		evos: ["Parasect", "Parasitter"],
 		eggGroups: ["Bug", "Grass"],
 	},
 	parasect: {
@@ -22858,6 +22858,19 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Green",
 		tags: ["Paradox"],
 		eggGroups: ["Undiscovered"],
+	},
+	parasitter: {
+		num: 2000,
+		name: "Parasitter",
+		types: ["Bug", "Fighting"],
+		baseStats: {hp: 100, atk: 100, def: 100, spa: 60, spd: 60, spe: 60},
+		abilities: {0: "Friend Guard", 1: "Parental Bond", H: "Vital Spirit"},
+		heightm: 1.5,
+		weightkg: 125,
+		color: "Red",
+		prevo: "Paras",
+		evoLevel: 34,
+		eggGroups: ["Bug", "Grass"],
 	},
 	missingno: {
 		num: 0,
