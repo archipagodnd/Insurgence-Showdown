@@ -110456,7 +110456,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			hydropump: ["8L1"],
 			hyperbeam: ["8L1"],
 			haze: ["8L1"],
-			sanddtomb: ["8L1"],
+			sandtomb: ["8L1"],
 			scald: ["8L1"],
 			weatherball: ["8L1"],
 			flipturn: ["8L1"],

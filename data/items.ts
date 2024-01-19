@@ -2152,34 +2152,35 @@ export const Items: {[itemid: string]: ItemData} = {
 		fling: {
 			basePower: 40,
 		},
+
 		onModifyAtkPriority: 2,
 		onModifyAtk(atk, pokemon) {
-			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.15);
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega' || pokemon.baseSpecies.bst <= 430 )  {
+				return this.chainModify(1.25);
 			}
 		},
 		onModifySpAPriority: 2,
 		onModifySpA(spa, pokemon) {
-			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.15);
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega' || pokemon.baseSpecies.bst <= 430) {
+				return this.chainModify(1.25);
 			}
 		},
 		onModifyDefPriority: 2,
 		onModifyDef(def, pokemon) {
-			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.15);
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega' || pokemon.baseSpecies.bst <= 430) {
+				return this.chainModify(1.25);
 			}
 		},
 		onModifySpDPriority: 2,
 		onModifySpD(spd, pokemon) {
-			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.15);
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega' || pokemon.baseSpecies.bst <= 430) {
+				return this.chainModify(1.25);
 			}
 		},
 		onModifySpePriority: 2,
 		onModifySpe(spe, pokemon) {
-			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega') {
-				return this.chainModify(1.15);
+			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.name === 'Eevee-Pre-Mega' || pokemon.baseSpecies.bst <= 430) {
+				return this.chainModify(1.25);
 			}
 		},
 		num: 2000,
