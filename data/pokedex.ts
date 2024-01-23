@@ -13345,7 +13345,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		evos: ["Scolipede-Delta"],
 		eggGroups: ["Undiscovered"],
 	},
-	whirlipearchipago: {
+	whirlipedearchipago: {
 		gen: 6,
 		num: 544,
 		name: "Whirlipede-Archipago",
