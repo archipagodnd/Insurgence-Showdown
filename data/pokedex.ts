@@ -13943,7 +13943,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 1.4,
 		weightkg: 14,
 		color: "Black",
-		evos: ["Sigitotem"],
+		evos: ["Sigitotym"],
 		eggGroups: ["Flying"],
 	},
 	yamask: {
@@ -23000,9 +23000,9 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		evos: ["Sigilyph"],
 		eggGroups: ["Undiscovered"],
 	},
-	sigitotem: {
+	sigitotym: {
 		num: 2007,
-		name: "Sigitotem",
+		name: "Sigitotym",
 		types: ["Psychic","Dark"],
 		baseStats: {hp: 70, atk: 50, def: 65, spa: 115, spd: 150, spe: 135},
 		abilities: {0: "Contrary", 1: "Magic Guard", H: "Infiltrator"},

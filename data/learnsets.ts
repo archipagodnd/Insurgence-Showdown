@@ -110811,7 +110811,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			zenheadbutt: ["8M", "7T", "6T", "5T"],
 		},
 	},
-	sigitotem: {
+	sigitotym: {
 		learnset: {
 			achillesheel: ["6M"],
 			aerialace: ["7M", "6M", "5M"],
