@@ -23007,7 +23007,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		baseStats: {hp: 70, atk: 50, def: 65, spa: 115, spd: 150, spe: 135},
 		abilities: {0: "Contrary", 1: "Magic Guard", H: "Infiltrator"},
 		heightm: 3.2,
-		weightkg: 32,
+		weightkg: 32.0,
 		color: "Yellow",
 		prevo: "Sigilyph",
 		evoLevel: 40,
