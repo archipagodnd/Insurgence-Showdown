@@ -22327,6 +22327,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		heightm: 2.5,
 		weightkg: 310,
 		color: "Pink",
+		prevo: "Orthsmol",
+		evoLevel: 20,
 		eggGroups: ["Field"],
 	},
 	glimmet: {
@@ -23239,6 +23241,18 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		color: "Green",
 		prevo: "Linkite",
 		evoLevel: 55,
+		eggGroups: ["Monster"],
+	},
+	orthsmol: {
+		num: 2026,
+		name: "Orthsmol",
+		types: ["Steel"],
+		baseStats: {hp: 30, atk: 50, def: 70, spa: 45, spd: 65, spe: 35},
+		abilities: {0: "Earth Eater", H: "Sand Veil"},
+		heightm: 0.2,
+		weightkg: 1,
+		color: "Pink",
+		evos: ["Orthworm"],
 		eggGroups: ["Monster"],
 	},
 	missingno: {
