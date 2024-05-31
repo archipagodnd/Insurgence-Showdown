@@ -11565,7 +11565,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		name: "Togekiss-Archipago",
 		types: ["Fairy", "Psychic"],
 		genderRatio: {M: 0.875, F: 0.125},
-		baseStats: {hp: 85, atk: 50, def: 95, spa: 120, spd: 115, spe: 80},
+		baseStats: {hp: 85, atk: 50, def: 95, spa: 121, spd: 115, spe: 80},
 		abilities: {0: "Hustle", 1: "Serene Grace", H: "Super Luck"},
 		heightm: 1.5,
 		weightkg: 38,
